@@ -1,0 +1,21 @@
+body {
+    font-family: Inter, system-ui, sans-serif;
+}
+
+.card {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
