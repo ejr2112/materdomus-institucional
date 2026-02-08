@@ -1,0 +1,25 @@
+@inherits LayoutComponentBase
+
+<header class="header">
+    <div class="container header-content">
+        <h1 class="logo">Mater Domus</h1>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="/sobre">Sobre</a>
+            <a href="/fornecedores">Fornecedores</a>
+            <a href="/contato">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    @Body
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© @DateTime.Now.Year Mater Domus · Todos os direitos reservados</p>
+        <p>E-commerce de utilidades domésticas e organização</p>
+    </div>
+</footer>

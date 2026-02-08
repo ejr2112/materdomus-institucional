@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.4" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\Contact.razor" />
+    <Content Remove="Pages\Home.razor" />
+    <Content Remove="Pages\Counter.razor" />
+  </ItemGroup>
+
 </Project>

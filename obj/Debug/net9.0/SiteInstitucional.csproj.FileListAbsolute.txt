@@ -44,8 +44,6 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/Microsoft.Win32.Registry.w69ya3jgm7.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/mscorlib.wzkfrp7u5k.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/netstandard.d82br99ghv.wasm
-/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.8t8curkwnq.pdb
-/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.7g9b0ztp9r.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.AppContext.brstoo7rmv.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Buffers.y31fti4j86.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Collections.Concurrent.kb0mdoldj7.wasm
@@ -312,7 +310,6 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/dotnet.native.3c4wvb350q.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Numerics.Vectors.a5w5z708ml.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Runtime.Numerics.fy7c28mkpw.wasm.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.7g9b0ztp9r.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/Microsoft.Extensions.Configuration.Abstractions.avw86po9nh.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/icudt_no_CJK.lfu7j35m59.dat.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Data.Common.iw2jx9afvs.wasm.gz
@@ -370,7 +367,6 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Runtime.InteropServices.RuntimeInformation.87gs2gbjoc.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Diagnostics.TraceSource.ffvt4nhdjw.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.gf26ou9jj9.wasm.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.8t8curkwnq.pdb.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Net.Requests.vg192fvph6.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Net.WebClient.495v6rng83.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/System.Formats.Tar.lh20ntqzs7.wasm.gz
@@ -815,8 +811,6 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/blazor.build.boot-extension.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/blazor.boot.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/z7vvibligp-8rbvw3on5j.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/7hmbxcyrs1-fb110bz70h.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/ib9l49ha7p-5xh4sekxo4.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/8b948akpo4-bqjiyaj88i.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/dpk2hxdxbm-c2jlpeoesf.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/tz1cc3lmwk-erw9l3u2r3.gz
@@ -1065,9 +1059,6 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/6l25sf031l-tjcz0u77k5.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/989ihbudsq-tptq2av103.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/ha467xpdxr-lfu7j35m59.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/gys8kckq7b-7g9b0ztp9r.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/rrdrnge4kf-8t8curkwnq.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/aey00omqc9-ylqn6vazbq.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/staticwebassets.build.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/staticwebassets.development.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/staticwebassets.build.endpoints.json
@@ -1082,3 +1073,13 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/refint/SiteInstitucional.dll
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/SiteInstitucional.pdb
 /Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/ref/SiteInstitucional.dll
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/SiteInstitucional.sourcelink.json
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/7hmbxcyrs1-hfc4405w32.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.rh8g2p7ngi.pdb
+/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.f79e0qphvt.wasm
+/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.f79e0qphvt.wasm.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/bin/Debug/net9.0/wwwroot/_framework/SiteInstitucional.rh8g2p7ngi.pdb.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/ib9l49ha7p-45lcws30uh.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/gys8kckq7b-f79e0qphvt.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/rrdrnge4kf-rh8g2p7ngi.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/obj/Debug/net9.0/compressed/aey00omqc9-z9rzytpvav.gz
