@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/MaterDomus.Web.props" />
+</Project>

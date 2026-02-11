@@ -1,0 +1,25 @@
+@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Routing
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Mater Domus" />
+        </div>
+
+        <nav>
+            <NavLink href="/" Match="NavLinkMatch.All">Início</NavLink>
+            <NavLink href="/sobre">Sobre</NavLink>
+            <NavLink href="/fornecedores">Fornecedores</NavLink>
+            <NavLink href="/contato">Contato</NavLink>
+        </nav>
+    </div>
+</header>
+
+<main>
+    @Body
+</main>
+
+<footer class="footer">
+    <p>© @DateTime.Now.Year Mater Domus</p>
+</footer>
