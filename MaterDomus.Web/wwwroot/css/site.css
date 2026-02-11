@@ -68,6 +68,23 @@ main section {
     color: #fff;
 }
 
+.btn-primary {
+    background: #1f1f1f;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.btn-secondary
+{
+    border: 1px solid #1f1f1f;
+    color: #1f1f1f;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
 h1 {
     font-size: 2.4rem;
     margin-bottom: 16px;
@@ -96,6 +113,9 @@ p {
 .hero p {
     max-width: 600px;
     margin: 0 auto;
+}
+.hero-actions {
+    margin-top: 30px;
 }
 ul {
     padding-left: 20px;
@@ -128,5 +148,46 @@ ul li {
 @media (max-width: 600px) {
     .logo span {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 10px 0;
+    }
+
+    .header .container {
+        align-items: center;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    nav {
+        white-space: nowrap;
+    }
+
+    nav a {
+        margin-left: 16px;
+        font-size: 0.9rem;
+    }
+
+    main section {
+        margin: 48px auto;
+        padding: 0 18px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    ul li {
+        margin-bottom: 12px;
     }
 }

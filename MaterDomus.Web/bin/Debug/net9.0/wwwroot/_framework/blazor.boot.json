@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MaterDomus.Web",
   "resources": {
-    "hash": "sha256-V0Xz33zOtvPGb4q03S/Gk7IT9dc3gWmQ2Sl631y89Tw=",
+    "hash": "sha256-KXM0xJvCcz1TpPGCBalKTnW98W2dY2dQmxQsT138xf8=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.gf26ou9jj9.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.v3fd2n5hlr.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,8 +201,8 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "MaterDomus.Web.apd3zvaz8z.wasm": "MaterDomus.Web.wasm",
-      "MaterDomus.Web.vxmy8ar316.pdb": "MaterDomus.Web.pdb"
+      "MaterDomus.Web.9rkmjmolj8.wasm": "MaterDomus.Web.wasm",
+      "MaterDomus.Web.1q8o01u42y.pdb": "MaterDomus.Web.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.hvg7u8bimp.js": "sha256-LX9rFEWGVxhkOkAVPG0w5RxPwzPBlEUz6dQNjWS7M+M="
@@ -412,10 +412,10 @@
       "WindowsBase.5lai2eowco.wasm": "sha256-GcDi5293y2A7oSiFYTbBTUe0d+ISbvgeel4ZNd8KkPM=",
       "mscorlib.wzkfrp7u5k.wasm": "sha256-9PjsU0gaxxz5Vyw++p9DeYUWLsaXbaMS2RbX6wmTUmk=",
       "netstandard.d82br99ghv.wasm": "sha256-DS8keXxU4eQpa1kIoiFxOA2Ii2g9hoNWSaVi8F8AnIE=",
-      "MaterDomus.Web.apd3zvaz8z.wasm": "sha256-4ljVoJmbp4zhgRSdjLpg930xy0Vo/OTPLGW4NqDNMnY="
+      "MaterDomus.Web.9rkmjmolj8.wasm": "sha256-ld0Yp3cSreNanJrPOVuiIATeB5Osxeh/fxg6W44Y4So="
     },
     "pdb": {
-      "MaterDomus.Web.vxmy8ar316.pdb": "sha256-o4jaaaThfUcDn5JjhzWMpx6Fsrlyz4mk8uJzAb9VyCM="
+      "MaterDomus.Web.1q8o01u42y.pdb": "sha256-1znd/RfjdrGqzU5BWiviEMGFsvEE8XuB0Y5kocjoctg="
     }
   },
   "cacheBootResources": true,
