@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MaterDomus.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b7b9e260294e756c7f00eab47eba2e6cc4d84d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3ecc413bec3b3e32a3112fbad0e1235277c3358")]
 [assembly: System.Reflection.AssemblyProductAttribute("MaterDomus.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MaterDomus.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

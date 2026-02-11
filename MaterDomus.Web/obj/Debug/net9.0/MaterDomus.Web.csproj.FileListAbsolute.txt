@@ -9,8 +9,8 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/icudt_CJK.tjcz0u77k5.dat
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/icudt_EFIGS.tptq2av103.dat
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/icudt_no_CJK.lfu7j35m59.dat
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.1q8o01u42y.pdb
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.9rkmjmolj8.wasm
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.t567yoo0cy.pdb
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.yr7jb43yo4.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.gf26ou9jj9.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.n0ihslit6r.wasm
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/Microsoft.AspNetCore.Components.v3fd2n5hlr.wasm
@@ -289,7 +289,7 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.AppContext.brstoo7rmv.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.IO.FileSystem.Primitives.06x5zxb1jg.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/mscorlib.wzkfrp7u5k.wasm.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.9rkmjmolj8.wasm.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.yr7jb43yo4.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.IO.Compression.Brotli.k5ptxcu8oa.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.Net.WebSockets.28yyxg95so.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.Net.HttpListener.g1z5na32ay.wasm.gz
@@ -354,7 +354,7 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.ComponentModel.TypeConverter.z1ha3dnoj6.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.IO.MemoryMappedFiles.7rkx67p8q9.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.Runtime.Serialization.Formatters.vwqkwew761.wasm.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.1q8o01u42y.pdb.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/MaterDomus.Web.t567yoo0cy.pdb.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.Security.Principal.Windows.8sirrf1ijn.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.IO.FileSystem.vgbx8s3be4.wasm.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/bin/Debug/net9.0/wwwroot/_framework/System.Numerics.eej9cnpchw.wasm.gz
@@ -812,7 +812,7 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/scopedcss/bundle/MaterDomus.Web.styles.css
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/blazor.build.boot-extension.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/blazor.boot.json
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/67mkac6boj-3isfvm6roe.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/67mkac6boj-ehw4u5do75.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/pnc2vpvlf2-jenkduusf0.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/u1qe3a4xnf-lfbvw8zive.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/rh6euc7qsm-bqjiyaj88i.gz
@@ -1062,9 +1062,9 @@
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/78vqdy228t-tjcz0u77k5.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/qwaoqj0byb-tptq2av103.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/mielimlrri-lfu7j35m59.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/f0yjcx7rgo-9rkmjmolj8.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/rilnxbia1b-1q8o01u42y.gz
-/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/b3lvfj7m1y-v8cyel7rao.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/f0yjcx7rgo-yr7jb43yo4.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/rilnxbia1b-t567yoo0cy.gz
+/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/compressed/b3lvfj7m1y-jucr0sr54b.gz
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/staticwebassets.build.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/staticwebassets.development.json
 /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/Debug/net9.0/staticwebassets.build.endpoints.json
