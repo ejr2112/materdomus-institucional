@@ -1,4 +1,5 @@
 @page "/contato"
+@inject IJSRuntime JS
 
 <section><h1>Fale com a Mater Domus</h1>
 
@@ -8,9 +9,31 @@
     </p>
 
     <p>
-        📧 <strong>Email:</strong> contato@materdomus.com.br<br>
-        📱 <a href="https://wa.me/5519993491775"><strong>WhatsApp</strong></a></p>
+        📧 <strong>Email:</strong> <a href="mailto:contato@materdomus.com.br" @onclick="TrackEmailClick">contato@materdomus.com.br</a><br>
+        📱 <a href="https://wa.me/5519993491775" target="_blank" rel="noopener noreferrer" @onclick="TrackWhatsappClick"><strong>WhatsApp</strong></a></p>
 
     <p>
         Atendimento em horário comercial.
     </p></section>
+
+@code {
+    private ValueTask TrackWhatsappClick()
+    {
+        return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
+        {
+            page = "contato",
+            channel = "whatsapp",
+            lead_type = "supplier"
+        });
+    }
+
+    private ValueTask TrackEmailClick()
+    {
+        return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
+        {
+            page = "contato",
+            channel = "email",
+            lead_type = "supplier"
+        });
+    }
+}
