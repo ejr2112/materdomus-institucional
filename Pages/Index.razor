@@ -12,8 +12,8 @@
         bem selecionados e acessíveis para o dia a dia das famílias brasileiras.
     </p>
 
-    <div class="hero-actions"><a class="btn-primary" href="/fornecedores" @onclick='() => TrackCtaClick("home_fornecedores")'>Seja nosso fornecedor</a>
-        <a class="btn-secondary" href="/sobre" @onclick='() => TrackCtaClick("home_sobre")'>Conheça a Mater Domus</a></div></section>
+    <div class="hero-actions"><a class="btn-primary" href="/fornecedores" @onclick="TrackHomeSupplierCtaClick">Seja nosso fornecedor</a>
+        <a class="btn-secondary" href="/sobre" @onclick="TrackHomeAboutCtaClick">Conheça a Mater Domus</a></div></section>
 
 <section><h2>O que fazemos</h2>
     <p>
@@ -23,6 +23,16 @@
     </p></section>
 
 @code {
+    private ValueTask TrackHomeSupplierCtaClick()
+    {
+        return TrackCtaClick("home_fornecedores");
+    }
+
+    private ValueTask TrackHomeAboutCtaClick()
+    {
+        return TrackCtaClick("home_sobre");
+    }
+
     private ValueTask TrackCtaClick(string cta)
     {
         return JS.InvokeVoidAsync("trackEvent", "cta_click", new
