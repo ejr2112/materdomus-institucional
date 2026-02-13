@@ -1,4 +1,5 @@
 @page "/fornecedores"
+@inject IJSRuntime JS
 
 <!--!--><!--!--><section class="hero"><h2>Parcerias que crescem junto</h2>
     <p>
@@ -34,4 +35,16 @@
         Será um prazer conversar.
     </p>
 
-    <a class="btn-primary" href="/contato">Entrar em contato</a></section>
+    <a class="btn-primary" href="/contato" @onclick="TrackSupplierIntent">Entrar em contato</a></section>
+
+@code {
+    private Task TrackSupplierIntent()
+    {
+        return JS.InvokeVoidAsync("trackEvent", "supplier_intent", new
+        {
+            page = "fornecedores",
+            intent_level = "high",
+            next_step = "contato"
+        }).AsTask();
+    }
+}

@@ -1,4 +1,5 @@
 @page "/"
+@inject IJSRuntime JS
 
 <section class="hero">
 
@@ -11,8 +12,8 @@
         bem selecionados e acessíveis para o dia a dia das famílias brasileiras.
     </p>
 
-    <div class="hero-actions"><a class="btn-primary" href="/fornecedores">Seja nosso fornecedor</a>
-        <a class="btn-secondary" href="/sobre">Conheça a Mater Domus</a></div></section>
+    <div class="hero-actions"><a class="btn-primary" href="/fornecedores" @onclick="TrackHomeSupplierCtaClick">Seja nosso fornecedor</a>
+        <a class="btn-secondary" href="/sobre" @onclick="TrackHomeAboutCtaClick">Conheça a Mater Domus</a></div></section>
 
 <section><h2>O que fazemos</h2>
     <p>
@@ -20,3 +21,25 @@
         selecionando produtos de qualidade nas categorias de utilidades domésticas,
         organização e itens para casa.
     </p></section>
+
+@code {
+    private Task TrackHomeSupplierCtaClick()
+    {
+        return TrackCtaClick("home_fornecedores");
+    }
+
+    private Task TrackHomeAboutCtaClick()
+    {
+        return TrackCtaClick("home_sobre");
+    }
+
+    private Task TrackCtaClick(string cta)
+    {
+        return JS.InvokeVoidAsync("trackEvent", "cta_click", new
+        {
+            page = "home",
+            cta_name = cta,
+            funnel = "supplier_acquisition"
+        }).AsTask();
+    }
+}
