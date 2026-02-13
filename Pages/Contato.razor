@@ -17,23 +17,23 @@
     </p></section>
 
 @code {
-    private ValueTask TrackWhatsappClick()
+    private Task TrackWhatsappClick()
     {
         return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
         {
             page = "contato",
             channel = "whatsapp",
             lead_type = "supplier"
-        });
+        }).AsTask();
     }
 
-    private ValueTask TrackEmailClick()
+    private Task TrackEmailClick()
     {
         return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
         {
             page = "contato",
             channel = "email",
             lead_type = "supplier"
-        });
+        }).AsTask();
     }
 }

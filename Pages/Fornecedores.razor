@@ -38,13 +38,13 @@
     <a class="btn-primary" href="/contato" @onclick="TrackSupplierIntent">Entrar em contato</a></section>
 
 @code {
-    private ValueTask TrackSupplierIntent()
+    private Task TrackSupplierIntent()
     {
         return JS.InvokeVoidAsync("trackEvent", "supplier_intent", new
         {
             page = "fornecedores",
             intent_level = "high",
             next_step = "contato"
-        });
+        }).AsTask();
     }
 }

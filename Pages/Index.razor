@@ -23,23 +23,23 @@
     </p></section>
 
 @code {
-    private ValueTask TrackHomeSupplierCtaClick()
+    private Task TrackHomeSupplierCtaClick()
     {
         return TrackCtaClick("home_fornecedores");
     }
 
-    private ValueTask TrackHomeAboutCtaClick()
+    private Task TrackHomeAboutCtaClick()
     {
         return TrackCtaClick("home_sobre");
     }
 
-    private ValueTask TrackCtaClick(string cta)
+    private Task TrackCtaClick(string cta)
     {
         return JS.InvokeVoidAsync("trackEvent", "cta_click", new
         {
             page = "home",
             cta_name = cta,
             funnel = "supplier_acquisition"
-        });
+        }).AsTask();
     }
 }
