@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MaterDomus.Tests/**" />
+    <Content Remove="MaterDomus.Tests/**" />
+    <EmbeddedResource Remove="MaterDomus.Tests/**" />
+    <None Remove="MaterDomus.Tests/**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.4" PrivateAssets="all" />
   </ItemGroup>

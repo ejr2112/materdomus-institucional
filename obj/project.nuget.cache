@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z5IrSP+9IsQ=",
+  "dgSpecHash": "SUzy3JTRSFs=",
   "success": true,
-  "projectFilePath": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/MaterDomus.Web.csproj",
+  "projectFilePath": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web.csproj",
   "expectedPackageFiles": [
     "/Users/eliasj/.nuget/packages/microsoft.aspnetcore.authorization/9.0.4/microsoft.aspnetcore.authorization.9.0.4.nupkg.sha512",
     "/Users/eliasj/.nuget/packages/microsoft.aspnetcore.components/9.0.4/microsoft.aspnetcore.components.9.0.4.nupkg.sha512",

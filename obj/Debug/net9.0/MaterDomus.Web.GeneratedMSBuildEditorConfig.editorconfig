@@ -13,41 +13,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = MaterDomus.Web
 build_property.RootNamespace = MaterDomus.Web
-build_property.ProjectDir = /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/
+build_property.ProjectDir = /Users/eliasj/dev/materdomus/SiteInstitucional/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web
+build_property.MSBuildProjectDirectory = /Users/eliasj/dev/materdomus/SiteInstitucional
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/App.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/Pages/Contato.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Pages/Contato.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGF0by5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/Pages/Fornecedores.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Pages/Fornecedores.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRm9ybmVjZWRvcmVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/Pages/Index.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/Pages/Sobre.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Pages/Produtos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZHV0b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Pages/Sobre.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU29icmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/Shared/MainLayout.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/_Imports.razor]
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Shared/PageViewTracker.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VWaWV3VHJhY2tlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/eliasj/dev/materdomus/SiteInstitucional/Shared/ProductCard.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/eliasj/dev/materdomus/SiteInstitucional/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

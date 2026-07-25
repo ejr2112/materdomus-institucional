@@ -1762,11 +1762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/MaterDomus.Web.csproj",
+      "projectUniqueName": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web.csproj",
       "projectName": "MaterDomus.Web",
-      "projectPath": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/MaterDomus.Web.csproj",
+      "projectPath": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web.csproj",
       "packagesPath": "/Users/eliasj/.nuget/packages/",
-      "outputPath": "/Users/eliasj/dev/materdomus/SiteInstitucional/MaterDomus.Web/obj/",
+      "outputPath": "/Users/eliasj/dev/materdomus/SiteInstitucional/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/eliasj/.nuget/NuGet/NuGet.Config"

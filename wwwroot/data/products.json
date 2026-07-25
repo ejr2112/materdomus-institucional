@@ -1,0 +1,74 @@
+[
+  {
+    "id": "organizador-gaveta-001",
+    "name": "Organizador de Gaveta 6 Divisórias",
+    "description": "Organizador de gaveta em plástico resistente com 6 divisórias ajustáveis. Ideal para talheres, utensílios de cozinha e acessórios pequenos. Mantém a gaveta sempre arrumada.",
+    "imageUrl": "images/products/organizador-gaveta-001.jpg",
+    "category": "Organização",
+    "price": 34.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09ORGV001"
+  },
+  {
+    "id": "porta-temperos-001",
+    "name": "Porta-Temperos Giratório Inox 16 Peças",
+    "description": "Suporte giratório para temperos com 16 potes de vidro e tampa inox. Design elegante para bancada ou prateleira. Inclui etiquetas para identificação dos temperos.",
+    "imageUrl": "images/products/porta-temperos-001.jpg",
+    "category": "Cozinha",
+    "price": 89.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09COZ0001"
+  },
+  {
+    "id": "conjunto-limpeza-001",
+    "name": "Kit Limpeza Doméstica 5 Peças Cabo Longo",
+    "description": "Conjunto de limpeza com vassoura, rodo, esfregão, pá e porta-objetos. Cabos de cabo longo em alumínio resistente. Perfeito para banheiro, cozinha e área de serviço.",
+    "imageUrl": "images/products/conjunto-limpeza-001.jpg",
+    "category": "Limpeza",
+    "price": 129.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09LMP0001"
+  },
+  {
+    "id": "caixa-organizadora-001",
+    "name": "Caixa Organizadora Multiuso com Tampa",
+    "description": "Caixa organizadora em polipropileno com tampa e travas de segurança. Empilhável, resistente e transparente para fácil visualização do conteúdo. Disponível em tamanho 40L.",
+    "imageUrl": "images/products/caixa-organizadora-001.jpg",
+    "category": "Organização",
+    "price": 59.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09ORG0002"
+  },
+  {
+    "id": "tapete-silicone-001",
+    "name": "Tapete de Pia em Silicone Antiderrapante",
+    "description": "Tapete de pia em silicone alimentício com superfície drainable. Protege louças e talheres, evita escorregamentos. Fácil higienização, resistente a altas temperaturas.",
+    "imageUrl": "images/products/tapete-silicone-001.jpg",
+    "category": "Cozinha",
+    "price": 44.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09COZ0002"
+  },
+  {
+    "id": "dispenser-sabao-001",
+    "name": "Dispenser de Sabão Líquido 500ml Inox",
+    "description": "Dispenser de sabão com bomba dosadora em aço inox escovado e reservatório de vidro borossilicato. Design minimalista e sofisticado para pia de cozinha ou banheiro.",
+    "imageUrl": "images/products/dispenser-sabao-001.jpg",
+    "category": "Limpeza",
+    "price": 72.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09LMP0002"
+  },
+  {
+    "id": "porta-papel-001",
+    "name": "Porta-Papel Toalha de Parede Inox",
+    "description": "Suporte para papel toalha de fixação na parede em aço inox escovado. Acomoda rolos de até 30cm de largura. Inclui parafusos e buchas para instalação fácil.",
+    "imageUrl": "images/products/porta-papel-001.jpg",
+    "category": "Casa",
+    "price": 38.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09CAS0001"
+  },
+  {
+    "id": "cabide-porta-001",
+    "name": "Cabideiro de Porta 5 Ganchos Sem Furos",
+    "description": "Cabideiro de porta com 5 ganchos resistentes, instalação sem furos por encaixe na porta. Suporta até 10kg por gancho. Ideal para quarto, banheiro ou corredor.",
+    "imageUrl": "images/products/cabide-porta-001.jpg",
+    "category": "Casa",
+    "price": 29.90,
+    "amazonUrl": "https://www.amazon.com.br/dp/B09CAS0002"
+  }
+]
