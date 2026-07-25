@@ -1,0 +1,84 @@
+## .NET / C#
+
+# Build outputs
+bin/
+obj/
+out/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+artifacts/
+packages/
+.nuget/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vcxproj.filters
+
+# MSTest / xUnit / NUnit test results
+TestResults/
+*.trx
+*.coveragexml
+coverage*.xml
+coverage*.json
+
+# Publish output
+publish/
+PublishProfiles/
+
+# Entity Framework migrations snapshot (opcional — remova se quiser versionar)
+# **/Migrations/
+
+## Blazor WebAssembly
+
+# Gerado pelo compilador Blazor
+wwwroot/_framework/
+wwwroot/appsettings.*.json
+
+## macOS
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+## JetBrains Rider / IntelliJ
+
+.idea/
+*.sln.iml
+
+## VS Code (caso alguém do time use)
+
+.vscode/
+!.vscode/extensions.json
+
+## Azure Static Web Apps
+
+# Arquivo de configuração de deploy gerado automaticamente
+# (manter o .yml do workflow — ignorar apenas artefatos locais)
+.azure/
+
+## Secrets / configuração sensível
+
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.p12
+
+## Logs
+
+*.log
+logs/
