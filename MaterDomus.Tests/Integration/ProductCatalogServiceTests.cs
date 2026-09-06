@@ -90,7 +90,7 @@ public class ProductCatalogServiceTests
             imageUrl = "images/products/prod-001.jpg",
             category = "Organização",
             price = 34.90m,
-            amazonUrl = "https://www.amazon.com.br/dp/AAAAA"
+            amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA"  // 10-char ASIN (Req 3.1)
         },
         new
         {
@@ -100,7 +100,7 @@ public class ProductCatalogServiceTests
             imageUrl = "images/products/prod-002.jpg",
             category = "Cozinha",
             price = 59.90m,
-            amazonUrl = "https://www.amazon.com.br/dp/BBBBB"
+            amazonUrl = "https://www.amazon.com.br/dp/BBBBBBBBBB"  // 10-char ASIN (Req 3.1)
         }
     });
 
@@ -131,7 +131,7 @@ public class ProductCatalogServiceTests
         Assert.Equal("Organizador de Gaveta", first.Name);
         Assert.Equal("Organização", first.Category);
         Assert.Equal(34.90m, first.Price);
-        Assert.Equal("https://www.amazon.com.br/dp/AAAAA", first.AmazonUrl);
+        Assert.Equal("https://www.amazon.com.br/dp/AAAAAAAAAA", first.AmazonUrl);
 
         var second = products[1];
         Assert.Equal("prod-002", second.Id);
@@ -235,5 +235,182 @@ public class ProductCatalogServiceTests
         // Assert — mesma referência cacheada
         Assert.Same(firstCall, secondCall);
         Assert.Empty(secondCall);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Cenários de validação de integridade (Req 1.5, 2.7, 2.8, 6.1, 6.2)
+    // ---------------------------------------------------------------------------
+
+    /// <summary>
+    /// Requisito 1.5 / 3.1 — Produto com `amazonUrl` que não corresponde ao padrão
+    /// canônico deve ser filtrado; produtos válidos presentes no mesmo JSON são mantidos.
+    /// </summary>
+    [Fact]
+    public async Task GetProductsAsync_InvalidAmazonUrl_ProductFiltered()
+    {
+        // Arrange — um produto inválido (URL sem ASIN de 10 chars) e um válido
+        var json = JsonSerializer.Serialize(new[]
+        {
+            new
+            {
+                id = "prod-bad-url",
+                name = "Produto URL Inválida",
+                description = "Desc.",
+                imageUrl = "images/products/prod-bad-url.jpg",
+                category = "Casa",
+                price = 29.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/SHORT"  // ASIN com menos de 10 chars
+            },
+            new
+            {
+                id = "prod-valid",
+                name = "Produto Válido",
+                description = "Desc.",
+                imageUrl = "images/products/prod-valid.jpg",
+                category = "Casa",
+                price = 49.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA"  // ASIN válido
+            }
+        });
+
+        var (client, _) = CreateHttpClient(json);
+        var service = new ProductCatalogService(client);
+
+        // Act
+        var products = await service.GetProductsAsync();
+
+        // Assert — apenas o produto com URL válida é retornado
+        Assert.Single(products);
+        Assert.Equal("prod-valid", products[0].Id);
+    }
+
+    /// <summary>
+    /// Requisito 2.7 / 6.1 — Produto com `price = 0` deve ser filtrado;
+    /// produtos válidos presentes no mesmo JSON são mantidos.
+    /// </summary>
+    [Fact]
+    public async Task GetProductsAsync_ZeroPrice_ProductFiltered()
+    {
+        // Arrange — um produto com preço zero e um válido
+        var json = JsonSerializer.Serialize(new[]
+        {
+            new
+            {
+                id = "prod-zero-price",
+                name = "Produto Preço Zero",
+                description = "Desc.",
+                imageUrl = "images/products/prod-zero-price.jpg",
+                category = "Organização",
+                price = 0m,
+                amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA"
+            },
+            new
+            {
+                id = "prod-valid",
+                name = "Produto Válido",
+                description = "Desc.",
+                imageUrl = "images/products/prod-valid.jpg",
+                category = "Organização",
+                price = 19.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/BBBBBBBBBB"
+            }
+        });
+
+        var (client, _) = CreateHttpClient(json);
+        var service = new ProductCatalogService(client);
+
+        // Act
+        var products = await service.GetProductsAsync();
+
+        // Assert — apenas o produto com preço válido é retornado
+        Assert.Single(products);
+        Assert.Equal("prod-valid", products[0].Id);
+    }
+
+    /// <summary>
+    /// Requisito 2.8 / 6.1 — Produto com `imageUrl` vazia deve ser filtrado;
+    /// produtos válidos presentes no mesmo JSON são mantidos.
+    /// </summary>
+    [Fact]
+    public async Task GetProductsAsync_EmptyImageUrl_ProductFiltered()
+    {
+        // Arrange — um produto com imageUrl vazia e um válido
+        var json = JsonSerializer.Serialize(new[]
+        {
+            new
+            {
+                id = "prod-no-image",
+                name = "Produto Sem Imagem",
+                description = "Desc.",
+                imageUrl = "",
+                category = "Limpeza",
+                price = 12.50m,
+                amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA"
+            },
+            new
+            {
+                id = "prod-valid",
+                name = "Produto Válido",
+                description = "Desc.",
+                imageUrl = "images/products/prod-valid.jpg",
+                category = "Limpeza",
+                price = 25.00m,
+                amazonUrl = "https://www.amazon.com.br/dp/BBBBBBBBBB"
+            }
+        });
+
+        var (client, _) = CreateHttpClient(json);
+        var service = new ProductCatalogService(client);
+
+        // Act
+        var products = await service.GetProductsAsync();
+
+        // Assert — apenas o produto com imagem é retornado
+        Assert.Single(products);
+        Assert.Equal("prod-valid", products[0].Id);
+    }
+
+    /// <summary>
+    /// Requisito 6.2 — IDs duplicados: apenas o primeiro registro (menor índice)
+    /// deve ser mantido; os demais com o mesmo id devem ser descartados.
+    /// </summary>
+    [Fact]
+    public async Task GetProductsAsync_DuplicateIds_OnlyFirstKept()
+    {
+        // Arrange — dois produtos com o mesmo id; o primeiro deve ser mantido
+        var json = JsonSerializer.Serialize(new[]
+        {
+            new
+            {
+                id = "prod-dup",
+                name = "Produto Original",
+                description = "Primeiro registro.",
+                imageUrl = "images/products/prod-dup.jpg",
+                category = "Cozinha",
+                price = 39.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA"
+            },
+            new
+            {
+                id = "prod-dup",
+                name = "Produto Duplicado",
+                description = "Segundo registro com mesmo id.",
+                imageUrl = "images/products/prod-dup-2.jpg",
+                category = "Cozinha",
+                price = 99.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/BBBBBBBBBB"
+            }
+        });
+
+        var (client, _) = CreateHttpClient(json);
+        var service = new ProductCatalogService(client);
+
+        // Act
+        var products = await service.GetProductsAsync();
+
+        // Assert — apenas um produto retornado e é o primeiro (nome original)
+        Assert.Single(products);
+        Assert.Equal("prod-dup", products[0].Id);
+        Assert.Equal("Produto Original", products[0].Name);
     }
 }
