@@ -1,0 +1,203 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Criar `Helpers/LoadingStateHelpers.cs` com o enum `LoadingPhase` e as funções puras": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279283
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791289338
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791375886
+      }
+    ],
+    "2.1 Substituir o markup de boot em `wwwroot/index.html`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279366
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791290751
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791377368
+      }
+    ],
+    "2.2 Adicionar os estilos da tela de boot em `wwwroot/css/site.css`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279452
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791291680
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791378201
+      }
+    ],
+    "3. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279536
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791394821
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791503709
+      }
+    ],
+    "4.1 Criar `Shared/SkeletonLoader.razor`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279685
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791395789
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791505083
+      }
+    ],
+    "4.2 Adicionar os estilos do esqueleto em `wwwroot/css/produtos.css`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279767
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791397070
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791506074
+      }
+    ],
+    "5.1 Substituir o bloco `_isLoading` pelo `SkeletonLoader` e adicionar estado aria-live": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279853
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791523289
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791624408
+      }
+    ],
+    "5.2 Integrar a detecção de carregamento prolongado (3–10s)": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791279936
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791628892
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791722544
+      }
+    ],
+    "5.3 Integrar o tratamento de erro/timeout e o retry": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791280019
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791726649
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791807357
+      }
+    ],
+    "6. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791280113
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791812436
+      },
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791837071
+      }
+    ],
+    "1. Implementar a lógica pura de estado de carregamento": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791375978
+      }
+    ],
+    "2. Implementar a tela de boot estática (pré-runtime)": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791378292
+      }
+    ],
+    "4. Implementar o componente `SkeletonLoader`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791506241
+      }
+    ],
+    "5. Integrar o carregamento aprimorado em `Pages/Produtos.razor`": [
+      {
+        "executionId": "a73f47db-ede5-4009-9b15-241dc9dbaa78",
+        "chatSessionId": "sess_500f9a10-c574-4e39-8a5b-76777e4a93c8",
+        "timestamp": 1788791807501
+      }
+    ]
+  }
+}

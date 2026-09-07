@@ -258,3 +258,104 @@ ul li {
         padding-bottom: 64px;
     }
 }
+
+/* ==========================================================================
+   Tela de boot (pré-runtime Blazor) — loading-experience
+   HTML/CSS estático, sem dependência do runtime. Requisitos 1.2, 1.4, 3.1,
+   3.4, 5.1, 5.4.
+   ========================================================================== */
+
+.boot-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #222;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+    z-index: 1000;
+}
+
+.boot-screen__logo {
+    height: 56px;
+    width: auto;
+}
+
+.boot-screen__spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid #eaeaea;
+    border-top-color: #ff9900;
+    border-radius: 50%;
+    animation: boot-spin 0.8s linear infinite;
+}
+
+@keyframes boot-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.boot-screen__message {
+    max-width: 320px;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #222;
+    line-height: 1.5;
+}
+
+.boot-screen__error {
+    max-width: 360px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.boot-screen__error p {
+    margin: 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+.boot-screen__error button {
+    padding: 12px 24px;
+    border: 1px solid #222;
+    border-radius: 6px;
+    background: #fff;
+    color: #222;
+    font-size: 0.95rem;
+    font-family: system-ui, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boot-screen__error button:hover {
+    background: #222;
+    color: #fff;
+}
+
+/* Transição de opacidade do conteúdo da aplicação ao substituir a tela de
+   boot (Requisito 3.1) — duração dentro do intervalo 200–500ms. */
+#app {
+    transition: opacity 0.3s ease;
+}
+
+/* Movimento reduzido: desativa a animação do spinner (Requisito 5.1) e a
+   transição de opacidade (Requisito 5.4/3.4). */
+@media (prefers-reduced-motion: reduce) {
+    .boot-screen__spinner {
+        animation: none;
+    }
+
+    #app {
+        transition: none;
+    }
+}

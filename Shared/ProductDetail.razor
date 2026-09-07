@@ -1,0 +1,350 @@
+@using MaterDomus.Web.Models
+@using MaterDomus.Web.Helpers
+@using MaterDomus.Web.Services
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+@if (IsOpen && Product is not null)
+{
+    <div class="product-detail__backdrop">
+        <div class="product-detail"
+             role="dialog"
+             aria-modal="true"
+             aria-label="@Product.Name"
+             tabindex="-1"
+             @ref="_dialogElement"
+             @onkeydown="OnDialogKeyDown">
+            @* Botão de fechar acionável por clique e por teclado. Como <button>,
+               é nativamente ativável por Enter/Espaço; o Esc é tratado no diálogo
+               (OnDialogKeyDown) e também via JS interop ([JSInvokable] OnEscapePressed)
+               na Task 7. Todos os caminhos convergem para Close() → OnClose (Req 1.4, 6.3). *@
+            <button type="button"
+                    class="product-detail__close-btn"
+                    aria-label="Fechar detalhes"
+                    @onclick="CloseAsync">
+                &times;
+            </button>
+            <div class="product-detail__body">
+                @if (!string.IsNullOrWhiteSpace(Product.Category))
+                {
+                    <span class="product-detail__category">@Product.Category</span>
+                }
+                <h2 class="product-detail__name">@DisplayName</h2>
+                <p class="product-detail__price">@ProductHelpers.FormatPrice(Product.Price)</p>
+
+                @if (_persuasiveText is not null)
+                {
+                    <p class="product-detail__copy">@_persuasiveText</p>
+                }
+                else if (!string.IsNullOrWhiteSpace(Product.Name))
+                {
+                    @* Fallback (Req 2.6): gerador não produziu texto para um produto
+                       com nome válido — exibe a descrição original completa. *@
+                    <p class="product-detail__copy">@Product.Description</p>
+                }
+                else
+                {
+                    @* Req 4.5: nome em branco — sem base para o texto persuasivo. *@
+                    <p class="product-detail__copy product-detail__copy--unavailable">Conteúdo indisponível</p>
+                }
+
+                @* CTA_Amazon: visível somente quando a AmazonUrl é canônica válida
+                   (Req 5.1, 5.3, 5.4). AmazonUrl vazia/nula ou em formato inválido
+                   faz IsValidAmazonUrl retornar false, ocultando o link. *@
+                @if (ShowAmazonCta)
+                {
+                    <a href="@Product.AmazonUrl"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="product-detail__amazon-btn"
+                       @onclick="OpenAmazonAsync"
+                       @onclick:preventDefault="true">
+                        Comprar na Amazon
+                    </a>
+                }
+
+                @* Req 5.5: falha ao abrir a nova aba — mantém o modal aberto e
+                   apresenta a indicação de erro. *@
+                @if (_amazonOpenFailed)
+                {
+                    <p class="product-detail__amazon-error" role="alert">Não foi possível abrir a compra.</p>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    /// <summary>Produto exibido na visão de detalhes.</summary>
+    [Parameter] public Product? Product { get; set; }
+
+    /// <summary>Indica se a visão de detalhes está aberta.</summary>
+    [Parameter] public bool IsOpen { get; set; }
+
+    /// <summary>Disparado quando a visão de detalhes deve ser fechada.</summary>
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    /// <summary>
+    /// Texto persuasivo gerado pelo <see cref="ProductCopyGenerator"/>.
+    /// <c>null</c> quando o gerador não conseguiu compor o texto (nome em branco),
+    /// caso em que a apresentação decide entre fallback de descrição (nome válido)
+    /// ou indicação de conteúdo indisponível (Req 2.6, 4.5).
+    /// </summary>
+    private string? _persuasiveText;
+
+    /// <summary>
+    /// Indica que a última tentativa de acionar o CTA_Amazon não conseguiu abrir a
+    /// nova aba (Req 5.5). Quando verdadeiro, exibe a mensagem de erro sem fechar o
+    /// modal.
+    /// </summary>
+    private bool _amazonOpenFailed;
+
+    /// <summary>
+    /// Auto-referência .NET passada ao módulo JS (<c>detailModal.js</c>) para que o
+    /// interop possa invocar <see cref="OnEscapePressed"/> (Req 6.3). A criação/uso
+    /// no interop é fiada na Task 7; aqui a referência é criada e liberada no ciclo
+    /// de vida (<see cref="DisposeAsync"/>).
+    /// </summary>
+    private DotNetObjectReference<ProductDetail>? _dotNetRef;
+
+    /// <summary>
+    /// Referência ao elemento do diálogo (<c>role="dialog"</c>), passada ao módulo
+    /// JS para instalar foco/focus trap dentro do modal (Req 6.1, 6.2).
+    /// </summary>
+    private ElementReference _dialogElement;
+
+    /// <summary>
+    /// Módulo ES <c>detailModal.js</c> importado sob demanda (padrão de interop do
+    /// projeto: <c>JS.InvokeAsync&lt;IJSObjectReference&gt;("import", ...)</c>).
+    /// Cacheado após o primeiro carregamento e liberado em <see cref="DisposeAsync"/>.
+    /// </summary>
+    private IJSObjectReference? _module;
+
+    /// <summary>
+    /// Rastreia a transição de visibilidade do modal entre renderizações. Quando
+    /// <see cref="IsOpen"/> passa de <c>false</c> para <c>true</c>, dispara
+    /// <c>detailModal.open</c>; quando passa de <c>true</c> para <c>false</c>,
+    /// dispara <c>detailModal.close</c> + <c>restoreFocus</c>.
+    /// </summary>
+    private bool _wasOpen;
+
+    /// <summary>
+    /// Seletor CSS estável de fallback para a grade de produtos, usado para
+    /// restaurar o foco quando o gatilho original não existe mais (Req 6.6).
+    /// </summary>
+    private const string GridFallbackSelector = ".product-card__details-btn";
+
+    /// <summary>
+    /// Nome exibido, limitado a 100 caracteres conforme Req 2.5.
+    /// </summary>
+    private string DisplayName =>
+        Product is null
+            ? string.Empty
+            : (Product.Name.Length > 100 ? Product.Name.Substring(0, 100) : Product.Name);
+
+    /// <summary>
+    /// Visibilidade do CTA_Amazon: verdadeiro apenas quando a <c>AmazonUrl</c> do
+    /// produto está preenchida e em formato canônico válido (Req 5.1, 5.3, 5.4).
+    /// Reutiliza a validação de <see cref="ProductCatalogService.IsValidAmazonUrl"/>.
+    /// </summary>
+    private bool ShowAmazonCta =>
+        Product is not null && ProductCatalogService.IsValidAmazonUrl(Product.AmazonUrl);
+
+    protected override void OnInitialized()
+    {
+        // Cria a auto-referência .NET usada pelo interop de JS (Task 7) para chamar
+        // OnEscapePressed. Liberada em DisposeAsync.
+        _dotNetRef = DotNetObjectReference.Create(this);
+    }
+
+    protected override void OnParametersSet()
+    {
+        _persuasiveText = Product is null ? null : ProductCopyGenerator.Generate(Product);
+        // Ao (re)parametrizar o modal para outro produto, limpa a indicação de erro.
+        _amazonOpenFailed = false;
+    }
+
+    /// <summary>
+    /// Fia o interop de JS ao ciclo de vida do modal (Req 6.1, 6.2, 6.4, 6.6).
+    /// Detecta a transição de <see cref="IsOpen"/>: ao abrir, invoca
+    /// <c>detailModal.open</c> (foco no primeiro focável + focus trap + Escape);
+    /// ao fechar, invoca <c>detailModal.close</c> e <c>detailModal.restoreFocus</c>
+    /// para devolver o foco ao gatilho de origem ou a um elemento estável da grade.
+    /// Todas as chamadas de interop são envolvidas em <c>try/catch</c> para
+    /// degradação graciosa: se o JS falhar, o modal continua funcional via C#.
+    /// </summary>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Transição fechado -> aberto: instala foco/trap/Escape no diálogo.
+        if (IsOpen && !_wasOpen && Product is not null)
+        {
+            _wasOpen = true;
+            try
+            {
+                var module = await GetModuleAsync();
+                await module.InvokeVoidAsync("open", _dialogElement, _dotNetRef);
+            }
+            catch
+            {
+                // Degradação graciosa: sem foco automático/trap, o modal segue
+                // acionável por clique/teclado via C# (Req 6.1–6.4).
+            }
+        }
+        // Transição aberto -> fechado: remove listeners e restaura o foco.
+        else if (!IsOpen && _wasOpen)
+        {
+            _wasOpen = false;
+            try
+            {
+                if (_module is not null)
+                {
+                    await _module.InvokeVoidAsync("close");
+                    await _module.InvokeVoidAsync(
+                        "restoreFocus", _triggerSelector, GridFallbackSelector);
+                }
+            }
+            catch
+            {
+                // Degradação graciosa: a falha ao restaurar o foco não deve
+                // propagar exceção nem impedir o fechamento (Req 6.4, 6.6).
+            }
+            finally
+            {
+                _triggerSelector = null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Seletor do gatilho ("Ver detalhes") que abriu o modal, capturado no momento
+    /// da abertura para restaurar o foco corretamente no fechamento (Req 6.4).
+    /// Coincide com o <c>aria-label</c> do botão em <c>ProductCard</c>.
+    /// </summary>
+    private string? _triggerSelector;
+
+    /// <summary>
+    /// Importa (e cacheia) o módulo <c>detailModal.js</c> seguindo o padrão de
+    /// interop do projeto. Também captura o seletor do gatilho da abertura atual.
+    /// </summary>
+    private async Task<IJSObjectReference> GetModuleAsync()
+    {
+        _triggerSelector = BuildTriggerSelector(Product);
+        return _module ??= await JS.InvokeAsync<IJSObjectReference>(
+            "import", "./js/detailModal.js");
+    }
+
+    /// <summary>
+    /// Constrói o seletor CSS do gatilho a partir do <c>aria-label</c> do botão
+    /// "Ver detalhes" do <see cref="ProductCard"/> ("Ver detalhes " + nome),
+    /// escapando aspas para uso seguro em <c>querySelector</c>. Retorna
+    /// <c>null</c> quando não há produto/nome, caindo no fallback da grade.
+    /// </summary>
+    private static string? BuildTriggerSelector(Product? product)
+    {
+        if (product is null || string.IsNullOrWhiteSpace(product.Name))
+            return null;
+
+        var label = $"Ver detalhes {product.Name}";
+        // Escapa barras invertidas e aspas duplas para o atributo entre aspas.
+        var escaped = label.Replace("\\", "\\\\").Replace("\"", "\\\"");
+        return $"button[aria-label=\"{escaped}\"]";
+    }
+
+    /// <summary>
+    /// Fecha a visão de detalhes disparando <see cref="OnClose"/> (Req 1.4).
+    /// É o ponto de convergência de todos os caminhos de fechamento: clique no botão,
+    /// teclado (Enter/Espaço no botão nativo, ou Esc no diálogo) e Escape via interop
+    /// de JS (<see cref="OnEscapePressed"/>).
+    /// </summary>
+    private async Task CloseAsync()
+    {
+        if (OnClose.HasDelegate)
+            await OnClose.InvokeAsync();
+    }
+
+    /// <summary>
+    /// Trata teclas pressionadas no diálogo. Fecha o modal ao pressionar Escape,
+    /// garantindo o fechamento por teclado mesmo sem o interop de JS ativo (Req 1.4, 6.3).
+    /// </summary>
+    private async Task OnDialogKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key is "Escape" or "Esc")
+            await CloseAsync();
+    }
+
+    /// <summary>
+    /// Invocado pelo módulo JS (<c>detailModal.js</c>) quando o usuário pressiona
+    /// Escape com o modal aberto, fechando a visão de detalhes (Req 6.3).
+    /// </summary>
+    [JSInvokable]
+    public async Task OnEscapePressed()
+    {
+        await CloseAsync();
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Libera o módulo JS (<c>detailModal.js</c>) — removendo listeners via
+    /// <c>close()</c> — e a auto-referência .NET ao descartar o componente.
+    /// </summary>
+    public async ValueTask DisposeAsync()
+    {
+        // Remove listeners de JS e libera o módulo importado, em best-effort.
+        if (_module is not null)
+        {
+            try
+            {
+                await _module.InvokeVoidAsync("close");
+            }
+            catch
+            {
+                // Ignora falhas de interop no descarte (ex.: circuito já encerrado).
+            }
+
+            try
+            {
+                await _module.DisposeAsync();
+            }
+            catch
+            {
+                // Ignora falhas ao liberar o módulo no descarte.
+            }
+
+            _module = null;
+        }
+
+        _dotNetRef?.Dispose();
+        _dotNetRef = null;
+    }
+
+    /// <summary>
+    /// Aciona o CTA_Amazon abrindo a <c>AmazonUrl</c> em uma nova aba com os atributos
+    /// de segurança "noopener"/"noreferrer" (Req 5.2), mantendo o modal aberto e
+    /// inalterado. Se a nova aba não puder ser aberta, apresenta a mensagem de erro
+    /// sem fechar o modal (Req 5.5).
+    /// </summary>
+    private async Task OpenAmazonAsync()
+    {
+        if (Product is null || !ShowAmazonCta)
+            return;
+
+        _amazonOpenFailed = false;
+
+        try
+        {
+            // window.open retorna null quando a nova aba é bloqueada/não abre.
+            var handle = await JS.InvokeAsync<IJSObjectReference?>(
+                "window.open", Product.AmazonUrl, "_blank", "noopener,noreferrer");
+
+            if (handle is null)
+            {
+                _amazonOpenFailed = true;
+            }
+        }
+        catch
+        {
+            // Qualquer falha ao acionar a abertura mantém o modal aberto e sinaliza o erro.
+            _amazonOpenFailed = true;
+        }
+    }
+}
