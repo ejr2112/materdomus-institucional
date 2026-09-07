@@ -1,0 +1,202 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Adicionar estilos ActivePill à DesktopNav": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991775710
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991783869
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992124240
+      }
+    ],
+    "1.2 Adicionar estilos ScrollBehavior ao `.header`": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991775802
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991786886
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992127134
+      }
+    ],
+    "1.3 Adicionar estilos da BottomNav e media queries mobile": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991775900
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991789888
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992130296
+      }
+    ],
+    "1.4 Escrever testes unitários para verificar regras CSS críticas": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776001
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992136405
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992885178
+      }
+    ],
+    "2.1 Implementar o módulo ES6 `scrollBehavior.js`": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776189
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992139322
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992888669
+      }
+    ],
+    "2.2 Escrever teste de propriedade — Property 1: Scroll para baixo oculta o header": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776320
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992896328
+      }
+    ],
+    "2.3 Escrever teste de propriedade — Property 2: Scroll para cima exibe o header": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776448
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992899531
+      }
+    ],
+    "2.4 Escrever teste de propriedade — Property 3: Topo da página mantém header visível": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776561
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992903149
+      }
+    ],
+    "3. Checkpoint — Verificar CSS e JS": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776661
+      }
+    ],
+    "4.1 Implementar `BottomNav.razor` com NavLinks e ícones SVG": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776761
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992142282
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992892177
+      }
+    ],
+    "4.2 Escrever teste de propriedade — Property 4: estrutura SVG + label da BottomNav": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776868
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992906671
+      }
+    ],
+    "4.3 Escrever testes unitários para `BottomNav.razor`": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991776983
+      },
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992910029
+      }
+    ],
+    "5.1 Adicionar `id`, `aria-label`, JS interop e `<BottomNav />` ao `MainLayout.razor`": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991777087
+      }
+    ],
+    "5.2 Escrever testes de integração para `MainLayout.razor`": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991777188
+      }
+    ],
+    "6. Checkpoint final — Garantir que todos os testes passam": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784991777304
+      }
+    ],
+    "1. Atualizar `site.css` com os novos estilos de navegação": [
+      {
+        "executionId": "badf97af-5a32-42fe-bb85-55065312c09d",
+        "chatSessionId": "sess_0d7500a7-54fe-4c8c-9432-51d469e7f42b",
+        "timestamp": 1784992885350
+      }
+    ]
+  }
+}

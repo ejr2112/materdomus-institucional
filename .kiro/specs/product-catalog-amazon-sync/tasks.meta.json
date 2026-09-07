@@ -1,0 +1,265 @@
+{
+  "pbtResults": {
+    "1.2 Escrever testes de propriedade FsCheck — Property 1 (Validate filtra exatamente os inválidos)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788736242181
+    },
+    "1.3 Escrever testes de propriedade FsCheck — Property 2 (deduplicação preserva o primeiro)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788736652708
+    },
+    "1.4 Escrever testes de propriedade FsCheck — Property 5 (Validate é idempotente)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788736980138
+    }
+  },
+  "executionHistory": {
+    "1.1 Implementar método estático `Validate` em `ProductCatalogService`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734289459
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734298073
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734439675
+      }
+    ],
+    "1.2 Escrever testes de propriedade FsCheck — Property 1 (Validate filtra exatamente os inválidos)": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734289855
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734449759
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788736995618
+      }
+    ],
+    "1.3 Escrever testes de propriedade FsCheck — Property 2 (deduplicação preserva o primeiro)": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734290119
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734452952
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788736998971
+      }
+    ],
+    "1.4 Escrever testes de propriedade FsCheck — Property 5 (Validate é idempotente)": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734290379
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734456071
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737002134
+      }
+    ],
+    "1.5 Escrever testes de propriedade FsCheck — Property 3 (IsValidAmazonUrl fronteira do formato)": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734290491
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734459325
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737005333
+      }
+    ],
+    "1.6 Escrever testes de integração para os novos cenários de validação em `ProductCatalogServiceTests`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734290785
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737012329
+      }
+    ],
+    "2.1 Criar record `CatalogMeta` em `Models/CatalogMeta.cs`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291020
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734301070
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734442818
+      }
+    ],
+    "2.2 Criar interface `ICatalogMetaService` em `Services/ICatalogMetaService.cs`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291174
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734304029
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734446141
+      }
+    ],
+    "2.3 Implementar `CatalogMetaService` em `Services/CatalogMetaService.cs`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291337
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734462565
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737008683
+      }
+    ],
+    "2.4 Registrar `CatalogMetaService` no DI em `Program.cs`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291488
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737015503
+      }
+    ],
+    "2.5 Escrever testes de propriedade FsCheck — Property 4 (CatalogMetaService nunca propaga exceção)": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291658
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737018734
+      }
+    ],
+    "2.6 Escrever testes de integração xUnit para `CatalogMetaService` — exemplos determinísticos": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291855
+      },
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788737021852
+      }
+    ],
+    "3. Checkpoint — Validar lógica de serviços": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734291990
+      }
+    ],
+    "4.1 Injetar `ICatalogMetaService` em `Produtos.razor` e carregar metadados": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734292138
+      }
+    ],
+    "4.2 Renderizar seção de metadados de sincronização quando `_catalogMeta` não for `null`": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734292307
+      }
+    ],
+    "4.3 Escrever testes bunit para `Produtos.razor` — seção de metadados": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734292502
+      }
+    ],
+    "5.1 Criar `wwwroot/data/catalog-meta.json` com dados reais da curadoria": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734292656
+      }
+    ],
+    "5.2 Atualizar `wwwroot/data/products.json` com produtos reais da Vitrine Amazon": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734292861
+      }
+    ],
+    "5.3 Criar diretório `wwwroot/images/products/` e adicionar imagens dos produtos": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734293207
+      }
+    ],
+    "5.4 Criar `wwwroot/data/CATALOG_UPDATE.md` com guia de atualização editorial": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734293443
+      }
+    ],
+    "6. Checkpoint final — Garantir que todos os testes passam": [
+      {
+        "executionId": "dc6b42c9-0379-4d80-aeab-82670b242973",
+        "chatSessionId": "sess_23d2b732-b719-4097-a3f7-e2b48084c6da",
+        "timestamp": 1788734293722
+      }
+    ]
+  }
+}

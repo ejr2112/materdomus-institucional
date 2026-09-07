@@ -1,0 +1,183 @@
+@page "/produtos"
+@using MaterDomus.Web.Models
+@using MaterDomus.Web.Services
+@inject IProductCatalogService ProductCatalogService
+@inject FavoritesService FavoritesService
+@implements IDisposable
+
+<HeadContent>
+    <link rel="stylesheet" href="css/produtos.css" />
+</HeadContent>
+
+<section class="produtos-page">
+    <h1>Produtos</h1>
+    <p class="page-subtitle">Conheça os produtos MaterDomus disponíveis na Amazon.</p>
+
+    @if (_isLoading)
+    {
+        <div class="produtos-state">
+            <div class="loading-spinner"></div>
+            <p>Carregando produtos...</p>
+        </div>
+    }
+    else if (_hasError)
+    {
+        <div class="produtos-state produtos-error">
+            <div class="produtos-state__icon">⚠️</div>
+            <p class="produtos-state__title">Não foi possível carregar os produtos.</p>
+            <p class="produtos-state__message">Verifique sua conexão e tente novamente.</p>
+            <button class="btn-retry" @onclick="RetryLoad" type="button">Tentar novamente</button>
+        </div>
+    }
+    else
+    {
+        <!-- Filter bar -->
+        <div class="filter-bar">
+            <input class="filter-bar__search"
+                   type="search"
+                   placeholder="Buscar produtos..."
+                   aria-label="Buscar produtos"
+                   @bind="_searchText"
+                   @bind:event="oninput" />
+
+            <select class="filter-bar__select"
+                    aria-label="Filtrar por categoria"
+                    @bind="_selectedCategory">
+                <option value="">Todas as categorias</option>
+                @foreach (var category in _allProducts.Select(p => p.Category).Distinct().OrderBy(c => c))
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+
+            <button class="filter-bar__favorites-btn @(_showFavoritesOnly ? "filter-bar__favorites-btn--active" : "")"
+                    type="button"
+                    aria-pressed="@_showFavoritesOnly.ToString().ToLower()"
+                    @onclick="() => _showFavoritesOnly = !_showFavoritesOnly">
+                ♥ Favoritos
+            </button>
+        </div>
+
+        <!-- Favorites counter badge -->
+        @if (FavoritesService.Count > 0)
+        {
+            <div class="favorites-badge">
+                <span class="favorites-badge__count">@FavoritesService.Count</span>
+                produto@(FavoritesService.Count == 1 ? "" : "s") favoritado@(FavoritesService.Count == 1 ? "" : "s")
+            </div>
+        }
+
+        <!-- Product grid or empty states -->
+        @if (!_allProducts.Any())
+        {
+            <div class="produtos-state produtos-empty">
+                <div class="produtos-state__icon">📦</div>
+                <p class="produtos-state__title">Nenhum produto disponível no momento.</p>
+                <p class="produtos-state__message">Volte em breve para conferir novidades.</p>
+            </div>
+        }
+        else if (_showFavoritesOnly && !FilteredProducts.Any())
+        {
+            <div class="produtos-state produtos-empty">
+                <div class="produtos-state__icon">♡</div>
+                <p class="produtos-state__title">Nenhum produto favoritado.</p>
+                <p class="produtos-state__message">Clique no ícone de coração em um produto para adicioná-lo aos favoritos.</p>
+            </div>
+        }
+        else if (!FilteredProducts.Any())
+        {
+            <div class="produtos-state produtos-empty">
+                <div class="produtos-state__icon">🔍</div>
+                <p class="produtos-state__title">Nenhum produto encontrado.</p>
+                <p class="produtos-state__message">Tente ajustar os filtros ou o termo de busca.</p>
+            </div>
+        }
+        else
+        {
+            <div class="products-grid">
+                @foreach (var product in FilteredProducts)
+                {
+                    <ProductCard Product="product" />
+                }
+            </div>
+        }
+    }
+</section>
+
+@code {
+    private IReadOnlyList<Product> _allProducts = Array.Empty<Product>();
+    private bool _isLoading = true;
+    private bool _hasError = false;
+    private string _searchText = "";
+    private string _selectedCategory = "";
+    private bool _showFavoritesOnly = false;
+
+    private CancellationTokenSource _cts = new();
+
+    private IEnumerable<Product> FilteredProducts =>
+        _allProducts
+            .Where(p => string.IsNullOrEmpty(_searchText) ||
+                        p.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ||
+                        p.Description.Contains(_searchText, StringComparison.OrdinalIgnoreCase))
+            .Where(p => string.IsNullOrEmpty(_selectedCategory) ||
+                        p.Category == _selectedCategory)
+            .Where(p => !_showFavoritesOnly || FavoritesService.IsFavorite(p.Id));
+
+    protected override async Task OnInitializedAsync()
+    {
+        FavoritesService.OnChanged += OnFavoritesChanged;
+        await LoadProductsAsync();
+    }
+
+    private async Task LoadProductsAsync()
+    {
+        _isLoading = true;
+        _hasError = false;
+
+        try
+        {
+            _cts.Cancel();
+            _cts.Dispose();
+            _cts = new CancellationTokenSource();
+
+            var loadTask = ProductCatalogService.GetProductsAsync();
+            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10), _cts.Token);
+
+            var completed = await Task.WhenAny(loadTask, timeoutTask);
+
+            if (completed == timeoutTask)
+            {
+                _hasError = true;
+            }
+            else
+            {
+                _allProducts = await loadTask;
+            }
+        }
+        catch (Exception)
+        {
+            _hasError = true;
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private async Task RetryLoad()
+    {
+        await LoadProductsAsync();
+    }
+
+    private void OnFavoritesChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        FavoritesService.OnChanged -= OnFavoritesChanged;
+        _cts.Cancel();
+        _cts.Dispose();
+    }
+}

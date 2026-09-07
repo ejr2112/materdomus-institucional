@@ -1,0 +1,259 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Criar o modelo de dados `Product`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982468043
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982479774
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982605328
+      }
+    ],
+    "2.1 Criar `Services/IProductCatalogService.cs` com a interface `IProductCatalogService` (método `Task<IReadOnlyList<Product>> GetProductsAsync()`)": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982468403
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982608752
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982695829
+      }
+    ],
+    "2.2 Criar `Services/ProductCatalogService.cs` com a classe `ProductCatalogService : IProductCatalogService`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982468641
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982700043
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982751104
+      }
+    ],
+    "2.3 Escrever testes unitários para `ProductCatalogService`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982468884
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982754350
+      }
+    ],
+    "2.4 Criar `Services/FavoritesService.cs` com a classe `FavoritesService`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469014
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982609460
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982696534
+      }
+    ],
+    "2.5 Escrever teste de propriedade para `FavoritesService` — toggle round-trip": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469157
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982755268
+      }
+    ],
+    "2.6 Escrever teste de propriedade para `FavoritesService` — contagem exata": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469306
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982755941
+      }
+    ],
+    "2.7 Escrever teste de propriedade para `FavoritesService` — filtro retorna subconjunto exato": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469442
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982758022
+      }
+    ],
+    "3. Registrar serviços em `Program.cs`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469569
+      },
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982758392
+      }
+    ],
+    "4.1 Criar `wwwroot/data/products.json` com ao menos 6 produtos realistas para MaterDomus nas categorias Organização, Cozinha, Limpeza e Casa": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469788
+      }
+    ],
+    "4.2 Criar `wwwroot/css/produtos.css` com:": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982469926
+      }
+    ],
+    "4.3 Adicionar comentário/placeholder em `wwwroot/images/` indicando que o arquivo `placeholder-product.png` deve ser adicionado manualmente": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470041
+      }
+    ],
+    "5.1 Criar `Shared/ProductCard.razor` com parâmetro `[Parameter] public Product Product { get; set; }`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470177
+      }
+    ],
+    "5.2 Escrever teste de propriedade para truncagem de descrição": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470324
+      }
+    ],
+    "5.3 Escrever teste de propriedade para formatação de preço": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470440
+      }
+    ],
+    "5.4 Escrever teste de propriedade para visibilidade do botão Amazon": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470577
+      }
+    ],
+    "5.5 Escrever teste de propriedade para atributos ARIA do botão de favorito": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470715
+      }
+    ],
+    "6.1 Criar `Pages/Produtos.razor` com diretiva `@page \"/produtos\"`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982470907
+      }
+    ],
+    "6.2 Escrever teste de propriedade para catálogo completo sem filtros": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471040
+      }
+    ],
+    "6.3 Escrever teste de propriedade para filtro de texto": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471182
+      }
+    ],
+    "6.4 Escrever teste de propriedade para filtro de categoria": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471315
+      }
+    ],
+    "6.5 Escrever teste de propriedade para composição de filtros": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471440
+      }
+    ],
+    "7. Checkpoint — Compilar a solução principal e verificar erros": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471568
+      }
+    ],
+    "8. Atualizar a navegação em `Shared/MainLayout.razor`": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471709
+      }
+    ],
+    "9.1 Criar o projeto `MaterDomus.Tests/MaterDomus.Tests.csproj` com:": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982471852
+      }
+    ],
+    "9.2 Criar os arquivos de teste listados nas tarefas 2.3, 2.5, 2.6, 2.7, 5.2, 5.3, 5.4, 5.5, 6.2, 6.3, 6.4, 6.5 conforme a estrutura do design:": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982472043
+      }
+    ],
+    "10. Checkpoint final — Executar todos os testes e verificar cobertura": [
+      {
+        "executionId": "c656f0b5-f708-4303-b8b3-71d959e7e41b",
+        "chatSessionId": "sess_ffd56a6e-3fb2-4398-9b34-31f75c619659",
+        "timestamp": 1784982472181
+      }
+    ]
+  }
+}

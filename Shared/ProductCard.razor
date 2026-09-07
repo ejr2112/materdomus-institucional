@@ -1,0 +1,76 @@
+@using MaterDomus.Web.Models
+@using MaterDomus.Web.Services
+@using MaterDomus.Web.Helpers
+@inject FavoritesService FavoritesService
+
+<article role="article" aria-label="@Product.Name" class="product-card">
+    <div class="product-card__image-wrapper">
+        <img src="@Product.ImageUrl"
+             alt="@Product.Name"
+             class="product-card__image"
+             onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+    </div>
+    @if (!string.IsNullOrEmpty(Product.VideoUrl))
+    {
+        <div class="product-card__video-wrapper">
+            <iframe class="product-card__video"
+                    src="@Product.VideoUrl"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen
+                    loading="lazy"
+                    title="Vídeo do produto @Product.Name">
+            </iframe>
+        </div>
+    }
+    <div class="product-card__body">
+        <span class="product-card__category">@Product.Category</span>
+        <h3 class="product-card__name">@Product.Name</h3>
+        <p class="product-card__description">@TruncateDescription(Product.Description)</p>
+        <p class="product-card__price">@FormatPrice(Product.Price)</p>
+    </div>
+    <div class="product-card__actions">
+        @if (!string.IsNullOrEmpty(Product.AmazonUrl))
+        {
+            <a href="@Product.AmazonUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="product-card__amazon-btn">
+                Comprar na Amazon
+            </a>
+        }
+        <button class="product-card__favorite-btn @(IsFav ? "product-card__favorite-btn--active" : "")"
+                aria-pressed="@IsFav.ToString().ToLower()"
+                aria-label="@(IsFav ? "Remover dos favoritos" : "Favoritar produto")"
+                @onclick="ToggleFavorite"
+                type="button">
+            @(IsFav ? "♥" : "♡")
+        </button>
+    </div>
+</article>
+
+@code {
+    [Parameter] public Product Product { get; set; } = default!;
+
+    private bool IsFav => FavoritesService.IsFavorite(Product.Id);
+
+    /// <summary>
+    /// Truncates the description to 120 characters followed by "..." if longer.
+    /// Pure static function — delegates to ProductHelpers.
+    /// </summary>
+    public static string TruncateDescription(string description)
+        => ProductHelpers.TruncateDescription(description) ?? string.Empty;
+
+    /// <summary>
+    /// Formats a decimal price as "R$ X,XX" using pt-BR culture.
+    /// Pure static function — delegates to ProductHelpers.
+    /// </summary>
+    public static string FormatPrice(decimal price)
+        => ProductHelpers.FormatPrice(price);
+
+    private void ToggleFavorite()
+    {
+        FavoritesService.Toggle(Product.Id);
+        StateHasChanged();
+    }
+}
