@@ -1,0 +1,132 @@
+{
+  "pbtResults": {
+    "1. Escrever o teste exploratório da condição do bug (ANTES de recriar o asset)": {
+      "status": "passed",
+      "failingExample": "Falsifiable, after 1 test (0 shrinks). Counterexample: Product { Id = dispenser-flow-quadrado-branco-001, ImageUrl = images/products/dispenser-flow-quadrado-branco-001.jpg }. O imageUrl NÃO resolve para um arquivo existente em wwwroot (esperado em wwwroot/images/products/dispenser-flow-quadrado-branco-001.jpg — arquivo ausente). Este é o resultado CORRETO para um teste de exploração de condição de bug: a falha confirma que o bug existe. Origem BCF (DFW300_DISPENSER QUADRADO Flow 1L_BCF.jpg) existe, confirmando disponibilidade para a correção.",
+      "lastRunTimestamp": 1788800224461
+    },
+    "2. Escrever os testes de preservação baseados em propriedades (ANTES de recriar o asset)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788800273734
+    },
+    "3.3 Verificar que os testes de preservação continuam passando (Preservation Checking)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788800424880
+    },
+    "3.2 Verificar que o teste exploratório da condição do bug agora passa (Fix Checking)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788800425976
+    }
+  },
+  "executionHistory": {
+    "1. Escrever o teste exploratório da condição do bug (ANTES de recriar o asset)": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800071754
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800081363
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800298351
+      }
+    ],
+    "2. Escrever os testes de preservação baseados em propriedades (ANTES de recriar o asset)": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800071840
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800082207
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800299152
+      }
+    ],
+    "3.1 Recriar o asset esperado (Opção A)": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800071977
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800303680
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800371162
+      }
+    ],
+    "3.2 Verificar que o teste exploratório da condição do bug agora passa (Fix Checking)": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800072087
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800377060
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800442928
+      }
+    ],
+    "3.3 Verificar que os testes de preservação continuam passando (Preservation Checking)": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800072171
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800378132
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800443724
+      }
+    ],
+    "4. Checkpoint - Garantir que todos os testes passam": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800072250
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800448478
+      },
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800538908
+      }
+    ],
+    "3. Correção para o asset de imagem ausente do \"Dispenser Quadrado Flow 1L - Tampa Branca\"": [
+      {
+        "executionId": "ac39aa5d-ea5c-4a17-a975-47c0a07bd98f",
+        "chatSessionId": "sess_4b6d1f40-ada2-4faf-827a-ee849d0b728a",
+        "timestamp": 1788800443817
+      }
+    ]
+  }
+}
