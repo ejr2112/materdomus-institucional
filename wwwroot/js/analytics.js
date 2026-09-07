@@ -5,3 +5,11 @@ window.trackPageView = function (path) {
         page_path: path
     });
 };
+
+window.trackEvent = function (eventName, params) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event: eventName,
+        ...params
+    });
+};
