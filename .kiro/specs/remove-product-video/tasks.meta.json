@@ -1,0 +1,131 @@
+{
+  "pbtResults": {
+    "1. Escrever teste de exploração da condição do bug (ausência de artefatos de vídeo)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788796647225
+    },
+    "2. Escrever testes de preservação (ANTES de qualquer alteração)": {
+      "status": "passed",
+      "lastRunTimestamp": 1788796932368
+    },
+    "3.2 Verificar que o teste de exploração da condição do bug passa": {
+      "status": "passed",
+      "lastRunTimestamp": 1788797074546
+    },
+    "3.3 Verificar que os testes de preservação continuam passando": {
+      "status": "passed",
+      "lastRunTimestamp": 1788797138995
+    }
+  },
+  "executionHistory": {
+    "1. Escrever teste de exploração da condição do bug (ausência de artefatos de vídeo)": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796509902
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796518385
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796665570
+      }
+    ],
+    "2. Escrever testes de preservação (ANTES de qualquer alteração)": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796510000
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796669529
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796959444
+      }
+    ],
+    "3.1 Remover cirurgicamente qualquer artefato de vídeo revelado pela verificação": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796510079
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796963848
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797021853
+      }
+    ],
+    "3.2 Verificar que o teste de exploração da condição do bug passa": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796510172
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797025551
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797089403
+      }
+    ],
+    "3.3 Verificar que os testes de preservação continuam passando": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796510267
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797092980
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797154399
+      }
+    ],
+    "4. Checkpoint - Garantir que todos os testes passem": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788796510357
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797158548
+      },
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797220441
+      }
+    ],
+    "3. Remoção condicional de vestígios do recurso de vídeo": [
+      {
+        "executionId": "49c62818-4cc4-49ea-b427-d57da3818aef",
+        "chatSessionId": "sess_a523823e-eb2e-4d99-9578-915753bcda49",
+        "timestamp": 1788797154513
+      }
+    ]
+  }
+}
