@@ -394,3 +394,383 @@
   border: var(--card-border);
   border-radius: var(--border-radius);
 }
+
+/* ============================================================
+   Skeleton loader — estado de carregamento de conteúdo
+   (loading-experience) — reaproveita tokens de marca:
+   --card-border, --card-radius, --produtos-gap, system-ui
+   ============================================================ */
+
+/* ── Skeleton container ─────────────────────────────────────── */
+.skeleton {
+  font-family: system-ui, sans-serif;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+/* ── Skeleton grid — replica a grade responsiva de .products-grid */
+.skeleton__grid {
+  display: grid;
+  gap: var(--produtos-gap);
+  /* Mobile first: 1 coluna */
+  grid-template-columns: 1fr;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+@media (min-width: 600px) {
+  .skeleton__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skeleton__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Skeleton card ──────────────────────────────────────────── */
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  background: #fff;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+}
+
+/* Bloco de imagem placeholder (mesma proporção do product-card) */
+.skeleton-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+}
+
+/* Linhas de texto placeholder */
+.skeleton-card__line {
+  height: 14px;
+  margin: 10px 16px;
+  border-radius: 4px;
+  background: #f0f0f0;
+}
+
+.skeleton-card__line:first-of-type {
+  margin-top: 16px;
+}
+
+.skeleton-card__line--short {
+  width: 45%;
+}
+
+.skeleton-card__line--price {
+  width: 30%;
+  height: 18px;
+  margin-bottom: 18px;
+}
+
+/* ── Shimmer — gradiente animado sobre imagem e linhas ──────── */
+.skeleton-card__image,
+.skeleton-card__line {
+  background-image: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e4e4e4 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Skeleton message (região aria-live) ────────────────────── */
+.skeleton__message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.skeleton__prolonged {
+  color: var(--text-body);
+  font-style: italic;
+}
+
+/* ── Fade-in da grade ao concluir com sucesso ──────────────── */
+.products-grid--fade-in {
+  animation: products-fade-in 300ms ease;
+}
+
+@keyframes products-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Reduced motion — desativa shimmer e transições ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .skeleton__grid {
+    transition: none;
+  }
+
+  .products-grid--fade-in {
+    animation: none;
+  }
+
+  .skeleton-card__image,
+  .skeleton-card__line {
+    animation: none;
+    background-image: none;
+    background-color: #f0f0f0;
+  }
+}
+/* ============================================================
+   Visão de detalhes de produto (product-detail-view)
+   Modal (backdrop + diálogo), botão "Ver detalhes" do card e
+   faixa de indisponibilidade — reaproveita tokens de marca:
+   --card-radius, --border-radius, --amazon-color(-hover/-text),
+   --text-muted, --text-body, system-ui
+   ============================================================ */
+
+/* ── Custom properties do modal ─────────────────────────────── */
+:root {
+  --detail-backdrop: rgba(0, 0, 0, 0.55);
+  --detail-z: 1000;
+  --detail-max-width: 560px;
+  --detail-radius: 12px;
+  --detail-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  --detail-focus-ring: #222;
+  --detail-error: #c62828;
+}
+
+/* ── Botão "Ver detalhes" do card ───────────────────────────── */
+/* Consistente com .product-card__amazon-btn / __favorite-btn:
+   mesma altura de clique, raio e família tipográfica; visual
+   secundário (contorno) para não competir com o CTA da Amazon. */
+.product-card__details-btn {
+  flex: 1;
+  display: inline-block;
+  padding: 10px 14px;
+  background: #fff;
+  color: #222;
+  border: 1px solid #d0d0d0;
+  border-radius: var(--border-radius);
+  font-family: system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.product-card__details-btn:hover {
+  background: #f4f4f4;
+  border-color: #888;
+}
+
+.product-card__details-btn:focus-visible {
+  outline: 2px solid var(--detail-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Faixa de indisponibilidade (Req 1.6) ───────────────────── */
+/* Segue a convenção dos estados da página (produtos-*). Reaproveita
+   a paleta de erro de .produtos-error para sinalização consistente. */
+.produtos-detail-unavailable {
+  max-width: 1060px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  background: #fff8f8;
+  border: 1px solid #fdd;
+  border-radius: var(--border-radius);
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--detail-error);
+  text-align: center;
+}
+
+/* ── Backdrop (sobreposição de tela cheia) ──────────────────── */
+.product-detail__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--detail-z);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--detail-backdrop);
+  animation: product-detail-fade-in 200ms ease;
+}
+
+/* ── Diálogo (container role="dialog") ──────────────────────── */
+.product-detail {
+  position: relative;
+  width: 100%;
+  max-width: var(--detail-max-width);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #fff;
+  border: var(--card-border);
+  border-radius: var(--detail-radius);
+  box-shadow: var(--detail-shadow);
+  animation: product-detail-pop-in 200ms ease;
+}
+
+.product-detail:focus,
+.product-detail:focus-visible {
+  outline: none;
+}
+
+/* ── Botão de fechar (canto superior direito "×") ───────────── */
+.product-detail__close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.product-detail__close-btn:hover {
+  color: #222;
+  border-color: #888;
+  background: #f4f4f4;
+}
+
+.product-detail__close-btn:focus-visible {
+  outline: 2px solid var(--detail-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Corpo do diálogo ───────────────────────────────────────── */
+.product-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 24px 24px;
+}
+
+.product-detail__category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+}
+
+.product-detail__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+  line-height: 1.3;
+  /* respeita o limite visual (≤ 100 chars) sem quebrar palavras longas */
+  overflow-wrap: anywhere;
+}
+
+.product-detail__price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.product-detail__copy {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 4px 0 8px;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.product-detail__copy--unavailable {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── CTA "Comprar na Amazon" ────────────────────────────────── */
+.product-detail__amazon-btn {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 12px 20px;
+  background: var(--amazon-color);
+  color: var(--amazon-color-text);
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.product-detail__amazon-btn:hover {
+  background: var(--amazon-color-hover);
+}
+
+.product-detail__amazon-btn:focus-visible {
+  outline: 2px solid var(--detail-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Mensagem de erro do CTA (Req 5.5) ──────────────────────── */
+.product-detail__amazon-error {
+  font-size: 0.88rem;
+  color: var(--detail-error);
+  margin: 0;
+}
+
+/* ── Animações ──────────────────────────────────────────────── */
+@keyframes product-detail-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes product-detail-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Reduced motion — desativa animações de entrada ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  .product-detail__backdrop,
+  .product-detail {
+    animation: none;
+  }
+}

@@ -1,0 +1,40 @@
+@using MaterDomus.Web.Helpers
+
+<div class="skeleton" role="status" aria-live="polite">
+    <div class="skeleton__grid" aria-hidden="true">
+        @for (var i = 0; i < LoadingStateHelpers.ClampPlaceholderCount(PlaceholderCount); i++)
+        {
+            <div class="skeleton-card">
+                <div class="skeleton-card__image"></div>
+                <div class="skeleton-card__line skeleton-card__line--short"></div>
+                <div class="skeleton-card__line"></div>
+                <div class="skeleton-card__line skeleton-card__line--price"></div>
+            </div>
+        }
+    </div>
+    <p class="skeleton__message">
+        @Message
+        @if (ShowProlongedIndicator)
+        {
+            <span class="skeleton__prolonged" aria-hidden="true"> · ainda carregando</span>
+        }
+    </p>
+</div>
+
+@code {
+    /// <summary>
+    /// Número de cartões placeholder. Limitado ao intervalo [4, 12] via
+    /// LoadingStateHelpers.ClampPlaceholderCount. Padrão 6. Requisito 2.1.
+    /// </summary>
+    [Parameter] public int PlaceholderCount { get; set; } = 6;
+
+    /// <summary>
+    /// Mensagem textual de carregamento (≤ 60 caracteres). Requisitos 2.2, 4.1.
+    /// </summary>
+    [Parameter] public string Message { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Ativa a indicação de atividade prolongada (faixa de 3–10s). Requisito 6.3.
+    /// </summary>
+    [Parameter] public bool ShowProlongedIndicator { get; set; }
+}

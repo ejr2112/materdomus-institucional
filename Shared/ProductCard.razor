@@ -17,6 +17,12 @@
         <p class="product-card__price">@FormatPrice(Product.Price)</p>
     </div>
     <div class="product-card__actions">
+        <button class="product-card__details-btn"
+                type="button"
+                aria-label="@($"Ver detalhes {Product.Name}")"
+                @onclick="() => OnVerDetalhes.InvokeAsync(Product)">
+            Ver detalhes
+        </button>
         @if (!string.IsNullOrEmpty(Product.AmazonUrl))
         {
             <a href="@Product.AmazonUrl"
@@ -38,6 +44,8 @@
 
 @code {
     [Parameter] public Product Product { get; set; } = default!;
+
+    [Parameter] public EventCallback<Product> OnVerDetalhes { get; set; }
 
     private bool IsFav => FavoritesService.IsFavorite(Product.Id);
 

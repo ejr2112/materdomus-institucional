@@ -1,0 +1,399 @@
+{
+  "pbtResults": {
+    "11.3 Escrever teste de propriedade de invariância da filtragem": {
+      "status": "passed",
+      "lastRunTimestamp": 1788796017227
+    },
+    "11.1 Escrever teste de propriedade de visibilidade do CTA_Amazon": {
+      "status": "passed",
+      "lastRunTimestamp": 1788796327162
+    },
+    "11.2 Escrever teste de propriedade de nome acessível": {
+      "status": "passed",
+      "lastRunTimestamp": 1788796328206
+    }
+  },
+  "executionHistory": {
+    "1. Criar o gerador de copy puro determinístico": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860412
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791869791
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791961639
+      }
+    ],
+    "3. Checkpoint - Garantir que os testes do gerador passam": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860518
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792811125
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792878649
+      }
+    ],
+    "4. Adicionar a ação \"Ver detalhes\" ao ProductCard": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860622
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791971410
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792125623
+      }
+    ],
+    "5.1 Criar a estrutura e a apresentação do diálogo": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860728
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792141793
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792229315
+      }
+    ],
+    "5.2 Adicionar o CTA_Amazon guardado por validação": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860837
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792237657
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792343637
+      }
+    ],
+    "5.3 Adicionar controle de fechamento e ciclo de vida": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791860944
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792347931
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792459420
+      }
+    ],
+    "6. Criar o módulo de interop JS de foco e acessibilidade": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861044
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791972338
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792126596
+      }
+    ],
+    "7. Fiar o interop JS ao componente ProductDetail": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861144
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792464610
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792619543
+      }
+    ],
+    "8. Integrar o modal na página Produtos": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861303
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792624724
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792798085
+      }
+    ],
+    "9. Adicionar o CSS do modal": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861419
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792625578
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792798611
+      }
+    ],
+    "10. Checkpoint - Garantir build e testes após a fiação de UI": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861525
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792812185
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792879885
+      }
+    ],
+    "12. Checkpoint final - Garantir que todos os testes passam": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788791861644
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792813226
+      },
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792880657
+      }
+    ],
+    "5. Criar o componente modal ProductDetail": [
+      {
+        "executionId": "a46cdee7-c2af-498c-9608-3e747f75997a",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788792459588
+      }
+    ],
+    "2.1 Escrever teste de propriedade de determinismo": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795398254
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795621257
+      }
+    ],
+    "2.2 Escrever teste de propriedade de saída bem-formada": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795399112
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795622242
+      }
+    ],
+    "2.3 Escrever teste de propriedade de nome em branco": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795400569
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795623569
+      }
+    ],
+    "2.4 Escrever teste de propriedade de inclusão de campos válidos": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795401898
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795624617
+      }
+    ],
+    "2.5 Escrever teste de propriedade de omissão de descrição": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795402889
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795625917
+      }
+    ],
+    "2.6 Escrever teste de propriedade de omissão de categoria": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795404301
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795627314
+      }
+    ],
+    "2.7 Escrever teste de propriedade de omissão de preço": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795405279
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795628416
+      }
+    ],
+    "2.8 Escrever teste de propriedade do CTA como última frase": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795406469
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795629422
+      }
+    ],
+    "2. Testes de propriedade do gerador de copy": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795621553
+      }
+    ],
+    "11.1 Escrever teste de propriedade de visibilidade do CTA_Amazon": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795644089
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796382558
+      }
+    ],
+    "11.2 Escrever teste de propriedade de nome acessível": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795645046
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796383912
+      }
+    ],
+    "11.5 Escrever testes de exemplo do ProductDetail": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795646443
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796387113
+      }
+    ],
+    "11.3 Escrever teste de propriedade de invariância da filtragem": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795648039
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796384951
+      }
+    ],
+    "11.4 Escrever testes de exemplo do ProductCard e Produtos.razor": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788795648863
+      },
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796386261
+      }
+    ],
+    "11. Testes de render e propriedade da UI": [
+      {
+        "executionId": "bc121695-3e18-418f-9261-b770e8540d8d",
+        "chatSessionId": "sess_63b03edb-3934-46e9-9832-9c591cabfa4c",
+        "timestamp": 1788796382807
+      }
+    ]
+  }
+}

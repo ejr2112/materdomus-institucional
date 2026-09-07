@@ -1,6 +1,7 @@
 @page "/produtos"
 @using MaterDomus.Web.Models
 @using MaterDomus.Web.Services
+@using MaterDomus.Web.Helpers
 @inject IProductCatalogService ProductCatalogService
 @inject FavoritesService FavoritesService
 @implements IDisposable
@@ -15,10 +16,7 @@
 
     @if (_isLoading)
     {
-        <div class="produtos-state">
-            <div class="loading-spinner"></div>
-            <p>Carregando produtos...</p>
-        </div>
+        <SkeletonLoader Message="@_ariaMessage" ShowProlongedIndicator="_isProlonged" />
     }
     else if (_hasError)
     {
@@ -94,25 +92,48 @@
         }
         else
         {
-            <div class="products-grid">
+            <div class="products-grid products-grid--fade-in">
                 @foreach (var product in FilteredProducts)
                 {
-                    <ProductCard Product="product" />
+                    <ProductCard Product="product" OnVerDetalhes="AbrirDetalhes" />
                 }
             </div>
         }
     }
+
+    @* Faixa de aviso quando o produto acionado não pôde ser resolvido pelo Id
+       (Req 1.6): a grade permanece visível e o modal não é aberto. *@
+    @if (_detailUnavailable)
+    {
+        <div class="produtos-detail-unavailable" role="alert">
+            Detalhes do produto indisponíveis.
+        </div>
+    }
 </section>
+
+@* Visão de detalhes (modal) hospedada fora da grade: sobreposição sobre a grade,
+   preservando busca/filtro/favoritos (Req 6.7). *@
+<ProductDetail Product="_selectedProduct" IsOpen="_isDetailOpen" OnClose="FecharDetalhes" />
 
 @code {
     private IReadOnlyList<Product> _allProducts = Array.Empty<Product>();
     private bool _isLoading = true;
     private bool _hasError = false;
+    private bool _isProlonged = false;
+    private string _ariaMessage = "Carregando produtos...";
     private string _searchText = "";
     private string _selectedCategory = "";
     private bool _showFavoritesOnly = false;
 
+    // Estado da visão de detalhes (modal). Independente da busca/filtro/favoritos.
+    private Product? _selectedProduct;
+    private bool _isDetailOpen;
+    private bool _detailUnavailable;
+
     private CancellationTokenSource _cts = new();
+
+    private PeriodicTimer? _prolongedTimer;
+    private Task? _prolongedMonitorTask;
 
     private IEnumerable<Product> FilteredProducts =>
         _allProducts
@@ -131,14 +152,22 @@
 
     private async Task LoadProductsAsync()
     {
+        // Troca imediata do estado de erro pelo esqueleto (Requisito 6.2: em até 1s).
+        // O StateHasChanged explícito garante a re-renderização do esqueleto antes do
+        // primeiro await, tornando a transição erro -> esqueleto imediata no retry.
         _isLoading = true;
         _hasError = false;
+        _isProlonged = false;
+        _ariaMessage = "Carregando produtos...";
+        StateHasChanged();
 
         try
         {
             _cts.Cancel();
             _cts.Dispose();
             _cts = new CancellationTokenSource();
+
+            StartProlongedMonitor();
 
             var loadTask = ProductCatalogService.GetProductsAsync();
             var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10), _cts.Token);
@@ -148,25 +177,111 @@
             if (completed == timeoutTask)
             {
                 _hasError = true;
+                _ariaMessage = "Não foi possível carregar os produtos.";
             }
             else
             {
                 _allProducts = await loadTask;
+                _ariaMessage = "Produtos carregados.";
             }
         }
         catch (Exception)
         {
             _hasError = true;
+            _ariaMessage = "Não foi possível carregar os produtos.";
         }
         finally
         {
+            StopProlongedMonitor();
             _isLoading = false;
+            _isProlonged = false;
         }
+    }
+
+    /// <summary>
+    /// Inicia um temporizador que reavalia a fase de carregamento a cada segundo.
+    /// Ativa <c>_isProlonged</c> quando o tempo decorrido entra na faixa de 3–10s
+    /// (fase Prolonged, Requisito 6.3), via StateHasChanged no contexto de renderização.
+    /// </summary>
+    private void StartProlongedMonitor()
+    {
+        StopProlongedMonitor();
+
+        var startedAt = DateTime.UtcNow;
+        var timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
+        _prolongedTimer = timer;
+
+        _prolongedMonitorTask = Task.Run(async () =>
+        {
+            try
+            {
+                while (await timer.WaitForNextTickAsync())
+                {
+                    var elapsedSeconds = (DateTime.UtcNow - startedAt).TotalSeconds;
+                    var phase = LoadingStateHelpers.DerivePhase(elapsedSeconds, completed: false, errored: false);
+                    var prolonged = phase == LoadingPhase.Prolonged;
+
+                    if (prolonged != _isProlonged)
+                    {
+                        _isProlonged = prolonged;
+                        await InvokeAsync(StateHasChanged);
+                    }
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Temporizador descartado; encerramento normal.
+            }
+            catch (ObjectDisposedException)
+            {
+                // Temporizador descartado; encerramento normal.
+            }
+        });
+    }
+
+    /// <summary>
+    /// Interrompe e descarta o temporizador de carregamento prolongado, se ativo.
+    /// </summary>
+    private void StopProlongedMonitor()
+    {
+        _prolongedTimer?.Dispose();
+        _prolongedTimer = null;
+        _prolongedMonitorTask = null;
     }
 
     private async Task RetryLoad()
     {
         await LoadProductsAsync();
+    }
+
+    /// <summary>
+    /// Abre a visão de detalhes do produto acionado a partir do <c>ProductCard</c>.
+    /// Resolve o produto por <c>Id</c> em <c>_allProducts</c>; se não puder ser
+    /// resolvido, mantém a grade visível e sinaliza indisponibilidade sem abrir o
+    /// modal (Req 1.2, 1.6).
+    /// </summary>
+    private void AbrirDetalhes(Product product)
+    {
+        var resolved = _allProducts.FirstOrDefault(p => p.Id == product.Id);
+        if (resolved is null)
+        {
+            _detailUnavailable = true;
+            return;
+        }
+
+        _selectedProduct = resolved;
+        _isDetailOpen = true;
+        _detailUnavailable = false;
+    }
+
+    /// <summary>
+    /// Fecha a visão de detalhes e zera o estado do modal, retornando à grade
+    /// (Req 1.5). A restauração de foco é conduzida pelo próprio <c>ProductDetail</c>.
+    /// </summary>
+    private void FecharDetalhes()
+    {
+        _isDetailOpen = false;
+        _selectedProduct = null;
     }
 
     private void OnFavoritesChanged()
@@ -177,6 +292,7 @@
     public void Dispose()
     {
         FavoritesService.OnChanged -= OnFavoritesChanged;
+        StopProlongedMonitor();
         _cts.Cancel();
         _cts.Dispose();
     }

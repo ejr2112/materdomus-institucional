@@ -31,7 +31,33 @@
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div id="app">Carregando...</div>
+<div id="app">
+    <div class="boot-screen" id="boot-screen">
+        <img class="boot-screen__logo"
+             src="images/logo.png"
+             alt="MaterDomus" />
+        <div class="boot-screen__spinner" aria-hidden="true"></div>
+        <p class="boot-screen__message">Carregando MaterDomus...</p>
+
+        <!-- Estado de falha (oculto por padrão) -->
+        <div class="boot-screen__error" id="boot-error" hidden>
+            <p>Não foi possível carregar o site. Verifique sua conexão.</p>
+            <button type="button" onclick="location.reload()">Recarregar página</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.__bootTimer = setTimeout(function () {
+        var spinner = document.querySelector('.boot-screen__spinner');
+        var msg = document.querySelector('.boot-screen__message');
+        var err = document.getElementById('boot-error');
+        if (spinner) spinner.style.display = 'none';
+        if (msg) msg.style.display = 'none';
+        if (err) err.hidden = false;
+        // Logo permanece visível.
+    }, 30000);
+</script>
 
 <script src="js/analytics.js"></script>
 <script src="_framework/blazor.webassembly.js"></script>
