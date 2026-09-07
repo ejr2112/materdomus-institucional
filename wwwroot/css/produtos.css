@@ -211,18 +211,6 @@
   transform: scale(1.03);
 }
 
-.product-card__video-wrapper {
-  width: 100%;
-  background: #000;
-}
-
-.product-card__video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  display: block;
-}
-
 .product-card__body {
   flex: 1;
   padding: 16px 16px 8px;

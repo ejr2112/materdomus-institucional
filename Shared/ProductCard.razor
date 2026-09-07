@@ -10,19 +10,6 @@
              class="product-card__image"
              onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
     </div>
-    @if (!string.IsNullOrEmpty(Product.VideoUrl))
-    {
-        <div class="product-card__video-wrapper">
-            <iframe class="product-card__video"
-                    src="@Product.VideoUrl"
-                    frameborder="0"
-                    scrolling="no"
-                    allowfullscreen
-                    loading="lazy"
-                    title="Vídeo do produto @Product.Name">
-            </iframe>
-        </div>
-    }
     <div class="product-card__body">
         <span class="product-card__category">@Product.Category</span>
         <h3 class="product-card__name">@Product.Name</h3>

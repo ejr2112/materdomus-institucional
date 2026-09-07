@@ -82,15 +82,3 @@ secrets.json
 
 *.log
 logs/
-
-## Output de publish local (gerado pelo dotnet publish -o release)
-
-release/
-
-## Mídia pesada não versionada (vídeos hospedados externamente, ex: OneDrive/YouTube)
-# Vídeos de produto são servidos via embed externo, não devem ir para o repositório
-# por causa do limite de 25 MB por arquivo do Azure Static Web Apps.
-
-*.mov
-*.MOV
-*.mp4
