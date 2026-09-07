@@ -1,0 +1,141 @@
+{
+  "pbtResults": {
+    "1. Escrever teste de exploração da condição de bug (ANTES de corrigir)": {
+      "status": "passed",
+      "failingExample": "Bug 1 (hero-actions @ viewportWidth<=768): Contraexemplo — não existe regra `.hero-actions { ... }` dentro do bloco `@media (max-width: 768px)`. `.hero-actions` só define `margin-top: 30px` no nível superior, sem `display: flex`/`flex-direction: column`, então os dois botões inline quebram no mobile.\n\nBug 2 (bottom-nav a.active @ isActive AND viewportWidth<=768): Contraexemplo — a regra `.bottom-nav a.active` contém apenas `color: #1f1f1f` (valor observado: \"\\n        color: #1f1f1f;\\n    \"), sem `background-color: transparent`. O ícone ativo herda `background-color: #1f1f1f` de `nav a.active`, ficando ilegível.",
+      "lastRunTimestamp": 1788800703212
+    },
+    "3.4 Verificar que os testes de preservação continuam passando": {
+      "status": "passed",
+      "lastRunTimestamp": 1788801085568
+    }
+  },
+  "executionHistory": {
+    "1. Escrever teste de exploração da condição de bug (ANTES de corrigir)": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800603572
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800612917
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800721952
+      }
+    ],
+    "2. Escrever testes de preservação baseados em propriedades (ANTES de corrigir)": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800603652
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800725494
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800859073
+      }
+    ],
+    "3.1 Bug 1 — Adicionar regra responsiva para `.hero-actions`": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800603790
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800867987
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800932192
+      }
+    ],
+    "3.2 Bug 2 — Reverter o fundo do ícone ativo do menu inferior": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800603893
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800936171
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800989653
+      }
+    ],
+    "3.3 Verificar que o teste de exploração da condição de bug agora passa": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800603976
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800993427
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801039076
+      }
+    ],
+    "3.4 Verificar que os testes de preservação continuam passando": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800604062
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801042707
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801100984
+      }
+    ],
+    "4. Checkpoint — Garantir que todos os testes passam": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788800604149
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801104815
+      },
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801163478
+      }
+    ],
+    "3. Correção dos dois bugs de CSS mobile em `wwwroot/css/site.css`": [
+      {
+        "executionId": "a7edb417-874d-4849-b0d5-4c9fd2c8e421",
+        "chatSessionId": "sess_9f55bdf1-1271-40fb-b53b-9e48a70b9a57",
+        "timestamp": 1788801101070
+      }
+    ]
+  }
+}
