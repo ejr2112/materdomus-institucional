@@ -205,6 +205,17 @@ ul li {
     ul li {
         margin-bottom: 12px;
     }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-actions .btn-primary {
+        margin-right: 0;
+    }
 }
 
 /* BottomNav: oculto por padrão (desktop) */
@@ -241,6 +252,7 @@ ul li {
     }
 
     .bottom-nav a.active {
+        background-color: transparent;
         color: #1f1f1f;
     }
 
