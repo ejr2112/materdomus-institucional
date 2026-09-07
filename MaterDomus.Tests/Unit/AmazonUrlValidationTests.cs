@@ -33,12 +33,30 @@ public class AmazonUrlValidationTests
            .Select(chars => new string(chars));
 
     /// <summary>
-    /// Generates the canonical valid Amazon URL: https://www.amazon.com.br/dp/{ASIN10}.
+    /// Generates a seller/store id: 1..14 uppercase alphanumeric characters
+    /// (e.g. Master Domus is "A20TN3HCSY6KZV").
+    /// </summary>
+    private static Gen<string> SellerIdGen() =>
+        Gen.Choose(1, 14)
+           .SelectMany(len => Gen.ArrayOf(Gen.Elements(UpperAlphanumChars), len))
+           .Select(chars => new string(chars));
+
+    /// <summary>
+    /// Generates the canonical valid Amazon URL: https://www.amazon.com.br/dp/{ASIN10},
+    /// optionally followed by the store parameter ?m={sellerId}.
     /// All of these MUST return true from IsValidAmazonUrl.
     /// </summary>
     private static Gen<(string Url, bool ShouldBeValid)> ValidUrlGen() =>
-        ValidAsinGen()
-            .Select(asin => ($"https://www.amazon.com.br/dp/{asin}", true));
+        Gen.OneOf(
+            // Bare canonical URL
+            ValidAsinGen()
+                .Select(asin => ($"https://www.amazon.com.br/dp/{asin}", true)),
+
+            // Canonical URL with the store/seller parameter
+            ValidAsinGen()
+                .SelectMany(asin => SellerIdGen()
+                    .Select(seller => ($"https://www.amazon.com.br/dp/{asin}?m={seller}", true)))
+        );
 
     /// <summary>
     /// Generates URLs that deviate from the canonical format in one specific way.
@@ -65,6 +83,18 @@ public class AmazonUrlValidationTests
             // Query parameters appended to otherwise-valid URL
             ValidAsinGen()
                .Select(asin => ($"https://www.amazon.com.br/dp/{asin}?tag=test-20", false)),
+
+            // Store parameter followed by volatile session params (ref/qid/sr/dib) — must be rejected
+            ValidAsinGen()
+               .Select(asin => ($"https://www.amazon.com.br/dp/{asin}?m=A20TN3HCSY6KZV&ref=sr_1_1&qid=1788779701", false)),
+
+            // Store parameter with lowercase value — must be rejected
+            ValidAsinGen()
+               .Select(asin => ($"https://www.amazon.com.br/dp/{asin}?m=abc123", false)),
+
+            // Path suffix (slug) before /dp — must be rejected
+            ValidAsinGen()
+               .Select(asin => ($"https://www.amazon.com.br/Dispenser-Flow/dp/{asin}", false)),
 
             // Path suffix appended
             ValidAsinGen()
@@ -116,7 +146,8 @@ public class AmazonUrlValidationTests
     /// <summary>
     /// For any generated URL (valid or invalid), <c>IsValidAmazonUrl</c> must return
     /// <c>true</c> if and only if the URL is exactly
-    /// <c>https://www.amazon.com.br/dp/[A-Z0-9]{10}</c> and nothing more.
+    /// <c>https://www.amazon.com.br/dp/[A-Z0-9]{10}</c>, optionally followed by the
+    /// store parameter <c>?m=[A-Z0-9]+</c>, and nothing more.
     ///
     /// This covers: valid ASINs (10 uppercase alphanumeric), ASINs with 9 or 11 chars,
     /// lowercase ASINs, query parameters, path suffixes, wrong schemes, wrong domains,
