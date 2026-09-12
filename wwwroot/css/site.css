@@ -371,3 +371,34 @@ ul li {
         transition: none;
     }
 }
+
+/* Contato — embed Microsoft Forms */
+.forms-section .forms-open-btn {
+    display: inline-block;
+    margin: 8px 0 20px;
+}
+
+.forms-embed-wrapper {
+    width: 100%;
+}
+
+.forms-embed {
+    display: block;
+    width: 100%;
+    min-height: 960px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .forms-embed {
+        min-height: 800px;
+    }
+
+    .forms-section .forms-open-btn {
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        margin-right: 0;
+    }
+}
