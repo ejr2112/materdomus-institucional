@@ -98,6 +98,42 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
+    public void Catalog_EveryProductHasDedicatedPhotoAsset()
+    {
+        var products = LoadCatalog();
+        var wwwroot = Path.Combine(FindRepoRoot(), "wwwroot");
+
+        Assert.NotEmpty(products);
+        foreach (var product in products)
+        {
+            Assert.False(
+                string.Equals(product.ImageUrl, "images/placeholder-product.png", StringComparison.OrdinalIgnoreCase),
+                $"Produto '{product.Id}' ainda aponta para o placeholder genérico.");
+            Assert.False(string.IsNullOrWhiteSpace(product.ImageUrl));
+
+            var physical = Path.Combine(
+                wwwroot,
+                product.ImageUrl.Replace('/', Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar));
+            Assert.True(File.Exists(physical), $"Arquivo ausente para '{product.Id}': {physical}");
+            Assert.True(new FileInfo(physical).Length > 4000, $"Imagem de '{product.Id}' parece vazia ({physical}).");
+        }
+    }
+
+    [Fact]
+    public void ProductDetail_RendersProductImage()
+    {
+        using var ctx = CreateContext();
+        var product = Make(comingSoon: false, name: "Dispenser Quadrado Flow 1L");
+        var cut = ctx.RenderComponent<ProductDetail>(p => p
+            .Add(c => c.Product, product)
+            .Add(c => c.IsOpen, true));
+
+        var img = cut.Find("img.product-detail__image");
+        Assert.Equal(product.ImageUrl, img.GetAttribute("src"));
+        Assert.Equal(product.Name, img.GetAttribute("alt"));
+    }
+
+    [Fact]
     public void Catalog_InStockDispenserPriceUnchanged()
     {
         var dispenser = LoadCatalog().Single(p => p.Id == "dispenser-flow-quadrado-branco-001");
