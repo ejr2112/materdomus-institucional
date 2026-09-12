@@ -332,6 +332,10 @@ ul li {
     gap: 16px;
 }
 
+.boot-screen__error[hidden] {
+    display: none;
+}
+
 .boot-screen__error p {
     margin: 0;
     color: #444;
