@@ -37,29 +37,63 @@
              src="images/logo.png"
              alt="MaterDomus" />
         <div class="boot-screen__spinner" aria-hidden="true"></div>
-        <p class="boot-screen__message">Carregando MaterDomus...</p>
+        <p class="boot-screen__message">Um instante…</p>
 
-        <!-- Estado de falha (oculto por padrão) -->
+        <!-- Estado de falha (oculto por padrão; só após timeout longo ou falha clara do runtime) -->
         <div class="boot-screen__error" id="boot-error" hidden>
-            <p>Não foi possível carregar o site. Verifique sua conexão.</p>
-            <button type="button" onclick="location.reload()">Recarregar página</button>
+            <p>Está demorando mais que o normal. Tente recarregar.</p>
+            <button type="button" onclick="location.reload()">Recarregar</button>
         </div>
     </div>
 </div>
 
 <script>
-    window.__bootTimer = setTimeout(function () {
-        var spinner = document.querySelector('.boot-screen__spinner');
-        var msg = document.querySelector('.boot-screen__message');
-        var err = document.getElementById('boot-error');
-        if (spinner) spinner.style.display = 'none';
-        if (msg) msg.style.display = 'none';
-        if (err) err.hidden = false;
-        // Logo permanece visível.
-    }, 30000);
+    (function () {
+        var BOOT_TIMEOUT_MS = 80000;
+        var failureShown = false;
+
+        function showBootFailure() {
+            if (failureShown) return;
+            var screen = document.getElementById('boot-screen');
+            if (!screen) return;
+            failureShown = true;
+            if (window.__bootTimer) {
+                clearTimeout(window.__bootTimer);
+                window.__bootTimer = null;
+            }
+            var spinner = screen.querySelector('.boot-screen__spinner');
+            var msg = screen.querySelector('.boot-screen__message');
+            var err = document.getElementById('boot-error');
+            if (spinner) spinner.style.display = 'none';
+            if (msg) msg.style.display = 'none';
+            if (err) err.hidden = false;
+            // Logo permanece visível.
+        }
+
+        window.__showBootFailure = showBootFailure;
+        window.__bootTimer = setTimeout(showBootFailure, BOOT_TIMEOUT_MS);
+
+        window.addEventListener('error', function (event) {
+            var target = event.target;
+            var src = (event.filename || (target && (target.src || target.href)) || '');
+            if (typeof src === 'string' &&
+                (src.indexOf('blazor.webassembly') !== -1 || src.indexOf('_framework/') !== -1)) {
+                showBootFailure();
+            }
+        }, true);
+    })();
 </script>
 
 <script src="js/analytics.js"></script>
-<script src="_framework/blazor.webassembly.js"></script>
+<script src="_framework/blazor.webassembly.js" autostart="false"></script>
+<script>
+    if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
+        if (window.__showBootFailure) window.__showBootFailure();
+    } else {
+        Blazor.start().catch(function () {
+            if (window.__showBootFailure) window.__showBootFailure();
+        });
+    }
+</script>
 </body>
 </html>

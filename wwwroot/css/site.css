@@ -317,9 +317,10 @@ ul li {
 .boot-screen__message {
     max-width: 320px;
     margin: 0;
-    font-size: 0.95rem;
-    color: #222;
+    font-size: 0.85rem;
+    color: #888;
     line-height: 1.5;
+    font-weight: 400;
 }
 
 .boot-screen__error {
