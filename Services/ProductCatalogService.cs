@@ -58,8 +58,9 @@ public class ProductCatalogService : IProductCatalogService
             if (string.IsNullOrEmpty(p.ImageUrl))
                 continue;
 
-            // Req 1.5 / 3.1: amazonUrl must match the canonical pattern
-            if (!IsValidAmazonUrl(p.AmazonUrl))
+            // amazonUrl vazia é permitida (itens "Em breve" sem ASIN confirmado).
+            // URL preenchida precisa ser canônica — link quebrado não entra na vitrine.
+            if (!string.IsNullOrEmpty(p.AmazonUrl) && !IsValidAmazonUrl(p.AmazonUrl))
                 continue;
 
             // Req 6.2: keep the first occurrence of each id, discard duplicates

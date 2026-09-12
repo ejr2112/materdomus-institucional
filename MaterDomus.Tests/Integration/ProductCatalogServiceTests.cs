@@ -242,6 +242,49 @@ public class ProductCatalogServiceTests
     // ---------------------------------------------------------------------------
 
     /// <summary>
+    /// URL Amazon vazia é válida: o produto permanece no catálogo (selo "Em breve",
+    /// sem CTA). URLs preenchidas inválidas continuam filtradas.
+    /// </summary>
+    [Fact]
+    public async Task GetProductsAsync_EmptyAmazonUrl_ComingSoonProductKept()
+    {
+        var json = JsonSerializer.Serialize(new[]
+        {
+            new
+            {
+                id = "prod-coming-soon",
+                name = "Rodo Linha Flow",
+                description = "Rodo em reposição.",
+                imageUrl = "images/products/rodo.jpg",
+                category = "Limpeza",
+                price = 18.99m,
+                amazonUrl = "",
+                comingSoon = true
+            },
+            new
+            {
+                id = "prod-valid",
+                name = "Produto Válido",
+                description = "Desc.",
+                imageUrl = "images/products/prod-valid.jpg",
+                category = "Casa",
+                price = 49.90m,
+                amazonUrl = "https://www.amazon.com.br/dp/AAAAAAAAAA",
+                comingSoon = false
+            }
+        });
+
+        var (client, _) = CreateHttpClient(json);
+        var service = new ProductCatalogService(client);
+
+        var products = await service.GetProductsAsync();
+
+        Assert.Equal(2, products.Count);
+        Assert.Contains(products, p => p.Id == "prod-coming-soon" && p.ComingSoon);
+        Assert.Contains(products, p => p.Id == "prod-valid" && !p.ComingSoon);
+    }
+
+    /// <summary>
     /// Requisito 1.5 / 3.1 — Produto com `amazonUrl` que não corresponde ao padrão
     /// canônico deve ser filtrado; produtos válidos presentes no mesmo JSON são mantidos.
     /// </summary>

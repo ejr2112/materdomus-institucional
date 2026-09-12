@@ -29,8 +29,16 @@
                 {
                     <span class="product-detail__category">@Product.Category</span>
                 }
+                @if (Product.ComingSoon)
+                {
+                    <span class="product-detail__badge">Em breve</span>
+                }
                 <h2 class="product-detail__name">@DisplayName</h2>
                 <p class="product-detail__price">@ProductHelpers.FormatPrice(Product.Price)</p>
+                @if (Product.ComingSoon)
+                {
+                    <p class="product-detail__coming-soon">Disponível em breve na Amazon</p>
+                }
 
                 @if (_persuasiveText is not null)
                 {
@@ -48,9 +56,9 @@
                     <p class="product-detail__copy product-detail__copy--unavailable">Conteúdo indisponível</p>
                 }
 
-                @* CTA_Amazon: visível somente quando a AmazonUrl é canônica válida
-                   (Req 5.1, 5.3, 5.4). AmazonUrl vazia/nula ou em formato inválido
-                   faz IsValidAmazonUrl retornar false, ocultando o link. *@
+                @* CTA_Amazon: visível somente quando o produto NÃO é "Em breve" e a
+                   AmazonUrl é canônica válida (Req 5.1, 5.3, 5.4). Itens em reposição
+                   ficam visíveis sem o botão, para não abrir listing vazio. *@
                 @if (ShowAmazonCta)
                 {
                     <a href="@Product.AmazonUrl"
@@ -143,12 +151,10 @@
             : (Product.Name.Length > 100 ? Product.Name.Substring(0, 100) : Product.Name);
 
     /// <summary>
-    /// Visibilidade do CTA_Amazon: verdadeiro apenas quando a <c>AmazonUrl</c> do
-    /// produto está preenchida e em formato canônico válido (Req 5.1, 5.3, 5.4).
-    /// Reutiliza a validação de <see cref="ProductCatalogService.IsValidAmazonUrl"/>.
+    /// Visibilidade do CTA_Amazon: verdadeiro apenas quando o produto não está
+    /// marcado como "Em breve" e a <c>AmazonUrl</c> é canônica (Req 5.1, 5.3, 5.4).
     /// </summary>
-    private bool ShowAmazonCta =>
-        Product is not null && ProductCatalogService.IsValidAmazonUrl(Product.AmazonUrl);
+    private bool ShowAmazonCta => ProductHelpers.ShowAmazonCta(Product);
 
     protected override void OnInitialized()
     {

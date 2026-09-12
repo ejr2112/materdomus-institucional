@@ -327,7 +327,7 @@ public class ProductPreservationTests
                 parameters => parameters.Add(p => p.Product, product));
 
             var buttons = cut.FindAll("a.product-card__amazon-btn");
-            bool shouldShow = !string.IsNullOrEmpty(product.AmazonUrl);
+            bool shouldShow = ProductHelpers.ShowAmazonCta(product);
 
             bool result = buttons.Count == (shouldShow ? 1 : 0);
             if (shouldShow && buttons.Count == 1)

@@ -5,6 +5,7 @@ using Bunit;
 using FsCheck;
 using FsCheck.Fluent;
 using FsCheck.Xunit;
+using MaterDomus.Web.Helpers;
 using MaterDomus.Web.Models;
 using MaterDomus.Web.Services;
 using MaterDomus.Web.Shared;
@@ -30,7 +31,7 @@ public class ProductCardRenderTests
         return ctx;
     }
 
-    private static Product MakeProduct(string id, string amazonUrl) =>
+    private static Product MakeProduct(string id, string amazonUrl, bool comingSoon = false) =>
         new Product(
             Id: id,
             Name: "Produto Teste",
@@ -38,7 +39,8 @@ public class ProductCardRenderTests
             ImageUrl: "",
             Category: "Teste",
             Price: 49.90m,
-            AmazonUrl: amazonUrl
+            AmazonUrl: amazonUrl,
+            ComingSoon: comingSoon
         );
 
     // -------------------------------------------------------------------------
@@ -48,40 +50,46 @@ public class ProductCardRenderTests
     // Feature: amazon-product-showcase, Property 4: Visibilidade do botão Amazon
     /// <summary>
     /// Para qualquer produto, o botão "Comprar na Amazon" deve ser visível
-    /// se e somente se o campo AmazonUrl for uma string não-vazia.
+    /// se e somente se <see cref="ProductHelpers.ShowAmazonCta"/> for verdadeiro
+    /// (não é "Em breve" e a AmazonUrl é canônica).
     ///
     /// Validates: Requirements 2.1, 2.4
     /// </summary>
     [Property(MaxTest = 100)]
-    public Property AmazonButton_VisibleIffAmazonUrlIsNonEmpty()
+    public Property AmazonButton_VisibleIffShowAmazonCta()
     {
         var strGen = ArbMap.Default.ArbFor<NonEmptyString>().Generator.Select(s => s.Get);
+        var asinChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+        var asinGen = Gen.ArrayOf(Gen.Elements(asinChars), 10).Select(c => new string(c));
 
         var gen = strGen.SelectMany(id =>
-            ArbMap.Default.ArbFor<bool>().Generator.SelectMany(hasUrl =>
-                strGen.Select(suffix => (
-                    id,
-                    amazonUrl: hasUrl ? $"https://www.amazon.com.br/dp/{suffix}" : "",
-                    hasUrl
-                ))
-            )
+            ArbMap.Default.ArbFor<bool>().Generator.SelectMany(comingSoon =>
+            asinGen.SelectMany(asin =>
+            ArbMap.Default.ArbFor<bool>().Generator.Select(hasUrl => (
+                id,
+                amazonUrl: hasUrl ? $"https://www.amazon.com.br/dp/{asin}" : "",
+                comingSoon
+            ))))
         );
 
         return Prop.ForAll(gen.ToArbitrary(), tuple =>
         {
-            var (id, amazonUrl, hasUrl) = tuple;
+            var (id, amazonUrl, comingSoon) = tuple;
 
             using var ctx = CreateContext();
-            var product = MakeProduct(id, amazonUrl);
+            var product = MakeProduct(id, amazonUrl, comingSoon);
             var cut = ctx.RenderComponent<ProductCard>(
                 parameters => parameters.Add(p => p.Product, product));
 
             var buttons = cut.FindAll("a.product-card__amazon-btn");
-            bool result = hasUrl ? buttons.Count == 1 : buttons.Count == 0;
+            var badges = cut.FindAll(".product-card__badge");
+            bool shouldShow = ProductHelpers.ShowAmazonCta(product);
+            bool result = buttons.Count == (shouldShow ? 1 : 0)
+                          && badges.Count == (comingSoon ? 1 : 0);
 
             return result
                 .ToProperty()
-                .Label($"AmazonUrl='{amazonUrl}', hasUrl={hasUrl}: found {buttons.Count} buttons");
+                .Label($"AmazonUrl='{amazonUrl}', comingSoon={comingSoon}, shouldShow={shouldShow}: buttons={buttons.Count}, badges={badges.Count}");
         });
     }
 
