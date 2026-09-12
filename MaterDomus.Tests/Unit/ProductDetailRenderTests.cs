@@ -4,6 +4,7 @@ using Bunit;
 using FsCheck;
 using FsCheck.Fluent;
 using FsCheck.Xunit;
+using MaterDomus.Web.Helpers;
 using MaterDomus.Web.Models;
 using MaterDomus.Web.Services;
 using MaterDomus.Web.Shared;
@@ -146,7 +147,7 @@ public class ProductDetailRenderTests
     /// Para qualquer produto exibido na visão de detalhes, o link CTA_Amazon
     /// (&lt;a&gt; com rótulo "Comprar na Amazon", target="_blank",
     /// rel="noopener noreferrer") está presente se e somente se
-    /// ProductCatalogService.IsValidAmazonUrl(Product.AmazonUrl) é verdadeiro.
+    /// ProductHelpers.ShowAmazonCta(Product) é verdadeiro.
     ///
     /// Validates: Requirements 5.1, 5.2, 5.3, 5.4
     /// </summary>
@@ -158,7 +159,7 @@ public class ProductDetailRenderTests
             var (url, expectValid) = tuple;
 
             // Verifica a expectativa do gerador contra a validação real (defensivo).
-            var isValid = ProductCatalogService.IsValidAmazonUrl(url);
+            var isValid = ProductHelpers.ShowAmazonCta(MakeProduct(amazonUrl: url ?? ""));
 
             using var ctx = CreateContext();
             // Nome válido garante que o diálogo é renderizado.

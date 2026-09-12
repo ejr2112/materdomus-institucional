@@ -352,7 +352,7 @@ public class ProductImageRestorePreservationTests
             var priceOk = cut.Find("p.product-card__price").TextContent == ProductHelpers.FormatPrice(product.Price);
 
             var buttons = cut.FindAll("a.product-card__amazon-btn");
-            bool shouldShow = !string.IsNullOrEmpty(product.AmazonUrl);
+            bool shouldShow = ProductHelpers.ShowAmazonCta(product);
             var amazonOk = buttons.Count == (shouldShow ? 1 : 0)
                 && (!shouldShow || buttons[0].GetAttribute("href") == product.AmazonUrl);
 

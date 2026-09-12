@@ -175,7 +175,8 @@ public class ProductValidationTests
                         return false.ToProperty().Label($"Product '{p.Id}' price={p.Price}");
                     if (string.IsNullOrEmpty(p.ImageUrl))
                         return false.ToProperty().Label($"Product '{p.Id}' has empty imageUrl");
-                    if (!ProductCatalogService.IsValidAmazonUrl(p.AmazonUrl))
+                    if (!string.IsNullOrEmpty(p.AmazonUrl) &&
+                        !ProductCatalogService.IsValidAmazonUrl(p.AmazonUrl))
                         return false.ToProperty().Label($"Product '{p.Id}' has invalid amazonUrl");
                 }
 

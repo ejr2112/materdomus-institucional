@@ -21,7 +21,8 @@ namespace MaterDomus.Web.Helpers;
 /// - Omite campos ausentes sem placeholder, token ou espaço reservado
 ///   (Req 4.1–4.3).
 /// - Saída não-nula tem de 1 a 600 caracteres (Req 2.1).
-/// - Última frase é sempre o CTA de incentivo à compra (Req 2.4).
+/// - Última frase é o CTA de compra, ou "Disponível em breve na Amazon."
+///   quando <see cref="Product.ComingSoon"/> (Req 2.4).
 /// </summary>
 public static class ProductCopyGenerator
 {
@@ -87,7 +88,10 @@ public static class ProductCopyGenerator
         }
 
         // CTA — sempre a última frase, distinta do restante (Req 2.4).
-        sentences.Add("Garanta o seu agora e aproveite!");
+        // Itens em reposição não incentivam compra em listing vazio.
+        sentences.Add(product.ComingSoon
+            ? "Disponível em breve na Amazon."
+            : "Garanta o seu agora e aproveite!");
 
         var result = string.Join(" ", sentences);
 

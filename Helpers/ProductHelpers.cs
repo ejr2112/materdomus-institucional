@@ -1,4 +1,6 @@
 using System.Globalization;
+using MaterDomus.Web.Models;
+using MaterDomus.Web.Services;
 
 namespace MaterDomus.Web.Helpers;
 
@@ -26,4 +28,14 @@ public static class ProductHelpers
     /// </summary>
     public static string FormatPrice(decimal price)
         => price.ToString("C", new CultureInfo("pt-BR"));
+
+    /// <summary>
+    /// CTA "Comprar na Amazon" somente quando o item NÃO está marcado como
+    /// "Em breve" e a <c>AmazonUrl</c> é canônica. Ao reestocar, basta
+    /// <c>comingSoon: false</c> com URL válida.
+    /// </summary>
+    public static bool ShowAmazonCta(Product? product) =>
+        product is not null
+        && !product.ComingSoon
+        && ProductCatalogService.IsValidAmazonUrl(product.AmazonUrl);
 }

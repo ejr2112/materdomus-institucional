@@ -6,6 +6,87 @@
     "imageUrl": "images/products/dispenser-flow-quadrado-branco-001.jpg",
     "category": "Lavanderia",
     "price": 39.90,
-    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV"
+    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
+    "comingSoon": false
+  },
+  {
+    "id": "dispenser-flow-1-5l-001",
+    "name": "Dispenser Ou 1,5L Linha Flow",
+    "description": "Dispenser da Linha Flow com 1,5 litros para sabão líquido, amaciante ou desinfetante. Transparência para gestão visual da lavanderia, tampa medidora e anel de vedação contra vazamentos.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Lavanderia",
+    "price": 56.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "dispenser-flow-2-3l-001",
+    "name": "Dispenser Ou 2,3L Linha Flow",
+    "description": "Dispenser da Linha Flow com 2,3 litros, aba ergonômica na tampa, bico dosador e tampa medidora com gravação em ml. Ideal para volumes maiores de sabão e amaciante.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Lavanderia",
+    "price": 64.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "rodo-multiuso-flow-001",
+    "name": "Rodo multiuso Ou Linha Flow",
+    "description": "Rodo multiuso da Linha Flow com lâmina de silicone para remoção eficaz de líquidos em superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Limpeza",
+    "price": 18.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "borrifador-500ml-flow-001",
+    "name": "Borrifador multiuso Ou 500ml Linha Flow",
+    "description": "Borrifador 500 ml da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança giratória on/off e corpo em PET, com formato anatômico para o uso diário.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Limpeza",
+    "price": 34.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "escova-piso-flow-001",
+    "name": "Escova de piso Ou Linha Flow",
+    "description": "Escova de piso da Linha Flow com cerdas resistentes que removem a sujeira sem riscar. Design coordenado com os demais itens de limpeza da linha.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Limpeza",
+    "price": 32.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "organizador-8l-flow-001",
+    "name": "Organizador multiuso Ou 8L Linha Flow",
+    "description": "Organizador multiuso de 8 litros da Linha Flow para armazenar e transportar itens de limpeza. Material resistente e design que se coordena com cestos e dispensers da linha.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Organização",
+    "price": 69.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "cesto-16l-flow-001",
+    "name": "Cesto com abertura frontal Ou 16L Linha Flow",
+    "description": "Cesto 16 litros da Linha Flow com abertura frontal, pega redonda e área para etiqueta. Empilhável quando usado com tampa; ideal para produtos de limpeza ou roupas leves.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Organização",
+    "price": 62.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "kit-borrifador-panos-flow-001",
+    "name": "Kit borrifador e panos de microfibra Linha Flow",
+    "description": "Kit da Linha Flow com um borrifador e três panos de microfibra (80% poliéster e 20% poliamida). Alta absorção, ação eletrostática e menor uso de água e produtos químicos.",
+    "imageUrl": "images/placeholder-product.png",
+    "category": "Limpeza",
+    "price": 55.99,
+    "amazonUrl": "",
+    "comingSoon": true
   }
 ]
