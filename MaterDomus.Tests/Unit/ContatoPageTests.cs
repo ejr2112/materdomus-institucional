@@ -35,8 +35,8 @@ public class ContatoPageTests
         var cut = RenderContato();
         var markup = cut.Markup;
 
-        Assert.Equal("https://forms.office.com/r/jyc4aTkNQj", Contato.MicrosoftFormsOpenUrl);
-        Assert.Equal("https://forms.office.com/r/jyc4aTkNQj?embed=true", Contato.MicrosoftFormsEmbedUrl);
+        Assert.Equal("https://forms.cloud.microsoft/r/jyc4aTkNQj", Contato.MicrosoftFormsOpenUrl);
+        Assert.Equal("https://forms.cloud.microsoft/r/jyc4aTkNQj?embed=true", Contato.MicrosoftFormsEmbedUrl);
         Assert.Contains("jyc4aTkNQj", Contato.MicrosoftFormsOpenUrl);
         Assert.Contains("jyc4aTkNQj", markup);
 
