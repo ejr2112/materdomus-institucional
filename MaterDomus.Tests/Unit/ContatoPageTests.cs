@@ -5,8 +5,8 @@ using Xunit;
 namespace MaterDomus.Tests.Unit;
 
 /// <summary>
-/// Garante que a página Contato mantém e-mail/WhatsApp e expõe o Microsoft Forms
-/// a partir de um único valor de configuração.
+/// Garante que a página Contato mantém e-mail/WhatsApp e usa o Microsoft Forms
+/// publicado (open + embed).
 /// </summary>
 public class ContatoPageTests
 {
@@ -30,20 +30,22 @@ public class ContatoPageTests
     }
 
     [Fact]
-    public void Contato_UsesSingleMicrosoftFormsUrlForIframeAndOpenButton()
+    public void Contato_UsesLiveMicrosoftFormsUrlsForIframeAndOpenButton()
     {
         var cut = RenderContato();
+        var markup = cut.Markup;
 
-        Assert.Equal(
-            "https://forms.office.com/r/PLACEHOLDER",
-            Contato.MicrosoftFormsContactUrl);
+        Assert.Equal("https://forms.office.com/r/jyc4aTkNQj", Contato.MicrosoftFormsOpenUrl);
+        Assert.Equal("https://forms.office.com/r/jyc4aTkNQj?embed=true", Contato.MicrosoftFormsEmbedUrl);
+        Assert.Contains("jyc4aTkNQj", Contato.MicrosoftFormsOpenUrl);
+        Assert.Contains("jyc4aTkNQj", markup);
 
         var iframe = cut.Find("iframe.forms-embed");
-        Assert.Equal(Contato.MicrosoftFormsContactUrl, iframe.GetAttribute("src"));
+        Assert.Equal(Contato.MicrosoftFormsEmbedUrl, iframe.GetAttribute("src"));
         Assert.Equal("Formulário de contato para fornecedores e parceiros", iframe.GetAttribute("title"));
 
         var openButton = cut.Find("a.forms-open-btn");
-        Assert.Equal(Contato.MicrosoftFormsContactUrl, openButton.GetAttribute("href"));
+        Assert.Equal(Contato.MicrosoftFormsOpenUrl, openButton.GetAttribute("href"));
         Assert.Equal("_blank", openButton.GetAttribute("target"));
         Assert.Equal("Abrir formulário", openButton.TextContent.Trim());
     }

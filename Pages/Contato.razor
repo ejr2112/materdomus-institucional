@@ -25,7 +25,7 @@
     </p>
 
     <a class="btn-primary forms-open-btn"
-       href="@MicrosoftFormsContactUrl"
+       href="@MicrosoftFormsOpenUrl"
        target="_blank"
        rel="noopener noreferrer"
        @onclick="TrackFormsOpenClick"
@@ -33,7 +33,7 @@
 
     <div class="forms-embed-wrapper">
         <iframe class="forms-embed"
-                src="@MicrosoftFormsContactUrl"
+                src="@MicrosoftFormsEmbedUrl"
                 title="Formulário de contato para fornecedores e parceiros"
                 loading="lazy"
                 allowfullscreen>
@@ -55,11 +55,14 @@
 
 @code {
     /// <summary>
-    /// URL do Microsoft Forms de contato (fornecedores e parceiros).
-    /// Substitua PLACEHOLDER pelo ID real do formulário — uma linha apenas.
-    /// Aceita links de forms.office.com ou forms.microsoft.com.
+    /// URL pública do Microsoft Forms de contato (abre em nova aba).
     /// </summary>
-    internal const string MicrosoftFormsContactUrl = "https://forms.office.com/r/PLACEHOLDER";
+    internal const string MicrosoftFormsOpenUrl = "https://forms.office.com/r/jyc4aTkNQj";
+
+    /// <summary>
+    /// URL de embed do mesmo formulário (iframe).
+    /// </summary>
+    internal const string MicrosoftFormsEmbedUrl = "https://forms.office.com/r/jyc4aTkNQj?embed=true";
 
     private bool _formsEngageTracked;
 
