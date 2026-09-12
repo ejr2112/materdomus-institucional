@@ -33,7 +33,7 @@
 
     <div class="forms-embed-wrapper">
         <iframe class="forms-embed"
-                src="@MicrosoftFormsContactUrl"
+                src="@MicrosoftFormsEmbedUrl"
                 title="Formulário de contato para fornecedores e parceiros"
                 loading="lazy"
                 allowfullscreen>
@@ -55,11 +55,23 @@
 
 @code {
     /// <summary>
-    /// URL do Microsoft Forms de contato (fornecedores e parceiros).
-    /// Substitua PLACEHOLDER pelo ID real do formulário — uma linha apenas.
-    /// Aceita links de forms.office.com ou forms.microsoft.com.
+    /// URL pública do Microsoft Forms de contato (fornecedores e parceiros).
+    /// Troque apenas esta linha para apontar para outro formulário.
+    /// O iframe acrescenta ?embed=true automaticamente.
     /// </summary>
-    internal const string MicrosoftFormsContactUrl = "https://forms.office.com/r/PLACEHOLDER";
+    internal const string MicrosoftFormsContactUrl = "https://forms.cloud.microsoft/r/jyc4aTkNQj";
+
+    internal static string MicrosoftFormsEmbedUrl => AppendEmbedQuery(MicrosoftFormsContactUrl);
+
+    private static string AppendEmbedQuery(string url)
+    {
+        if (url.Contains("embed=", StringComparison.OrdinalIgnoreCase))
+        {
+            return url;
+        }
+
+        return url + (url.Contains('?') ? "&" : "?") + "embed=true";
+    }
 
     private bool _formsEngageTracked;
 

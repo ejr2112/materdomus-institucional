@@ -35,15 +35,20 @@ public class ContatoPageTests
         var cut = RenderContato();
 
         Assert.Equal(
-            "https://forms.office.com/r/PLACEHOLDER",
+            "https://forms.cloud.microsoft/r/jyc4aTkNQj",
             Contato.MicrosoftFormsContactUrl);
+        Assert.DoesNotContain("PLACEHOLDER", Contato.MicrosoftFormsContactUrl);
+        Assert.Equal(
+            "https://forms.cloud.microsoft/r/jyc4aTkNQj?embed=true",
+            Contato.MicrosoftFormsEmbedUrl);
 
         var iframe = cut.Find("iframe.forms-embed");
-        Assert.Equal(Contato.MicrosoftFormsContactUrl, iframe.GetAttribute("src"));
+        Assert.Equal(Contato.MicrosoftFormsEmbedUrl, iframe.GetAttribute("src"));
         Assert.Equal("Formulário de contato para fornecedores e parceiros", iframe.GetAttribute("title"));
 
         var openButton = cut.Find("a.forms-open-btn");
         Assert.Equal(Contato.MicrosoftFormsContactUrl, openButton.GetAttribute("href"));
+        Assert.DoesNotContain("embed=true", openButton.GetAttribute("href"));
         Assert.Equal("_blank", openButton.GetAttribute("target"));
         Assert.Equal("Abrir formulário", openButton.TextContent.Trim());
     }
