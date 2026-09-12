@@ -1,7 +1,8 @@
 @page "/contato"
 @inject IJSRuntime JS
 
-<section><h1>Fale com a Mater Domus</h1>
+<section>
+    <h1>Fale com a Mater Domus</h1>
 
     <p>
         Estamos disponíveis para conversar com fornecedores,
@@ -9,14 +10,59 @@
     </p>
 
     <p>
+        Prefira o formulário para propostas e parcerias.
+        WhatsApp e e-mail continuam disponíveis.
+    </p>
+</section>
+
+<section class="forms-section"
+         @onfocusin="TrackFormsEngage"
+         @onclick="TrackFormsEngage">
+    <h2>Formulário para fornecedores e parceiros</h2>
+    <p>
+        Envie sua proposta pelo formulário. É o canal preferencial
+        para apresentações comerciais.
+    </p>
+
+    <a class="btn-primary forms-open-btn"
+       href="@MicrosoftFormsContactUrl"
+       target="_blank"
+       rel="noopener noreferrer"
+       @onclick="TrackFormsOpenClick"
+       @onclick:stopPropagation="true">Abrir formulário</a>
+
+    <div class="forms-embed-wrapper">
+        <iframe class="forms-embed"
+                src="@MicrosoftFormsContactUrl"
+                title="Formulário de contato para fornecedores e parceiros"
+                loading="lazy"
+                allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<section>
+    <h2>Outros canais</h2>
+    <p>
         📧 <strong>Email:</strong> <a href="mailto:contato@materdomus.com.br" @onclick="TrackEmailClick">contato@materdomus.com.br</a><br>
-        📱 <a href="https://wa.me/5519993491775" target="_blank" rel="noopener noreferrer" @onclick="TrackWhatsappClick"><strong>WhatsApp</strong></a></p>
+        📱 <a href="https://wa.me/5519993491775" target="_blank" rel="noopener noreferrer" @onclick="TrackWhatsappClick"><strong>WhatsApp</strong></a>
+    </p>
 
     <p>
-        Atendimento em horário comercial.
-    </p></section>
+        Atendimento em horário comercial. O horário detalhado será informado em breve.
+    </p>
+</section>
 
 @code {
+    /// <summary>
+    /// URL do Microsoft Forms de contato (fornecedores e parceiros).
+    /// Substitua PLACEHOLDER pelo ID real do formulário — uma linha apenas.
+    /// Aceita links de forms.office.com ou forms.microsoft.com.
+    /// </summary>
+    internal const string MicrosoftFormsContactUrl = "https://forms.office.com/r/PLACEHOLDER";
+
+    private bool _formsEngageTracked;
+
     private Task TrackWhatsappClick()
     {
         return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
@@ -34,6 +80,34 @@
             page = "contato",
             channel = "email",
             lead_type = "supplier"
+        }).AsTask();
+    }
+
+    private Task TrackFormsOpenClick()
+    {
+        _formsEngageTracked = true;
+        return TrackForms("open_button");
+    }
+
+    private Task TrackFormsEngage()
+    {
+        if (_formsEngageTracked)
+        {
+            return Task.CompletedTask;
+        }
+
+        _formsEngageTracked = true;
+        return TrackForms("section_focus");
+    }
+
+    private Task TrackForms(string action)
+    {
+        return JS.InvokeVoidAsync("trackEvent", "supplier_contact_click", new
+        {
+            page = "contato",
+            channel = "microsoft_forms",
+            lead_type = "supplier",
+            action
         }).AsTask();
     }
 }
