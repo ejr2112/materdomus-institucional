@@ -25,6 +25,15 @@
                 &times;
             </button>
             <div class="product-detail__body">
+                @if (!string.IsNullOrWhiteSpace(Product.ImageUrl))
+                {
+                    <div class="product-detail__image-wrapper">
+                        <img src="@Product.ImageUrl"
+                             alt="@Product.Name"
+                             class="product-detail__image"
+                             onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+                    </div>
+                }
                 @if (!string.IsNullOrWhiteSpace(Product.Category))
                 {
                     <span class="product-detail__category">@Product.Category</span>

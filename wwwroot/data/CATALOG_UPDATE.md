@@ -12,7 +12,8 @@ Para um item que hoje aparece como **Em breve**:
    `https://www.amazon.com.br/dp/{ASIN10}?m=A20TN3HCSY6KZV`
 3. Altere **`comingSoon` para `false`**.
 4. Ajuste `price` só se a curadoria confirmar o preço vigente na Amazon.
-5. Substitua `imageUrl` pela foto local em `wwwroot/images/products/` quando houver asset.
+5. Mantenha `imageUrl` apontando para a foto oficial em `wwwroot/images/products/{id}.jpg` (ou `.png`).
+   As fotos atuais da Linha Flow vêm do catálogo oficial Ou (`ou.com.br` / materiais autorizados).
 6. Faça o redeploy dos arquivos estáticos.
 
 O botão **Comprar na Amazon** reaparece automaticamente quando
