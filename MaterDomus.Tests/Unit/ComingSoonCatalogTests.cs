@@ -60,39 +60,62 @@ public class ComingSoonCatalogTests
             AmazonUrl: amazonUrl,
             ComingSoon: comingSoon);
 
+    private static readonly string[] SellerAmazonTitles =
+    {
+        "Ou Dispenser Quadrado 1L Branco Linha Flow",
+        "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+        "Ou Rodo Bege Linha Flow",
+        "Ou Rodo Multiuso Bege Linha Flow",
+        "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
+        "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
+        "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+        "Ou Escova de limpeza multiuso Bege Linha Flow",
+        "Ou Organizador de Parede e Armário Branco Linha Flow",
+        "Ou Organizador de Parede Multiuso Bege Linha Flow"
+    };
+
+    private static readonly string[] ForbiddenCatalogNames =
+    {
+        "Escova de piso",
+        "2,3L",
+        "Cesto",
+        "Organizador multiuso Ou 8L",
+        "Kit borrifador e panos"
+    };
+
     [Fact]
-    public void Catalog_ShowsFullLinhaFlow_NotOnlyInStock()
+    public void Catalog_MatchesSellerCentralListings_ExactlyTen()
     {
         var products = LoadCatalog();
 
-        Assert.True(products.Count >= 8, $"Catálogo deveria listar a linha (~10 itens); encontrou {products.Count}.");
-        Assert.Contains(products, p => p.Id == "dispenser-flow-quadrado-branco-001");
-        Assert.Contains(products, p => p.Id.Contains("rodo", StringComparison.OrdinalIgnoreCase)
-                                      || p.Name.Contains("Rodo", StringComparison.OrdinalIgnoreCase));
-        Assert.Contains(products, p => p.Name.Contains("Borrifador", StringComparison.OrdinalIgnoreCase));
-        Assert.Contains(products, p => p.Name.Contains("Escova", StringComparison.OrdinalIgnoreCase));
-        Assert.Contains(products, p => p.Name.Contains("1,5L", StringComparison.OrdinalIgnoreCase)
-                                      || p.Name.Contains("1.5L", StringComparison.OrdinalIgnoreCase));
-        Assert.Contains(products, p => p.Name.Contains("Organizador", StringComparison.OrdinalIgnoreCase)
-                                      || p.Name.Contains("Cesto", StringComparison.OrdinalIgnoreCase));
-        Assert.Contains(products, p => p.Name.Contains("pano", StringComparison.OrdinalIgnoreCase));
+        Assert.Equal(10, products.Count);
+        Assert.Equal(SellerAmazonTitles, products.Select(p => p.Name).ToArray());
+
+        foreach (var forbidden in ForbiddenCatalogNames)
+        {
+            Assert.DoesNotContain(products, p =>
+                p.Name.Contains(forbidden, StringComparison.OrdinalIgnoreCase)
+                || p.Id.Contains(forbidden.Replace(" ", "-"), StringComparison.OrdinalIgnoreCase));
+        }
     }
 
     [Fact]
-    public void Catalog_OnlyConfirmedAsinHasAmazonCta_NoInventedAsins()
+    public void Catalog_OnlyActiveDispenserHasAmazonCta_ComingSoonHaveEmptyUrl()
     {
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
         Assert.Single(available);
         Assert.Equal("dispenser-flow-quadrado-branco-001", available[0].Id);
+        Assert.Equal("Ou Dispenser Quadrado 1L Branco Linha Flow", available[0].Name);
         Assert.Equal("https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV", available[0].AmazonUrl);
         Assert.False(available[0].ComingSoon);
 
+        Assert.Equal(9, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
-                $"Item '{comingSoon.Id}' está Em breve e não deve ter ASIN inventado.");
+                $"Item '{comingSoon.Id}' está Em breve e não deve ter amazonUrl preenchida.");
             Assert.False(ProductHelpers.ShowAmazonCta(comingSoon));
         }
     }
