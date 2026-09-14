@@ -243,6 +243,40 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
+    public void DisplayImageUrl_UsesPlaceholderWhenMissing()
+    {
+        Assert.Equal("images/placeholder-product.png", ProductHelpers.DisplayImageUrl(null));
+        Assert.Equal("images/placeholder-product.png", ProductHelpers.DisplayImageUrl(""));
+        Assert.Equal("images/placeholder-product.png", ProductHelpers.DisplayImageUrl("   "));
+        Assert.Equal("images/products/foo.jpg", ProductHelpers.DisplayImageUrl("images/products/foo.jpg"));
+    }
+
+    [Fact]
+    public void ProductDetail_EmptyImageUrl_StillRendersPlaceholderImage()
+    {
+        using var ctx = CreateContext();
+        var product = Make(name: "Produto sem foto") with { ImageUrl = "" };
+        var cut = ctx.RenderComponent<ProductDetail>(p => p
+            .Add(c => c.Product, product)
+            .Add(c => c.IsOpen, true));
+
+        var img = cut.Find("img.product-detail__image");
+        Assert.Equal("images/placeholder-product.png", img.GetAttribute("src"));
+        Assert.Contains("images/placeholder-product.png", img.GetAttribute("onerror"));
+        Assert.NotNull(cut.Find(".product-detail__meta"));
+    }
+
+    [Fact]
+    public void ProductCard_ComingSoon_UsesComingSoonModifierClass()
+    {
+        using var ctx = CreateContext();
+        var cut = ctx.RenderComponent<ProductCard>(p =>
+            p.Add(c => c.Product, Make(amazonUrl: "", comingSoon: true)));
+
+        Assert.Contains("product-card--coming-soon", cut.Find("article.product-card").GetAttribute("class"));
+    }
+
+    [Fact]
     public void CopyGenerator_ComingSoon_EndsWithSoftAvailabilityCopy()
     {
         var comingSoon = ProductCopyGenerator.Generate(Make(comingSoon: true));

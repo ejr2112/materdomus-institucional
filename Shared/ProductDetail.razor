@@ -25,23 +25,22 @@
                 &times;
             </button>
             <div class="product-detail__body">
-                @if (!string.IsNullOrWhiteSpace(Product.ImageUrl))
-                {
-                    <div class="product-detail__image-wrapper">
-                        <img src="@Product.ImageUrl"
-                             alt="@Product.Name"
-                             class="product-detail__image"
-                             onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
-                    </div>
-                }
-                @if (!string.IsNullOrWhiteSpace(Product.Category))
-                {
-                    <span class="product-detail__category">@Product.Category</span>
-                }
-                @if (Product.ComingSoon)
-                {
-                    <span class="product-detail__badge">Em breve</span>
-                }
+                <div class="product-detail__image-wrapper">
+                    <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
+                         alt="@Product.Name"
+                         class="product-detail__image"
+                         onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+                </div>
+                <div class="product-detail__meta">
+                    @if (!string.IsNullOrWhiteSpace(Product.Category))
+                    {
+                        <span class="product-detail__category">@Product.Category</span>
+                    }
+                    @if (Product.ComingSoon)
+                    {
+                        <span class="product-detail__badge">Em breve</span>
+                    }
+                </div>
                 <h2 class="product-detail__name">@DisplayName</h2>
                 <p class="product-detail__price">@ProductHelpers.FormatPrice(Product.Price)</p>
                 @if (Product.ComingSoon)

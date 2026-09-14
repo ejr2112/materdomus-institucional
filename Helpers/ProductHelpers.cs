@@ -38,4 +38,13 @@ public static class ProductHelpers
         product is not null
         && !product.ComingSoon
         && ProductCatalogService.IsValidAmazonUrl(product.AmazonUrl);
+
+    /// <summary>
+    /// Imagem do cartão/modal. URL vazia usa o placeholder — <c>onerror</c> no
+    /// markup continua como rede de segurança se o arquivo falhar.
+    /// </summary>
+    public static string DisplayImageUrl(string? imageUrl) =>
+        string.IsNullOrWhiteSpace(imageUrl)
+            ? "images/placeholder-product.png"
+            : imageUrl;
 }

@@ -2,6 +2,10 @@
 <HeadContent>
     <meta name="description" content="@Description" />
     <link rel="canonical" href="@Canonical" />
+    @if (!string.IsNullOrWhiteSpace(Stylesheet))
+    {
+        <link rel="stylesheet" href="@Stylesheet" />
+    }
 </HeadContent>
 
 @code {
@@ -13,4 +17,11 @@
 
     [Parameter, EditorRequired]
     public string Canonical { get; set; } = default!;
+
+    /// <summary>
+    /// Optional page stylesheet. Must live in this same HeadContent as the SEO
+    /// tags — Blazor WASM (.NET 8+) keeps only one HeadContent section active.
+    /// </summary>
+    [Parameter]
+    public string? Stylesheet { get; set; }
 }
