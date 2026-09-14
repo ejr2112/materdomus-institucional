@@ -1,5 +1,6 @@
 @inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Routing
+@inject IJSRuntime JS
 <PageViewTracker />
 <header class="header">
     <div class="container">
@@ -23,6 +24,19 @@
 
 <footer class="footer">
     <p>© @DateTime.Now.Year Mater Domus</p>
+    <nav class="footer-links" aria-label="Informações legais">
+        <a href="/privacidade">Política de Privacidade</a>
+        <button type="button"
+                class="footer-cookies-btn"
+                @onclick="OpenCookiePreferences">
+            Preferências de cookies
+        </button>
+    </nav>
 </footer>
 
 <BottomNav />
+
+@code {
+    private Task OpenCookiePreferences() =>
+        JS.InvokeVoidAsync("materDomusOpenCookiePreferences").AsTask();
+}

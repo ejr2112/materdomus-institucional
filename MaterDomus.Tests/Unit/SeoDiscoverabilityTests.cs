@@ -57,6 +57,7 @@ public class SeoDiscoverabilityTests
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/fornecedores" && u.Priority == "0.9");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/sobre" && u.Priority == "0.7");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/contato" && u.Priority == "0.6");
+        Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/privacidade" && u.Priority == "0.4");
         Assert.All(urls, u => Assert.False(string.IsNullOrWhiteSpace(u.Lastmod)));
     }
 
@@ -125,13 +126,15 @@ public class SeoDiscoverabilityTests
     }
 
     [Fact]
-    public void IndexHtml_KeepsGtmAndBootScreen()
+    public void IndexHtml_KeepsBootScreenAndDefersGtmUntilConsent()
     {
         var html = ReadWwwroot("index.html");
 
         Assert.Contains("GTM-5FJ38X8C", html);
-        Assert.Contains("www.googletagmanager.com/gtm.js", html);
-        Assert.Contains("www.googletagmanager.com/ns.html?id=GTM-5FJ38X8C", html);
+        Assert.Contains("src=\"js/cookie-consent.js\"", html);
+        Assert.Contains("id=\"cookie-banner\"", html);
+        Assert.DoesNotContain("www.googletagmanager.com/gtm.js", html);
+        Assert.DoesNotContain("www.googletagmanager.com/ns.html", html);
 
         Assert.Contains("id=\"app\"", html);
         Assert.Contains("class=\"boot-screen\"", html);
@@ -157,6 +160,7 @@ public class SeoDiscoverabilityTests
         Assert.Contains("href=\"/sobre\"", html);
         Assert.Contains("href=\"/contato\"", html);
         Assert.Contains("href=\"/fornecedores\"", html);
+        Assert.Contains("href=\"/privacidade\"", html);
         Assert.Contains("id=\"seo-crawl\"", html);
         Assert.Contains("mailto:contato@materdomus.com.br", html);
         Assert.Contains("https://wa.me/5519993491775", html);
@@ -190,9 +194,12 @@ public class SeoDiscoverabilityTests
         using var fornecedoresCtx = CreateJsContext();
         var fornecedores = fornecedoresCtx.RenderComponent<Fornecedores>().FindComponent<SeoMeta>().Instance;
 
-        var titles = new[] { home.Title, sobre.Title, contato.Title, fornecedores.Title };
-        var descriptions = new[] { home.Description, sobre.Description, contato.Description, fornecedores.Description };
-        var canonicals = new[] { home.Canonical, sobre.Canonical, contato.Canonical, fornecedores.Canonical };
+        using var privacidadeCtx = new Bunit.TestContext();
+        var privacidade = privacidadeCtx.RenderComponent<Privacidade>().FindComponent<SeoMeta>().Instance;
+
+        var titles = new[] { home.Title, sobre.Title, contato.Title, fornecedores.Title, privacidade.Title };
+        var descriptions = new[] { home.Description, sobre.Description, contato.Description, fornecedores.Description, privacidade.Description };
+        var canonicals = new[] { home.Canonical, sobre.Canonical, contato.Canonical, fornecedores.Canonical, privacidade.Canonical };
 
         Assert.Equal(titles.Length, titles.Distinct(StringComparer.Ordinal).Count());
         Assert.Equal(descriptions.Length, descriptions.Distinct(StringComparer.Ordinal).Count());
@@ -204,6 +211,7 @@ public class SeoDiscoverabilityTests
         Assert.Equal("https://www.materdomus.com.br/sobre", sobre.Canonical);
         Assert.Equal("https://www.materdomus.com.br/contato", contato.Canonical);
         Assert.Equal("https://www.materdomus.com.br/fornecedores", fornecedores.Canonical);
+        Assert.Equal("https://www.materdomus.com.br/privacidade", privacidade.Canonical);
     }
 
     [Fact]

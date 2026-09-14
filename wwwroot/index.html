@@ -71,23 +71,12 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1f1f1f" />
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5FJ38X8C');</script>
-    <!-- End Google Tag Manager -->
+    <!-- GTM (GTM-5FJ38X8C) is injected only after cookie consent. See js/cookie-consent.js. -->
 
     <script src="js/seo.js"></script>
 </head>
 
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FJ38X8C"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <noscript>
     <section class="seo-fallback">
         <h1>Mater Domus</h1>
@@ -101,6 +90,7 @@
             <a href="/sobre">Sobre</a>
             <a href="/contato">Contato</a>
             <a href="/fornecedores">Fornecedores</a>
+            <a href="/privacidade">Política de Privacidade</a>
         </nav>
         <p>
             Contato:
@@ -134,7 +124,30 @@
     <a href="/sobre">Sobre</a>
     <a href="/contato">Contato</a>
     <a href="/fornecedores">Fornecedores</a>
+    <a href="/privacidade">Política de Privacidade</a>
 </nav>
+
+<div id="cookie-banner"
+     class="cookie-banner"
+     hidden
+     role="region"
+     aria-labelledby="cookie-banner-title"
+     aria-describedby="cookie-banner-text">
+    <div class="cookie-banner__inner">
+        <div class="cookie-banner__copy">
+            <p id="cookie-banner-title" class="cookie-banner__title">Cookies e privacidade</p>
+            <p id="cookie-banner-text">
+                Usamos cookies e tecnologias semelhantes, inclusive o Google Tag Manager,
+                para métricas de audiência e melhoria do site.
+                Consulte a <a href="/privacidade">Política de Privacidade</a>.
+            </p>
+        </div>
+        <div class="cookie-banner__actions">
+            <button type="button" id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Aceitar</button>
+            <button type="button" id="cookie-reject" class="cookie-banner__btn cookie-banner__btn--reject">Recusar</button>
+        </div>
+    </div>
+</div>
 
 <script>
     (function () {
@@ -174,6 +187,7 @@
 </script>
 
 <script src="js/analytics.js"></script>
+<script src="js/cookie-consent.js"></script>
 <script src="_framework/blazor.webassembly.js" autostart="false"></script>
 <script>
     if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
