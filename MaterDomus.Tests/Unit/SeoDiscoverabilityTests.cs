@@ -228,7 +228,7 @@ public class SeoDiscoverabilityTests
         Assert.Contains("rel=\"stylesheet\"", razor);
         Assert.Contains("href=\"@Stylesheet\"", razor);
         Assert.Contains("public string? Stylesheet { get; set; }", razor);
-        Assert.Equal(1, Regex.Matches(razor, "<HeadContent>").Count);
+        Assert.Single(Regex.Matches(razor, "<HeadContent>"));
     }
 
     [Fact]
