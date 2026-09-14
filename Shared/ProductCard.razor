@@ -17,20 +17,14 @@
     <div class="product-card__body">
         <span class="product-card__category">@Product.Category</span>
         <h3 class="product-card__name">@Product.Name</h3>
-        <p class="product-card__description">@TruncateDescription(Product.Description)</p>
         <p class="product-card__price">@FormatPrice(Product.Price)</p>
         @if (Product.ComingSoon)
         {
             <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
         }
+        <p class="product-card__description">@TruncateDescription(Product.Description)</p>
     </div>
     <div class="product-card__actions">
-        <button class="product-card__details-btn"
-                type="button"
-                aria-label="@($"Ver detalhes {Product.Name}")"
-                @onclick="() => OnVerDetalhes.InvokeAsync(Product)">
-            Ver detalhes
-        </button>
         @if (ProductHelpers.ShowAmazonCta(Product))
         {
             <a href="@Product.AmazonUrl"
@@ -40,6 +34,12 @@
                 Comprar na Amazon
             </a>
         }
+        <button class="product-card__details-btn"
+                type="button"
+                aria-label="@($"Ver detalhes {Product.Name}")"
+                @onclick="() => OnVerDetalhes.InvokeAsync(Product)">
+            Ver detalhes
+        </button>
         <button class="product-card__favorite-btn @(IsFav ? "product-card__favorite-btn--active" : "")"
                 aria-pressed="@IsFav.ToString().ToLower()"
                 aria-label="@(IsFav ? "Remover dos favoritos" : "Favoritar produto")"

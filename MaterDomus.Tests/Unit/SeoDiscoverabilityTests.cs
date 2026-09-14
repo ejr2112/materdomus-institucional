@@ -216,6 +216,12 @@ public class SeoDiscoverabilityTests
         Assert.Contains("https://www.materdomus.com.br/produtos", razor);
         Assert.Contains("Stylesheet=\"css/produtos.css\"", razor);
         Assert.DoesNotContain("<HeadContent>", razor);
+        Assert.Contains("produtos-page__intro", razor);
+        Assert.Contains("starlink-promo", razor);
+        Assert.True(
+            razor.IndexOf("products-grid", StringComparison.Ordinal) <
+            razor.IndexOf("starlink-promo", StringComparison.Ordinal),
+            "A faixa Starlink deve ficar depois da grade para não dominar a vitrine.");
     }
 
     [Fact]
@@ -258,6 +264,10 @@ public class SeoDiscoverabilityTests
         Assert.Contains(".product-card--coming-soon", css);
         Assert.Contains(".product-detail__meta", css);
         Assert.Contains(".product-detail__image-wrapper", css);
+        Assert.Contains("main section.produtos-page", css);
+        Assert.Contains("--produtos-max-width: 1240px", css);
+        Assert.Contains("grid-template-columns: repeat(4, minmax(0, 1fr))", css);
+        Assert.Contains("min-height: 44px", css);
     }
 
     [Fact]
