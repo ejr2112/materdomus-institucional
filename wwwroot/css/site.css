@@ -407,3 +407,25 @@ ul li {
         margin-right: 0;
     }
 }
+
+/* Fallback de rastreio: visível só com JS desligado (<noscript> em index.html).
+   Não altera a tela de boot para quem tem JavaScript. */
+.seo-fallback {
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: system-ui, sans-serif;
+    color: #222;
+    line-height: 1.5;
+}
+
+.seo-fallback nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin: 16px 0;
+}
+
+.seo-fallback nav a {
+    margin-left: 0;
+}

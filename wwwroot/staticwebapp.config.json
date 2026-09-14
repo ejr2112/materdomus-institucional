@@ -9,7 +9,8 @@
       "/lib/*",
       "/favicon.ico",
       "/robots.txt",
-      "/sitemap.xml"
+      "/sitemap.xml",
+      "/manifest.webmanifest"
     ]
   }
 }
