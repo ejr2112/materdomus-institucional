@@ -1,0 +1,25 @@
+{
+  "name": "Mater Domus",
+  "short_name": "Mater Domus",
+  "description": "Loja brasileira de utilidades domésticas Ou e Linha Flow, com catálogo na Amazon.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f1f1f",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "757x210",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
