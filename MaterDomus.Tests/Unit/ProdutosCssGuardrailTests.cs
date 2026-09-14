@@ -4,6 +4,8 @@ using MaterDomus.Web.Models;
 using MaterDomus.Web.Pages;
 using MaterDomus.Web.Services;
 using MaterDomus.Web.Shared;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -13,7 +15,8 @@ namespace MaterDomus.Tests.Unit;
 /// <summary>
 /// Guardrails against the /produtos unstyled-grid regression: produtos.css existed
 /// (HTTP 200) but was not linked after SEO/HeadOutlet edits. These tests fail if
-/// the stylesheet link is removed from index.html, Produtos.razor, or SeoMeta.
+/// the stylesheet link is removed from index.html, Produtos.razor, or SeoMeta, or
+/// if a second HeadContent steals the HeadOutlet section.
 /// </summary>
 public class ProdutosCssGuardrailTests
 {
@@ -68,7 +71,7 @@ public class ProdutosCssGuardrailTests
 
         Assert.Contains("SeoMeta", razor);
         Assert.Contains("Stylesheet=\"css/produtos.css\"", razor);
-        Assert.DoesNotContain("<HeadContent>", razor);
+        Assert.DoesNotMatch(@"<\s*(?:[\w.-]+[:.])?HeadContent\b", razor);
     }
 
     [Fact]
@@ -86,21 +89,21 @@ public class ProdutosCssGuardrailTests
     [Fact]
     public void SeoMeta_RendersStylesheetLinkWhenStylesheetIsSet()
     {
-        using var ctx = new Bunit.TestContext();
-        var cut = RenderSeoMeta(ctx, stylesheet: "css/produtos.css");
-        var head = HeadContentMarkup(ctx, cut);
+        using var ctx = CreateHeadContext();
+        var host = RenderSeoMetaInOutlet(ctx, stylesheet: "css/produtos.css");
+        var head = HeadOutletMarkup(host);
 
         Assert.True(
             HasStylesheetLink(head, "css/produtos.css"),
-            "SeoMeta must render <link rel=\"stylesheet\" href=\"css/produtos.css\"> when Stylesheet is set.");
+            "SeoMeta must render <link rel=\"stylesheet\" href=\"css/produtos.css\"> into HeadOutlet when Stylesheet is set.");
     }
 
     [Fact]
     public void SeoMeta_OmitsStylesheetLinkWhenStylesheetIsMissing()
     {
-        using var ctx = new Bunit.TestContext();
-        var cut = RenderSeoMeta(ctx, stylesheet: null);
-        var head = HeadContentMarkup(ctx, cut);
+        using var ctx = CreateHeadContext();
+        var host = RenderSeoMetaInOutlet(ctx, stylesheet: null);
+        var head = HeadOutletMarkup(host);
 
         Assert.False(
             HasStylesheetLink(head, "css/produtos.css"),
@@ -113,69 +116,138 @@ public class ProdutosCssGuardrailTests
     [Fact]
     public void SeoMeta_KeepsStylesheetWhenTitleDescriptionAndCanonicalChange()
     {
-        using var ctx = new Bunit.TestContext();
-        var cut = RenderSeoMeta(ctx, stylesheet: "css/produtos.css");
+        using var ctx = CreateHeadContext();
+        var host = RenderSeoMetaInOutlet(ctx, stylesheet: "css/produtos.css");
+        var seo = host.FindComponent<SeoMeta>();
 
-        cut.SetParametersAndRender(ps => ps
+        seo.SetParametersAndRender(ps => ps
             .Add(p => p.Title, "Título atualizado | Mater Domus")
             .Add(p => p.Description, "Descrição atualizada para SEO.")
             .Add(p => p.Canonical, "https://www.materdomus.com.br/produtos?ref=seo"));
 
-        var head = HeadContentMarkup(ctx, cut);
-        Assert.Equal("css/produtos.css", cut.Instance.Stylesheet);
+        var head = HeadOutletMarkup(host);
+        Assert.Equal("css/produtos.css", seo.Instance.Stylesheet);
         Assert.True(
             HasStylesheetLink(head, "css/produtos.css"),
-            "Updating Title/Description/Canonical must not drop the Stylesheet <link>.");
+            "Updating Title/Description/Canonical must not drop the Stylesheet <link> from HeadOutlet.");
         Assert.Contains("name=\"description\"", head);
         Assert.Contains("rel=\"canonical\"", head);
         Assert.Contains("https://www.materdomus.com.br/produtos?ref=seo", head);
         Assert.Contains("Descrição atualizada para SEO.", head);
-        Assert.Single(Regex.Matches(ReadRepoFile("Shared", "SeoMeta.razor"), "<HeadContent>"));
+        Assert.Single(Regex.Matches(ReadRepoFile("Shared", "SeoMeta.razor"), @"<\s*HeadContent\b"));
     }
 
     [Fact]
-    public void ProdutosPage_SeoMetaHeadContentKeepsProdutosStylesheet()
+    public void ProdutosPage_HeadOutletKeepsProdutosStylesheet()
     {
-        using var ctx = new Bunit.TestContext();
-        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        using var ctx = CreateHeadContext();
         ctx.Services.AddSingleton<IProductCatalogService>(new EmptyCatalogService());
         ctx.Services.AddScoped<FavoritesService>();
 
-        var cut = ctx.RenderComponent<Produtos>();
-        var seo = cut.FindComponent<SeoMeta>();
+        var host = ctx.RenderComponent<HeadOutletHost>(ps => ps.AddChildContent<Produtos>());
+        var seo = host.FindComponent<SeoMeta>();
+        var head = HeadOutletMarkup(host);
 
         Assert.Equal("css/produtos.css", seo.Instance.Stylesheet);
-        var head = HeadContentMarkup(ctx, seo);
+        Assert.Single(host.FindComponents<HeadContent>());
         Assert.True(
             HasStylesheetLink(head, "css/produtos.css"),
-            "Produtos.razor must keep css/produtos.css in the same SeoMeta HeadContent as title/description/canonical.");
+            "HeadOutlet must keep css/produtos.css for /produtos. A second HeadContent on the page replaces this section and unstyles the grid.");
         Assert.Contains("rel=\"canonical\"", head);
         Assert.Contains("https://www.materdomus.com.br/produtos", head);
         Assert.Contains("name=\"description\"", head);
     }
 
-    private static IRenderedComponent<SeoMeta> RenderSeoMeta(Bunit.TestContext ctx, string? stylesheet) =>
-        ctx.RenderComponent<SeoMeta>(ps => ps
+    [Fact]
+    public void HeadOutlet_KeepsFirstHeadContent_AndDropsLaterStylesheet()
+    {
+        using var ctx = CreateHeadContext();
+        var host = ctx.RenderComponent<CompetingHeadContentHost>();
+        var head = HeadOutletMarkup(host);
+
+        Assert.Equal(2, host.FindComponents<HeadContent>().Count);
+        Assert.Contains("rel=\"canonical\"", head);
+        Assert.Contains("name=\"description\"", head);
+        Assert.DoesNotContain("name=\"competitor\"", head);
+        Assert.False(
+            HasStylesheetLink(head, "css/produtos.css"),
+            "A later HeadContent with css/produtos.css is ignored by HeadOutlet. " +
+            "The stylesheet must live in SeoMeta's HeadContent (the first/active section).");
+    }
+
+    private static Bunit.TestContext CreateHeadContext()
+    {
+        var ctx = new Bunit.TestContext();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        ctx.JSInterop
+            .Setup<string>("Blazor._internal.PageTitle.getAndRemoveExistingTitle")
+            .SetResult(string.Empty);
+        return ctx;
+    }
+
+    private static IRenderedComponent<HeadOutletHost> RenderSeoMetaInOutlet(
+        Bunit.TestContext ctx,
+        string? stylesheet) =>
+        ctx.RenderComponent<HeadOutletHost>(ps => ps.AddChildContent<SeoMeta>(seo => seo
             .Add(p => p.Title, "Produtos Ou e Linha Flow | Mater Domus")
             .Add(p => p.Description, "Conheça os produtos Mater Domus.")
             .Add(p => p.Canonical, "https://www.materdomus.com.br/produtos")
-            .Add(p => p.Stylesheet, stylesheet));
+            .Add(p => p.Stylesheet, stylesheet)));
+
+    private static string HeadOutletMarkup(IRenderedFragment host)
+    {
+        var outlet = host.FindComponent<HeadOutlet>();
+        return outlet.Markup;
+    }
 
     /// <summary>
-    /// HeadContent paints into HeadOutlet, so its own markup is empty in bUnit.
-    /// Render the ChildContent fragment to assert the actual &lt;link&gt; tags.
+    /// Mirrors Program.cs: HeadOutlet is a sibling root, not a child of the page.
+    /// Rendering both in one tree lets tests assert the section HeadOutlet actually keeps.
     /// </summary>
-    private static string HeadContentMarkup(Bunit.TestContext ctx, IRenderedFragment cut)
+    private sealed class HeadOutletHost : ComponentBase
     {
-        var heads = cut.FindComponents<HeadContent>();
-        Assert.True(heads.Count > 0, "Expected SeoMeta to render a HeadContent section.");
-        Assert.Single(heads);
+        [Parameter]
+        public RenderFragment? ChildContent { get; set; }
 
-        var child = heads[0].Instance.ChildContent;
-        Assert.NotNull(child);
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenComponent<HeadOutlet>(0);
+            builder.CloseComponent();
+            builder.AddContent(1, ChildContent);
+        }
+    }
 
-        var rendered = ctx.Render(child);
-        return rendered.Markup;
+    /// <summary>
+    /// Recreates the live bug: SeoMeta HeadContent (SEO tags only) plus a later
+    /// HeadContent with produtos.css. HeadOutlet keeps the first section and drops the CSS.
+    /// </summary>
+    private sealed class CompetingHeadContentHost : ComponentBase
+    {
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenComponent<HeadOutlet>(0);
+            builder.CloseComponent();
+
+            builder.OpenComponent<SeoMeta>(1);
+            builder.AddComponentParameter(2, nameof(SeoMeta.Title), "Produtos Ou e Linha Flow | Mater Domus");
+            builder.AddComponentParameter(3, nameof(SeoMeta.Description), "Conheça os produtos Mater Domus.");
+            builder.AddComponentParameter(4, nameof(SeoMeta.Canonical), "https://www.materdomus.com.br/produtos");
+            builder.CloseComponent();
+
+            builder.OpenComponent<HeadContent>(5);
+            builder.AddComponentParameter(6, "ChildContent", (RenderFragment)(b =>
+            {
+                b.OpenElement(0, "link");
+                b.AddAttribute(1, "rel", "stylesheet");
+                b.AddAttribute(2, "href", "css/produtos.css");
+                b.CloseElement();
+
+                b.OpenElement(3, "meta");
+                b.AddAttribute(4, "name", "competitor");
+                b.CloseElement();
+            }));
+            builder.CloseComponent();
+        }
     }
 
     private sealed class EmptyCatalogService : IProductCatalogService
