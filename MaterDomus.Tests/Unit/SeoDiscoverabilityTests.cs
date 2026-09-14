@@ -172,7 +172,7 @@ public class SeoDiscoverabilityTests
     public void Pages_HaveUniqueTitlesAndDescriptions()
     {
         using var indexCtx = CreateJsContext();
-        var home = indexCtx.RenderComponent<Index>().FindComponent<SeoMeta>().Instance;
+        var home = indexCtx.RenderComponent<MaterDomus.Web.Pages.Index>().FindComponent<SeoMeta>().Instance;
 
         using var sobreCtx = new Bunit.TestContext();
         var sobre = sobreCtx.RenderComponent<Sobre>().FindComponent<SeoMeta>().Instance;
