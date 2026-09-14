@@ -5,7 +5,7 @@
 
 <article role="article" aria-label="@Product.Name" class="product-card @(Product.ComingSoon ? "product-card--coming-soon" : "")">
     <div class="product-card__image-wrapper">
-        <img src="@Product.ImageUrl"
+        <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
              alt="@Product.Name"
              class="product-card__image"
              onerror="this.onerror=null;this.src='images/placeholder-product.png'" />

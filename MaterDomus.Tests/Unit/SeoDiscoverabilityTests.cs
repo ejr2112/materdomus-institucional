@@ -2,8 +2,11 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Bunit;
+using MaterDomus.Web.Models;
 using MaterDomus.Web.Pages;
+using MaterDomus.Web.Services;
 using MaterDomus.Web.Shared;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace MaterDomus.Tests.Unit;
@@ -90,6 +93,10 @@ public class SeoDiscoverabilityTests
         Assert.Contains("name=\"twitter:title\"", html);
         Assert.Contains("name=\"twitter:description\"", html);
         Assert.Contains("name=\"twitter:image\" content=\"https://www.materdomus.com.br/images/logo.png\"", html);
+
+        Assert.Contains("href=\"css/site.css\"", html);
+        Assert.Contains("href=\"css/produtos.css\"", html);
+        Assert.Contains("src=\"js/seo.js\"", html);
 
         Assert.Contains("type=\"application/ld+json\"", html);
         var jsonMatch = Regex.Match(
@@ -207,7 +214,65 @@ public class SeoDiscoverabilityTests
         Assert.Contains("SeoMeta", razor);
         Assert.Contains("Produtos Ou e Linha Flow | Mater Domus", razor);
         Assert.Contains("https://www.materdomus.com.br/produtos", razor);
-        Assert.Contains("<link rel=\"stylesheet\" href=\"css/produtos.css\" />", razor);
+        Assert.Contains("Stylesheet=\"css/produtos.css\"", razor);
+        Assert.DoesNotContain("<HeadContent>", razor);
+    }
+
+    [Fact]
+    public void SeoMeta_KeepsStylesheetInTheSameHeadContent()
+    {
+        var razor = File.ReadAllText(Path.Combine(FindRepoRoot(), "Shared", "SeoMeta.razor"));
+
+        Assert.Contains("<HeadContent>", razor);
+        Assert.Contains("<link rel=\"canonical\" href=\"@Canonical\" />", razor);
+        Assert.Contains("rel=\"stylesheet\"", razor);
+        Assert.Contains("href=\"@Stylesheet\"", razor);
+        Assert.Contains("public string? Stylesheet { get; set; }", razor);
+        Assert.Single(Regex.Matches(razor, "<HeadContent>"));
+    }
+
+    [Fact]
+    public void ProdutosPage_RendersSeoMetaWithProdutosStylesheet()
+    {
+        using var ctx = CreateJsContext();
+        ctx.Services.AddSingleton<IProductCatalogService>(new EmptyCatalogService());
+        ctx.Services.AddScoped<FavoritesService>();
+
+        var cut = ctx.RenderComponent<Produtos>();
+        var seo = cut.FindComponent<SeoMeta>().Instance;
+
+        Assert.Equal("https://www.materdomus.com.br/produtos", seo.Canonical);
+        Assert.Equal("css/produtos.css", seo.Stylesheet);
+        Assert.Contains("Produtos", seo.Title, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ProdutosCss_KeepsCardGridAndComingSoonRules()
+    {
+        var css = ReadWwwroot("css", "produtos.css");
+
+        Assert.Contains(".products-grid", css);
+        Assert.Contains(".product-card", css);
+        Assert.Contains(".product-card__badge", css);
+        Assert.Contains(".filter-bar", css);
+        Assert.Contains(".product-card--coming-soon", css);
+        Assert.Contains(".product-detail__meta", css);
+        Assert.Contains(".product-detail__image-wrapper", css);
+    }
+
+    [Fact]
+    public void SeoJs_RewritesCanonicalFromTheCurrentPath()
+    {
+        var seoJs = ReadWwwroot("js", "seo.js");
+
+        Assert.Contains("https://www.materdomus.com.br", seoJs);
+        Assert.Contains("canonicalForPath", seoJs);
+        Assert.Contains("link[rel=\"canonical\"]", seoJs);
+        Assert.Contains("meta[property=\"og:url\"]", seoJs);
+        Assert.Contains("history.pushState", seoJs);
+        Assert.Contains("history.replaceState", seoJs);
+        Assert.Contains("popstate", seoJs);
+        Assert.Contains("location.pathname", seoJs);
     }
 
     [Fact]
@@ -238,5 +303,11 @@ public class SeoDiscoverabilityTests
         var ctx = new Bunit.TestContext();
         ctx.JSInterop.Mode = JSRuntimeMode.Loose;
         return ctx;
+    }
+
+    private sealed class EmptyCatalogService : IProductCatalogService
+    {
+        public Task<IReadOnlyList<Product>> GetProductsAsync() =>
+            Task.FromResult<IReadOnlyList<Product>>(Array.Empty<Product>());
     }
 }
