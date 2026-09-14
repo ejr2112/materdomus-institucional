@@ -80,7 +80,7 @@ public class CookieConsentAndPrivacyTests
         Assert.Contains(".cookie-banner[hidden]", css);
         Assert.Contains("min-height: 44px", css);
         Assert.Contains(".footer-links", css);
-        Assert.Contains(".privacy-page__note", css);
+        Assert.DoesNotContain(".privacy-page__note", css);
     }
 
     [Fact]
@@ -103,7 +103,9 @@ public class CookieConsentAndPrivacyTests
         Assert.Contains("consentimento", razor);
         Assert.Contains("Última atualização", razor);
         Assert.Contains("Preferências de cookies", razor);
-        Assert.Contains("Não constitui aconselhamento jurídico", razor);
+        Assert.DoesNotContain("privacy-page__note", razor);
+        Assert.DoesNotContain("modelo de transparência", razor);
+        Assert.DoesNotContain("aconselhamento jurídico", razor);
         Assert.DoesNotContain("<HeadContent>", razor);
     }
 
@@ -121,6 +123,7 @@ public class CookieConsentAndPrivacyTests
 
         Assert.Contains("MASTER DOMUS LTDA", cut.Markup);
         Assert.Contains("mailto:contato@materdomus.com.br", cut.Markup);
+        Assert.DoesNotContain("aconselhamento jurídico", cut.Markup);
         var heading = cut.Find("h1");
         Assert.Equal("Política de Privacidade", heading.TextContent.Trim());
     }
