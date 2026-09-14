@@ -7,7 +7,7 @@ Uma alteração de SEO/`HeadOutlet` removeu o `<link>` para `css/produtos.css`. 
 ## Garantia em duas camadas
 
 1. **`wwwroot/index.html`** sempre inclui `<link href="css/produtos.css" rel="stylesheet" />` (e `css/site.css`).
-2. **`Pages/Produtos.razor`** declara `SeoMeta Stylesheet="css/produtos.css"`. O `Stylesheet` é renderizado no **mesmo** `HeadContent` que title/description/canonical — o Blazor WASM (.NET 8+) mantém só uma seção `HeadContent` ativa.
+2. **`Pages/Produtos.razor`** declara `SeoMeta Stylesheet="css/produtos.css"`. O `Stylesheet` é renderizado no **mesmo** `HeadContent` que title/description/canonical. Os testes montam `HeadOutlet` + página e assertam o markup **final do outlet** — um segundo `HeadContent` na página é ignorado pelo Blazor e volta a deixar a grade sem estilo.
 
 Não voltar a um segundo `<HeadContent>` em `Produtos.razor`: ele substitui o `HeadContent` do `SeoMeta` e pode dropar o CSS ou as tags SEO.
 
