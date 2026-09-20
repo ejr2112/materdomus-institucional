@@ -1,39 +1,53 @@
 # Atualização do catálogo (Linha Flow)
 
-O catálogo institucional é o arquivo estático `wwwroot/data/products.json`.
+O catálogo institucional publicado é o arquivo estático `wwwroot/data/products.json`.
+Não há caminho provisório, draft ou unpublished: `/produtos` lê esse JSON.
 A vitrine lista **somente** os SKUs da loja Mater Domus no Seller Central
-(`A20TN3HCSY6KZV`). Não invente produto, ASIN ou combinação.
+(`A20TN3HCSY6KZV`). Não invente produto, ASIN, estoque ou combinação.
 
-## Catálogo Seller (1:1)
+Última curadoria Seller Central: **2026-09-20**.
+Metadados: `wwwroot/data/catalog-meta.json`.
 
-| Amazon title | ASIN | SKU Seller | Status |
-|---|---|---|---|
-| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | ACTIVE — CTA Amazon |
-| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | OOS — Em breve |
-| Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | OOS — Em breve |
-| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | OOS — Em breve |
-| Ou Pano para Chão de Microfibra Chumbo Linha Flow | `B0FXBN7SCB` | 2L-J74H-R1IC | OOS — Em breve |
-| Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow | `B0G634V2NB` | MD-OU-PMW100MESC | OOS — Em breve |
-| Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | OOS — Em breve |
-| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | OOS — Em breve |
-| Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | OOS — Em breve |
-| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | OOS — Em breve |
+## Regra de liberação (FBA Available > 0)
+
+Liberar **Comprar na Amazon** somente quando o listing está buyable
+(FBA Available > 0). Listing **Active com Available = 0** continua **Em breve**
+— não é estoque. Não invente quantidade.
+
+| Amazon title | ASIN | SKU Seller | Seller 2026-09-20 | Site |
+|---|---|---|---|---|
+| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | ACTIVE, FBA Available 6 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | OOS | Em breve, `amazonUrl` vazia |
+| Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | OOS | Em breve, `amazonUrl` vazia |
+| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | Active, Available 0 | Em breve, `amazonUrl` vazia |
+| Ou Pano para Chão de Microfibra Chumbo Linha Flow | `B0FXBN7SCB` | 2L-J74H-R1IC | OOS | Em breve, `amazonUrl` vazia |
+| Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow | `B0G634V2NB` | MD-OU-PMW100MESC | OOS | Em breve, `amazonUrl` vazia |
+| Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | Active, Available 0 | Em breve, `amazonUrl` vazia |
+| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | Active, Available 0 | Em breve, `amazonUrl` vazia |
+| Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | Active, Available 0 | Em breve, `amazonUrl` vazia |
+| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | OOS | Em breve, `amazonUrl` vazia |
 
 Não listar: escova de piso, dispenser 2,3L, cesto 16L, organizador 8L genérico,
 kit borrifador + panos.
 
+Merchant URL do item buyable:
+`https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV`
+
 ## Quando o estoque NorthLog / Amazon voltar
 
-Para um item que hoje aparece como **Em breve**:
+Para um item que hoje aparece como **Em breve** (inclui Active com Available 0):
 
-1. Confirme o ASIN real da loja Mater Domus (`A20TN3HCSY6KZV`). **Não invente ASIN.**
+1. Confirme **FBA Available > 0** no Seller Central da loja Mater Domus
+   (`A20TN3HCSY6KZV`). Active sozinho **não** libera CTA. **Não invente ASIN
+   nem estoque.**
 2. Preencha `amazonUrl` no formato canônico:
    `https://www.amazon.com.br/dp/{ASIN10}?m=A20TN3HCSY6KZV`
 3. Altere **`comingSoon` para `false`**.
 4. Ajuste `price` só se a curadoria confirmar o preço vigente na Amazon.
 5. Mantenha `imageUrl` apontando para a foto oficial em `wwwroot/images/products/`.
    As fotos vêm do catálogo oficial Ou (`ou.com.br` / materiais autorizados).
-6. Faça o redeploy dos arquivos estáticos.
+6. Atualize `catalog-meta.json` (`curatedAt`, `productCount`) e faça o redeploy
+   dos arquivos estáticos (merge em `main`).
 
 O botão **Comprar na Amazon** reaparece automaticamente quando
 `comingSoon === false` **e** `amazonUrl` é canônica. Se `comingSoon`
@@ -50,5 +64,6 @@ mesmo com URL preenchida (útil para pré-cadastrar o ASIN sem abrir listing vaz
 ## Preços de itens "Em breve"
 
 Os preços dos itens em reposição são **preços de referência da Ou** (fabricante),
-não preços vivos da Amazon. O único listing ACTIVE no catálogo é
-`B0GKPPS5YH` (Ou Dispenser Quadrado 1L Branco Linha Flow) — preço Amazon R$ 39,90.
+não preços vivos da Amazon. O único listing buyable no catálogo (2026-09-20) é
+`B0GKPPS5YH` / `MD-OU-0001` (Ou Dispenser Quadrado 1L Branco Linha Flow) —
+preço Amazon R$ 39,90.

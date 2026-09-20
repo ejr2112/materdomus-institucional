@@ -83,6 +83,40 @@ public class ComingSoonCatalogTests
         "Kit borrifador e panos"
     };
 
+    /// <summary>
+    /// ASINs Active no Seller Central em 2026-09-20 com FBA Available = 0.
+    /// Continuam Em breve — Active sozinho não libera CTA.
+    /// </summary>
+    private static readonly string[] ActiveAvailableZeroAsins =
+    {
+        "B0GKQ4VVPQ",
+        "B0CZTTSHB7",
+        "B0CZTTRFQR",
+        "B0CZTTVLWK"
+    };
+
+    private static readonly string[] OutOfStockAsins =
+    {
+        "B0F8PWY3M5",
+        "B0FXBN7SCB",
+        "B0GKPZMCYZ",
+        "B0G634V2NB",
+        "B0GKPQ99R8"
+    };
+
+    private const string BuyableAsin = "B0GKPPS5YH";
+    private const string BuyableMerchantUrl =
+        "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV";
+
+    private static Product FindByAsin(IEnumerable<Product> products, string asin)
+    {
+        var match = products.SingleOrDefault(p =>
+            p.AmazonUrl.Contains(asin, StringComparison.OrdinalIgnoreCase)
+            || p.Id.Contains(asin, StringComparison.OrdinalIgnoreCase));
+        Assert.NotNull(match);
+        return match!;
+    }
+
     [Fact]
     public void Catalog_MatchesSellerCentralListings_ExactlyTen()
     {
@@ -108,7 +142,7 @@ public class ComingSoonCatalogTests
         Assert.Single(available);
         Assert.Equal("dispenser-flow-quadrado-branco-001", available[0].Id);
         Assert.Equal("Ou Dispenser Quadrado 1L Branco Linha Flow", available[0].Name);
-        Assert.Equal("https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV", available[0].AmazonUrl);
+        Assert.Equal(BuyableMerchantUrl, available[0].AmazonUrl);
         Assert.False(available[0].ComingSoon);
 
         Assert.Equal(9, products.Count(p => p.ComingSoon));
@@ -118,6 +152,46 @@ public class ComingSoonCatalogTests
                 $"Item '{comingSoon.Id}' está Em breve e não deve ter amazonUrl preenchida.");
             Assert.False(ProductHelpers.ShowAmazonCta(comingSoon));
         }
+    }
+
+    [Fact]
+    public void Catalog_2026_09_20_LiberatesOnlyFbaAvailableDispenser()
+    {
+        var products = LoadCatalog();
+        var buyable = FindByAsin(products, BuyableAsin);
+
+        Assert.Equal("dispenser-flow-quadrado-branco-001", buyable.Id);
+        Assert.False(buyable.ComingSoon);
+        Assert.Equal(BuyableMerchantUrl, buyable.AmazonUrl);
+        Assert.True(ProductHelpers.ShowAmazonCta(buyable));
+        Assert.Equal(39.90m, buyable.Price);
+
+        foreach (var asin in ActiveAvailableZeroAsins.Concat(OutOfStockAsins))
+        {
+            var product = FindByAsin(products, asin);
+            Assert.True(product.ComingSoon,
+                $"ASIN {asin} ({product.Id}) não é FBA Available > 0 e deve permanecer Em breve.");
+            Assert.True(string.IsNullOrEmpty(product.AmazonUrl),
+                $"ASIN {asin} ({product.Id}) não deve ter amazonUrl até Available > 0.");
+            Assert.False(ProductHelpers.ShowAmazonCta(product));
+        }
+    }
+
+    [Fact]
+    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_09_20()
+    {
+        var metaPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "catalog-meta.json");
+        Assert.True(File.Exists(metaPath), "catalog-meta.json é o registro publicado da curadoria.");
+
+        using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
+        var root = doc.RootElement;
+
+        Assert.Equal("2026-09-20", root.GetProperty("curatedAt").GetString());
+        Assert.Equal(
+            "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
+            root.GetProperty("sourceUrl").GetString());
+        Assert.Equal(10, root.GetProperty("productCount").GetInt32());
+        Assert.Equal(10, LoadCatalog().Count);
     }
 
     [Fact]
