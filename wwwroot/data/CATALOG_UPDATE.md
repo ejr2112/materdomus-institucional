@@ -5,7 +5,7 @@ Não há caminho provisório, draft ou unpublished: `/produtos` lê esse JSON.
 A vitrine lista **somente** os SKUs da loja Mater Domus no Seller Central
 (`A20TN3HCSY6KZV`). Não invente produto, ASIN, estoque ou combinação.
 
-Última curadoria Seller Central: **2026-09-20**.
+Última curadoria Seller Central: **2026-09-21** (~23h BRT).
 Metadados: `wwwroot/data/catalog-meta.json`.
 
 ## Regra de liberação (FBA Available > 0)
@@ -14,24 +14,25 @@ Liberar **Comprar na Amazon** somente quando o listing está buyable
 (FBA Available > 0). Listing **Active com Available = 0** continua **Em breve**
 — não é estoque. Não invente quantidade.
 
-| Amazon title | ASIN | SKU Seller | Seller 2026-09-20 | Site |
+| Amazon title | ASIN | SKU Seller | Seller 2026-09-21 | Site |
 |---|---|---|---|---|
-| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | ACTIVE, FBA Available 6 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
-| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | OOS | Em breve, `amazonUrl` vazia |
-| Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | OOS | Em breve, `amazonUrl` vazia |
-| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | Active, Available 0 | Em breve, `amazonUrl` vazia |
-| Ou Pano para Chão de Microfibra Chumbo Linha Flow | `B0FXBN7SCB` | 2L-J74H-R1IC | OOS | Em breve, `amazonUrl` vazia |
+| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | FBA Available 7 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | on-hand, Available 0, LABEL_ISSUE receiving | Em breve, `amazonUrl` vazia |
+| Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | OOS / blocked case | Em breve, `amazonUrl` vazia |
+| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | FBA Available 9 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Pano para Chão de Microfibra Chumbo Linha Flow | `B0FXBN7SCB` | 2L-J74H-R1IC | OOS / blocked | Em breve, `amazonUrl` vazia |
 | Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow | `B0G634V2NB` | MD-OU-PMW100MESC | OOS | Em breve, `amazonUrl` vazia |
-| Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | Active, Available 0 | Em breve, `amazonUrl` vazia |
-| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | Active, Available 0 | Em breve, `amazonUrl` vazia |
-| Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | Active, Available 0 | Em breve, `amazonUrl` vazia |
-| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | OOS | Em breve, `amazonUrl` vazia |
+| Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | on-hand, Available 0 (reserved) | Em breve, `amazonUrl` vazia |
+| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | FBA Available 11 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | FBA Available 4 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | on-hand, Available 0 | Em breve, `amazonUrl` vazia |
 
 Não listar: escova de piso, dispenser 2,3L, cesto 16L, organizador 8L genérico,
 kit borrifador + panos.
 
-Merchant URL do item buyable:
-`https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV`
+Merchant URL dos itens buyable (`Available > 0`):
+`https://www.amazon.com.br/dp/{ASIN}?m=A20TN3HCSY6KZV`
+(`B0GKPPS5YH`, `B0CZTTRFQR`, `B0CZTTVLWK`, `B0GKQ4VVPQ`).
 
 ## Quando o estoque NorthLog / Amazon voltar
 
@@ -64,6 +65,7 @@ mesmo com URL preenchida (útil para pré-cadastrar o ASIN sem abrir listing vaz
 ## Preços de itens "Em breve"
 
 Os preços dos itens em reposição são **preços de referência da Ou** (fabricante),
-não preços vivos da Amazon. O único listing buyable no catálogo (2026-09-20) é
-`B0GKPPS5YH` / `MD-OU-0001` (Ou Dispenser Quadrado 1L Branco Linha Flow) —
-preço Amazon R$ 39,90.
+não preços vivos da Amazon. Os quatro listings buyable em 2026-09-21 mantêm o
+preço já publicado em `products.json` (não inventar preço na liberação):
+`B0GKPPS5YH` R$ 39,90, `B0CZTTVLWK` R$ 17,09, `B0CZTTRFQR` R$ 20,69 e
+`B0GKQ4VVPQ` R$ 58,49.

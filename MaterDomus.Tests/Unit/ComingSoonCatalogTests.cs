@@ -84,29 +84,33 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs Active no Seller Central em 2026-09-20 com FBA Available = 0.
-    /// Continuam Em breve — Active sozinho não libera CTA.
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-09-21
+    /// (on-hand reservado, LABEL_ISSUE ou OOS/blocked). Continuam Em breve.
     /// </summary>
-    private static readonly string[] ActiveAvailableZeroAsins =
+    private static readonly string[] UnavailableAsins =
     {
-        "B0GKQ4VVPQ",
+        "B0GKPZMCYZ",
+        "B0GKPQ99R8",
         "B0CZTTSHB7",
-        "B0CZTTRFQR",
-        "B0CZTTVLWK"
-    };
-
-    private static readonly string[] OutOfStockAsins =
-    {
         "B0F8PWY3M5",
         "B0FXBN7SCB",
-        "B0GKPZMCYZ",
-        "B0G634V2NB",
-        "B0GKPQ99R8"
+        "B0G634V2NB"
     };
 
-    private const string BuyableAsin = "B0GKPPS5YH";
-    private const string BuyableMerchantUrl =
-        "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV";
+    /// <summary>
+    /// Listings com FBA Available &gt; 0 em 2026-09-21. Preço é o já publicado
+    /// em products.json — a curadoria não inventa preço.
+    /// </summary>
+    private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
+    {
+        ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
+        ("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m),
+        ("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m),
+        ("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m)
+    };
+
+    private static string MerchantUrl(string asin) =>
+        $"https://www.amazon.com.br/dp/{asin}?m=A20TN3HCSY6KZV";
 
     private static Product FindByAsin(IEnumerable<Product> products, string asin)
     {
@@ -134,18 +138,25 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void Catalog_OnlyActiveDispenserHasAmazonCta_ComingSoonHaveEmptyUrl()
+    public void Catalog_FbaAvailableListingsHaveAmazonCta_ComingSoonHaveEmptyUrl()
     {
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
-        Assert.Single(available);
-        Assert.Equal("dispenser-flow-quadrado-branco-001", available[0].Id);
-        Assert.Equal("Ou Dispenser Quadrado 1L Branco Linha Flow", available[0].Name);
-        Assert.Equal(BuyableMerchantUrl, available[0].AmazonUrl);
-        Assert.False(available[0].ComingSoon);
+        Assert.Equal(4, available.Count);
+        Assert.Equal(
+            BuyableListings.Select(b => b.Id).OrderBy(id => id, StringComparer.Ordinal),
+            available.Select(p => p.Id).OrderBy(id => id, StringComparer.Ordinal));
 
-        Assert.Equal(9, products.Count(p => p.ComingSoon));
+        foreach (var listing in BuyableListings)
+        {
+            var product = available.Single(p => p.Id == listing.Id);
+            Assert.False(product.ComingSoon);
+            Assert.Equal(MerchantUrl(listing.Asin), product.AmazonUrl);
+            Assert.Equal(listing.Price, product.Price);
+        }
+
+        Assert.Equal(6, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
@@ -155,18 +166,21 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void Catalog_2026_09_20_LiberatesOnlyFbaAvailableDispenser()
+    public void Catalog_2026_09_21_LiberatesOnlyFbaAvailableListings()
     {
         var products = LoadCatalog();
-        var buyable = FindByAsin(products, BuyableAsin);
 
-        Assert.Equal("dispenser-flow-quadrado-branco-001", buyable.Id);
-        Assert.False(buyable.ComingSoon);
-        Assert.Equal(BuyableMerchantUrl, buyable.AmazonUrl);
-        Assert.True(ProductHelpers.ShowAmazonCta(buyable));
-        Assert.Equal(39.90m, buyable.Price);
+        foreach (var listing in BuyableListings)
+        {
+            var product = FindByAsin(products, listing.Asin);
+            Assert.Equal(listing.Id, product.Id);
+            Assert.False(product.ComingSoon);
+            Assert.Equal(MerchantUrl(listing.Asin), product.AmazonUrl);
+            Assert.True(ProductHelpers.ShowAmazonCta(product));
+            Assert.Equal(listing.Price, product.Price);
+        }
 
-        foreach (var asin in ActiveAvailableZeroAsins.Concat(OutOfStockAsins))
+        foreach (var asin in UnavailableAsins)
         {
             var product = FindByAsin(products, asin);
             Assert.True(product.ComingSoon,
@@ -178,7 +192,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_09_20()
+    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_09_21()
     {
         var metaPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "catalog-meta.json");
         Assert.True(File.Exists(metaPath), "catalog-meta.json é o registro publicado da curadoria.");
@@ -186,7 +200,7 @@ public class ComingSoonCatalogTests
         using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
         var root = doc.RootElement;
 
-        Assert.Equal("2026-09-20", root.GetProperty("curatedAt").GetString());
+        Assert.Equal("2026-09-21", root.GetProperty("curatedAt").GetString());
         Assert.Equal(
             "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
             root.GetProperty("sourceUrl").GetString());
