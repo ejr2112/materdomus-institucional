@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Bunit;
 using MaterDomus.Web.Helpers;
 using MaterDomus.Web.Models;
@@ -103,6 +104,104 @@ public class AvailableFirstListingTests
         Assert.Equal(2, soonCards.Count);
         Assert.All(soonCards, card =>
             Assert.Equal("Em breve", card.QuerySelector(".product-card__badge")!.TextContent.Trim()));
+    }
+
+    /// <summary>
+    /// O JSON publicado intercala disponíveis e Em breve. A página tem de
+    /// reordenar pela flag, mesmo se a lista chegar invertida — sem ASIN fixo.
+    /// </summary>
+    [Fact]
+    public void ProdutosPage_RealCatalog_ListsAvailableBeforeComingSoon_EvenWhenReversed()
+    {
+        var catalog = LoadCatalog();
+        Assert.Contains(catalog, p => p.ComingSoon);
+        Assert.Contains(catalog, p => !p.ComingSoon);
+        Assert.True(
+            catalog.Zip(catalog.Skip(1), (a, b) => a.ComingSoon && !b.ComingSoon).Any(),
+            "O catálogo de teste precisa continuar intercalado para provar o sort da página.");
+
+        var reversed = catalog.AsEnumerable().Reverse().ToList();
+        var expected = reversed.Where(p => !p.ComingSoon)
+            .Concat(reversed.Where(p => p.ComingSoon))
+            .Select(p => p.Id)
+            .ToList();
+
+        using var ctx = new Bunit.TestContext();
+        ctx.Services.AddSingleton<IProductCatalogService>(new FakeCatalog(reversed));
+        ctx.Services.AddScoped<FavoritesService>();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+
+        var cut = ctx.RenderComponent<Produtos>();
+
+        cut.WaitForAssertion(() =>
+        {
+            var ids = cut.FindAll("article.product-card")
+                .Select(card => card.GetAttribute("aria-label"))
+                .ToList();
+            var names = expected.Select(id => reversed.Single(p => p.Id == id).Name);
+            Assert.Equal(names, ids);
+        });
+
+        var availableIds = reversed.Where(p => !p.ComingSoon).Select(p => p.Name).ToList();
+        var soonIds = reversed.Where(p => p.ComingSoon).Select(p => p.Name).ToList();
+
+        var availableCards = cut.FindAll("section.products-section--available article.product-card");
+        Assert.Equal(availableIds, availableCards.Select(c => c.GetAttribute("aria-label")));
+        Assert.All(availableCards, card =>
+        {
+            Assert.Contains("product-card--available", card.GetAttribute("class"));
+            Assert.Equal("Disponível", card.QuerySelector(".product-card__badge--available")!.TextContent.Trim());
+            Assert.NotEmpty(card.QuerySelectorAll("a.product-card__amazon-btn"));
+        });
+
+        var soonCards = cut.FindAll("section.products-section--soon article.product-card");
+        Assert.Equal(soonIds, soonCards.Select(c => c.GetAttribute("aria-label")));
+        Assert.All(soonCards, card =>
+        {
+            Assert.Equal("Em breve", card.QuerySelector(".product-card__badge")!.TextContent.Trim());
+            Assert.Empty(card.QuerySelectorAll("a.product-card__amazon-btn"));
+        });
+    }
+
+    [Fact]
+    public void ProdutosCss_AvailableHighlightIsHighContrast_AndSectionsKeepVitrineWidth()
+    {
+        var css = File.ReadAllText(Path.Combine(FindRepoRoot(), "wwwroot", "css", "produtos.css"));
+
+        var marker = ".product-card__badge--available {";
+        var start = css.IndexOf(marker, StringComparison.Ordinal);
+        Assert.True(start >= 0, "Falta a regra do selo Disponível.");
+        var block = css.Substring(start, css.IndexOf('}', start) - start);
+        Assert.Contains("background: #1a1a1a", block);
+        Assert.Contains("color: #fff", block);
+        Assert.DoesNotContain("background: #fff", block);
+
+        Assert.Contains("main section.products-section", css);
+        Assert.Contains("max-width: none", css);
+        Assert.Contains("border: 2px solid #1a1a1a", css);
+    }
+
+    private static List<Product> LoadCatalog()
+    {
+        var jsonPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "products.json");
+        var products = JsonSerializer.Deserialize<List<Product>>(
+            File.ReadAllText(jsonPath),
+            new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        Assert.NotNull(products);
+        return products!;
+    }
+
+    private static string FindRepoRoot()
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null)
+        {
+            if (File.Exists(Path.Combine(dir.FullName, "MaterDomus.Web.csproj")))
+                return dir.FullName;
+            dir = dir.Parent;
+        }
+
+        throw new DirectoryNotFoundException("Raiz do repositório não encontrada.");
     }
 
     private sealed class FakeCatalog : IProductCatalogService
