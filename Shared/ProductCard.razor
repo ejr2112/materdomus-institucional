@@ -3,7 +3,7 @@
 @using MaterDomus.Web.Helpers
 @inject FavoritesService FavoritesService
 
-<article role="article" aria-label="@Product.Name" class="product-card @(Product.ComingSoon ? "product-card--coming-soon" : "")">
+<article role="article" aria-label="@Product.Name" class="product-card @(Product.ComingSoon ? "product-card--coming-soon" : "product-card--available")">
     <div class="product-card__image-wrapper">
         <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
              alt="@Product.Name"
@@ -12,6 +12,10 @@
         @if (Product.ComingSoon)
         {
             <span class="product-card__badge">Em breve</span>
+        }
+        else
+        {
+            <span class="product-card__badge product-card__badge--available">Disponível</span>
         }
     </div>
     <div class="product-card__body">
