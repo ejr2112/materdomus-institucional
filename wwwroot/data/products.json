@@ -36,8 +36,8 @@
     "imageUrl": "images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
     "category": "Limpeza",
     "price": 17.09,
-    "amazonUrl": "",
-    "comingSoon": true
+    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
+    "comingSoon": false
   },
   {
     "id": "pano-chao-microfibra-chumbo-b0fxbn7scb",
@@ -76,8 +76,8 @@
     "imageUrl": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr.jpg",
     "category": "Limpeza",
     "price": 20.69,
-    "amazonUrl": "",
-    "comingSoon": true
+    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV",
+    "comingSoon": false
   },
   {
     "id": "organizador-parede-armario-branco-b0gkq4vvpq",
@@ -86,8 +86,8 @@
     "imageUrl": "images/products/organizador-parede-armario-branco-b0gkq4vvpq.png",
     "category": "Organização",
     "price": 58.49,
-    "amazonUrl": "",
-    "comingSoon": true
+    "amazonUrl": "https://www.amazon.com.br/dp/B0GKQ4VVPQ?m=A20TN3HCSY6KZV",
+    "comingSoon": false
   },
   {
     "id": "organizador-parede-multiuso-bege-b0gkpq99r8",
