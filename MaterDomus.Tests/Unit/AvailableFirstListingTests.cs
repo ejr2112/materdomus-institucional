@@ -107,8 +107,8 @@ public class AvailableFirstListingTests
     }
 
     /// <summary>
-    /// O JSON publicado intercala disponíveis e Em breve. A página tem de
-    /// reordenar pela flag, mesmo se a lista chegar invertida — sem ASIN fixo.
+    /// A página reordena pela flag mesmo se a lista chegar invertida — sem ASIN fixo.
+    /// O JSON publicado já agrupa disponíveis primeiro; o teste inverte essa ordem.
     /// </summary>
     [Fact]
     public void ProdutosPage_RealCatalog_ListsAvailableBeforeComingSoon_EvenWhenReversed()
@@ -116,11 +116,13 @@ public class AvailableFirstListingTests
         var catalog = LoadCatalog();
         Assert.Contains(catalog, p => p.ComingSoon);
         Assert.Contains(catalog, p => !p.ComingSoon);
-        Assert.True(
-            catalog.Zip(catalog.Skip(1), (a, b) => a.ComingSoon && !b.ComingSoon).Any(),
-            "O catálogo de teste precisa continuar intercalado para provar o sort da página.");
 
         var reversed = catalog.AsEnumerable().Reverse().ToList();
+        var availableFirstCount = reversed.TakeWhile(p => !p.ComingSoon).Count();
+        Assert.False(
+            availableFirstCount == reversed.Count(p => !p.ComingSoon),
+            "A lista invertida precisa começar pelos Em breve para provar o sort da página.");
+
         var expected = reversed.Where(p => !p.ComingSoon)
             .Concat(reversed.Where(p => p.ComingSoon))
             .Select(p => p.Id)

@@ -16,18 +16,8 @@
     "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.jpg",
     "category": "Lavanderia",
     "price": 49.49,
-    "amazonUrl": "",
-    "comingSoon": true
-  },
-  {
-    "id": "rodo-bege-b0f8pwy3m5",
-    "name": "Ou Rodo Bege Linha Flow",
-    "description": "Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar.",
-    "imageUrl": "images/products/rodo-bege-b0f8pwy3m5.jpg",
-    "category": "Limpeza",
-    "price": 51.99,
-    "amazonUrl": "",
-    "comingSoon": true
+    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
+    "comingSoon": false
   },
   {
     "id": "rodo-multiuso-bege-b0czttvlwk",
@@ -38,36 +28,6 @@
     "price": 17.09,
     "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
     "comingSoon": false
-  },
-  {
-    "id": "pano-chao-microfibra-chumbo-b0fxbn7scb",
-    "name": "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
-    "description": "Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso.",
-    "imageUrl": "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb.jpg",
-    "category": "Limpeza",
-    "price": 19.79,
-    "amazonUrl": "",
-    "comingSoon": true
-  },
-  {
-    "id": "kit-3-panos-microfibra-b0g634v2nb",
-    "name": "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
-    "description": "Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária.",
-    "imageUrl": "images/products/kit-3-panos-microfibra-b0g634v2nb.jpg",
-    "category": "Limpeza",
-    "price": 18.69,
-    "amazonUrl": "",
-    "comingSoon": true
-  },
-  {
-    "id": "borrifador-500ml-bege-b0czttshb7",
-    "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
-    "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
-    "imageUrl": "images/products/borrifador-500ml-bege-b0czttshb7.jpg",
-    "category": "Limpeza",
-    "price": 29.74,
-    "amazonUrl": "",
-    "comingSoon": true
   },
   {
     "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
@@ -96,6 +56,46 @@
     "imageUrl": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8.png",
     "category": "Organização",
     "price": 56.69,
+    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV",
+    "comingSoon": false
+  },
+  {
+    "id": "rodo-bege-b0f8pwy3m5",
+    "name": "Ou Rodo Bege Linha Flow",
+    "description": "Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar.",
+    "imageUrl": "images/products/rodo-bege-b0f8pwy3m5.jpg",
+    "category": "Limpeza",
+    "price": 51.99,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "pano-chao-microfibra-chumbo-b0fxbn7scb",
+    "name": "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
+    "description": "Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso.",
+    "imageUrl": "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb.jpg",
+    "category": "Limpeza",
+    "price": 19.79,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "kit-3-panos-microfibra-b0g634v2nb",
+    "name": "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
+    "description": "Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária.",
+    "imageUrl": "images/products/kit-3-panos-microfibra-b0g634v2nb.jpg",
+    "category": "Limpeza",
+    "price": 18.69,
+    "amazonUrl": "",
+    "comingSoon": true
+  },
+  {
+    "id": "borrifador-500ml-bege-b0czttshb7",
+    "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+    "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
+    "imageUrl": "images/products/borrifador-500ml-bege-b0czttshb7.jpg",
+    "category": "Limpeza",
+    "price": 29.74,
     "amazonUrl": "",
     "comingSoon": true
   }
