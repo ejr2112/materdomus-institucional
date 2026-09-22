@@ -434,14 +434,8 @@ main section.products-section {
   z-index: 1;
 }
 
-/* Solid ink on white product photos. The previous white badge sat on
-   the same tone as the packshot and read as "no highlight". */
-.product-card__badge--available {
-  background: #1a1a1a;
-  color: #fff;
-  border: 0;
-  letter-spacing: 0.08em;
-}
+/* Status badge only for Em breve / unavailable cards. Available cards
+   keep distinction via .product-card--available border/shadow — no text etiqueta. */
 
 .product-detail__badge {
   align-self: flex-start;

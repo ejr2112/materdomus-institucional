@@ -276,7 +276,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void ProductCard_Available_ShowsAmazonCtaAndAvailableBadge()
+    public void ProductCard_Available_ShowsAmazonCtaAndNoStatusBadge()
     {
         using var ctx = CreateContext();
         var product = Make(comingSoon: false);
@@ -285,7 +285,7 @@ public class ComingSoonCatalogTests
         var cta = cut.Find("a.product-card__amazon-btn");
         Assert.Equal(product.AmazonUrl, cta.GetAttribute("href"));
         Assert.Equal("Comprar na Amazon", cta.TextContent.Trim());
-        Assert.Equal("Disponível", cut.Find(".product-card__badge--available").TextContent.Trim());
+        Assert.Empty(cut.FindAll(".product-card__badge"));
         Assert.Contains("product-card--available", cut.Find("article.product-card").GetAttribute("class"));
     }
 
@@ -328,7 +328,7 @@ public class ComingSoonCatalogTests
         using var ctx = CreateContext();
         var cut = ctx.RenderComponent<ProductCard>(p => p.Add(c => c.Product, restocked));
         Assert.Single(cut.FindAll("a.product-card__amazon-btn"));
-        Assert.Equal("Disponível", cut.Find(".product-card__badge").TextContent.Trim());
+        Assert.Empty(cut.FindAll(".product-card__badge"));
     }
 
     [Fact]

@@ -97,7 +97,7 @@ public class AvailableFirstListingTests
         Assert.All(availableCards, card =>
         {
             Assert.Contains("product-card--available", card.GetAttribute("class"));
-            Assert.Equal("Disponível", card.QuerySelector(".product-card__badge--available")!.TextContent.Trim());
+            Assert.Empty(card.QuerySelectorAll(".product-card__badge"));
         });
 
         var soonCards = cut.FindAll("section.products-section--soon article.product-card");
@@ -150,7 +150,7 @@ public class AvailableFirstListingTests
         Assert.All(availableCards, card =>
         {
             Assert.Contains("product-card--available", card.GetAttribute("class"));
-            Assert.Equal("Disponível", card.QuerySelector(".product-card__badge--available")!.TextContent.Trim());
+            Assert.Empty(card.QuerySelectorAll(".product-card__badge"));
             Assert.NotEmpty(card.QuerySelectorAll("a.product-card__amazon-btn"));
         });
 
@@ -168,17 +168,17 @@ public class AvailableFirstListingTests
     {
         var css = File.ReadAllText(Path.Combine(FindRepoRoot(), "wwwroot", "css", "produtos.css"));
 
-        var marker = ".product-card__badge--available {";
+        // Available cards use border/shadow — no text badge saying Disponível.
+        Assert.DoesNotContain(".product-card__badge--available", css);
+
+        var marker = ".product-card--available {";
         var start = css.IndexOf(marker, StringComparison.Ordinal);
-        Assert.True(start >= 0, "Falta a regra do selo Disponível.");
+        Assert.True(start >= 0, "Falta o destaque visual do card disponível.");
         var block = css.Substring(start, css.IndexOf('}', start) - start);
-        Assert.Contains("background: #1a1a1a", block);
-        Assert.Contains("color: #fff", block);
-        Assert.DoesNotContain("background: #fff", block);
+        Assert.Contains("border: 2px solid #1a1a1a", block);
 
         Assert.Contains("main section.products-section", css);
         Assert.Contains("max-width: none", css);
-        Assert.Contains("border: 2px solid #1a1a1a", css);
     }
 
     private static List<Product> LoadCatalog()

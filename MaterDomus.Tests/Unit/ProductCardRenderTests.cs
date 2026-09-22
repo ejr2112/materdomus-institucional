@@ -85,10 +85,11 @@ public class ProductCardRenderTests
             var badges = cut.FindAll(".product-card__badge");
             bool shouldShow = ProductHelpers.ShowAmazonCta(product);
             var badgeText = badges.Count == 1 ? badges[0].TextContent.Trim() : "";
-            bool expectedBadge = comingSoon ? badgeText == "Em breve" : badgeText == "Disponível";
-            bool result = buttons.Count == (shouldShow ? 1 : 0)
-                          && badges.Count == 1
-                          && expectedBadge;
+            // Badge only for Em breve; available cards have no status etiqueta.
+            bool expectedBadge = comingSoon
+                ? badges.Count == 1 && badgeText == "Em breve"
+                : badges.Count == 0;
+            bool result = buttons.Count == (shouldShow ? 1 : 0) && expectedBadge;
 
             return result
                 .ToProperty()
