@@ -7,4 +7,4 @@ Add a file named `placeholder-product.png` to this directory
 This image is displayed whenever a product's imageUrl is unavailable
 or fails to load (handled via the onerror fallback in ProductCard.razor).
 
-Recommended dimensions: 400 x 300 px (4:3 ratio).
+Recommended dimensions: 800 x 800 px (1:1, matching the vitrine frame).
