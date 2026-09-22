@@ -299,6 +299,17 @@ main section.produtos-page,
 }
 
 /* ── Availability sections ──────────────────────────────────── */
+/* site.css `main section` caps every <section> at 860px and adds a large
+   vertical margin. These groups live inside the vitrine
+   (main section.produtos-page, up to 1240px). Without this override the
+   grid shrinks and the two blocks stop reading as separate sections. */
+main section.products-section {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .products-section + .products-section {
   margin-top: 36px;
   padding-top: 8px;
@@ -311,6 +322,12 @@ main section.produtos-page,
   font-weight: 600;
   letter-spacing: -0.2px;
   color: #222;
+}
+
+.products-section--available .products-section__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
 }
 
 .products-section--soon .products-section__title {
@@ -373,12 +390,12 @@ main section.produtos-page,
 }
 
 .product-card--available {
-  border-color: #1a1a1a;
-  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.1);
+  border: 2px solid #1a1a1a;
+  box-shadow: 0 6px 18px rgba(26, 26, 26, 0.14);
 }
 
 .product-card--available:hover {
-  box-shadow: 0 8px 22px rgba(26, 26, 26, 0.14);
+  box-shadow: 0 10px 26px rgba(26, 26, 26, 0.18);
 }
 
 .product-card--coming-soon {
@@ -417,11 +434,13 @@ main section.produtos-page,
   z-index: 1;
 }
 
+/* Solid ink on white product photos. The previous white badge sat on
+   the same tone as the packshot and read as "no highlight". */
 .product-card__badge--available {
-  background: #fff;
-  color: #1a1a1a;
-  border: 1px solid #1a1a1a;
-  letter-spacing: 0.06em;
+  background: #1a1a1a;
+  color: #fff;
+  border: 0;
+  letter-spacing: 0.08em;
 }
 
 .product-detail__badge {
