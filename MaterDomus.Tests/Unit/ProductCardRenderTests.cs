@@ -84,12 +84,15 @@ public class ProductCardRenderTests
             var buttons = cut.FindAll("a.product-card__amazon-btn");
             var badges = cut.FindAll(".product-card__badge");
             bool shouldShow = ProductHelpers.ShowAmazonCta(product);
+            var badgeText = badges.Count == 1 ? badges[0].TextContent.Trim() : "";
+            bool expectedBadge = comingSoon ? badgeText == "Em breve" : badgeText == "Disponível";
             bool result = buttons.Count == (shouldShow ? 1 : 0)
-                          && badges.Count == (comingSoon ? 1 : 0);
+                          && badges.Count == 1
+                          && expectedBadge;
 
             return result
                 .ToProperty()
-                .Label($"AmazonUrl='{amazonUrl}', comingSoon={comingSoon}, shouldShow={shouldShow}: buttons={buttons.Count}, badges={badges.Count}");
+                .Label($"AmazonUrl='{amazonUrl}', comingSoon={comingSoon}, shouldShow={shouldShow}: buttons={buttons.Count}, badges={badges.Count}, badge='{badgeText}'");
         });
     }
 

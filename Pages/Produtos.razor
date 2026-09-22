@@ -95,12 +95,31 @@
         }
         else
         {
-            <div class="products-grid products-grid--fade-in">
-                @foreach (var product in FilteredProducts)
-                {
-                    <ProductCard Product="product" OnVerDetalhes="AbrirDetalhes" />
-                }
-            </div>
+            @if (Listing.Available.Count > 0)
+            {
+                <section class="products-section products-section--available" aria-labelledby="produtos-disponiveis-heading">
+                    <h2 id="produtos-disponiveis-heading" class="products-section__title">Disponíveis agora</h2>
+                    <div class="products-grid products-grid--fade-in">
+                        @foreach (var product in Listing.Available)
+                        {
+                            <ProductCard Product="product" OnVerDetalhes="AbrirDetalhes" />
+                        }
+                    </div>
+                </section>
+            }
+
+            @if (Listing.ComingSoon.Count > 0)
+            {
+                <section class="products-section products-section--soon" aria-labelledby="produtos-em-breve-heading">
+                    <h2 id="produtos-em-breve-heading" class="products-section__title">Em breve</h2>
+                    <div class="products-grid products-grid--fade-in">
+                        @foreach (var product in Listing.ComingSoon)
+                        {
+                            <ProductCard Product="product" OnVerDetalhes="AbrirDetalhes" />
+                        }
+                    </div>
+                </section>
+            }
         }
     }
 
@@ -162,6 +181,13 @@
             .Where(p => string.IsNullOrEmpty(_selectedCategory) ||
                         p.Category == _selectedCategory)
             .Where(p => !_showFavoritesOnly || FavoritesService.IsFavorite(p.Id));
+
+    /// <summary>
+    /// Disponíveis (<c>comingSoon: false</c>) antes dos Em breve, na ordem
+    /// relativa do JSON filtrado. A flag vem do catálogo — sem ASIN fixo.
+    /// </summary>
+    private (IReadOnlyList<Product> Available, IReadOnlyList<Product> ComingSoon) Listing =>
+        ProductHelpers.PartitionByAvailability(FilteredProducts);
 
     protected override async Task OnInitializedAsync()
     {

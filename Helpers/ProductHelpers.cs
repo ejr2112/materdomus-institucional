@@ -47,4 +47,30 @@ public static class ProductHelpers
         string.IsNullOrWhiteSpace(imageUrl)
             ? "images/placeholder-product.png"
             : imageUrl;
+
+    /// <summary>
+    /// Separa o catálogo já filtrado em disponíveis e "Em breve", preservando
+    /// a ordem relativa de cada grupo. Disponíveis (<c>ComingSoon == false</c>)
+    /// vêm primeiro. A decisão usa só a flag do JSON — sem ASIN fixo — para a
+    /// sincronização de estoque continuar movendo itens ao mudar <c>comingSoon</c>.
+    /// </summary>
+    public static (IReadOnlyList<Product> Available, IReadOnlyList<Product> ComingSoon) PartitionByAvailability(
+        IEnumerable<Product>? products)
+    {
+        var available = new List<Product>();
+        var comingSoon = new List<Product>();
+
+        if (products is null)
+            return (available, comingSoon);
+
+        foreach (var product in products)
+        {
+            if (product.ComingSoon)
+                comingSoon.Add(product);
+            else
+                available.Add(product);
+        }
+
+        return (available, comingSoon);
+    }
 }
