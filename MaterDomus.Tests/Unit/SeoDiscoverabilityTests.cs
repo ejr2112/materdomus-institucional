@@ -220,7 +220,7 @@ public class SeoDiscoverabilityTests
         var razor = File.ReadAllText(Path.Combine(FindRepoRoot(), "Pages", "Produtos.razor"));
 
         Assert.Contains("SeoMeta", razor);
-        Assert.Contains("Produtos Ou e Linha Flow | Mater Domus", razor);
+        Assert.Contains("Vitrine Ou e Linha Flow | Mater Domus", razor);
         Assert.Contains("https://www.materdomus.com.br/produtos", razor);
         Assert.Contains("Stylesheet=\"css/produtos.css\"", razor);
         Assert.DoesNotContain("<HeadContent>", razor);
@@ -257,7 +257,7 @@ public class SeoDiscoverabilityTests
 
         Assert.Equal("https://www.materdomus.com.br/produtos", seo.Canonical);
         Assert.Equal("css/produtos.css", seo.Stylesheet);
-        Assert.Contains("Produtos", seo.Title, StringComparison.Ordinal);
+        Assert.Contains("Vitrine", seo.Title, StringComparison.Ordinal);
     }
 
     [Fact]
