@@ -1,0 +1,208 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://www.materdomus.com.br/produtos#catalog",
+  "name": "Vitrine Ou e Linha Flow",
+  "description": "Conheça os produtos Mater Domus da Linha Flow e Ou, disponíveis na Amazon ou em breve. Utilidades domésticas e organização para o lar.",
+  "url": "https://www.materdomus.com.br/produtos",
+  "inLanguage": "pt-BR",
+  "numberOfItems": 10,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Dispenser Quadrado 1L Branco Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001.jpg",
+        "sku": "dispenser-flow-quadrado-branco-001",
+        "description": "Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou desinfetante na lavanderia, com visualização do nível interno.",
+        "category": "Lavanderia",
+        "asin": "B0GKPPS5YH",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "39.90",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.jpg",
+        "sku": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
+        "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
+        "category": "Lavanderia",
+        "asin": "B0GKPZMCYZ",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "49.49",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Rodo Multiuso Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
+        "sku": "rodo-multiuso-bege-b0czttvlwk",
+        "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+        "category": "Limpeza",
+        "asin": "B0CZTTVLWK",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "17.09",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/escova-limpeza-multiuso-bege-b0czttrfqr.jpg",
+        "sku": "escova-limpeza-multiuso-bege-b0czttrfqr",
+        "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
+        "category": "Limpeza",
+        "asin": "B0CZTTRFQR",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "20.69",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Organizador de Parede e Armário Branco Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/organizador-parede-armario-branco-b0gkq4vvpq.png",
+        "sku": "organizador-parede-armario-branco-b0gkq4vvpq",
+        "description": "Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta até dois dispensers Flow.",
+        "category": "Organização",
+        "asin": "B0GKQ4VVPQ",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "58.49",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKQ4VVPQ?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/organizador-parede-multiuso-bege-b0gkpq99r8.png",
+        "sku": "organizador-parede-multiuso-bege-b0gkpq99r8",
+        "description": "Organizador de parede bege da Linha Flow com quatro ganchos para utensílios de limpeza. Fixação adesiva, sem necessidade de furar a parede.",
+        "category": "Organização",
+        "asin": "B0GKPQ99R8",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "56.69",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Rodo Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/rodo-bege-b0f8pwy3m5.jpg",
+        "sku": "rodo-bege-b0f8pwy3m5",
+        "description": "Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar.",
+        "category": "Limpeza",
+        "asin": "B0F8PWY3M5",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "51.99",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/pano-chao-microfibra-chumbo-b0fxbn7scb.jpg",
+        "sku": "pano-chao-microfibra-chumbo-b0fxbn7scb",
+        "description": "Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso.",
+        "category": "Limpeza",
+        "asin": "B0FXBN7SCB",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "19.79",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/kit-3-panos-microfibra-b0g634v2nb.jpg",
+        "sku": "kit-3-panos-microfibra-b0g634v2nb",
+        "description": "Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária.",
+        "category": "Limpeza",
+        "asin": "B0G634V2NB",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "18.69",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-500ml-bege-b0czttshb7.jpg",
+        "sku": "borrifador-500ml-bege-b0czttshb7",
+        "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
+        "category": "Limpeza",
+        "asin": "B0CZTTSHB7",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "29.74",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    }
+  ]
+}
