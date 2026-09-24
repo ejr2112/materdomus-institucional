@@ -53,26 +53,6 @@
       "position": 3,
       "item": {
         "@type": "Product",
-        "name": "Ou Rodo Multiuso Bege Linha Flow",
-        "image": "https://www.materdomus.com.br/images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
-        "sku": "rodo-multiuso-bege-b0czttvlwk",
-        "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
-        "category": "Limpeza",
-        "asin": "B0CZTTVLWK",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "BRL",
-          "price": "17.09",
-          "availability": "https://schema.org/InStock",
-          "url": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Product",
         "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/escova-limpeza-multiuso-bege-b0czttrfqr.jpg",
         "sku": "escova-limpeza-multiuso-bege-b0czttrfqr",
@@ -90,7 +70,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Product",
         "name": "Ou Organizador de Parede e Armário Branco Linha Flow",
@@ -110,7 +90,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Product",
         "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
@@ -125,6 +105,25 @@
           "price": "56.69",
           "availability": "https://schema.org/InStock",
           "url": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Rodo Multiuso Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
+        "sku": "rodo-multiuso-bege-b0czttvlwk",
+        "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+        "category": "Limpeza",
+        "asin": "B0CZTTVLWK",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "17.09",
+          "availability": "https://schema.org/OutOfStock"
         }
       }
     },
