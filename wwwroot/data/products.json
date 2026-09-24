@@ -7,6 +7,7 @@
     "category": "Lavanderia",
     "price": 39.90,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
+    "asin": "B0GKPPS5YH",
     "comingSoon": false
   },
   {
@@ -17,6 +18,7 @@
     "category": "Lavanderia",
     "price": 49.49,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
+    "asin": "B0GKPZMCYZ",
     "comingSoon": false
   },
   {
@@ -27,6 +29,7 @@
     "category": "Limpeza",
     "price": 17.09,
     "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
+    "asin": "B0CZTTVLWK",
     "comingSoon": false
   },
   {
@@ -37,6 +40,7 @@
     "category": "Limpeza",
     "price": 20.69,
     "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV",
+    "asin": "B0CZTTRFQR",
     "comingSoon": false
   },
   {
@@ -47,6 +51,7 @@
     "category": "Organização",
     "price": 58.49,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKQ4VVPQ?m=A20TN3HCSY6KZV",
+    "asin": "B0GKQ4VVPQ",
     "comingSoon": false
   },
   {
@@ -57,6 +62,7 @@
     "category": "Organização",
     "price": 56.69,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV",
+    "asin": "B0GKPQ99R8",
     "comingSoon": false
   },
   {
@@ -67,6 +73,7 @@
     "category": "Limpeza",
     "price": 51.99,
     "amazonUrl": "",
+    "asin": "B0F8PWY3M5",
     "comingSoon": true
   },
   {
@@ -77,6 +84,7 @@
     "category": "Limpeza",
     "price": 19.79,
     "amazonUrl": "",
+    "asin": "B0FXBN7SCB",
     "comingSoon": true
   },
   {
@@ -87,6 +95,7 @@
     "category": "Limpeza",
     "price": 18.69,
     "amazonUrl": "",
+    "asin": "B0G634V2NB",
     "comingSoon": true
   },
   {
@@ -97,6 +106,7 @@
     "category": "Limpeza",
     "price": 29.74,
     "amazonUrl": "",
+    "asin": "B0CZTTSHB7",
     "comingSoon": true
   }
 ]

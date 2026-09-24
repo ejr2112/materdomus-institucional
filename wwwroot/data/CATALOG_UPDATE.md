@@ -57,6 +57,14 @@ O botão **Comprar na Amazon** reaparece automaticamente quando
 continuar `true`, o selo "Em breve" permanece e o CTA de compra fica oculto
 mesmo com URL preenchida (útil para pré-cadastrar o ASIN sem abrir listing vazio).
 
+## Identificadores
+
+Cada SKU publica `asin` em maiúsculas. A fonte é a `amazonUrl`
+(`/dp/{ASIN}`) ou, nos itens Em breve com URL vazia, o sufixo de 10
+caracteres do `id`. `gtin` e `ean` só entram quando o repositório já
+documenta o código de barras daquele SKU. Nenhum item atual tem EAN/GTIN
+anotado — o campo fica de fora. Não inventar GTIN.
+
 ## Regras do serviço
 
 - `id`, `name` e `imageUrl` obrigatórios; `price` > 0.

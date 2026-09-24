@@ -30,4 +30,23 @@ public record Product(
     decimal Price,
     string AmazonUrl,
     bool ComingSoon = false
-);
+)
+{
+    /// <summary>
+    /// ASIN Amazon (10 caracteres, maiúsculas). Opcional no JSON.
+    /// Quando preenchido, é a fonte do campo <c>asin</c> no JSON-LD.
+    /// </summary>
+    public string? Asin { get; init; }
+
+    /// <summary>
+    /// GTIN/EAN já documentado para o SKU. Permanece nulo quando o repositório
+    /// não traz código de barras — não inventar.
+    /// </summary>
+    public string? Gtin { get; init; }
+
+    /// <summary>
+    /// Alias opcional de <see cref="Gtin"/> no JSON (<c>ean</c>).
+    /// O JSON-LD publica um único <c>gtin</c>.
+    /// </summary>
+    public string? Ean { get; init; }
+}

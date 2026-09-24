@@ -70,10 +70,92 @@ public class ProductCatalogService : IProductCatalogService
                 continue;
             }
 
-            valid.Add(p);
+            valid.Add(NormalizeIdentifiers(p));
         }
 
         return valid;
+    }
+
+    /// <summary>
+    /// Prefere <c>asin</c> explícito. Sem ele, usa o ASIN da URL canônica ou o
+    /// sufixo de 10 caracteres do id (itens Em breve). GTIN só permanece se
+    /// <c>gtin</c> ou <c>ean</c> já vier no JSON, com 8, 12, 13 ou 14 dígitos.
+    /// </summary>
+    private static Product NormalizeIdentifiers(Product product)
+    {
+        var asin = ResolveAsin(product);
+        var gtin = NormalizeGtin(product.Gtin) ?? NormalizeGtin(product.Ean);
+        var ean = NormalizeGtin(product.Ean);
+        if (asin == product.Asin && gtin == product.Gtin && ean == product.Ean)
+            return product;
+
+        return product with { Asin = asin, Gtin = gtin, Ean = ean };
+    }
+
+    private static readonly Regex AsinCapturePattern =
+        new(@"^https://www\.amazon\.com\.br/dp/([A-Z0-9]{10})(\?m=[A-Z0-9]+)?$", RegexOptions.Compiled);
+
+    private static readonly Regex IdAsinPattern =
+        new(@"(?:^|-)([A-Za-z0-9]{10})$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+    private static string? ResolveAsin(Product product)
+    {
+        var explicitAsin = NormalizeAsin(product.Asin);
+        if (explicitAsin is not null)
+            return explicitAsin;
+
+        if (!string.IsNullOrEmpty(product.AmazonUrl))
+        {
+            var fromUrl = AsinCapturePattern.Match(product.AmazonUrl);
+            if (fromUrl.Success)
+                return fromUrl.Groups[1].Value;
+        }
+
+        var fromId = IdAsinPattern.Match(product.Id);
+        if (!fromId.Success)
+            return null;
+
+        var token = fromId.Groups[1].Value;
+        if (!token.Any(char.IsDigit))
+            return null;
+
+        return token.ToUpperInvariant();
+    }
+
+    private static string? NormalizeAsin(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var token = value.Trim().ToUpperInvariant();
+        if (token.Length != 10)
+            return null;
+
+        foreach (var c in token)
+        {
+            if (c is not ((>= 'A' and <= 'Z') or (>= '0' and <= '9')))
+                return null;
+        }
+
+        return token;
+    }
+
+    private static string? NormalizeGtin(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var compact = value.Trim().Replace(" ", "", StringComparison.Ordinal).Replace("-", "", StringComparison.Ordinal);
+        if (compact.Length is not (8 or 12 or 13 or 14))
+            return null;
+
+        foreach (var c in compact)
+        {
+            if (c is < '0' or > '9')
+                return null;
+        }
+
+        return compact;
     }
 
     /// <inheritdoc />

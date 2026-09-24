@@ -147,6 +147,9 @@ public class CookieConsentAndPrivacyTests
         var privacy = cut.Find("footer.footer a[href='/privacidade']");
         Assert.Contains("Política de Privacidade", privacy.TextContent);
 
+        var shipping = cut.Find("footer.footer a[href='/frete-e-trocas']");
+        Assert.Equal("Frete e trocas", shipping.TextContent.Trim());
+
         var cookiesBtn = cut.Find("footer.footer button.footer-cookies-btn");
         Assert.Equal("Preferências de cookies", cookiesBtn.TextContent.Trim());
 
@@ -155,5 +158,44 @@ public class CookieConsentAndPrivacyTests
         Assert.Contains(
             ctx.JSInterop.Invocations,
             call => call.Identifier == "materDomusOpenCookiePreferences");
+    }
+
+    [Fact]
+    public void FreteETrocasPage_StatesAmazonHandlesPurchaseShippingAndReturns()
+    {
+        var razor = ReadRepo("Pages", "FreteETrocas.razor");
+
+        Assert.Contains("@page \"/frete-e-trocas\"", razor);
+        Assert.Contains("https://www.materdomus.com.br/frete-e-trocas", razor);
+        Assert.Contains("Frete e trocas | Mater Domus", razor);
+        Assert.DoesNotContain("<HeadContent>", razor);
+        Assert.DoesNotContain("frete grátis", razor, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("checkout", razor, StringComparison.OrdinalIgnoreCase);
+
+        using var ctx = new Bunit.TestContext();
+        var cut = ctx.RenderComponent<FreteETrocas>();
+        var seo = cut.FindComponent<SeoMeta>().Instance;
+
+        Assert.Equal("Frete e trocas | Mater Domus", seo.Title);
+        Assert.Equal("https://www.materdomus.com.br/frete-e-trocas", seo.Canonical);
+        Assert.Contains("Amazon", seo.Description);
+        Assert.Null(seo.Stylesheet);
+
+        var markup = cut.Markup;
+        Assert.Equal("Frete, trocas e devoluções", cut.Find("h1").TextContent.Trim());
+        Assert.Contains("vitrine", markup, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("Amazon Brasil", markup);
+        Assert.Contains("Pagamento, frete, entrega, troca e devolução", markup);
+        Assert.Contains("https://www.amazon.com.br/gp/help/customer/display.html", markup);
+        Assert.Contains("href=\"/contato\"", markup);
+        Assert.Contains("href=\"/privacidade\"", markup);
+        Assert.Contains("24 de setembro de 2026", markup);
+        Assert.DoesNotContain("materdomus.com.br/checkout", markup, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("frete grátis", markup, StringComparison.OrdinalIgnoreCase);
+
+        var privacy = ReadRepo("Pages", "Privacidade.razor");
+        Assert.Contains("href=\"/frete-e-trocas\"", privacy);
+        var contato = ReadRepo("Pages", "Contato.razor");
+        Assert.Contains("href=\"/frete-e-trocas\"", contato);
     }
 }
