@@ -138,7 +138,8 @@ public static class VitrineSeo
         decimal Price,
         string AmazonUrl,
         bool ComingSoon,
-        string? Asin);
+        string? Asin,
+        string? Gtin);
 
     private sealed record OgImage(string ImageUrl, string ImageAlt);
 
@@ -181,7 +182,8 @@ public static class VitrineSeo
                 price.Value,
                 amazonUrl,
                 ReadBool(node, "comingSoon"),
-                ExtractAsin(amazonUrl, id)));
+                ResolveAsin(node, amazonUrl, id),
+                ResolveGtin(node)));
         }
 
         return products;
@@ -242,6 +244,9 @@ public static class VitrineSeo
         if (!string.IsNullOrWhiteSpace(product.Asin))
             node["asin"] = product.Asin;
 
+        if (!string.IsNullOrWhiteSpace(product.Gtin))
+            node["gtin"] = product.Gtin;
+
         node["offers"] = BuildOffer(product);
         return node;
     }
@@ -270,6 +275,65 @@ public static class VitrineSeo
 
     private static bool IsBuyable(CatalogProduct product) =>
         !product.ComingSoon && AmazonUrlRegex.IsMatch(product.AmazonUrl);
+
+    /// <summary>
+    /// ASIN explícito do JSON tem prioridade. Sem ele, vale a URL canônica
+    /// ou o sufixo do id. Não inventa ASIN fora desses três lugares.
+    /// </summary>
+    private static string? ResolveAsin(JsonElement node, string amazonUrl, string id)
+    {
+        var explicitAsin = NormalizeAsin(ReadString(node, "asin"));
+        if (explicitAsin is not null)
+            return explicitAsin;
+
+        return ExtractAsin(amazonUrl, id);
+    }
+
+    /// <summary>
+    /// GTIN/EAN só entra se o JSON já trouxer <c>gtin</c> ou <c>ean</c>
+    /// com 8, 12, 13 ou 14 dígitos. Campo ausente não gera código.
+    /// </summary>
+    private static string? ResolveGtin(JsonElement node)
+    {
+        var gtin = NormalizeGtin(ReadString(node, "gtin"));
+        return gtin ?? NormalizeGtin(ReadString(node, "ean"));
+    }
+
+    private static string? NormalizeAsin(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var token = value.Trim().ToUpperInvariant();
+        if (token.Length != 10)
+            return null;
+
+        foreach (var c in token)
+        {
+            if (c is not ((>= 'A' and <= 'Z') or (>= '0' and <= '9')))
+                return null;
+        }
+
+        return token;
+    }
+
+    private static string? NormalizeGtin(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var compact = value.Trim().Replace(" ", "", StringComparison.Ordinal).Replace("-", "", StringComparison.Ordinal);
+        if (compact.Length is not (8 or 12 or 13 or 14))
+            return null;
+
+        foreach (var c in compact)
+        {
+            if (c is < '0' or > '9')
+                return null;
+        }
+
+        return compact;
+    }
 
     private static string? ExtractAsin(string amazonUrl, string id)
     {

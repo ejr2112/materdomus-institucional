@@ -48,8 +48,16 @@ public class VitrineSeoTests
             Assert.Equal(product.Id, item.GetProperty("sku").GetString());
             Assert.Equal(AbsoluteImage(product.ImageUrl), item.GetProperty("image").GetString());
             Assert.StartsWith("https://www.materdomus.com.br/", item.GetProperty("image").GetString());
-            Assert.False(item.TryGetProperty("gtin", out _));
-            Assert.False(item.TryGetProperty("gtin13", out _));
+            Assert.Equal(product.Asin, item.GetProperty("asin").GetString());
+            if (string.IsNullOrEmpty(product.Gtin))
+            {
+                Assert.False(item.TryGetProperty("gtin", out _));
+                Assert.False(item.TryGetProperty("gtin13", out _));
+            }
+            else
+            {
+                Assert.Equal(product.Gtin, item.GetProperty("gtin").GetString());
+            }
 
             var offer = item.GetProperty("offers");
             Assert.Equal("Offer", offer.GetProperty("@type").GetString());
@@ -91,6 +99,65 @@ public class VitrineSeoTests
         Assert.Equal("B0GKPPS5YH", products["dispenser-flow-quadrado-branco-001"].GetProperty("asin").GetString());
         Assert.Equal("B0F8PWY3M5", products["rodo-bege-b0f8pwy3m5"].GetProperty("asin").GetString());
         Assert.False(products["rodo-bege-b0f8pwy3m5"].GetProperty("offers").TryGetProperty("url", out _));
+
+        using var raw = JsonDocument.Parse(ReadRepo("wwwroot", "data", "products.json"));
+        var rows = raw.RootElement.EnumerateArray().ToList();
+        Assert.All(rows, row =>
+        {
+            var asin = row.GetProperty("asin").GetString();
+            Assert.Matches("^[A-Z0-9]{10}$", asin);
+            Assert.False(row.TryGetProperty("gtin", out _));
+            Assert.False(row.TryGetProperty("ean", out _));
+        });
+        Assert.Equal(
+            "B0GKPPS5YH",
+            rows.Single(row => row.GetProperty("id").GetString() == "dispenser-flow-quadrado-branco-001").GetProperty("asin").GetString());
+        Assert.Equal(
+            "B0F8PWY3M5",
+            rows.Single(row => row.GetProperty("id").GetString() == "rodo-bege-b0f8pwy3m5").GetProperty("asin").GetString());
+        Assert.DoesNotContain("7908466047085", ReadRepo("wwwroot", "data", "products.json"), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ItemList_PrefersExplicitAsinAndEmitsGtinOnlyWhenPresent()
+    {
+        const string json = """
+            [
+              { "id": "override", "name": "Override", "description": "d", "imageUrl": "images/a.jpg", "category": "C", "price": 10, "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH", "asin": "b0aaaaaaaa", "gtin": "7908466047085", "comingSoon": false },
+              { "id": "ean-alias", "name": "Ean", "description": "d", "imageUrl": "images/b.jpg", "category": "C", "price": 11, "amazonUrl": "", "asin": "B0F8PWY3M5", "ean": "7891234567895", "comingSoon": true },
+              { "id": "from-url", "name": "Url", "description": "d", "imageUrl": "images/c.jpg", "category": "C", "price": 12, "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK", "comingSoon": false },
+              { "id": "invalid-gtin", "name": "Ruim", "description": "d", "imageUrl": "images/d.jpg", "category": "C", "price": 9, "amazonUrl": "", "asin": "B0G634V2NB", "gtin": "123", "comingSoon": true }
+            ]
+            """;
+
+        var loaded = LoadViaCatalogService(json).ToDictionary(product => product.Id);
+        using var schema = JsonDocument.Parse(VitrineSeo.BuildItemListJson(json));
+        var items = schema.RootElement.GetProperty("itemListElement").EnumerateArray()
+            .Select(item => item.GetProperty("item"))
+            .ToDictionary(item => item.GetProperty("sku").GetString()!);
+
+        Assert.Equal("B0AAAAAAAA", loaded["override"].Asin);
+        Assert.Equal("7908466047085", loaded["override"].Gtin);
+        Assert.Equal("B0AAAAAAAA", items["override"].GetProperty("asin").GetString());
+        Assert.Equal("7908466047085", items["override"].GetProperty("gtin").GetString());
+        Assert.False(items["override"].TryGetProperty("gtin13", out _));
+        Assert.Equal("https://www.amazon.com.br/dp/B0GKPPS5YH", items["override"].GetProperty("offers").GetProperty("url").GetString());
+
+        Assert.Equal("B0F8PWY3M5", loaded["ean-alias"].Asin);
+        Assert.Equal("7891234567895", loaded["ean-alias"].Gtin);
+        Assert.Equal("7891234567895", loaded["ean-alias"].Ean);
+        Assert.Equal("7891234567895", items["ean-alias"].GetProperty("gtin").GetString());
+        Assert.False(items["ean-alias"].GetProperty("offers").TryGetProperty("url", out _));
+        Assert.Equal("https://schema.org/OutOfStock", items["ean-alias"].GetProperty("offers").GetProperty("availability").GetString());
+
+        Assert.Equal("B0CZTTVLWK", loaded["from-url"].Asin);
+        Assert.Null(loaded["from-url"].Gtin);
+        Assert.Equal("B0CZTTVLWK", items["from-url"].GetProperty("asin").GetString());
+        Assert.False(items["from-url"].TryGetProperty("gtin", out _));
+
+        Assert.Equal("B0G634V2NB", loaded["invalid-gtin"].Asin);
+        Assert.Null(loaded["invalid-gtin"].Gtin);
+        Assert.False(items["invalid-gtin"].TryGetProperty("gtin", out _));
     }
 
     [Fact]
