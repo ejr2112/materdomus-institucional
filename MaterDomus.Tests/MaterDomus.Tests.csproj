@@ -23,4 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="../MaterDomus.Web.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\tools\VitrineSeoGen\VitrineSeo.cs" Link="VitrineSeo.cs" />
+  </ItemGroup>
 </Project>

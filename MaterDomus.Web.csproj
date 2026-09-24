@@ -11,7 +11,22 @@
     <Content Remove="MaterDomus.Tests/**" />
     <EmbeddedResource Remove="MaterDomus.Tests/**" />
     <None Remove="MaterDomus.Tests/**" />
+    <Compile Remove="tools/**" />
+    <Content Remove="tools/**" />
+    <EmbeddedResource Remove="tools/**" />
+    <None Remove="tools/**" />
   </ItemGroup>
+
+  <!-- JSON-LD e o HTML de /produtos saem de products.json para não divergir do catálogo. -->
+  <Target Name="GenerateVitrineSeo"
+          BeforeTargets="BeforeBuild"
+          Inputs="$(MSBuildProjectDirectory)/wwwroot/data/products.json;$(MSBuildProjectDirectory)/wwwroot/index.html;$(MSBuildProjectDirectory)/tools/VitrineSeoGen/VitrineSeo.cs;$(MSBuildProjectDirectory)/tools/VitrineSeoGen/Program.cs"
+          Outputs="$(MSBuildProjectDirectory)/wwwroot/produtos.html;$(MSBuildProjectDirectory)/wwwroot/data/vitrine-itemlist.json;$(MSBuildProjectDirectory)/wwwroot/data/vitrine-meta.json"
+          Condition="'$(DesignTimeBuild)' != 'true'">
+    <Message Importance="high" Text="Gerando JSON-LD e metadados da vitrine a partir de products.json" />
+    <Exec Command="dotnet build &quot;$(MSBuildProjectDirectory)/tools/VitrineSeoGen/VitrineSeoGen.csproj&quot; -c $(Configuration) --nologo" />
+    <Exec Command="dotnet exec &quot;$(MSBuildProjectDirectory)/tools/VitrineSeoGen/bin/$(Configuration)/net9.0/VitrineSeoGen.dll&quot; &quot;$(MSBuildProjectDirectory)&quot;" />
+  </Target>
 
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
