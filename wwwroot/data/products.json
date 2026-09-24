@@ -22,17 +22,6 @@
     "comingSoon": false
   },
   {
-    "id": "rodo-multiuso-bege-b0czttvlwk",
-    "name": "Ou Rodo Multiuso Bege Linha Flow",
-    "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
-    "imageUrl": "images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
-    "category": "Limpeza",
-    "price": 17.09,
-    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
-    "asin": "B0CZTTVLWK",
-    "comingSoon": false
-  },
-  {
     "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
     "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
     "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
@@ -64,6 +53,17 @@
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV",
     "asin": "B0GKPQ99R8",
     "comingSoon": false
+  },
+  {
+    "id": "rodo-multiuso-bege-b0czttvlwk",
+    "name": "Ou Rodo Multiuso Bege Linha Flow",
+    "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+    "imageUrl": "images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
+    "category": "Limpeza",
+    "price": 17.09,
+    "amazonUrl": "",
+    "asin": "B0CZTTVLWK",
+    "comingSoon": true
   },
   {
     "id": "rodo-bege-b0f8pwy3m5",
