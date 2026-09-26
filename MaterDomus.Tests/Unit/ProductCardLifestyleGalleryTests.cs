@@ -10,15 +10,16 @@ namespace MaterDomus.Tests.Unit;
 
 /// <summary>
 /// Mini-galeria do cartão: produto sem fotos ambientadas permanece com um único
-/// img; produto com duas ambientadas empilha três slides e troca pelo ponto.
+/// img; produto com duas ambientadas empilha três slides (ambientadas primeiro)
+/// e troca pelo ponto.
 /// </summary>
 public class ProductCardLifestyleGalleryTests
 {
     private const string AltCozinha =
-        "Organizador de parede branco instalado na parede da cozinha, acima da bancada";
+        "Organizador de parede branco fixado no azulejo da cozinha, acima da bancada de madeira";
 
     private const string AltLavanderia =
-        "Organizador de parede branco instalado na lavanderia, acima da máquina de lavar";
+        "Organizador de parede branco fixado no azulejo verde-sálvia da lavanderia, acima do tanque";
 
     private static Bunit.TestContext CreateContext()
     {
@@ -86,23 +87,22 @@ public class ProductCardLifestyleGalleryTests
         var slides = cut.FindAll("img.product-card__slide");
         Assert.Equal(3, slides.Count);
 
-        Assert.Equal(product.ImageUrl, slides[0].GetAttribute("src"));
-        Assert.Equal(product.Name, slides[0].GetAttribute("alt"));
-        Assert.Contains("product-card__image", slides[0].GetAttribute("class"));
+        AssertLifestyleSlide(slides[0], product.LifestyleImages![0], hoverTarget: false, eager: true);
         Assert.Contains("product-card__slide--active", slides[0].GetAttribute("class"));
-        Assert.Contains("images/placeholder-product.png", slides[0].GetAttribute("onerror"));
-        Assert.Null(slides[0].GetAttribute("loading"));
-        Assert.Equal("1200", slides[0].GetAttribute("width"));
-        Assert.Equal("1200", slides[0].GetAttribute("height"));
+        AssertLifestyleSlide(slides[1], product.LifestyleImages[1], hoverTarget: true, eager: false);
+        Assert.DoesNotContain("product-card__slide--active", slides[1].GetAttribute("class"));
+        AssertStudioSlide(slides[2], product, active: false);
 
-        AssertLifestyleSlide(slides[1], product.LifestyleImages![0], hoverTarget: true);
-        AssertLifestyleSlide(slides[2], product.LifestyleImages[1], hoverTarget: false);
+        var gallery = cut.Find(".product-card__gallery");
+        Assert.Equal("0", gallery.GetAttribute("data-active-index"));
+        Assert.DoesNotContain("is-browsing", gallery.GetAttribute("class") ?? "");
 
         var dots = cut.FindAll("button.product-card__dot");
         Assert.Equal(3, dots.Count);
         Assert.Equal("Ver foto 1 de 3", dots[0].GetAttribute("aria-label"));
         Assert.Equal("Ver foto 2 de 3", dots[1].GetAttribute("aria-label"));
         Assert.Equal("Ver foto 3 de 3", dots[2].GetAttribute("aria-label"));
+        Assert.Contains("product-card__dot--active", dots[0].GetAttribute("class"));
         Assert.Equal("true", dots[0].GetAttribute("aria-pressed"));
         Assert.Equal("true", dots[0].GetAttribute("aria-current"));
         Assert.Equal("button", dots[2].GetAttribute("type"));
@@ -112,7 +112,7 @@ public class ProductCardLifestyleGalleryTests
         Assert.Equal(0, detailCalls);
         slides = cut.FindAll("img.product-card__slide");
         Assert.DoesNotContain("product-card__slide--active", slides[0].GetAttribute("class"));
-        Assert.Contains("product-card__slide--active", slides[2].GetAttribute("class"));
+        AssertStudioSlide(slides[2], product, active: true);
         dots = cut.FindAll("button.product-card__dot");
         Assert.Equal("true", dots[2].GetAttribute("aria-pressed"));
         Assert.Equal("true", dots[2].GetAttribute("aria-current"));
@@ -146,6 +146,12 @@ public class ProductCardLifestyleGalleryTests
 
         var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, product));
 
+        var slides = cut.FindAll("img.product-card__slide");
+        Assert.Contains("product-card__slide--hover-target", slides[1].GetAttribute("class"));
+        Assert.DoesNotContain("product-card__slide--hover-target", slides[0].GetAttribute("class"));
+        Assert.DoesNotContain("product-card__slide--hover-target", slides[2].GetAttribute("class"));
+        Assert.Equal(product.LifestyleImages![1].Url, slides[1].GetAttribute("src"));
+
         var gallery = cut.Find(".product-card__gallery");
         Assert.Equal("0", gallery.GetAttribute("data-active-index"));
         Assert.DoesNotContain("is-browsing", gallery.GetAttribute("class") ?? "");
@@ -155,21 +161,83 @@ public class ProductCardLifestyleGalleryTests
         gallery = cut.Find(".product-card__gallery");
         Assert.Contains("is-browsing", gallery.GetAttribute("class") ?? "");
         Assert.Equal("2", gallery.GetAttribute("data-active-index"));
-        Assert.Contains(
-            "product-card__slide--active",
-            cut.FindAll("img.product-card__slide")[2].GetAttribute("class"));
+        AssertStudioSlide(cut.FindAll("img.product-card__slide")[2], product, active: true);
 
         var css = File.ReadAllText(RepoPath("wwwroot", "css", "produtos.css"));
+        const string hoverMedia = "@media (hover: hover) and (pointer: fine)";
         const string hoverHide =
             ".product-card__gallery[data-active-index=\"0\"]:not(.is-browsing):hover .product-card__slide";
         const string hoverShow =
             ".product-card__gallery[data-active-index=\"0\"]:not(.is-browsing):hover .product-card__slide--hover-target";
+        const string reducedKeepActive =
+            ".product-card__gallery[data-active-index=\"0\"]:not(.is-browsing):hover .product-card__slide--active";
+        Assert.Contains(hoverMedia, css, StringComparison.Ordinal);
         Assert.Contains(hoverHide, css, StringComparison.Ordinal);
         Assert.Contains(hoverShow, css, StringComparison.Ordinal);
+        Assert.Contains("@media (prefers-reduced-motion: reduce)", css, StringComparison.Ordinal);
+        Assert.Contains(reducedKeepActive, css, StringComparison.Ordinal);
         Assert.DoesNotContain(
             ".product-card__gallery:hover .product-card__slide",
             css,
             StringComparison.Ordinal);
+
+        var reducedAt = css.LastIndexOf("@media (prefers-reduced-motion: reduce)", StringComparison.Ordinal);
+        var keepAt = css.LastIndexOf(reducedKeepActive, StringComparison.Ordinal);
+        Assert.True(reducedAt >= 0 && keepAt > reducedAt);
+    }
+
+    [Fact]
+    public void ProductCard_ComingSoonWithLifestyle_ShowsBadgeOnFirstStagedSlide()
+    {
+        using var ctx = CreateContext();
+        var product = MakeProduct(
+            new ProductLifestyleImage("images/products/a.webp", AltCozinha),
+            new ProductLifestyleImage("images/products/b.webp", AltLavanderia)) with
+        {
+            ComingSoon = true
+        };
+
+        var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, product));
+
+        Assert.Equal("Em breve", cut.Find(".product-card__badge").TextContent.Trim());
+        Assert.Contains("product-card--coming-soon", cut.Find("article").GetAttribute("class"));
+        var slides = cut.FindAll("img.product-card__slide");
+        Assert.Contains("product-card__slide--active", slides[0].GetAttribute("class"));
+        Assert.Equal("images/products/a.webp", slides[0].GetAttribute("src"));
+        Assert.Empty(cut.FindAll("a.product-card__amazon-btn"));
+    }
+
+    [Fact]
+    public void ProductCard_WhenProductChanges_ResetsToFirstLifestyleSlide()
+    {
+        using var ctx = CreateContext();
+        var first = MakeProduct(
+            new ProductLifestyleImage("images/products/a.webp", AltCozinha),
+            new ProductLifestyleImage("images/products/b.webp", AltLavanderia));
+        var second = first with
+        {
+            Id = "outro-produto",
+            Name = "Outro produto",
+            LifestyleImages = new[]
+            {
+                new ProductLifestyleImage("images/products/c.webp", "Segunda ambientada visível"),
+                new ProductLifestyleImage("images/products/d.webp", "Segunda ambientada seguinte")
+            }
+        };
+
+        var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, first));
+        cut.FindAll("button.product-card__dot")[2].Click();
+        Assert.Contains(
+            "product-card__slide--active",
+            cut.FindAll("img.product-card__slide")[2].GetAttribute("class"));
+
+        cut.SetParametersAndRender(parameters => parameters.Add(p => p.Product, second));
+
+        var slides = cut.FindAll("img.product-card__slide");
+        Assert.Contains("product-card__slide--active", slides[0].GetAttribute("class"));
+        Assert.Equal("images/products/c.webp", slides[0].GetAttribute("src"));
+        Assert.Equal("0", cut.Find(".product-card__gallery").GetAttribute("data-active-index"));
+        Assert.DoesNotContain("is-browsing", cut.Find(".product-card__gallery").GetAttribute("class") ?? "");
     }
 
     [Fact]
@@ -195,21 +263,54 @@ public class ProductCardLifestyleGalleryTests
             cut.FindAll("img.product-card__slide")[1].GetAttribute("class"));
     }
 
-    private static void AssertLifestyleSlide(AngleSharp.Dom.IElement img, ProductLifestyleImage expected, bool hoverTarget)
+    private static void AssertLifestyleSlide(
+        AngleSharp.Dom.IElement img,
+        ProductLifestyleImage expected,
+        bool hoverTarget,
+        bool eager)
     {
         Assert.Equal(expected.Url, img.GetAttribute("src"));
         Assert.Equal(expected.Alt, img.GetAttribute("alt"));
-        Assert.Equal("lazy", img.GetAttribute("loading"));
-        Assert.Equal("async", img.GetAttribute("decoding"));
+        if (eager)
+        {
+            Assert.Null(img.GetAttribute("loading"));
+            Assert.Null(img.GetAttribute("decoding"));
+        }
+        else
+        {
+            Assert.Equal("lazy", img.GetAttribute("loading"));
+            Assert.Equal("async", img.GetAttribute("decoding"));
+        }
+
         Assert.Equal("1200", img.GetAttribute("width"));
         Assert.Equal("1200", img.GetAttribute("height"));
-        Assert.Null(img.GetAttribute("onerror"));
+        var onerror = img.GetAttribute("onerror") ?? "";
+        Assert.Contains("images/placeholder-product.png", onerror);
+        Assert.Contains("organizador-parede-armario-branco-b0gkq4vvpq.png", onerror);
         var cls = img.GetAttribute("class") ?? "";
         Assert.Contains("product-card__slide", cls);
+        Assert.Contains("product-card__image", cls);
         if (hoverTarget)
             Assert.Contains("product-card__slide--hover-target", cls);
         else
             Assert.DoesNotContain("product-card__slide--hover-target", cls);
+    }
+
+    private static void AssertStudioSlide(AngleSharp.Dom.IElement img, Product product, bool active)
+    {
+        Assert.Equal(product.ImageUrl, img.GetAttribute("src"));
+        Assert.Equal(product.Name, img.GetAttribute("alt"));
+        Assert.Contains("product-card__image", img.GetAttribute("class"));
+        Assert.Contains("images/placeholder-product.png", img.GetAttribute("onerror"));
+        Assert.DoesNotContain("function()", img.GetAttribute("onerror") ?? "");
+        Assert.Null(img.GetAttribute("loading"));
+        Assert.Equal("1200", img.GetAttribute("width"));
+        Assert.Equal("1200", img.GetAttribute("height"));
+        Assert.DoesNotContain("product-card__slide--hover-target", img.GetAttribute("class"));
+        if (active)
+            Assert.Contains("product-card__slide--active", img.GetAttribute("class"));
+        else
+            Assert.DoesNotContain("product-card__slide--active", img.GetAttribute("class"));
     }
 
     private static string RepoPath(params string[] segments)

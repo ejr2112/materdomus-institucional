@@ -20,10 +20,10 @@
                          class="@SlideClass(index, slide.HoverTarget)"
                          width="1200"
                          height="1200"
-                         loading="@(slide.Lifestyle ? "lazy" : null)"
-                         decoding="@(slide.Lifestyle ? "async" : null)"
+                         loading="@(slide.Lifestyle && !slide.Eager ? "lazy" : null)"
+                         decoding="@(slide.Lifestyle && !slide.Eager ? "async" : null)"
                          aria-hidden="@(_slideIndex == index ? null : "true")"
-                         onerror="@(slide.Lifestyle ? null : "this.onerror=null;this.src='images/placeholder-product.png'")" />
+                         onerror="@SlideOnError(slide)" />
                 }
                 <div class="product-card__dots" role="group" aria-label="Fotos do produto">
                     @for (var i = 0; i < _slides.Length; i++)
@@ -117,9 +117,26 @@
     private bool HasGallery => _slides.Length > 1;
 
     /// <summary>
-    /// O crossfade de hover só vale na foto de estúdio, antes de o usuário escolher um slide.
+    /// O hover antecipa a 2ª ambientada só enquanto a 1ª segue selecionada
+    /// e o usuário ainda não escolheu um slide. Ao sair, volta a 1ª — a foto
+    /// de fundo branco não entra nesse preview.
     /// </summary>
-    private bool HoverPreviewEnabled => _slideIndex == 0 && !_userChoseSlide;
+    private bool HoverPreviewEnabled =>
+        _slideIndex == 0 && !_userChoseSlide && HasHoverTarget;
+
+    private bool HasHoverTarget
+    {
+        get
+        {
+            foreach (var slide in _slides)
+            {
+                if (slide.HoverTarget)
+                    return true;
+            }
+
+            return false;
+        }
+    }
 
     private string GalleryClass =>
         HoverPreviewEnabled
@@ -127,9 +144,10 @@
             : "product-card__gallery is-browsing";
 
     /// <summary>
-    /// Foto da mini-galeria: a principal (fundo branco) e, em seguida, as ambientadas.
+    /// Foto da mini-galeria: ambientadas primeiro; a de fundo branco por último.
+    /// <paramref name="Eager"/> marca a 1ª ambientada, visível na carga.
     /// </summary>
-    private readonly record struct SlideView(string Src, string Alt, bool Lifestyle, bool HoverTarget);
+    private readonly record struct SlideView(string Src, string Alt, bool Lifestyle, bool HoverTarget, bool Eager);
 
     protected override void OnParametersSet()
     {
@@ -137,23 +155,39 @@
             .Where(image => image is not null && !string.IsNullOrWhiteSpace(image.Url))
             .ToArray();
 
-        var slides = new SlideView[1 + lifestyle.Length];
-        slides[0] = new SlideView(
-            ProductHelpers.DisplayImageUrl(Product.ImageUrl),
-            Product.Name,
-            Lifestyle: false,
-            HoverTarget: false);
-
-        for (var i = 0; i < lifestyle.Length; i++)
+        if (lifestyle.Length == 0)
         {
-            slides[i + 1] = new SlideView(
-                lifestyle[i].Url,
-                lifestyle[i].Alt ?? string.Empty,
-                Lifestyle: true,
-                HoverTarget: i == 0);
+            _slides = new[]
+            {
+                new SlideView(
+                    ProductHelpers.DisplayImageUrl(Product.ImageUrl),
+                    Product.Name,
+                    Lifestyle: false,
+                    HoverTarget: false,
+                    Eager: true)
+            };
         }
+        else
+        {
+            var slides = new SlideView[lifestyle.Length + 1];
+            for (var i = 0; i < lifestyle.Length; i++)
+            {
+                slides[i] = new SlideView(
+                    lifestyle[i].Url,
+                    lifestyle[i].Alt ?? string.Empty,
+                    Lifestyle: true,
+                    HoverTarget: i == 1,
+                    Eager: i == 0);
+            }
 
-        _slides = slides;
+            slides[lifestyle.Length] = new SlideView(
+                ProductHelpers.DisplayImageUrl(Product.ImageUrl),
+                Product.Name,
+                Lifestyle: false,
+                HoverTarget: false,
+                Eager: false);
+            _slides = slides;
+        }
 
         if (_boundProductId != Product.Id)
         {
@@ -177,6 +211,22 @@
         if (hoverTarget)
             cls += " product-card__slide--hover-target";
         return cls;
+    }
+
+    /// <summary>
+    /// Ambientada quebrada cai na foto principal e, se essa também falhar, no placeholder.
+    /// A foto de fundo branco mantém o fallback direto para o placeholder.
+    /// </summary>
+    private string SlideOnError(SlideView slide)
+    {
+        if (!slide.Lifestyle)
+            return "this.onerror=null;this.src='images/placeholder-product.png'";
+
+        var fallback = ProductHelpers.DisplayImageUrl(Product.ImageUrl)
+            .Replace("\\", "\\\\", StringComparison.Ordinal)
+            .Replace("'", "\\'", StringComparison.Ordinal);
+        return "this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='"
+            + fallback + "'";
     }
 
     private string DotClass(int index) =>

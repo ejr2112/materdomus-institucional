@@ -51,16 +51,16 @@ public record Product(
     public string? Ean { get; init; }
 
     /// <summary>
-    /// Fotos ambientadas opcionais, na ordem da mini-galeria (depois da foto de
-    /// <see cref="ImageUrl"/>). Quando o JSON não traz o campo, o cartão permanece
-    /// só com a foto principal. Itens com URL vazia são ignorados na carga do
-    /// catálogo e não removem o produto.
+    /// Fotos ambientadas opcionais. No cartão, vêm antes da foto de
+    /// <see cref="ImageUrl"/> (fundo branco por último). Quando o JSON não traz
+    /// o campo, o cartão permanece só com a foto principal. Itens com URL vazia
+    /// são ignorados na carga do catálogo e não removem o produto.
     /// </summary>
     public IReadOnlyList<ProductLifestyleImage>? LifestyleImages { get; init; }
 }
 
 /// <summary>
-/// Foto ambientada opcional, exibida na mini-galeria do cartão depois da foto principal.
+/// Foto ambientada opcional. No cartão, as ambientadas vêm antes da foto principal.
 /// </summary>
 /// <param name="Url">Caminho relativo a partir de wwwroot, no mesmo formato de <see cref="Product.ImageUrl"/>.</param>
 /// <param name="Alt">Texto alternativo em português.</param>
