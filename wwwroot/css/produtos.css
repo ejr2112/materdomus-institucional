@@ -1220,12 +1220,15 @@ main section.products-section {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .product-card__gallery:hover .product-card__slide {
+  /* Só antecipa a 1ª ambientada enquanto a foto de estúdio segue selecionada
+     e o usuário ainda não clicou ponto/seta. is-browsing (ou outro índice)
+     devolve o slide escolhido na hora, mesmo com o ponteiro sobre a foto. */
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide {
     opacity: 0;
     z-index: 0;
   }
 
-  .product-card__gallery:hover .product-card__slide--hover-target {
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide--hover-target {
     opacity: 1;
     z-index: 1;
   }

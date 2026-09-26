@@ -133,6 +133,46 @@ public class ProductCardLifestyleGalleryTests
     }
 
     [Fact]
+    public void ProductCard_AfterThirdDot_DisablesHoverOverrideOfSelectedSlide()
+    {
+        using var ctx = CreateContext();
+        var product = MakeProduct(
+            new ProductLifestyleImage(
+                "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-1.webp",
+                AltCozinha),
+            new ProductLifestyleImage(
+                "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-2.webp",
+                AltLavanderia));
+
+        var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, product));
+
+        var gallery = cut.Find(".product-card__gallery");
+        Assert.Equal("0", gallery.GetAttribute("data-active-index"));
+        Assert.DoesNotContain("is-browsing", gallery.GetAttribute("class") ?? "");
+
+        cut.FindAll("button.product-card__dot")[2].Click();
+
+        gallery = cut.Find(".product-card__gallery");
+        Assert.Contains("is-browsing", gallery.GetAttribute("class") ?? "");
+        Assert.Equal("2", gallery.GetAttribute("data-active-index"));
+        Assert.Contains(
+            "product-card__slide--active",
+            cut.FindAll("img.product-card__slide")[2].GetAttribute("class"));
+
+        var css = File.ReadAllText(RepoPath("wwwroot", "css", "produtos.css"));
+        const string hoverHide =
+            ".product-card__gallery[data-active-index=\"0\"]:not(.is-browsing):hover .product-card__slide";
+        const string hoverShow =
+            ".product-card__gallery[data-active-index=\"0\"]:not(.is-browsing):hover .product-card__slide--hover-target";
+        Assert.Contains(hoverHide, css, StringComparison.Ordinal);
+        Assert.Contains(hoverShow, css, StringComparison.Ordinal);
+        Assert.DoesNotContain(
+            ".product-card__gallery:hover .product-card__slide",
+            css,
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void ProductCard_SwipeLeft_AdvancesSlideWithoutOpeningDetails()
     {
         using var ctx = CreateContext();
@@ -170,6 +210,19 @@ public class ProductCardLifestyleGalleryTests
             Assert.Contains("product-card__slide--hover-target", cls);
         else
             Assert.DoesNotContain("product-card__slide--hover-target", cls);
+    }
+
+    private static string RepoPath(params string[] segments)
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null)
+        {
+            if (File.Exists(Path.Combine(dir.FullName, "MaterDomus.Web.csproj")))
+                return Path.Combine(new[] { dir.FullName }.Concat(segments).ToArray());
+            dir = dir.Parent;
+        }
+
+        throw new DirectoryNotFoundException("Não foi possível localizar a raiz do repositório.");
     }
 
     private static TouchEventArgs Touch(string phase, double x, double y)

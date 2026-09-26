@@ -7,7 +7,8 @@
     <div class="product-card__image-wrapper">
         @if (HasGallery)
         {
-            <div class="product-card__gallery"
+            <div class="@GalleryClass"
+                 data-active-index="@_slideIndex"
                  @ontouchstart="OnTouchStart"
                  @ontouchend="OnTouchEnd">
                 @for (var i = 0; i < _slides.Length; i++)
@@ -109,10 +110,21 @@
     private SlideView[] _slides = Array.Empty<SlideView>();
     private string? _boundProductId;
     private int _slideIndex;
+    private bool _userChoseSlide;
     private double? _touchStartX;
     private double? _touchStartY;
 
     private bool HasGallery => _slides.Length > 1;
+
+    /// <summary>
+    /// O crossfade de hover só vale na foto de estúdio, antes de o usuário escolher um slide.
+    /// </summary>
+    private bool HoverPreviewEnabled => _slideIndex == 0 && !_userChoseSlide;
+
+    private string GalleryClass =>
+        HoverPreviewEnabled
+            ? "product-card__gallery"
+            : "product-card__gallery is-browsing";
 
     /// <summary>
     /// Foto da mini-galeria: a principal (fundo branco) e, em seguida, as ambientadas.
@@ -147,6 +159,7 @@
         {
             _boundProductId = Product.Id;
             _slideIndex = 0;
+            _userChoseSlide = false;
             _touchStartX = null;
             _touchStartY = null;
         }
@@ -176,6 +189,7 @@
         if ((uint)index >= (uint)_slides.Length)
             return;
 
+        _userChoseSlide = true;
         _slideIndex = index;
     }
 
@@ -184,6 +198,7 @@
         if (_slides.Length <= 1)
             return;
 
+        _userChoseSlide = true;
         _slideIndex = (_slideIndex - 1 + _slides.Length) % _slides.Length;
     }
 
@@ -192,6 +207,7 @@
         if (_slides.Length <= 1)
             return;
 
+        _userChoseSlide = true;
         _slideIndex = (_slideIndex + 1) % _slides.Length;
     }
 
