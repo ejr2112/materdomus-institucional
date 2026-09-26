@@ -303,7 +303,8 @@ public class ProductCardLifestyleGalleryTests
         Assert.Contains("product-card__image", img.GetAttribute("class"));
         Assert.Contains("images/placeholder-product.png", img.GetAttribute("onerror"));
         Assert.DoesNotContain("function()", img.GetAttribute("onerror") ?? "");
-        Assert.Null(img.GetAttribute("loading"));
+        Assert.Equal("lazy", img.GetAttribute("loading"));
+        Assert.Equal("async", img.GetAttribute("decoding"));
         Assert.Equal("1200", img.GetAttribute("width"));
         Assert.Equal("1200", img.GetAttribute("height"));
         Assert.DoesNotContain("product-card__slide--hover-target", img.GetAttribute("class"));

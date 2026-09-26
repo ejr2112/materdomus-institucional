@@ -20,8 +20,8 @@
                          class="@SlideClass(index, slide.HoverTarget)"
                          width="1200"
                          height="1200"
-                         loading="@(slide.Lifestyle && !slide.Eager ? "lazy" : null)"
-                         decoding="@(slide.Lifestyle && !slide.Eager ? "async" : null)"
+                         loading="@(!slide.Eager ? "lazy" : null)"
+                         decoding="@(!slide.Eager ? "async" : null)"
                          aria-hidden="@(_slideIndex == index ? null : "true")"
                          onerror="@SlideOnError(slide)" />
                 }
