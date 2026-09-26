@@ -1107,3 +1107,139 @@ main section.products-section {
     animation: none;
   }
 }
+
+/* ── Mini-galeria de fotos ambientadas no cartão ───────────────
+   Só entra no DOM quando o produto tem lifestyleImages.
+   A moldura quadrada continua sendo .product-card__image-wrapper.
+   ────────────────────────────────────────────────────────────── */
+.product-card__gallery {
+  position: absolute;
+  inset: 8px;
+}
+
+.product-card__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.product-card__slide--active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.product-card__dots {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.product-card__dot {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__dot::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.35);
+  box-shadow: 0 0 0 1.5px #fff;
+}
+
+.product-card__dot--active::after {
+  background: #1a1a1a;
+}
+
+.product-card__dot:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 1px;
+}
+
+.product-card__arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1a1a1a;
+  font-family: system-ui, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.18);
+}
+
+.product-card__arrow--prev {
+  left: 4px;
+}
+
+.product-card__arrow--next {
+  right: 4px;
+}
+
+.product-card__arrow:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Só antecipa a 1ª ambientada enquanto a foto de estúdio segue selecionada
+     e o usuário ainda não clicou ponto/seta. is-browsing (ou outro índice)
+     devolve o slide escolhido na hora, mesmo com o ponteiro sobre a foto. */
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide--hover-target {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .product-card__arrow {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card__slide {
+    transition: none;
+  }
+}

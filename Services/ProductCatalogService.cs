@@ -86,10 +86,48 @@ public class ProductCatalogService : IProductCatalogService
         var asin = ResolveAsin(product);
         var gtin = NormalizeGtin(product.Gtin) ?? NormalizeGtin(product.Ean);
         var ean = NormalizeGtin(product.Ean);
-        if (asin == product.Asin && gtin == product.Gtin && ean == product.Ean)
+        var lifestyle = NormalizeLifestyleImages(product.LifestyleImages);
+        if (asin == product.Asin &&
+            gtin == product.Gtin &&
+            ean == product.Ean &&
+            ReferenceEquals(lifestyle, product.LifestyleImages))
             return product;
 
-        return product with { Asin = asin, Gtin = gtin, Ean = ean };
+        return product with { Asin = asin, Gtin = gtin, Ean = ean, LifestyleImages = lifestyle };
+    }
+
+    /// <summary>
+    /// Descarta fotos ambientadas sem URL. Uma lista vazia após o filtro vira
+    /// <c>null</c>, para o cartão continuar igual ao de um produto sem o campo.
+    /// O produto em si não é removido.
+    /// </summary>
+    private static IReadOnlyList<ProductLifestyleImage>? NormalizeLifestyleImages(
+        IReadOnlyList<ProductLifestyleImage>? images)
+    {
+        if (images is null)
+            return null;
+
+        var kept = 0;
+        foreach (var image in images)
+        {
+            if (image is not null && !string.IsNullOrWhiteSpace(image.Url))
+                kept++;
+        }
+
+        if (kept == images.Count)
+            return images;
+
+        if (kept == 0)
+            return null;
+
+        var valid = new List<ProductLifestyleImage>(kept);
+        foreach (var image in images)
+        {
+            if (image is not null && !string.IsNullOrWhiteSpace(image.Url))
+                valid.Add(image);
+        }
+
+        return valid;
     }
 
     private static readonly Regex AsinCapturePattern =
