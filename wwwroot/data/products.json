@@ -41,7 +41,17 @@
     "price": 58.49,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKQ4VVPQ?m=A20TN3HCSY6KZV",
     "asin": "B0GKQ4VVPQ",
-    "comingSoon": false
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-1.webp",
+        "alt": "Organizador de parede branco instalado na parede da cozinha, acima da bancada"
+      },
+      {
+        "url": "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-2.webp",
+        "alt": "Organizador de parede branco instalado na lavanderia, acima da máquina de lavar"
+      }
+    ]
   },
   {
     "id": "organizador-parede-multiuso-bege-b0gkpq99r8",
@@ -52,7 +62,17 @@
     "price": 56.69,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPQ99R8?m=A20TN3HCSY6KZV",
     "asin": "B0GKPQ99R8",
-    "comingSoon": false
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-1.webp",
+        "alt": "Organizador de parede multiuso bege instalado em parede neutra, ao lado de um vaso de cerâmica"
+      },
+      {
+        "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-2.webp",
+        "alt": "Organizador de parede multiuso bege instalado na lavanderia de parede verde, acima de toalhas dobradas"
+      }
+    ]
   },
   {
     "id": "rodo-multiuso-bege-b0czttvlwk",

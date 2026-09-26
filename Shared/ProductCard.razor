@@ -5,10 +5,57 @@
 
 <article role="article" aria-label="@Product.Name" class="product-card @(Product.ComingSoon ? "product-card--coming-soon" : "product-card--available")">
     <div class="product-card__image-wrapper">
-        <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
-             alt="@Product.Name"
-             class="product-card__image"
-             onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+        @if (HasGallery)
+        {
+            <div class="product-card__gallery"
+                 @ontouchstart="OnTouchStart"
+                 @ontouchend="OnTouchEnd">
+                @for (var i = 0; i < _slides.Length; i++)
+                {
+                    var index = i;
+                    var slide = _slides[index];
+                    <img src="@slide.Src"
+                         alt="@slide.Alt"
+                         class="@SlideClass(index, slide.HoverTarget)"
+                         width="1200"
+                         height="1200"
+                         loading="@(slide.Lifestyle ? "lazy" : null)"
+                         decoding="@(slide.Lifestyle ? "async" : null)"
+                         aria-hidden="@(_slideIndex == index ? null : "true")"
+                         onerror="@(slide.Lifestyle ? null : "this.onerror=null;this.src='images/placeholder-product.png'")" />
+                }
+                <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                    @for (var i = 0; i < _slides.Length; i++)
+                    {
+                        var index = i;
+                        <button type="button"
+                                class="@DotClass(index)"
+                                aria-label="@($"Ver foto {index + 1} de {_slides.Length}")"
+                                aria-pressed="@(index == _slideIndex ? "true" : "false")"
+                                aria-current="@(index == _slideIndex ? "true" : null)"
+                                @onclick="() => SelectSlide(index)"
+                                @onclick:stopPropagation="true"></button>
+                    }
+                </div>
+                <button type="button"
+                        class="product-card__arrow product-card__arrow--prev"
+                        aria-label="Foto anterior"
+                        @onclick="ShowPrevious"
+                        @onclick:stopPropagation="true">‹</button>
+                <button type="button"
+                        class="product-card__arrow product-card__arrow--next"
+                        aria-label="Próxima foto"
+                        @onclick="ShowNext"
+                        @onclick:stopPropagation="true">›</button>
+            </div>
+        }
+        else
+        {
+            <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
+                 alt="@Product.Name"
+                 class="product-card__image"
+                 onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+        }
         @if (Product.ComingSoon)
         {
             <span class="product-card__badge">Em breve</span>
@@ -56,6 +103,131 @@
     [Parameter] public EventCallback<Product> OnVerDetalhes { get; set; }
 
     private bool IsFav => FavoritesService.IsFavorite(Product.Id);
+
+    private const double SwipeThresholdPx = 40;
+
+    private SlideView[] _slides = Array.Empty<SlideView>();
+    private string? _boundProductId;
+    private int _slideIndex;
+    private double? _touchStartX;
+    private double? _touchStartY;
+
+    private bool HasGallery => _slides.Length > 1;
+
+    /// <summary>
+    /// Foto da mini-galeria: a principal (fundo branco) e, em seguida, as ambientadas.
+    /// </summary>
+    private readonly record struct SlideView(string Src, string Alt, bool Lifestyle, bool HoverTarget);
+
+    protected override void OnParametersSet()
+    {
+        var lifestyle = (Product.LifestyleImages ?? Array.Empty<ProductLifestyleImage>())
+            .Where(image => image is not null && !string.IsNullOrWhiteSpace(image.Url))
+            .ToArray();
+
+        var slides = new SlideView[1 + lifestyle.Length];
+        slides[0] = new SlideView(
+            ProductHelpers.DisplayImageUrl(Product.ImageUrl),
+            Product.Name,
+            Lifestyle: false,
+            HoverTarget: false);
+
+        for (var i = 0; i < lifestyle.Length; i++)
+        {
+            slides[i + 1] = new SlideView(
+                lifestyle[i].Url,
+                lifestyle[i].Alt ?? string.Empty,
+                Lifestyle: true,
+                HoverTarget: i == 0);
+        }
+
+        _slides = slides;
+
+        if (_boundProductId != Product.Id)
+        {
+            _boundProductId = Product.Id;
+            _slideIndex = 0;
+            _touchStartX = null;
+            _touchStartY = null;
+        }
+        else if (_slideIndex >= _slides.Length)
+        {
+            _slideIndex = 0;
+        }
+    }
+
+    private string SlideClass(int index, bool hoverTarget)
+    {
+        var cls = "product-card__image product-card__slide";
+        if (index == _slideIndex)
+            cls += " product-card__slide--active";
+        if (hoverTarget)
+            cls += " product-card__slide--hover-target";
+        return cls;
+    }
+
+    private string DotClass(int index) =>
+        index == _slideIndex
+            ? "product-card__dot product-card__dot--active"
+            : "product-card__dot";
+
+    private void SelectSlide(int index)
+    {
+        if ((uint)index >= (uint)_slides.Length)
+            return;
+
+        _slideIndex = index;
+    }
+
+    private void ShowPrevious()
+    {
+        if (_slides.Length <= 1)
+            return;
+
+        _slideIndex = (_slideIndex - 1 + _slides.Length) % _slides.Length;
+    }
+
+    private void ShowNext()
+    {
+        if (_slides.Length <= 1)
+            return;
+
+        _slideIndex = (_slideIndex + 1) % _slides.Length;
+    }
+
+    private void OnTouchStart(TouchEventArgs e)
+    {
+        if (e.Touches.Length == 0)
+            return;
+
+        _touchStartX = e.Touches[0].ClientX;
+        _touchStartY = e.Touches[0].ClientY;
+    }
+
+    private void OnTouchEnd(TouchEventArgs e)
+    {
+        if (_touchStartX is null || e.ChangedTouches.Length == 0)
+        {
+            _touchStartX = null;
+            _touchStartY = null;
+            return;
+        }
+
+        var startX = _touchStartX.Value;
+        var startY = _touchStartY ?? e.ChangedTouches[0].ClientY;
+        _touchStartX = null;
+        _touchStartY = null;
+
+        var dx = e.ChangedTouches[0].ClientX - startX;
+        var dy = e.ChangedTouches[0].ClientY - startY;
+        if (Math.Abs(dx) < SwipeThresholdPx || Math.Abs(dx) <= Math.Abs(dy))
+            return;
+
+        if (dx < 0)
+            ShowNext();
+        else
+            ShowPrevious();
+    }
 
     /// <summary>
     /// Truncates the description to 120 characters followed by "..." if longer.
