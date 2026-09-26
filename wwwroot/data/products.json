@@ -8,7 +8,17 @@
     "price": 39.90,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
     "asin": "B0GKPPS5YH",
-    "comingSoon": false
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/dispenser-flow-quadrado-branco-001-ambientada-1.webp",
+        "alt": "Dispenser quadrado 1L transparente com tampa branca sobre bancada de lavanderia com azulejos verde-sálvia"
+      },
+      {
+        "url": "images/products/dispenser-flow-quadrado-branco-001-ambientada-2.webp",
+        "alt": "Dispenser quadrado 1L sobre bancada de madeira clara em lavanderia com azulejos brancos"
+      }
+    ]
   },
   {
     "id": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
@@ -19,7 +29,17 @@
     "price": 49.49,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
     "asin": "B0GKPZMCYZ",
-    "comingSoon": false
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambientada-1.webp",
+        "alt": "Dispenser quadrado 1,5L transparente sobre bancada cinza da área de serviço, ao lado da cuba"
+      },
+      {
+        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambientada-2.webp",
+        "alt": "Dispenser quadrado 1,5L transparente sobre bancada de lavanderia com azulejos bege e tanque"
+      }
+    ]
   },
   {
     "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
@@ -30,7 +50,17 @@
     "price": 20.69,
     "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV",
     "asin": "B0CZTTRFQR",
-    "comingSoon": false
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambientada-1.webp",
+        "alt": "Escova de limpeza multiuso bege sobre toalha de linho com tigelas de madeira"
+      },
+      {
+        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambientada-2.webp",
+        "alt": "Escova de limpeza multiuso bege sobre bancada de mármore ao lado de prato branco"
+      }
+    ]
   },
   {
     "id": "organizador-parede-armario-branco-b0gkq4vvpq",
@@ -45,11 +75,11 @@
     "lifestyleImages": [
       {
         "url": "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-1.webp",
-        "alt": "Organizador de parede branco instalado na parede da cozinha, acima da bancada"
+        "alt": "Organizador de parede branco fixado no azulejo da cozinha, acima da bancada de madeira"
       },
       {
         "url": "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-2.webp",
-        "alt": "Organizador de parede branco instalado na lavanderia, acima da máquina de lavar"
+        "alt": "Organizador de parede branco fixado no azulejo verde-sálvia da lavanderia, acima do tanque"
       }
     ]
   },
@@ -66,11 +96,11 @@
     "lifestyleImages": [
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-1.webp",
-        "alt": "Organizador de parede multiuso bege instalado em parede neutra, ao lado de um vaso de cerâmica"
+        "alt": "Organizador de parede multiuso bege com ganchos fixado em azulejo branco da área de serviço"
       },
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-2.webp",
-        "alt": "Organizador de parede multiuso bege instalado na lavanderia de parede verde, acima de toalhas dobradas"
+        "alt": "Organizador de parede multiuso bege com ganchos fixado em revestimento cinza acima de bancada de madeira"
       }
     ]
   },
@@ -83,7 +113,17 @@
     "price": 17.09,
     "amazonUrl": "",
     "asin": "B0CZTTVLWK",
-    "comingSoon": true
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambientada-1.webp",
+        "alt": "Rodo multiuso bege apoiado no parapeito da janela, ao lado de vasos de plantas"
+      },
+      {
+        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambientada-2.webp",
+        "alt": "Rodo multiuso bege apoiado no nicho do box do banheiro com revestimento bege"
+      }
+    ]
   },
   {
     "id": "rodo-bege-b0f8pwy3m5",
@@ -94,7 +134,17 @@
     "price": 51.99,
     "amazonUrl": "",
     "asin": "B0F8PWY3M5",
-    "comingSoon": true
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/rodo-bege-b0f8pwy3m5-ambientada-1.webp",
+        "alt": "Rodo bege apoiado na parede de azulejos brancos da área de serviço, ao lado da máquina de lavar"
+      },
+      {
+        "url": "images/products/rodo-bege-b0f8pwy3m5-ambientada-2.webp",
+        "alt": "Rodo bege apoiado na parede bege da lavanderia, ao lado de um cesto de palha"
+      }
+    ]
   },
   {
     "id": "pano-chao-microfibra-chumbo-b0fxbn7scb",
@@ -105,7 +155,17 @@
     "price": 19.79,
     "amazonUrl": "",
     "asin": "B0FXBN7SCB",
-    "comingSoon": true
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambientada-1.webp",
+        "alt": "Pano de chão de microfibra chumbo dobrado sobre a máquina de lavar"
+      },
+      {
+        "url": "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambientada-2.webp",
+        "alt": "Pano de chão de microfibra chumbo dobrado sobre o piso da área de serviço, ao lado de um balde"
+      }
+    ]
   },
   {
     "id": "kit-3-panos-microfibra-b0g634v2nb",
@@ -116,7 +176,17 @@
     "price": 18.69,
     "amazonUrl": "",
     "asin": "B0G634V2NB",
-    "comingSoon": true
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/kit-3-panos-microfibra-b0g634v2nb-ambientada-1.webp",
+        "alt": "Kit com três panos de microfibra mesclados sobre bancada branca da cozinha"
+      },
+      {
+        "url": "images/products/kit-3-panos-microfibra-b0g634v2nb-ambientada-2.webp",
+        "alt": "Kit com três panos de microfibra mesclados sobre bancada de madeira da cozinha"
+      }
+    ]
   },
   {
     "id": "borrifador-500ml-bege-b0czttshb7",
@@ -127,6 +197,16 @@
     "price": 29.74,
     "amazonUrl": "",
     "asin": "B0CZTTSHB7",
-    "comingSoon": true
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambientada-1.webp",
+        "alt": "Borrifador 500ml bege sobre bancada da cozinha junto à janela"
+      },
+      {
+        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambientada-2.webp",
+        "alt": "Borrifador 500ml bege sobre bancada com azulejos verde-sálvia, entre cuba branca e cesto de madeira"
+      }
+    ]
   }
 ]

@@ -1220,9 +1220,10 @@ main section.products-section {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  /* Só antecipa a 1ª ambientada enquanto a foto de estúdio segue selecionada
-     e o usuário ainda não clicou ponto/seta. is-browsing (ou outro índice)
-     devolve o slide escolhido na hora, mesmo com o ponteiro sobre a foto. */
+  /* Antecipa a 2ª ambientada enquanto a 1ª segue selecionada e o usuário
+     ainda não clicou ponto/seta. Ao sair do hover volta a 1ª ambientada,
+     nunca a foto de fundo branco. is-browsing (ou outro índice) devolve
+     o slide escolhido na hora, mesmo com o ponteiro sobre a foto. */
   .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide {
     opacity: 0;
     z-index: 0;
@@ -1241,5 +1242,16 @@ main section.products-section {
 @media (prefers-reduced-motion: reduce) {
   .product-card__slide {
     transition: none;
+  }
+
+  /* Sem troca de foto no hover: a ambientada ativa permanece. */
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  .product-card__gallery[data-active-index="0"]:not(.is-browsing):hover .product-card__slide--active {
+    opacity: 1;
+    z-index: 1;
   }
 }
