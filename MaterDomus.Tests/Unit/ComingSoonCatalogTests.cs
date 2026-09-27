@@ -239,14 +239,24 @@ public class ComingSoonCatalogTests
     public void ProductDetail_RendersProductImage()
     {
         using var ctx = CreateContext();
-        var product = Make(comingSoon: false, name: "Dispenser Quadrado Flow 1L");
+        var product = Make(comingSoon: false, name: "Dispenser Quadrado Flow 1L") with
+        {
+            LifestyleImages =
+            [
+                new ProductLifestyleImage(
+                    "images/products/dispenser-flow-quadrado-branco-001-ambientada-1.webp",
+                    "Dispenser ambientado na bancada")
+            ]
+        };
         var cut = ctx.RenderComponent<ProductDetail>(p => p
             .Add(c => c.Product, product)
             .Add(c => c.IsOpen, true));
 
         var img = cut.Find("img.product-detail__image");
-        Assert.Equal(product.ImageUrl, img.GetAttribute("src"));
-        Assert.Equal(product.Name, img.GetAttribute("alt"));
+        Assert.Equal(
+            "images/products/dispenser-flow-quadrado-branco-001-ambientada-1.webp",
+            img.GetAttribute("src"));
+        Assert.Equal("Dispenser ambientado na bancada", img.GetAttribute("alt"));
     }
 
     [Fact]
