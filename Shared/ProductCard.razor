@@ -118,8 +118,7 @@
 
     /// <summary>
     /// O hover antecipa a 2ª ambientada só enquanto a 1ª segue selecionada
-    /// e o usuário ainda não escolheu um slide. Ao sair, volta a 1ª — a foto
-    /// de fundo branco não entra nesse preview.
+    /// e o usuário ainda não escolheu um slide. Ao sair, volta a 1ª.
     /// </summary>
     private bool HoverPreviewEnabled =>
         _slideIndex == 0 && !_userChoseSlide && HasHoverTarget;
@@ -144,8 +143,10 @@
             : "product-card__gallery is-browsing";
 
     /// <summary>
-    /// Foto da mini-galeria: ambientadas primeiro; a de fundo branco por último.
-    /// <paramref name="Eager"/> marca a 1ª ambientada, visível na carga.
+    /// Foto da mini-galeria: quando existem ambientadas, a navegação do cartão
+    /// usa só essas imagens. A foto de fundo branco fica como fallback em caso
+    /// de erro no carregamento. <paramref name="Eager"/> marca a 1ª ambientada,
+    /// visível na carga.
     /// </summary>
     private readonly record struct SlideView(string Src, string Alt, bool Lifestyle, bool HoverTarget, bool Eager);
 
@@ -169,7 +170,7 @@
         }
         else
         {
-            var slides = new SlideView[lifestyle.Length + 1];
+            var slides = new SlideView[lifestyle.Length];
             for (var i = 0; i < lifestyle.Length; i++)
             {
                 slides[i] = new SlideView(
@@ -179,13 +180,6 @@
                     HoverTarget: i == 1,
                     Eager: i == 0);
             }
-
-            slides[lifestyle.Length] = new SlideView(
-                ProductHelpers.DisplayImageUrl(Product.ImageUrl),
-                Product.Name,
-                Lifestyle: false,
-                HoverTarget: false,
-                Eager: false);
             _slides = slides;
         }
 
@@ -215,7 +209,7 @@
 
     /// <summary>
     /// Ambientada quebrada cai na foto principal e, se essa também falhar, no placeholder.
-    /// A foto de fundo branco mantém o fallback direto para o placeholder.
+    /// Sem ambientada, a foto principal mantém o fallback direto para o placeholder.
     /// </summary>
     private string SlideOnError(SlideView slide)
     {
