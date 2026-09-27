@@ -26,8 +26,8 @@
             </button>
             <div class="product-detail__body">
                 <div class="product-detail__image-wrapper">
-                    <img src="@ProductHelpers.DisplayImageUrl(Product.ImageUrl)"
-                         alt="@Product.Name"
+                    <img src="@DisplayImageUrl"
+                         alt="@DisplayImageAlt"
                          class="product-detail__image"
                          onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
                 </div>
@@ -163,6 +163,48 @@
     /// marcado como "Em breve" e a <c>AmazonUrl</c> é canônica (Req 5.1, 5.3, 5.4).
     /// </summary>
     private bool ShowAmazonCta => ProductHelpers.ShowAmazonCta(Product);
+
+    private string DisplayImageUrl
+    {
+        get
+        {
+            if (Product is null)
+                return ProductHelpers.DisplayImageUrl(null);
+
+            var lifestyle = Product.LifestyleImages;
+            if (lifestyle is not null)
+            {
+                foreach (var image in lifestyle)
+                {
+                    if (image is not null && !string.IsNullOrWhiteSpace(image.Url))
+                        return image.Url;
+                }
+            }
+
+            return ProductHelpers.DisplayImageUrl(Product.ImageUrl);
+        }
+    }
+
+    private string DisplayImageAlt
+    {
+        get
+        {
+            if (Product is null)
+                return string.Empty;
+
+            var lifestyle = Product.LifestyleImages;
+            if (lifestyle is not null)
+            {
+                foreach (var image in lifestyle)
+                {
+                    if (image is not null && !string.IsNullOrWhiteSpace(image.Url))
+                        return string.IsNullOrWhiteSpace(image.Alt) ? Product.Name : image.Alt;
+                }
+            }
+
+            return Product.Name;
+        }
+    }
 
     protected override void OnInitialized()
     {
