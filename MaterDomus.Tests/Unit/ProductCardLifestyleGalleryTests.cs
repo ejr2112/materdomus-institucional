@@ -207,6 +207,26 @@ public class ProductCardLifestyleGalleryTests
     }
 
     [Fact]
+    public void ProductCard_LifestyleSlides_FallbackToStudioImageBeforePlaceholder()
+    {
+        using var ctx = CreateContext();
+        var product = MakeProduct(
+            new ProductLifestyleImage("images/products/a.webp", AltCozinha),
+            new ProductLifestyleImage("images/products/b.webp", AltLavanderia));
+
+        var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, product));
+
+        var onerror = cut.FindAll("img.product-card__slide")[0].GetAttribute("onerror") ?? "";
+        var placeholderHandler = "this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'}";
+        var studioFallback = $"this.src='{product.ImageUrl}'";
+        Assert.Contains(placeholderHandler, onerror);
+        Assert.Contains(studioFallback, onerror);
+        Assert.True(
+            onerror.IndexOf(placeholderHandler, StringComparison.Ordinal) <
+            onerror.IndexOf(studioFallback, StringComparison.Ordinal));
+    }
+
+    [Fact]
     public void ProductCard_WhenProductChanges_ResetsToFirstLifestyleSlide()
     {
         using var ctx = CreateContext();
