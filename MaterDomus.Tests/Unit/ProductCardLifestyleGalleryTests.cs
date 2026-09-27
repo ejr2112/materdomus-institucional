@@ -217,13 +217,9 @@ public class ProductCardLifestyleGalleryTests
         var cut = ctx.RenderComponent<ProductCard>(parameters => parameters.Add(p => p.Product, product));
 
         var onerror = cut.FindAll("img.product-card__slide")[0].GetAttribute("onerror") ?? "";
-        var placeholderHandler = "this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'}";
-        var studioFallback = $"this.src='{product.ImageUrl}'";
-        Assert.Contains(placeholderHandler, onerror);
-        Assert.Contains(studioFallback, onerror);
-        Assert.True(
-            onerror.IndexOf(placeholderHandler, StringComparison.Ordinal) <
-            onerror.IndexOf(studioFallback, StringComparison.Ordinal));
+        Assert.Equal(
+            $"this.onerror=function(){{this.onerror=null;this.src='images/placeholder-product.png'}};this.src='{product.ImageUrl}'",
+            onerror);
     }
 
     [Fact]
