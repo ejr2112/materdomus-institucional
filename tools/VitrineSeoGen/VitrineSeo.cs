@@ -386,7 +386,7 @@ public static class VitrineSeo
         html = ReplaceMetaContent(html, "name", "twitter:image:alt", og.ImageAlt);
 
         var nl = html.Contains("\r\n", StringComparison.Ordinal) ? "\r\n" : "\n";
-        var json = itemListJson.Replace("\n", nl, StringComparison.Ordinal);
+        var json = itemListJson.ReplaceLineEndings(nl);
         var seoTag = "<script src=\"js/seo.js\"></script>";
         var block =
             "<script type=\"application/ld+json\" id=\"vitrine-itemlist\">" + nl +

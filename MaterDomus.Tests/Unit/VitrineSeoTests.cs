@@ -205,9 +205,9 @@ public class VitrineSeoTests
         var artifacts = VitrineSeo.Build(productsJson, indexHtml);
 
         Assert.Equal(
-            "https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001.jpg",
+            "https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
             artifacts.OgImageAbsoluteUrl);
-        Assert.True(File.Exists(RepoPath("wwwroot", "images", "products", "dispenser-flow-quadrado-branco-001.jpg")));
+        Assert.True(File.Exists(RepoPath("wwwroot", "images", "products", "dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp")));
 
         using var meta = JsonDocument.Parse(artifacts.MetaJson);
         Assert.Equal(VitrineSeo.Title, meta.RootElement.GetProperty("title").GetString());
@@ -233,12 +233,12 @@ public class VitrineSeoTests
         Assert.Contains("property=\"og:description\" content=\"" + VitrineSeo.Description + "\"", html);
         Assert.Contains("property=\"og:url\" content=\"https://www.materdomus.com.br/produtos\"", html);
         Assert.Contains(
-            "property=\"og:image\" content=\"https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001.jpg\"",
+            "property=\"og:image\" content=\"https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp\"",
             html);
         Assert.Contains("property=\"og:image:alt\" content=\"Ou Dispenser Quadrado 1L Branco Linha Flow\"", html);
         Assert.Contains("name=\"twitter:card\" content=\"summary_large_image\"", html);
         Assert.Contains(
-            "name=\"twitter:image\" content=\"https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001.jpg\"",
+            "name=\"twitter:image\" content=\"https://www.materdomus.com.br/images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp\"",
             html);
         Assert.DoesNotContain("property=\"og:image\" content=\"https://www.materdomus.com.br/images/logo.png\"", html);
 

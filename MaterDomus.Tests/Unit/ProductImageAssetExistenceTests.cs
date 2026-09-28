@@ -156,27 +156,26 @@ public class ProductImageAssetExistenceTests
     }
 
     // -------------------------------------------------------------------------
-    // Origem BCF — confirma que a imagem de origem para a correção está disponível
+    // Galeria atual — três imagens distintas com texto alternativo e arquivos reais
     // -------------------------------------------------------------------------
 
     /// <summary>
-    /// A imagem de origem BCF ("Tampa Branca") deve existir — confirma que a origem
-    /// para a correção (Task 3) está disponível. Este teste PASSA no código não
-    /// corrigido.
-    ///
-    /// **Validates: Requirements 2.1, 2.2**
+    /// Cada produto usa três cenas ambientadas; a primeira é também a foto principal.
     /// </summary>
     [Fact]
-    public void BcfSourceImage_Exists()
+    public void Catalog_HasThreeDistinctLifestyleAssetsPerProduct()
     {
-        var sourcePath = Path.Combine(
-            WwwrootDir(),
-            "images", "products", "DFW300",
-            "DFW300_DISPENSER QUADRADO Flow 1L_BCF.jpg");
-
-        Assert.True(
-            File.Exists(sourcePath),
-            $"A imagem de origem BCF ('Tampa Branca') não foi encontrada em '{sourcePath}'. " +
-            "Ela é necessária como origem para recriar o asset ausente na correção.");
+        foreach (var product in LoadCatalogProducts())
+        {
+            Assert.NotNull(product.LifestyleImages);
+            Assert.Equal(3, product.LifestyleImages.Count);
+            Assert.Equal(3, product.LifestyleImages.Select(image => image.Url).Distinct().Count());
+            Assert.Equal(product.LifestyleImages[0].Url, product.ImageUrl);
+            Assert.All(product.LifestyleImages, image =>
+            {
+                Assert.False(string.IsNullOrWhiteSpace(image.Alt));
+                Assert.True(File.Exists(WwwrootPath(image.Url)), $"Imagem ausente: {image.Url}");
+            });
+        }
     }
 }

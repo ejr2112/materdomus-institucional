@@ -11,7 +11,7 @@ namespace MaterDomus.Tests.Unit;
 
 /// <summary>
 /// Fotos ambientadas da vitrine: os 10 produtos, com arquivos reais
-/// e sem vazar para JSON-LD / og:image. A foto canônica continua em imageUrl.
+/// e três cenas por item. A primeira foto também é usada em JSON-LD / og:image.
 /// </summary>
 public class LifestyleImagesCatalogTests
 {
@@ -20,159 +20,149 @@ public class LifestyleImagesCatalogTests
     private static readonly LifestyleExpectation[] Expected =
     {
         new("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m, false,
-            "images/products/dispenser-flow-quadrado-branco-001.jpg",
+            "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/dispenser-flow-quadrado-branco-001-ambientada-1.webp",
-                    "Dispenser quadrado 1L transparente com tampa branca sobre bancada de lavanderia com azulejos verde-sálvia",
-                    "4e9384263ae99c4d721a5f7ef42cdf572f47a4966cb81355581f6b1e36116442",
-                    36804),
-                new LifestyleFile(
-                    "images/products/dispenser-flow-quadrado-branco-001-ambientada-2.webp",
-                    "Dispenser quadrado 1L sobre bancada de madeira clara em lavanderia com azulejos brancos",
-                    "9874c32e95a48bb971aa22a599ecf35ec66baa8d072a26a251430af7debc18dc",
-                    35484)
+                new LifestyleFile("images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
+                    "Dispenser Flow 1L em bancada de lavanderia com revestimento verde-sálvia",
+                    "a755ec96978e1735df35c9d30234a41d7c1ff2d61f2f6bf22b260941ade1bbe4", 90638),
+                new LifestyleFile("images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-2.webp",
+                    "Dispenser Flow 1L em bancada de madeira com toalhas ao lado",
+                    "828791df4da46d409b4b565bd158cdbb502d0ea2c767b11fda7e3f88a60b02c7", 111636),
+                new LifestyleFile("images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-3.webp",
+                    "Dispenser Flow 1L em bancada cinza com revestimento azul",
+                    "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
         new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
-            "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.jpg",
+            "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambientada-1.webp",
-                    "Dispenser quadrado 1,5L transparente sobre bancada cinza da área de serviço, ao lado da cuba",
-                    "aa9a57aab1b3e16b2ea5c2aa0d6930d782898170c6400310d2fa8d2d83f083f0",
-                    20246),
-                new LifestyleFile(
-                    "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambientada-2.webp",
-                    "Dispenser quadrado 1,5L transparente sobre bancada de lavanderia com azulejos bege e tanque",
-                    "cb03450cdb5131955b982c490525f077953ac4aaf539ad607378483e802a3bff",
-                    20580)
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+                    "Dispenser Flow 1,5L em bancada clara de lavanderia",
+                    "6ada1ac63eb3c9d994f0d779bdcd56d1917f3c0d1b9f18f6e52066602e56a742", 93262),
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp",
+                    "Dispenser Flow 1,5L em prateleira de madeira na lavanderia",
+                    "5277f27055ad0e54a5250e8bde5a7fecef2c5bb28bb7d8cabb3e0cf7dec10a0a", 110016),
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
+                    "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
+                    "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
             }),
         new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, false,
-            "images/products/escova-limpeza-multiuso-bege-b0czttrfqr.jpg",
+            "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambientada-1.webp",
-                    "Escova de limpeza multiuso bege sobre toalha de linho com tigelas de madeira",
-                    "b5dd3c04a7f4d7b0c99ae986e243fa375c74238da297db257e837fb25e9f31c5",
-                    46136),
-                new LifestyleFile(
-                    "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambientada-2.webp",
-                    "Escova de limpeza multiuso bege sobre bancada de mármore ao lado de prato branco",
-                    "d0b305d994ab2b9361b936a9bafc433a6228ecb64dbf4b479fbbb8d28ddc17c9",
-                    39252)
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
+                    "Escova multiuso apoiada em bancada de cozinha, vista de cima",
+                    "d288ff74468e88e469933760fccb42c41e653390116c7c2ec7544ddd6830e1d9", 265372),
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp",
+                    "Escova multiuso com cabo apoiado sobre pano em bancada de madeira",
+                    "3a977ba030278ad4c07f9c6264b61fac017894a6447a96805f8fffd03d6e492a", 364124),
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp",
+                    "Escova multiuso pendurada pelo laço em gancho na parede da cozinha",
+                    "51d32983506b00e2cb9674f1d3a705ade603219ed8d14eda13d3e06f3f1c05cd", 83926)
             }),
         new("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m, false,
-            "images/products/organizador-parede-armario-branco-b0gkq4vvpq.png",
+            "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-1.webp",
-                    "Organizador de parede branco fixado no azulejo da cozinha, acima da bancada de madeira",
-                    "e2145859b940f4d7b6b79ea967db6eb38b052536ab3cfa5c8272933e095e5fcd",
-                    36826),
-                new LifestyleFile(
-                    "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambientada-2.webp",
-                    "Organizador de parede branco fixado no azulejo verde-sálvia da lavanderia, acima do tanque",
-                    "809ea2184656c82eae5b5239177c1e5b4c2789e76176ae7c801cf5b917ca7582",
-                    34078)
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
+                    "Organizador branco nivelado na parede verde da lavanderia, visto de frente",
+                    "dfabad516d0087ab320e8fe0037c037f735e70a295cfdf55c8a4201f1baccd20", 60290),
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-2.webp",
+                    "Organizador branco fixado na face interna da porta do armário, visto de frente",
+                    "de9572ed7a7d4e6627c4758376a15d7d473efff0006d698111e9fa0efb02c3b7", 121414),
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp",
+                    "Organizador branco fixado na parede bege do banheiro, visto de frente",
+                    "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
             }),
         new("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m, false,
-            "images/products/organizador-parede-multiuso-bege-b0gkpq99r8.png",
+            "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-1.webp",
-                    "Organizador de parede multiuso bege com ganchos fixado em azulejo branco da área de serviço",
-                    "3e4711e547375871c24025634c78bf3349c083ec5739abddf76b1e48ff437e39",
-                    29148),
-                new LifestyleFile(
-                    "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambientada-2.webp",
-                    "Organizador de parede multiuso bege com ganchos fixado em revestimento cinza acima de bancada de madeira",
-                    "3e498792c7cbf9e9dbbb5e8c7fa1cc19106276b1ad1bc94b9cd400e322954311",
-                    15304)
+                new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
+                    "Organizador bege com quatro ganchos na parede verde, visto de frente",
+                    "1cb95a496e3632fb972ce0225ca3da0f660aeed37135e782522d689e86a4acfc", 52886),
+                new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-2.webp",
+                    "Organizador bege nivelado na parede da área de serviço, visto de frente",
+                    "29cf95c64bb7ee604f9f7d482a276f27eed8551ae14816ae33aba5cbaf0f01d0", 183156),
+                new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
+                    "Organizador bege com pano pendurado no gancho direito, visto de frente",
+                    "c40195641ac44a57893abe6d32bcc8d85cd3c9ed3594472df946f534b5348a4e", 127958)
             }),
         new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, true,
-            "images/products/rodo-multiuso-bege-b0czttvlwk.jpg",
+            "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/rodo-multiuso-bege-b0czttvlwk-ambientada-1.webp",
-                    "Rodo multiuso bege apoiado no parapeito da janela, ao lado de vasos de plantas",
-                    "da6cb9ada9f36b5500e7e678d07578b108b6ebfeccbe714bb80c5c459292cf90",
-                    52192),
-                new LifestyleFile(
-                    "images/products/rodo-multiuso-bege-b0czttvlwk-ambientada-2.webp",
-                    "Rodo multiuso bege apoiado no nicho do box do banheiro com revestimento bege",
-                    "73bf7be38db5e3dc5a1e0d8aa751feff0ceb5fc3a0f6306879f481ed45d5967a",
-                    18154)
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+                    "Rodo multiuso pendurado pelo laço no box do banheiro",
+                    "ef9ba182aeff063870aa4b4634f32fcee502929131b7126c271031cb4a63dd2c", 149064),
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp",
+                    "Rodo multiuso apoiado no parapeito de pedra da janela",
+                    "482db7ecba269886860ffee052c573facbf71f9f23e1f123419c302f90942b55", 169766),
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp",
+                    "Rodo multiuso apoiado na bancada do banheiro",
+                    "dd1b9efabbe5c723a20e6f31c277d7bb733ee9f14a0cb9536b59deff7f0da945", 100012)
             }),
         new("B0F8PWY3M5", "rodo-bege-b0f8pwy3m5", 51.99m, true,
-            "images/products/rodo-bege-b0f8pwy3m5.jpg",
+            "images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/rodo-bege-b0f8pwy3m5-ambientada-1.webp",
-                    "Rodo bege apoiado na parede de azulejos brancos da área de serviço, ao lado da máquina de lavar",
-                    "833cf3086a836c3433af7a130767956f825d0290e7037c99b7cd268a724696ba",
-                    20934),
-                new LifestyleFile(
-                    "images/products/rodo-bege-b0f8pwy3m5-ambientada-2.webp",
-                    "Rodo bege apoiado na parede bege da lavanderia, ao lado de um cesto de palha",
-                    "082281fe222840749769039226d9ec66cc9ae1dba86e8456f402fcb61ba70155",
-                    20414)
+                new LifestyleFile("images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp",
+                    "Rodo de cabo longo apoiado na parede verde da lavanderia",
+                    "cda03762f67f4b4b3c4b31465b5dd6f4daf8c6e8d15e5ffb3c049b22005e0172", 114900),
+                new LifestyleFile("images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-2.webp",
+                    "Rodo de cabo longo na área de serviço ao lado de cesto",
+                    "fecac86bcc1ad75b26e6a7ba6cf0e45d4fcc08515949b3d4f57b622a49f7a907", 120732),
+                new LifestyleFile("images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-3.webp",
+                    "Rodo de cabo longo junto à porta de vidro da varanda",
+                    "e50e1e02c5160434d012175ee4210c1aac21995da85d1cebde52f7deedc24b0f", 161642)
             }),
         new("B0FXBN7SCB", "pano-chao-microfibra-chumbo-b0fxbn7scb", 19.79m, true,
-            "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb.jpg",
+            "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambientada-1.webp",
-                    "Pano de chão de microfibra chumbo dobrado sobre a máquina de lavar",
-                    "14c92a9338a711e1fee4c41e39ae8f004f527ffb2f34d94e7fcae45d955fa0ab",
-                    48934),
-                new LifestyleFile(
-                    "images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambientada-2.webp",
-                    "Pano de chão de microfibra chumbo dobrado sobre o piso da área de serviço, ao lado de um balde",
-                    "17eb57051a9cdd76ff0d31499ea62b162d4262eee992dc72e6694efd0a7b6481",
-                    36412)
+                new LifestyleFile("images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp",
+                    "Pano de chão chumbo com encaixe circular sobre bancada de madeira",
+                    "226f9040e060d078606034965c6c016b17ed9dbcf6747faa62d269179830982c", 273298),
+                new LifestyleFile("images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-2.webp",
+                    "Pano de chão chumbo dobrado no piso ao lado de balde",
+                    "f5242b91d286e8e6e74d3eef1de264318a66d38895b8869aeb3527e39cdcc389", 206826),
+                new LifestyleFile("images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-3.webp",
+                    "Pano de chão chumbo sobre bancada acima da máquina de lavar",
+                    "0f75332540d4b12656ce3c702b0465c26050562adc776bbfd6001edc93fad13c", 247358)
             }),
         new("B0G634V2NB", "kit-3-panos-microfibra-b0g634v2nb", 18.69m, true,
-            "images/products/kit-3-panos-microfibra-b0g634v2nb.jpg",
+            "images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/kit-3-panos-microfibra-b0g634v2nb-ambientada-1.webp",
-                    "Kit com três panos de microfibra mesclados sobre bancada branca da cozinha",
-                    "e3b56bbb3172aa66197687b1a85099cb408aa8dcc3fa950af198982ff77ac931",
-                    71626),
-                new LifestyleFile(
-                    "images/products/kit-3-panos-microfibra-b0g634v2nb-ambientada-2.webp",
-                    "Kit com três panos de microfibra mesclados sobre bancada de madeira da cozinha",
-                    "1de543bb51d9d707f004d27571ca0e96baa621083fc78ab588449670c240df75",
-                    74100)
+                new LifestyleFile("images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp",
+                    "Kit com três panos de microfibra na bancada da cozinha",
+                    "52b94403435d64df78be2f88a08dcc8b5f6d91822dfe1f8ba34334b05d05cf38", 228104),
+                new LifestyleFile("images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-2.webp",
+                    "Kit com três panos de microfibra em prateleira de madeira",
+                    "4f5e4f18c18cac49e4e7ec8269dbc4e648bddf1ae8c211743a173c016666a16b", 275294),
+                new LifestyleFile("images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-3.webp",
+                    "Kit com três panos de microfibra na bancada do banheiro",
+                    "4cb7e570f0e6667a656818a4cbeacf42774f0699a588c1da4de8adcf0fe6b6f2", 246824)
             }),
         new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, true,
-            "images/products/borrifador-500ml-bege-b0czttshb7.jpg",
+            "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
             new[]
             {
-                new LifestyleFile(
-                    "images/products/borrifador-500ml-bege-b0czttshb7-ambientada-1.webp",
-                    "Borrifador 500ml bege sobre bancada da cozinha junto à janela",
-                    "3e437749a49826b74a9fa9e926a1a8bfda2e53659881ade722f8f1ede2f05cc2",
-                    38600),
-                new LifestyleFile(
-                    "images/products/borrifador-500ml-bege-b0czttshb7-ambientada-2.webp",
-                    "Borrifador 500ml bege sobre bancada com azulejos verde-sálvia, entre cuba branca e cesto de madeira",
-                    "a75b2168af1e87d85663462a7160f2c2e51d2f6184975a1b15ec90ded4746740",
-                    21364)
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+                    "Borrifador Flow 500ml em bancada de cozinha junto à janela",
+                    "11c346befbf3dedc879a71185853f8a9a5f7253530ec1ddb03cb1a8a1f85ad44", 81876),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
+                    "Borrifador Flow 500ml em bancada de madeira na lavanderia",
+                    "b2f7776370b958d064c948e227548c79f65dc1de02749085e2d0498f982caca1", 90900),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
+                    "Borrifador Flow 500ml em bancada de banheiro com revestimento azul",
+                    "d209d2f0a56b807b88b57fde1329a43bebad866c2b01f6d75f8bac9e7efdb599", 82162)
             })
     };
 
     [Fact]
-    public void ProductsJson_AllTenProductsHaveTwoLifestyleImages()
+    public void ProductsJson_AllTenProductsHaveThreeLifestyleImages()
     {
         using var doc = JsonDocument.Parse(ReadRepo("wwwroot", "data", "products.json"));
         var rows = doc.RootElement.EnumerateArray().ToList();
@@ -197,11 +187,11 @@ public class LifestyleImagesCatalogTests
             Assert.Equal(expected.Id, row.GetProperty("id").GetString());
             Assert.Equal(expected.Price, row.GetProperty("price").GetDecimal());
             Assert.Equal(expected.ImageUrl, row.GetProperty("imageUrl").GetString());
-            Assert.DoesNotContain("ambientada", expected.ImageUrl, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal(expected.Files[0].Url, expected.ImageUrl);
             Assert.Equal(expected.ComingSoon, row.GetProperty("comingSoon").GetBoolean());
 
             var images = row.GetProperty("lifestyleImages").EnumerateArray().ToList();
-            Assert.Equal(2, images.Count);
+            Assert.Equal(3, images.Count);
             for (var i = 0; i < expected.Files.Length; i++)
             {
                 var image = images[i];
@@ -224,13 +214,13 @@ public class LifestyleImagesCatalogTests
             WebJsonOptions);
         Assert.NotNull(products);
         Assert.Equal(10, products!.Count);
-        Assert.Equal(10, products.Count(product => product.LifestyleImages is { Count: 2 }));
+        Assert.Equal(10, products.Count(product => product.LifestyleImages is { Count: 3 }));
         foreach (var expected in Expected)
         {
             var product = products.Single(item => item.Asin == expected.Asin);
             Assert.Equal(expected.ImageUrl, product.ImageUrl);
             Assert.Equal(expected.Id, product.Id);
-            Assert.Equal(2, product.LifestyleImages!.Count);
+            Assert.Equal(3, product.LifestyleImages!.Count);
         }
     }
 
@@ -292,20 +282,20 @@ public class LifestyleImagesCatalogTests
     }
 
     [Fact]
-    public void SeoArtifacts_DoNotContainAmbientada()
+    public void SeoArtifacts_UseCurrentPrimaryImages()
     {
-        var productsJson = ReadRepo("wwwroot", "data", "products.json");
-        var artifacts = VitrineSeo.Build(productsJson, ReadRepo("wwwroot", "index.html"));
-
-        Assert.DoesNotContain("ambientada", artifacts.ItemListJson, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", artifacts.MetaJson, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", artifacts.ProdutosHtml, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", artifacts.OgImageAbsoluteUrl, StringComparison.OrdinalIgnoreCase);
-
-        Assert.DoesNotContain("ambientada", ReadRepo("wwwroot", "data", "vitrine-itemlist.json"), StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", ReadRepo("wwwroot", "data", "vitrine-meta.json"), StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", ReadRepo("wwwroot", "produtos.html"), StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("ambientada", ReadRepo("wwwroot", "index.html"), StringComparison.OrdinalIgnoreCase);
+        var artifacts = VitrineSeo.Build(ReadRepo("wwwroot", "data", "products.json"), ReadRepo("wwwroot", "index.html"));
+        foreach (var expected in Expected)
+        {
+            Assert.Contains(expected.ImageUrl, artifacts.ItemListJson);
+            Assert.Contains(expected.ImageUrl, artifacts.ProdutosHtml);
+            foreach (var secondary in expected.Files.Skip(1))
+            {
+                Assert.DoesNotContain(secondary.Url, artifacts.ItemListJson);
+                Assert.DoesNotContain(secondary.Url, artifacts.MetaJson);
+            }
+        }
+        Assert.EndsWith(Expected[0].ImageUrl, artifacts.OgImageAbsoluteUrl);
     }
 
     private static List<Product> LoadViaCatalogService(string productsJson)
