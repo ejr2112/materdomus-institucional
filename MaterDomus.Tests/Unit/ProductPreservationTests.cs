@@ -478,10 +478,20 @@ public class ProductPreservationTests
     /// Estado de carregamento: enquanto GetProductsAsync não conclui, a página exibe
     /// o skeleton (role="status"). Ao liberar o gate, transiciona para a grade. (Req 3.6)
     /// </summary>
+    /// <remarks>
+    /// O gate completa fora do dispatcher do bUnit. A continuação de
+    /// <c>OnInitializedAsync</c> é postada no thread pool
+    /// (<c>RendererSynchronizationContext.Post</c> com <c>ForceYielding</c>).
+    /// <c>WaitForAssertion</c> bloqueia a thread do teste com <c>GetResult()</c>.
+    /// No runner de 2 vCPU do GitHub Actions o pool fica sem worker dentro do
+    /// timeout padrão de 1s: o check nem chega a rodar (check count 0) e a
+    /// página permanece no único render do skeleton. Este teste cede a thread
+    /// com <c>await</c> para a continuação poder renderizar a grade.
+    /// </remarks>
     [Fact]
-    public void ProdutosPage_WhileLoading_ShowsSkeleton_ThenGrid()
+    public async Task ProdutosPage_WhileLoading_ShowsSkeleton_ThenGrid()
     {
-        var gate = new TaskCompletionSource<bool>();
+        var gate = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
         var products = new List<Product> { MakeProduct(id: "p1") };
 
         using var ctx = CreatePageContext(new FakeCatalogService(products, gate));
@@ -491,9 +501,18 @@ public class ProductPreservationTests
         Assert.NotNull(cut.Find("div.skeleton[role=status]"));
         Assert.Empty(cut.FindAll("div.products-grid"));
 
-        // Libera o carregamento e aguarda a grade.
         gate.SetResult(true);
-        cut.WaitForAssertion(() => Assert.NotNull(cut.Find("div.products-grid")));
+
+        var deadline = DateTime.UtcNow + TimeSpan.FromSeconds(5);
+        while (cut.FindAll("div.products-grid").Count == 0)
+        {
+            if (DateTime.UtcNow >= deadline)
+                break;
+            await Task.Delay(15);
+        }
+
+        Assert.NotNull(cut.Find("div.products-grid"));
+        Assert.Empty(cut.FindAll("div.skeleton"));
     }
 
     /// <summary>

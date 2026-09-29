@@ -25,31 +25,6 @@
     ]
   },
   {
-    "id": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
-    "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
-    "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
-    "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-    "category": "Lavanderia",
-    "price": 49.49,
-    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
-    "asin": "B0GKPZMCYZ",
-    "comingSoon": false,
-    "lifestyleImages": [
-      {
-        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-        "alt": "Dispenser Flow 1,5L em bancada clara de lavanderia"
-      },
-      {
-        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp",
-        "alt": "Dispenser Flow 1,5L em prateleira de madeira na lavanderia"
-      },
-      {
-        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
-        "alt": "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar"
-      }
-    ]
-  },
-  {
     "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
     "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
     "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
@@ -121,6 +96,31 @@
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
         "alt": "Organizador bege com pano pendurado no gancho direito, visto de frente"
+      }
+    ]
+  },
+  {
+    "id": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
+    "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+    "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
+    "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+    "category": "Lavanderia",
+    "price": 49.49,
+    "amazonUrl": "",
+    "asin": "B0GKPZMCYZ",
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+        "alt": "Dispenser Flow 1,5L em bancada clara de lavanderia"
+      },
+      {
+        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp",
+        "alt": "Dispenser Flow 1,5L em prateleira de madeira na lavanderia"
+      },
+      {
+        "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
+        "alt": "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar"
       }
     ]
   },

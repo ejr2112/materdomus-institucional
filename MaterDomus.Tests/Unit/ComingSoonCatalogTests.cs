@@ -63,10 +63,10 @@ public class ComingSoonCatalogTests
     private static readonly string[] SellerAmazonTitles =
     {
         "Ou Dispenser Quadrado 1L Branco Linha Flow",
-        "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
         "Ou Escova de limpeza multiuso Bege Linha Flow",
         "Ou Organizador de Parede e Armário Branco Linha Flow",
         "Ou Organizador de Parede Multiuso Bege Linha Flow",
+        "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
         "Ou Rodo Multiuso Bege Linha Flow",
         "Ou Rodo Bege Linha Flow",
         "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
@@ -84,11 +84,12 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-09-24.
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-09-29.
     /// Continuam Em breve.
     /// </summary>
     private static readonly string[] UnavailableAsins =
     {
+        "B0GKPZMCYZ",
         "B0CZTTSHB7",
         "B0CZTTVLWK",
         "B0F8PWY3M5",
@@ -97,13 +98,12 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// Listings com FBA Available &gt; 0 em 2026-09-24. Preço é o já publicado
+    /// Listings com FBA Available &gt; 0 em 2026-09-29. Preço é o já publicado
     /// em products.json — a curadoria não inventa preço.
     /// </summary>
     private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
     {
         ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
-        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m),
         ("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m),
         ("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m),
         ("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m)
@@ -143,7 +143,7 @@ public class ComingSoonCatalogTests
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
-        Assert.Equal(5, available.Count);
+        Assert.Equal(4, available.Count);
         Assert.Equal(
             BuyableListings.Select(b => b.Id).OrderBy(id => id, StringComparer.Ordinal),
             available.Select(p => p.Id).OrderBy(id => id, StringComparer.Ordinal));
@@ -156,7 +156,7 @@ public class ComingSoonCatalogTests
             Assert.Equal(listing.Price, product.Price);
         }
 
-        Assert.Equal(5, products.Count(p => p.ComingSoon));
+        Assert.Equal(6, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
@@ -166,7 +166,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void Catalog_2026_09_24_LiberatesOnlyFbaAvailableListings()
+    public void Catalog_2026_09_29_LiberatesOnlyFbaAvailableListings()
     {
         var products = LoadCatalog();
 
@@ -197,7 +197,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_09_22()
+    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_09_29()
     {
         var metaPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "catalog-meta.json");
         Assert.True(File.Exists(metaPath), "catalog-meta.json é o registro publicado da curadoria.");
@@ -205,7 +205,7 @@ public class ComingSoonCatalogTests
         using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
         var root = doc.RootElement;
 
-        Assert.Equal("2026-09-22", root.GetProperty("curatedAt").GetString());
+        Assert.Equal("2026-09-29", root.GetProperty("curatedAt").GetString());
         Assert.Equal(
             "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
             root.GetProperty("sourceUrl").GetString());

@@ -33,20 +33,6 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
-            "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-                    "Dispenser Flow 1,5L em bancada clara de lavanderia",
-                    "6ada1ac63eb3c9d994f0d779bdcd56d1917f3c0d1b9f18f6e52066602e56a742", 93262),
-                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp",
-                    "Dispenser Flow 1,5L em prateleira de madeira na lavanderia",
-                    "5277f27055ad0e54a5250e8bde5a7fecef2c5bb28bb7d8cabb3e0cf7dec10a0a", 110016),
-                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
-                    "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
-                    "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
-            }),
         new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, false,
             "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
             new[]
@@ -88,6 +74,20 @@ public class LifestyleImagesCatalogTests
                 new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
                     "Organizador bege com pano pendurado no gancho direito, visto de frente",
                     "c40195641ac44a57893abe6d32bcc8d85cd3c9ed3594472df946f534b5348a4e", 127958)
+            }),
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, true,
+            "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+                    "Dispenser Flow 1,5L em bancada clara de lavanderia",
+                    "6ada1ac63eb3c9d994f0d779bdcd56d1917f3c0d1b9f18f6e52066602e56a742", 93262),
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp",
+                    "Dispenser Flow 1,5L em prateleira de madeira na lavanderia",
+                    "5277f27055ad0e54a5250e8bde5a7fecef2c5bb28bb7d8cabb3e0cf7dec10a0a", 110016),
+                new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
+                    "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
+                    "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
             }),
         new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, true,
             "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
