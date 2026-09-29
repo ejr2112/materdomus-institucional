@@ -61,7 +61,7 @@ public class LifestyleImagesCatalogTests
                     "Organizador branco fixado na parede bege do banheiro, visto de frente",
                     "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
             }),
-        new("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m, false,
+        new("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m, true,
             "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
             new[]
             {

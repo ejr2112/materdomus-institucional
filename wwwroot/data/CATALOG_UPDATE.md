@@ -5,7 +5,7 @@ Não há caminho provisório, draft ou unpublished: `/produtos` lê esse JSON.
 A vitrine lista **somente** os SKUs da loja Mater Domus no Seller Central
 (`A20TN3HCSY6KZV`). Não invente produto, ASIN, estoque ou combinação.
 
-Última curadoria Seller Central: **2026-09-29** (~10:13 BRT).
+Última curadoria Seller Central: **2026-09-29** (~16:00 BRT).
 Metadados: `wwwroot/data/catalog-meta.json`.
 No `products.json`, todos os itens com `comingSoon: false` vêm primeiro; Em breve
 fica depois. Dentro de cada grupo a ordem relativa anterior é mantida.
@@ -18,7 +18,7 @@ Liberar **Comprar na Amazon** somente quando o listing está buyable
 
 | Amazon title | ASIN | SKU Seller | Seller 2026-09-29 | Site |
 |---|---|---|---|---|
-| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | FBA Available 3 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | FBA Available 2 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
 | Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | FBA Available 0 | Em breve, `amazonUrl` vazia |
@@ -27,14 +27,14 @@ Liberar **Comprar na Amazon** somente quando o listing está buyable
 | Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | FBA Available 4 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
 | Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | FBA Available 8 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
-| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | FBA Available 1 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | FBA Available 0 | Em breve, `amazonUrl` vazia |
 
 Não listar: escova de piso, dispenser 2,3L, cesto 16L, organizador 8L genérico,
 kit borrifador + panos.
 
 Merchant URL dos itens buyable (`Available > 0`):
 `https://www.amazon.com.br/dp/{ASIN}?m=A20TN3HCSY6KZV`
-(`B0GKPPS5YH`, `B0CZTTRFQR`, `B0GKQ4VVPQ`, `B0GKPQ99R8`).
+(`B0GKPPS5YH`, `B0CZTTRFQR`, `B0GKQ4VVPQ`).
 
 ## Quando o estoque NorthLog / Amazon voltar
 
@@ -75,8 +75,8 @@ anotado — o campo fica de fora. Não inventar GTIN.
 ## Preços de itens "Em breve"
 
 Os preços dos itens em reposição são **preços de referência da Ou** (fabricante),
-não preços vivos da Amazon. Os quatro listings buyable em 2026-09-29 mantêm o
-preço já publicado em `products.json` (não inventar preço na liberação):
-`B0GKPPS5YH` R$ 39,90, `B0CZTTRFQR` R$ 20,69, `B0GKQ4VVPQ` R$ 58,49 e
-`B0GKPQ99R8` R$ 56,69. O dispenser 1,5L (`B0GKPZMCYZ`, R$ 49,49) voltou a
-Em breve com Available 0; o preço publicado não muda.
+não preços vivos da Amazon. Os três listings buyable em 2026-09-29 (~16:00 BRT)
+mantêm o preço já publicado em `products.json` (não inventar preço na liberação):
+`B0GKPPS5YH` R$ 39,90, `B0CZTTRFQR` R$ 20,69 e `B0GKQ4VVPQ` R$ 58,49.
+O organizador bege (`B0GKPQ99R8`, R$ 56,69) e o dispenser 1,5L (`B0GKPZMCYZ`,
+R$ 49,49) estão Em breve com Available 0; o preço publicado não muda.
