@@ -84,12 +84,13 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-09-29.
-    /// Continuam Em breve.
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-09-29 (~16:00 BRT).
+    /// Continuam Em breve. B0GKPQ99R8 entrou neste grupo nessa leitura.
     /// </summary>
     private static readonly string[] UnavailableAsins =
     {
         "B0GKPZMCYZ",
+        "B0GKPQ99R8",
         "B0CZTTSHB7",
         "B0CZTTVLWK",
         "B0F8PWY3M5",
@@ -105,8 +106,7 @@ public class ComingSoonCatalogTests
     {
         ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
         ("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m),
-        ("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m),
-        ("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m)
+        ("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m)
     };
 
     private static string MerchantUrl(string asin) =>
@@ -143,7 +143,7 @@ public class ComingSoonCatalogTests
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
-        Assert.Equal(4, available.Count);
+        Assert.Equal(3, available.Count);
         Assert.Equal(
             BuyableListings.Select(b => b.Id).OrderBy(id => id, StringComparer.Ordinal),
             available.Select(p => p.Id).OrderBy(id => id, StringComparer.Ordinal));
@@ -156,7 +156,7 @@ public class ComingSoonCatalogTests
             Assert.Equal(listing.Price, product.Price);
         }
 
-        Assert.Equal(6, products.Count(p => p.ComingSoon));
+        Assert.Equal(7, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
