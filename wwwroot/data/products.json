@@ -25,31 +25,6 @@
     ]
   },
   {
-    "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
-    "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
-    "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
-    "imageUrl": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
-    "category": "Limpeza",
-    "price": 20.69,
-    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV",
-    "asin": "B0CZTTRFQR",
-    "comingSoon": false,
-    "lifestyleImages": [
-      {
-        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
-        "alt": "Escova multiuso apoiada em bancada de cozinha, vista de cima"
-      },
-      {
-        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp",
-        "alt": "Escova multiuso com cabo apoiado sobre pano em bancada de madeira"
-      },
-      {
-        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp",
-        "alt": "Escova multiuso pendurada pelo laço em gancho na parede da cozinha"
-      }
-    ]
-  },
-  {
     "id": "organizador-parede-armario-branco-b0gkq4vvpq",
     "name": "Ou Organizador de Parede e Armário Branco Linha Flow",
     "description": "Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta até dois dispensers Flow.",
@@ -71,6 +46,31 @@
       {
         "url": "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp",
         "alt": "Organizador branco fixado na parede bege do banheiro, visto de frente"
+      }
+    ]
+  },
+  {
+    "id": "escova-limpeza-multiuso-bege-b0czttrfqr",
+    "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
+    "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
+    "imageUrl": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
+    "category": "Limpeza",
+    "price": 20.69,
+    "amazonUrl": "",
+    "asin": "B0CZTTRFQR",
+    "comingSoon": true,
+    "lifestyleImages": [
+      {
+        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
+        "alt": "Escova multiuso apoiada em bancada de cozinha, vista de cima"
+      },
+      {
+        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp",
+        "alt": "Escova multiuso com cabo apoiado sobre pano em bancada de madeira"
+      },
+      {
+        "url": "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp",
+        "alt": "Escova multiuso pendurada pelo laço em gancho na parede da cozinha"
       }
     ]
   },

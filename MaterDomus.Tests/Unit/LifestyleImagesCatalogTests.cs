@@ -33,20 +33,6 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, false,
-            "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
-                    "Escova multiuso apoiada em bancada de cozinha, vista de cima",
-                    "d288ff74468e88e469933760fccb42c41e653390116c7c2ec7544ddd6830e1d9", 265372),
-                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp",
-                    "Escova multiuso com cabo apoiado sobre pano em bancada de madeira",
-                    "3a977ba030278ad4c07f9c6264b61fac017894a6447a96805f8fffd03d6e492a", 364124),
-                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp",
-                    "Escova multiuso pendurada pelo laço em gancho na parede da cozinha",
-                    "51d32983506b00e2cb9674f1d3a705ade603219ed8d14eda13d3e06f3f1c05cd", 83926)
-            }),
         new("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m, false,
             "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
             new[]
@@ -60,6 +46,20 @@ public class LifestyleImagesCatalogTests
                 new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp",
                     "Organizador branco fixado na parede bege do banheiro, visto de frente",
                     "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
+            }),
+        new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, true,
+            "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
+                    "Escova multiuso apoiada em bancada de cozinha, vista de cima",
+                    "d288ff74468e88e469933760fccb42c41e653390116c7c2ec7544ddd6830e1d9", 265372),
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp",
+                    "Escova multiuso com cabo apoiado sobre pano em bancada de madeira",
+                    "3a977ba030278ad4c07f9c6264b61fac017894a6447a96805f8fffd03d6e492a", 364124),
+                new LifestyleFile("images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp",
+                    "Escova multiuso pendurada pelo laço em gancho na parede da cozinha",
+                    "51d32983506b00e2cb9674f1d3a705ade603219ed8d14eda13d3e06f3f1c05cd", 83926)
             }),
         new("B0GKPQ99R8", "organizador-parede-multiuso-bege-b0gkpq99r8", 56.69m, true,
             "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
