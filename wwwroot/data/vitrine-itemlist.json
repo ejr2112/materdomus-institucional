@@ -53,6 +53,26 @@
       "position": 3,
       "item": {
         "@type": "Product",
+        "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+        "sku": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
+        "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
+        "category": "Lavanderia",
+        "asin": "B0GKPZMCYZ",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "49.49",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
         "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
         "sku": "escova-limpeza-multiuso-bege-b0czttrfqr",
@@ -69,7 +89,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "Product",
         "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
@@ -82,25 +102,6 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "56.69",
-          "availability": "https://schema.org/OutOfStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Product",
-        "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
-        "image": "https://www.materdomus.com.br/images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-        "sku": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
-        "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
-        "category": "Lavanderia",
-        "asin": "B0GKPZMCYZ",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "BRL",
-          "price": "49.49",
           "availability": "https://schema.org/OutOfStock"
         }
       }
