@@ -47,7 +47,7 @@ public class LifestyleImagesCatalogTests
                     "Organizador branco fixado na parede bege do banheiro, visto de frente",
                     "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
             }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, true,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {
