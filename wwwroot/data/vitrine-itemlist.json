@@ -43,8 +43,7 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "58.49",
-          "availability": "https://schema.org/InStock",
-          "url": "https://www.amazon.com.br/dp/B0GKQ4VVPQ?m=A20TN3HCSY6KZV"
+          "availability": "https://schema.org/OutOfStock"
         }
       }
     },
