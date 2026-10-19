@@ -33,20 +33,6 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m, false,
-            "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
-                    "Organizador branco nivelado na parede verde da lavanderia, visto de frente",
-                    "dfabad516d0087ab320e8fe0037c037f735e70a295cfdf55c8a4201f1baccd20", 60290),
-                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-2.webp",
-                    "Organizador branco fixado na face interna da porta do armário, visto de frente",
-                    "de9572ed7a7d4e6627c4758376a15d7d473efff0006d698111e9fa0efb02c3b7", 121414),
-                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp",
-                    "Organizador branco fixado na parede bege do banheiro, visto de frente",
-                    "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
-            }),
         new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
@@ -60,6 +46,20 @@ public class LifestyleImagesCatalogTests
                 new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
                     "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
                     "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
+            }),
+        new("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m, true,
+            "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
+                    "Organizador branco nivelado na parede verde da lavanderia, visto de frente",
+                    "dfabad516d0087ab320e8fe0037c037f735e70a295cfdf55c8a4201f1baccd20", 60290),
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-2.webp",
+                    "Organizador branco fixado na face interna da porta do armário, visto de frente",
+                    "de9572ed7a7d4e6627c4758376a15d7d473efff0006d698111e9fa0efb02c3b7", 121414),
+                new LifestyleFile("images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp",
+                    "Organizador branco fixado na parede bege do banheiro, visto de frente",
+                    "c5cccf3288e469de87c69751f3feb9bb27372ff361c8a75017f9b65a5640a826", 116238)
             }),
         new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, true,
             "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
