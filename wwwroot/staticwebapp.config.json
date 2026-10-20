@@ -5,54 +5,24 @@
       "rewrite": "/produtos.html"
     },
     {
-      "route": "/produtos/",
-      "redirect": "/produtos",
-      "statusCode": 301
-    },
-    {
       "route": "/sobre",
       "rewrite": "/sobre.html"
-    },
-    {
-      "route": "/sobre/",
-      "redirect": "/sobre",
-      "statusCode": 301
     },
     {
       "route": "/contato",
       "rewrite": "/contato.html"
     },
     {
-      "route": "/contato/",
-      "redirect": "/contato",
-      "statusCode": 301
-    },
-    {
       "route": "/fornecedores",
       "rewrite": "/fornecedores.html"
-    },
-    {
-      "route": "/fornecedores/",
-      "redirect": "/fornecedores",
-      "statusCode": 301
     },
     {
       "route": "/privacidade",
       "rewrite": "/privacidade.html"
     },
     {
-      "route": "/privacidade/",
-      "redirect": "/privacidade",
-      "statusCode": 301
-    },
-    {
       "route": "/frete-e-trocas",
       "rewrite": "/frete-e-trocas.html"
-    },
-    {
-      "route": "/frete-e-trocas/",
-      "redirect": "/frete-e-trocas",
-      "statusCode": 301
     }
   ],
   "responseOverrides": {

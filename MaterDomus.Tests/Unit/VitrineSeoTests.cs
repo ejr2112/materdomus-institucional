@@ -329,6 +329,12 @@ public class VitrineSeoTests
                 .Single(r => r.GetProperty("route").GetString() == path);
             Assert.Equal(rewrite, match.GetProperty("rewrite").GetString());
         }
+
+        // Azure treats "/produtos" and "/produtos/" as one route. A second rule
+        // for the trailing slash fails the production upload.
+        Assert.DoesNotContain(
+            doc.RootElement.GetProperty("routes").EnumerateArray(),
+            route => route.GetProperty("route").GetString()!.EndsWith('/'));
     }
 
     [Fact]
