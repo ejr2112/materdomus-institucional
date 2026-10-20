@@ -200,6 +200,7 @@ ul li {
 .logo img {
     height: 38px; /* ajuste fino aqui */
     width: auto;
+    aspect-ratio: 137 / 38;
 }
 
 .logo span {
@@ -292,7 +293,7 @@ ul li {
         flex-direction: column;
         align-items: center;
         gap: 3px;
-        color: #888;
+        color: #666;
         text-decoration: none;
         font-size: 0.7rem;
         transition: color 0.15s ease;
@@ -366,9 +367,13 @@ ul li {
     max-width: 320px;
     margin: 0;
     font-size: 0.85rem;
-    color: #888;
+    color: #666;
     line-height: 1.5;
     font-weight: 400;
+}
+
+.boot-screen[hidden] {
+    display: none !important;
 }
 
 .boot-screen__error {

@@ -296,6 +296,37 @@ public class VitrineSeoTests
 
         Assert.Equal("/produtos.html", route.GetProperty("rewrite").GetString());
         Assert.Equal("/index.html", doc.RootElement.GetProperty("navigationFallback").GetProperty("rewrite").GetString());
+        Assert.Contains("/images/*.{png,jpg,jpeg,gif,svg,ico,webp,avif}", config);
+
+        foreach (var (path, rewrite) in new (string Path, string Rewrite)[]
+        {
+            ("/sobre", "/sobre.html"),
+            ("/contato", "/contato.html"),
+            ("/fornecedores", "/fornecedores.html"),
+            ("/privacidade", "/privacidade.html"),
+            ("/frete-e-trocas", "/frete-e-trocas.html")
+        })
+        {
+            var match = doc.RootElement.GetProperty("routes").EnumerateArray()
+                .Single(r => r.GetProperty("route").GetString() == path);
+            Assert.Equal(rewrite, match.GetProperty("rewrite").GetString());
+        }
+    }
+
+    [Fact]
+    public void StaticPages_MatchTheCommittedHtml()
+    {
+        var indexHtml = ReadRepo("wwwroot", "index.html");
+        var pages = StaticPages.Render(indexHtml);
+
+        Assert.Equal(pages["sobre.html"], ReadRepo("wwwroot", "sobre.html"));
+        Assert.Equal(pages["contato.html"], ReadRepo("wwwroot", "contato.html"));
+        Assert.Equal(pages["fornecedores.html"], ReadRepo("wwwroot", "fornecedores.html"));
+        Assert.Equal(pages["privacidade.html"], ReadRepo("wwwroot", "privacidade.html"));
+        Assert.Equal(pages["frete-e-trocas.html"], ReadRepo("wwwroot", "frete-e-trocas.html"));
+        Assert.Contains("<h1>Quem é a Mater Domus</h1>", pages["sobre.html"]);
+        Assert.Contains("data-nav=\"sobre\" class=\"active\"", pages["sobre.html"]);
+        Assert.DoesNotContain("Praticidade, organização e confiança para o lar", pages["sobre.html"]);
     }
 
     [Fact]

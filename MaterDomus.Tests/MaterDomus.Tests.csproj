@@ -26,5 +26,7 @@
 
   <ItemGroup>
     <Compile Include="..\tools\VitrineSeoGen\VitrineSeo.cs" Link="VitrineSeo.cs" />
+    <Compile Include="..\tools\VitrineSeoGen\CatalogMarkup.cs" Link="CatalogMarkup.cs" />
+    <Compile Include="..\tools\VitrineSeoGen\StaticPages.cs" Link="StaticPages.cs" />
   </ItemGroup>
 </Project>

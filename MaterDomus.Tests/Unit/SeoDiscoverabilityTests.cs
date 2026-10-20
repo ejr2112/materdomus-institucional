@@ -149,6 +149,11 @@ public class SeoDiscoverabilityTests
         Assert.Contains("id=\"boot-error\"", html);
         Assert.Contains("BOOT_TIMEOUT_MS = 80000", html);
         Assert.Contains("blazor.webassembly.js", html);
+        Assert.DoesNotContain("<script src=\"_framework/blazor.webassembly.js\"", html);
+        Assert.Contains("Praticidade, organização e confiança para o lar", html);
+        Assert.Contains("images/logo.webp", html);
+        Assert.Contains("width=\"137\"", html);
+        Assert.Contains("height=\"38\"", html);
     }
 
     [Fact]

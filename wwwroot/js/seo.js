@@ -129,19 +129,27 @@ window.materdomusSeo = (function () {
             .catch(function () { });
     }
 
+    // Cada HTML estático já traz title, description e OG da rota.
+    // Só reescrevemos isso depois de um pushState (saída da vitrine sem reload).
+    var initialApply = true;
+
     function applyFromLocation() {
         var path = normalizePath(window.location.pathname);
         applyCanonical(canonicalForPath(path));
 
         if (path === '/produtos') {
             applyVitrine();
+            initialApply = false;
             return;
         }
 
         vitrineRequest++;
         removeVitrineJsonLd();
-        applySocial(HOME_SOCIAL);
-        setContent('meta[name="description"]', HOME_SOCIAL.description);
+        if (!initialApply) {
+            applySocial(HOME_SOCIAL);
+            setContent('meta[name="description"]', HOME_SOCIAL.description);
+        }
+        initialApply = false;
     }
 
     function patchHistory() {

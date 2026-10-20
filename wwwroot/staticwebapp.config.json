@@ -3,12 +3,32 @@
     {
       "route": "/produtos",
       "rewrite": "/produtos.html"
+    },
+    {
+      "route": "/sobre",
+      "rewrite": "/sobre.html"
+    },
+    {
+      "route": "/contato",
+      "rewrite": "/contato.html"
+    },
+    {
+      "route": "/fornecedores",
+      "rewrite": "/fornecedores.html"
+    },
+    {
+      "route": "/privacidade",
+      "rewrite": "/privacidade.html"
+    },
+    {
+      "route": "/frete-e-trocas",
+      "rewrite": "/frete-e-trocas.html"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": [
-      "/images/*.{png,jpg,jpeg,gif,svg,ico}",
+      "/images/*.{png,jpg,jpeg,gif,svg,ico,webp,avif}",
       "/css/*",
       "/js/*",
       "/_framework/*",

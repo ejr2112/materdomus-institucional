@@ -25,7 +25,7 @@ namespace MaterDomus.Tests.Unit;
 ///   - os botões da hero em desktop continuam lado a lado (.hero-actions fora do
 ///     @media (max-width: 768px) mantém apenas margin-top: 30px, sem display: flex);
 ///   - .btn-primary mantém margin-right: 10px no nível superior;
-///   - links inativos do menu inferior (.bottom-nav a) mantêm color: #888 sem fundo;
+///   - links inativos do menu inferior (.bottom-nav a) usam color: #666 sem fundo;
 ///   - os estilos visuais dos botões (.btn-primary, .btn-secondary: cores, bordas,
 ///     border-radius) permanecem inalterados.
 ///
@@ -181,11 +181,13 @@ public class MobileButtonsMenuPreservationTests
         Assert.Matches(@"margin-right\s*:\s*10px", body!);
     }
 
-    // ----- Req 3.3 — .bottom-nav a (inativo) mantém #888 sem fundo -------------
+    // ----- Req 3.3 — .bottom-nav a (inativo) cinza, sem fundo -----------------
+    // #888 sobre branco fica em 3.54:1 e reprova o contraste AA do Lighthouse.
+    // #666 já é o cinza do rodapé (paleta do projeto) e passa em 5.74:1.
 
     /// <summary>
-    /// A regra .bottom-nav a (link inativo do menu inferior) mantém color: #888
-    /// e NÃO declara background/background-color. (Req 3.3)
+    /// A regra .bottom-nav a (link inativo do menu inferior) usa o cinza #666
+    /// e NÃO declara background/background-color.
     /// </summary>
     [Fact]
     public void BottomNavInactive_PreservesGrayColor_NoBackground()
@@ -201,7 +203,7 @@ public class MobileButtonsMenuPreservationTests
         Assert.True(match.Success, "Esperado encontrar a regra '.bottom-nav a { ... }' no site.css");
         var body = match.Groups[1].Value;
 
-        Assert.Matches(@"color\s*:\s*#888", body);
+        Assert.Matches(@"color\s*:\s*#666", body);
         Assert.DoesNotMatch(@"background(-color)?\s*:", body);
     }
 

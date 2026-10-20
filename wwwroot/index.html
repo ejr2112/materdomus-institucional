@@ -65,7 +65,8 @@
     </script>
 
     <link href="css/site.css" rel="stylesheet" />
-    <link href="css/produtos.css" rel="stylesheet" />
+    <link href="css/produtos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="css/produtos.css" rel="stylesheet" /></noscript>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/icon-192.png" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -73,7 +74,7 @@
 
     <!-- GTM (GTM-5FJ38X8C) is injected only after cookie consent. See js/cookie-consent.js. -->
 
-    <script src="js/seo.js"></script>
+    <script defer src="js/seo.js"></script>
 </head>
 
 <body>
@@ -102,11 +103,119 @@
     </section>
 </noscript>
 
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.webp"
+                 alt="Mater Domus"
+                 width="137"
+                 height="38"
+                 decoding="async" />
+        </div>
+
+        <nav>
+            <a href="/" data-nav="home" class="active" aria-current="page">Início</a>
+            <a href="/produtos" data-nav="produtos">Vitrine</a>
+            <a href="/sobre" data-nav="sobre">Sobre</a>
+            <a href="/fornecedores" data-nav="fornecedores">Fornecedores</a>
+            <a href="/contato" data-nav="contato">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main id="page-main">
+<!--static-page:home-->
+    <section class="hero">
+
+
+    </section>
+
+    <section class="hero"><h1>Praticidade, organização e confiança para o lar</h1>
+        <p>
+            A Mater Domus nasce com o propósito de levar produtos funcionais,
+            bem selecionados e acessíveis para o dia a dia das famílias brasileiras.
+        </p>
+
+        <div class="hero-actions"><a class="btn-primary" href="/fornecedores" data-track='{"event":"cta_click","page":"home","cta_name":"home_fornecedores","funnel":"supplier_acquisition"}'>Seja nosso fornecedor</a>
+            <a class="btn-secondary" href="/sobre" data-track='{"event":"cta_click","page":"home","cta_name":"home_sobre","funnel":"supplier_acquisition"}'>Conheça a Mater Domus</a></div></section>
+
+    <section><h2>O que fazemos</h2>
+        <p>
+            Atuamos no comércio eletrônico, com foco em marketplaces como a Amazon,
+            selecionando produtos de qualidade nas categorias de utilidades domésticas,
+            organização e itens para casa.
+        </p></section>
+<!--/static-page-->
+</main>
+
+<footer class="footer">
+    <p>© <span id="copyright-year">2026</span> Mater Domus</p>
+    <nav class="footer-links" aria-label="Informações legais">
+        <a href="/privacidade">Política de Privacidade</a>
+        <a href="/frete-e-trocas">Frete e trocas</a>
+        <button type="button"
+                class="footer-cookies-btn"
+                onclick="materDomusOpenCookiePreferences()">
+            Preferências de cookies
+        </button>
+    </nav>
+</footer>
+
+<nav class="bottom-nav" aria-label="Navegação principal">
+    <a href="/" data-nav="home" class="active" aria-current="page">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Início</span>
+    </a>
+    <a href="/produtos" data-nav="produtos">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Vitrine</span>
+    </a>
+    <a href="/sobre" data-nav="sobre">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span>Sobre</span>
+    </a>
+    <a href="/fornecedores" data-nav="fornecedores">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Fornecedores</span>
+    </a>
+    <a href="/contato" data-nav="contato">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span>Contato</span>
+    </a>
+</nav>
+
 <div id="app">
-    <div class="boot-screen" id="boot-screen">
+    <div class="boot-screen" id="boot-screen" hidden>
         <img class="boot-screen__logo"
-             src="images/logo.png"
-             alt="MaterDomus" />
+             src="images/logo.webp"
+             alt="MaterDomus"
+             width="202"
+             height="56"
+             decoding="async" />
         <div class="boot-screen__spinner" aria-hidden="true"></div>
         <p class="boot-screen__message">Um instante…</p>
 
@@ -161,6 +270,7 @@
             var screen = document.getElementById('boot-screen');
             if (!screen) return;
             failureShown = true;
+            screen.hidden = false;
             if (window.__bootTimer) {
                 clearTimeout(window.__bootTimer);
                 window.__bootTimer = null;
@@ -171,34 +281,40 @@
             if (spinner) spinner.style.display = 'none';
             if (msg) msg.style.display = 'none';
             if (err) err.hidden = false;
-            // Logo permanece visível.
         }
 
         window.__showBootFailure = showBootFailure;
-        window.__bootTimer = setTimeout(showBootFailure, BOOT_TIMEOUT_MS);
 
-        window.addEventListener('error', function (event) {
-            var target = event.target;
-            var src = (event.filename || (target && (target.src || target.href)) || '');
-            if (typeof src === 'string' &&
-                (src.indexOf('blazor.webassembly') !== -1 || src.indexOf('_framework/') !== -1)) {
-                showBootFailure();
-            }
-        }, true);
+        // O runtime Blazor (_framework/blazor.webassembly.js) fica fora do
+        // primeiro carregamento: o HTML estático já é a página. Só sobe se
+        // algo chamar materDomusLoadBlazor (não faz parte do fluxo normal).
+        window.materDomusLoadBlazor = function () {
+            if (window.__blazorLoader) return;
+            window.__blazorLoader = true;
+            var screen = document.getElementById('boot-screen');
+            if (screen) screen.hidden = false;
+            window.__bootTimer = setTimeout(showBootFailure, BOOT_TIMEOUT_MS);
+            var script = document.createElement('script');
+            script.src = '_framework/blazor.webassembly.js';
+            script.autostart = false;
+            script.setAttribute('autostart', 'false');
+            script.onload = function () {
+                if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
+                    showBootFailure();
+                    return;
+                }
+                Blazor.start().catch(function () { showBootFailure(); });
+            };
+            script.onerror = function () { showBootFailure(); };
+            document.body.appendChild(script);
+        };
+
+        var year = document.getElementById('copyright-year');
+        if (year) year.textContent = String(new Date().getFullYear());
     })();
 </script>
 
-<script src="js/analytics.js"></script>
-<script src="js/cookie-consent.js"></script>
-<script src="_framework/blazor.webassembly.js" autostart="false"></script>
-<script>
-    if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
-        if (window.__showBootFailure) window.__showBootFailure();
-    } else {
-        Blazor.start().catch(function () {
-            if (window.__showBootFailure) window.__showBootFailure();
-        });
-    }
-</script>
+<script defer src="js/analytics.js"></script>
+<script defer src="js/cookie-consent.js"></script>
 </body>
 </html>
