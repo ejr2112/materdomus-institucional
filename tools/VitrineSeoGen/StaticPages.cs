@@ -8,7 +8,7 @@ namespace MaterDomus.VitrineSeoGen;
 /// </summary>
 public static class StaticPages
 {
-    private sealed record Page(string FileName, string? NavKey, string Title, string Description, string Canonical, string Main);
+    private sealed record Page(string FileName, string? NavKey, string Title, string Description, string Canonical, string Main, bool NoIndex = false);
 
     public static IReadOnlyDictionary<string, string> Render(string indexHtml)
     {
@@ -18,6 +18,8 @@ public static class StaticPages
             var html = VitrineSeo.ApplyDocumentMeta(indexHtml, page.Title, page.Description, page.Canonical);
             html = VitrineSeo.ReplacePageMain(html, page.Main);
             html = VitrineSeo.ActivateNav(html, page.NavKey);
+            if (page.NoIndex)
+                html = VitrineSeo.ReplaceMetaContent(html, "name", "robots", "noindex, nofollow");
             pages[page.FileName] = html;
         }
 
@@ -37,8 +39,8 @@ public static class StaticPages
         new(
             "sobre.html",
             "sobre",
-            "Sobre a Mater Domus | Marca brasileira de utilidades domésticas",
-            "A Mater Domus é uma marca brasileira de e-commerce para casa, com curadoria, logística e parcerias sólidas.",
+            "Sobre a Mater Domus | Revendedora de Ou e Linha Flow",
+            "A MATER DOMUS LTDA (CNPJ 64.258.511/0001-90, São Paulo/SP) revende utilidades Ou e Linha Flow, principalmente pela Amazon Brasil.",
             "https://www.materdomus.com.br/sobre",
             """
             <section><h1>Quem é a Mater Domus</h1>
@@ -52,6 +54,27 @@ public static class StaticPages
                 <p>
                     Acreditamos que bons negócios são construídos com transparência,
                     comunicação clara e visão de longo prazo.
+                </p>
+
+                <p>
+                    A marca <strong>Mater Domus</strong> é operada pela
+                    <strong>MATER DOMUS LTDA</strong>, CNPJ 64.258.511/0001-90, em São Paulo/SP.
+                    Este site é www.materdomus.com.br. Não é a empresa do domínio materdomus.com
+                    e não é uma loja de informática.
+                </p>
+
+                <p>
+                    A empresa revende utilidades domésticas das marcas <strong>Ou</strong> e
+                    <strong>Linha Flow</strong>. Essas marcas são do fabricante Martiplast,
+                    de Caxias do Sul/RS, que também vende direto em
+                    <a href="https://ou.com.br/" target="_blank" rel="noopener noreferrer">ou.com.br</a>.
+                    A Mater Domus não fabrica esses produtos.
+                </p>
+
+                <p>
+                    A venda é feita principalmente pela Amazon Brasil, com envio pela Amazon (FBA).
+                    Na vitrine, o botão Comprar na Amazon abre o anúncio quando o item está disponível.
+                    Pagamento, frete, troca e devolução dessa compra são tratados pela Amazon Brasil.
                 </p>
             </section>
             <section><h2>Nossos valores</h2>
@@ -178,7 +201,7 @@ public static class StaticPages
                 <h1>Política de Privacidade</h1>
 
                 <p>
-                    A <strong>Mater Domus</strong> (razão social <strong>MASTER DOMUS LTDA</strong>)
+                    A <strong>Mater Domus</strong> (razão social <strong>MATER DOMUS LTDA</strong>)
                     respeita a privacidade de quem visita este site e de quem fala conosco.
                     Esta página explica, em linguagem simples, quais dados podem ser tratados,
                     para quê, com quem são compartilhados e quais são os seus direitos
@@ -188,7 +211,7 @@ public static class StaticPages
                 <h2>1. Quem é o controlador</h2>
                 <p>
                     O controlador dos dados tratados neste site é a
-                    <strong>MASTER DOMUS LTDA</strong>, que opera a marca <strong>Mater Domus</strong>.
+                    <strong>MATER DOMUS LTDA</strong>, que opera a marca <strong>Mater Domus</strong>.
                 </p>
                 <ul>
                     <li>Site: <a href="https://www.materdomus.com.br">https://www.materdomus.com.br</a></li>
@@ -429,6 +452,29 @@ public static class StaticPages
                     <strong>Última atualização:</strong> 24 de setembro de 2026.
                 </p>
             </section>
-            """)
+            """),
+        new(
+            "404.html",
+            null,
+            "Página não encontrada | Mater Domus",
+            "Este endereço não existe no site da Mater Domus (MATER DOMUS LTDA, São Paulo/SP). Veja a vitrine de Ou e Linha Flow ou volte ao início.",
+            "https://www.materdomus.com.br/404.html",
+            """
+            <section>
+                <h1>Página não encontrada</h1>
+                <p>
+                    O endereço pedido não existe neste site. A Mater Domus é a vitrine
+                    de utilidades domésticas Ou e Linha Flow da MATER DOMUS LTDA, em São Paulo/SP.
+                </p>
+                <p>
+                    <a href="/">Ir para o início</a>
+                    ·
+                    <a href="/produtos">Ver a vitrine</a>
+                    ·
+                    <a href="/contato">Falar com a Mater Domus</a>
+                </p>
+            </section>
+            """,
+            NoIndex: true)
     ];
 }

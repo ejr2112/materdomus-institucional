@@ -134,6 +134,11 @@ window.materdomusSeo = (function () {
     var initialApply = true;
 
     function applyFromLocation() {
+        var robots = document.querySelector('meta[name="robots"]');
+        if (robots && /noindex/i.test(robots.getAttribute('content') || '')) {
+            return;
+        }
+
         var path = normalizePath(window.location.pathname);
         applyCanonical(canonicalForPath(path));
 

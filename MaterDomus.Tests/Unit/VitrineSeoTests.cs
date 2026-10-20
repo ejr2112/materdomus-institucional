@@ -59,6 +59,11 @@ public class VitrineSeoTests
                 Assert.Equal(product.Gtin, item.GetProperty("gtin").GetString());
             }
 
+            var brand = item.GetProperty("brand");
+            Assert.Equal("Brand", brand.GetProperty("@type").GetString());
+            Assert.Equal("Ou", brand.GetProperty("name").GetString());
+            Assert.Equal("https://ou.com.br/", brand.GetProperty("url").GetString());
+
             var offer = item.GetProperty("offers");
             Assert.Equal("Offer", offer.GetProperty("@type").GetString());
             Assert.Equal("BRL", offer.GetProperty("priceCurrency").GetString());
@@ -70,11 +75,13 @@ public class VitrineSeoTests
                 Assert.Equal("https://schema.org/InStock", offer.GetProperty("availability").GetString());
                 Assert.Equal(product.AmazonUrl, offer.GetProperty("url").GetString());
                 Assert.StartsWith("https://www.amazon.com.br/dp/", offer.GetProperty("url").GetString());
+                Assert.Equal("https://www.materdomus.com.br/#organization", offer.GetProperty("seller").GetProperty("@id").GetString());
             }
             else
             {
                 Assert.Equal("https://schema.org/OutOfStock", offer.GetProperty("availability").GetString());
                 Assert.False(offer.TryGetProperty("url", out _));
+                Assert.False(offer.TryGetProperty("seller", out _));
             }
 
             if (offer.TryGetProperty("url", out var offerUrl))
@@ -295,8 +302,11 @@ public class VitrineSeoTests
             .Single(r => r.GetProperty("route").GetString() == "/produtos");
 
         Assert.Equal("/produtos.html", route.GetProperty("rewrite").GetString());
-        Assert.Equal("/index.html", doc.RootElement.GetProperty("navigationFallback").GetProperty("rewrite").GetString());
-        Assert.Contains("/images/*.{png,jpg,jpeg,gif,svg,ico,webp,avif}", config);
+        Assert.False(doc.RootElement.TryGetProperty("navigationFallback", out _));
+        var notFound = doc.RootElement.GetProperty("responseOverrides").GetProperty("404");
+        Assert.Equal("/404.html", notFound.GetProperty("rewrite").GetString());
+        Assert.Equal(404, notFound.GetProperty("statusCode").GetInt32());
+        Assert.Equal("text/plain; charset=utf-8", doc.RootElement.GetProperty("mimeTypes").GetProperty(".txt").GetString());
 
         foreach (var (path, rewrite) in new (string Path, string Rewrite)[]
         {
@@ -324,9 +334,69 @@ public class VitrineSeoTests
         Assert.Equal(pages["fornecedores.html"], ReadRepo("wwwroot", "fornecedores.html"));
         Assert.Equal(pages["privacidade.html"], ReadRepo("wwwroot", "privacidade.html"));
         Assert.Equal(pages["frete-e-trocas.html"], ReadRepo("wwwroot", "frete-e-trocas.html"));
+        Assert.Equal(pages["404.html"], ReadRepo("wwwroot", "404.html"));
         Assert.Contains("<h1>Quem é a Mater Domus</h1>", pages["sobre.html"]);
+        Assert.Contains("MATER DOMUS LTDA", pages["sobre.html"]);
+        Assert.Contains("64.258.511/0001-90", pages["sobre.html"]);
+        Assert.Contains("São Paulo/SP", pages["sobre.html"]);
+        Assert.Contains("Martiplast", pages["sobre.html"]);
         Assert.Contains("data-nav=\"sobre\" class=\"active\"", pages["sobre.html"]);
         Assert.DoesNotContain("Praticidade, organização e confiança para o lar", pages["sobre.html"]);
+        Assert.Contains("noindex, nofollow", pages["404.html"]);
+        Assert.Contains("<h1>Página não encontrada</h1>", pages["404.html"]);
+        Assert.DoesNotContain("Praticidade, organização e confiança para o lar", pages["404.html"]);
+
+        var titles = new HashSet<string>(StringComparer.Ordinal);
+        var descriptions = new HashSet<string>(StringComparer.Ordinal);
+        var canonicals = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var file in new[] { "index.html", "produtos.html", "sobre.html", "contato.html", "fornecedores.html", "privacidade.html", "frete-e-trocas.html", "404.html" })
+        {
+            var html = file == "index.html" ? indexHtml : pages.TryGetValue(file, out var generated) ? generated : ReadRepo("wwwroot", file);
+            var title = System.Text.RegularExpressions.Regex.Match(html, "<title>(.*?)</title>").Groups[1].Value;
+            var description = System.Text.RegularExpressions.Regex.Match(html, "name=\"description\"\\s+content=\"([^\"]*)\"").Groups[1].Value;
+            var canonical = System.Text.RegularExpressions.Regex.Match(html, "rel=\"canonical\" href=\"([^\"]*)\"").Groups[1].Value;
+            Assert.False(string.IsNullOrWhiteSpace(title), file);
+            Assert.False(string.IsNullOrWhiteSpace(description), file);
+            Assert.False(string.IsNullOrWhiteSpace(canonical), file);
+            Assert.True(titles.Add(title), file + " title duplicado: " + title);
+            Assert.True(descriptions.Add(description), file + " description duplicada");
+            Assert.True(canonicals.Add(canonical), file + " canonical duplicado: " + canonical);
+        }
+
+        Assert.Equal("https://www.materdomus.com.br/sobre", System.Text.RegularExpressions.Regex.Match(pages["sobre.html"], "rel=\"canonical\" href=\"([^\"]*)\"").Groups[1].Value);
+        Assert.DoesNotContain("<title>Mater Domus | Utilidades domésticas Ou e Linha Flow</title>", pages["sobre.html"]);
+    }
+
+    [Fact]
+    public void LlmsTxt_DescribesTheResellerAndListsCatalogProducts()
+    {
+        var productsJson = ReadRepo("wwwroot", "data", "products.json");
+        var (brief, full) = LlmsTxt.Build(productsJson);
+
+        Assert.Equal(brief, ReadRepo("wwwroot", "llms.txt"));
+        Assert.Equal(full, ReadRepo("wwwroot", "llms-full.txt"));
+        Assert.Contains("MATER DOMUS LTDA", brief);
+        Assert.Contains("64.258.511/0001-90", brief);
+        Assert.Contains("São Paulo/SP", brief);
+        Assert.Contains("Martiplast", brief);
+        Assert.Contains("https://ou.com.br/", brief);
+        Assert.Contains("contato@materdomus.com.br", brief);
+        Assert.Contains("https://wa.me/5519993491775", brief);
+        Assert.Contains("https://www.materdomus.com.br/produtos", brief);
+        Assert.Contains("https://www.materdomus.com.br/sobre", brief);
+        Assert.Contains("https://www.materdomus.com.br/frete-e-trocas", brief);
+        Assert.Contains(LlmsTxt.AmazonStoreUrl, brief);
+        Assert.DoesNotContain("materdomus.com/", brief.Replace("www.materdomus.com.br", "", StringComparison.Ordinal));
+        Assert.DoesNotContain("loja oficial", brief, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("autorizad", brief, StringComparison.OrdinalIgnoreCase);
+
+        using var catalog = JsonDocument.Parse(productsJson);
+        foreach (var row in catalog.RootElement.EnumerateArray())
+        {
+            var name = row.GetProperty("name").GetString();
+            Assert.NotNull(name);
+            Assert.Contains(name, full);
+        }
     }
 
     [Fact]

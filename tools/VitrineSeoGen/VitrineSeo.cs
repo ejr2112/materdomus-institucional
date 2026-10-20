@@ -89,6 +89,7 @@ public static partial class VitrineSeo
             artifacts.ProdutosHtml,
             utf8);
         StaticPages.WriteAll(repoRoot, indexHtml, utf8);
+        LlmsTxt.WriteAll(repoRoot, File.ReadAllText(productsPath), utf8);
     }
 
     public static string BuildItemListJson(string productsJson) =>
@@ -253,6 +254,17 @@ public static partial class VitrineSeo
         if (!string.IsNullOrWhiteSpace(product.Gtin))
             node["gtin"] = product.Gtin;
 
+        if (product.Name.StartsWith("Ou ", StringComparison.Ordinal) ||
+            product.Name.Contains("Linha Flow", StringComparison.Ordinal))
+        {
+            node["brand"] = new Dictionary<string, object>
+            {
+                ["@type"] = "Brand",
+                ["name"] = "Ou",
+                ["url"] = "https://ou.com.br/"
+            };
+        }
+
         node["offers"] = BuildOffer(product);
         return node;
     }
@@ -274,7 +286,13 @@ public static partial class VitrineSeo
         };
 
         if (IsBuyable(product))
+        {
             offer["url"] = product.AmazonUrl;
+            offer["seller"] = new Dictionary<string, object>
+            {
+                ["@id"] = Origin + "/#organization"
+            };
+        }
 
         return offer;
     }

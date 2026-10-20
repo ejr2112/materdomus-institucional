@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.materdomus.com.br/sitemap.xml
+
+# https://www.materdomus.com.br/llms.txt
