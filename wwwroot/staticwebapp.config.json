@@ -3,20 +3,65 @@
     {
       "route": "/produtos",
       "rewrite": "/produtos.html"
+    },
+    {
+      "route": "/produtos/",
+      "redirect": "/produtos",
+      "statusCode": 301
+    },
+    {
+      "route": "/sobre",
+      "rewrite": "/sobre.html"
+    },
+    {
+      "route": "/sobre/",
+      "redirect": "/sobre",
+      "statusCode": 301
+    },
+    {
+      "route": "/contato",
+      "rewrite": "/contato.html"
+    },
+    {
+      "route": "/contato/",
+      "redirect": "/contato",
+      "statusCode": 301
+    },
+    {
+      "route": "/fornecedores",
+      "rewrite": "/fornecedores.html"
+    },
+    {
+      "route": "/fornecedores/",
+      "redirect": "/fornecedores",
+      "statusCode": 301
+    },
+    {
+      "route": "/privacidade",
+      "rewrite": "/privacidade.html"
+    },
+    {
+      "route": "/privacidade/",
+      "redirect": "/privacidade",
+      "statusCode": 301
+    },
+    {
+      "route": "/frete-e-trocas",
+      "rewrite": "/frete-e-trocas.html"
+    },
+    {
+      "route": "/frete-e-trocas/",
+      "redirect": "/frete-e-trocas",
+      "statusCode": 301
     }
   ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "/images/*.{png,jpg,jpeg,gif,svg,ico}",
-      "/css/*",
-      "/js/*",
-      "/_framework/*",
-      "/lib/*",
-      "/favicon.ico",
-      "/robots.txt",
-      "/sitemap.xml",
-      "/manifest.webmanifest"
-    ]
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
+  },
+  "mimeTypes": {
+    ".txt": "text/plain; charset=utf-8"
   }
 }

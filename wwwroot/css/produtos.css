@@ -273,6 +273,18 @@ main section.produtos-page,
 }
 
 /* ── Favorites counter badge ────────────────────────────────── */
+.favorites-badge[hidden],
+.produtos-state[hidden],
+.produtos-detail-unavailable[hidden],
+.product-detail__backdrop[hidden],
+.products-section[hidden],
+.product-card[hidden],
+.product-detail__amazon-btn[hidden],
+.product-detail__badge[hidden],
+.product-detail__coming-soon[hidden] {
+  display: none !important;
+}
+
 .favorites-badge {
   display: inline-flex;
   align-items: center;

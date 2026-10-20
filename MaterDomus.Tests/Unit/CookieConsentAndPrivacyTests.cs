@@ -92,7 +92,7 @@ public class CookieConsentAndPrivacyTests
         Assert.Contains("SeoMeta", razor);
         Assert.Contains("Política de Privacidade | Mater Domus", razor);
         Assert.Contains("https://www.materdomus.com.br/privacidade", razor);
-        Assert.Contains("MASTER DOMUS LTDA", razor);
+        Assert.Contains("MATER DOMUS LTDA", razor);
         Assert.Contains("Mater Domus", razor);
         Assert.Contains("contato@materdomus.com.br", razor);
         Assert.Contains("wa.me/5519993491775", razor);
@@ -121,7 +121,7 @@ public class CookieConsentAndPrivacyTests
         Assert.Contains("LGPD", seo.Description);
         Assert.Null(seo.Stylesheet);
 
-        Assert.Contains("MASTER DOMUS LTDA", cut.Markup);
+        Assert.Contains("MATER DOMUS LTDA", cut.Markup);
         Assert.Contains("mailto:contato@materdomus.com.br", cut.Markup);
         Assert.DoesNotContain("aconselhamento jurídico", cut.Markup);
         var heading = cut.Find("h1");

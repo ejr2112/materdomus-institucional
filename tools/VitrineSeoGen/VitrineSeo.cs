@@ -11,7 +11,7 @@ namespace MaterDomus.VitrineSeoGen;
 /// a partir de wwwroot/data/products.json e wwwroot/index.html.
 /// A compra continua na Amazon: a Offer.url de item comprável é a amazonUrl.
 /// </summary>
-public static class VitrineSeo
+public static partial class VitrineSeo
 {
     public const string Origin = "https://www.materdomus.com.br";
     public const string Title = "Vitrine Ou e Linha Flow | Mater Domus";
@@ -72,7 +72,8 @@ public static class VitrineSeo
     {
         var productsPath = Path.Combine(repoRoot, "wwwroot", "data", "products.json");
         var indexPath = Path.Combine(repoRoot, "wwwroot", "index.html");
-        var artifacts = Build(File.ReadAllText(productsPath), File.ReadAllText(indexPath));
+        var indexHtml = File.ReadAllText(indexPath);
+        var artifacts = Build(File.ReadAllText(productsPath), indexHtml);
         var utf8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
         File.WriteAllText(
@@ -87,6 +88,8 @@ public static class VitrineSeo
             Path.Combine(repoRoot, "wwwroot", "produtos.html"),
             artifacts.ProdutosHtml,
             utf8);
+        StaticPages.WriteAll(repoRoot, indexHtml, utf8);
+        LlmsTxt.WriteAll(repoRoot, File.ReadAllText(productsPath), utf8);
     }
 
     public static string BuildItemListJson(string productsJson) =>
@@ -106,7 +109,7 @@ public static class VitrineSeo
             ["imageAlt"] = og.ImageAlt
         });
 
-        return new Artifacts(itemList, meta, BuildProdutosHtml(indexHtml, itemList, og), og.ImageUrl);
+        return new Artifacts(itemList, meta, BuildProdutosHtml(indexHtml, itemList, og, products), og.ImageUrl);
     }
 
     private static string IndexShell =>
@@ -125,7 +128,7 @@ public static class VitrineSeo
         <meta name="twitter:description" content="placeholder" />
         <meta name="twitter:image" content="https://www.materdomus.com.br/images/logo.png" />
         <meta name="twitter:image:alt" content="placeholder" />
-        <script src="js/seo.js"></script>
+        <script defer src="js/seo.js"></script>
         </head><body></body></html>
         """;
 
@@ -139,7 +142,10 @@ public static class VitrineSeo
         string AmazonUrl,
         bool ComingSoon,
         string? Asin,
-        string? Gtin);
+        string? Gtin,
+        IReadOnlyList<LifestyleImage> Lifestyle);
+
+    internal readonly record struct LifestyleImage(string Url, string Alt);
 
     private sealed record OgImage(string ImageUrl, string ImageAlt);
 
@@ -183,7 +189,8 @@ public static class VitrineSeo
                 amazonUrl,
                 ReadBool(node, "comingSoon"),
                 ResolveAsin(node, amazonUrl, id),
-                ResolveGtin(node)));
+                ResolveGtin(node),
+                ReadLifestyle(node)));
         }
 
         return products;
@@ -247,6 +254,17 @@ public static class VitrineSeo
         if (!string.IsNullOrWhiteSpace(product.Gtin))
             node["gtin"] = product.Gtin;
 
+        if (product.Name.StartsWith("Ou ", StringComparison.Ordinal) ||
+            product.Name.Contains("Linha Flow", StringComparison.Ordinal))
+        {
+            node["brand"] = new Dictionary<string, object>
+            {
+                ["@type"] = "Brand",
+                ["name"] = "Ou",
+                ["url"] = "https://ou.com.br/"
+            };
+        }
+
         node["offers"] = BuildOffer(product);
         return node;
     }
@@ -268,7 +286,13 @@ public static class VitrineSeo
         };
 
         if (IsBuyable(product))
+        {
             offer["url"] = product.AmazonUrl;
+            offer["seller"] = new Dictionary<string, object>
+            {
+                ["@id"] = Origin + "/#organization"
+            };
+        }
 
         return offer;
     }
@@ -361,7 +385,7 @@ public static class VitrineSeo
         return Origin + "/" + imageUrl.TrimStart('/');
     }
 
-    private static string BuildProdutosHtml(string indexHtml, string itemListJson, OgImage og)
+    private static string BuildProdutosHtml(string indexHtml, string itemListJson, OgImage og, List<CatalogProduct> products)
     {
         var html = indexHtml;
         html = ReplaceOne(
@@ -387,7 +411,7 @@ public static class VitrineSeo
 
         var nl = html.Contains("\r\n", StringComparison.Ordinal) ? "\r\n" : "\n";
         var json = itemListJson.ReplaceLineEndings(nl);
-        var seoTag = "<script src=\"js/seo.js\"></script>";
+        var seoTag = "<script defer src=\"js/seo.js\"></script>";
         var block =
             "<script type=\"application/ld+json\" id=\"vitrine-itemlist\">" + nl +
             json + nl +
@@ -399,16 +423,85 @@ public static class VitrineSeo
         if (occurrences != 1)
             throw new InvalidOperationException($"Esperava 1 ocorrência de {seoTag} em index.html, achei {occurrences}.");
 
-        return html.Replace(seoTag, block, StringComparison.Ordinal);
+        html = html.Replace(seoTag, block, StringComparison.Ordinal);
+
+        const string asyncCss = "<link href=\"css/produtos.css\" rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\" />";
+        const string blockingCss = "<link href=\"css/produtos.css\" rel=\"stylesheet\" />";
+        if (html.Contains(asyncCss, StringComparison.Ordinal))
+            html = html.Replace(asyncCss, blockingCss, StringComparison.Ordinal);
+
+        if (!html.Contains("<!--static-page:home-->", StringComparison.Ordinal))
+            return html;
+
+        var markup = BuildCatalogMarkup(products);
+        html = ReplacePageMain(html, markup.Html);
+        html = ActivateNav(html, "produtos");
+        if (!string.IsNullOrEmpty(markup.LcpImage))
+        {
+            var preload =
+                "    <link rel=\"preload\" as=\"image\" href=\"" + HtmlAttribute(markup.LcpImage) + "\" fetchpriority=\"high\" />";
+            html = html.Replace("</head>", preload + "\n</head>", StringComparison.Ordinal);
+        }
+
+        if (!html.Contains("js/catalog.js", StringComparison.Ordinal))
+            html = html.Replace("</body>", "    <script defer src=\"js/catalog.js\"></script>\n</body>", StringComparison.Ordinal);
+
+        return html;
     }
 
-    private static string HtmlAttribute(string value) =>
+    internal static string ReplacePageMain(string html, string inner)
+    {
+        const string start = "<!--static-page:home-->";
+        const string end = "<!--/static-page-->";
+        var startAt = html.IndexOf(start, StringComparison.Ordinal);
+        var endAt = html.IndexOf(end, StringComparison.Ordinal);
+        if (startAt < 0 || endAt < 0 || endAt < startAt)
+            throw new InvalidOperationException("Marcador static-page ausente em index.html.");
+
+        return string.Concat(html.AsSpan(0, startAt), inner, html.AsSpan(endAt + end.Length));
+    }
+
+    internal static string ActivateNav(string html, string? navKey)
+    {
+        html = Regex.Replace(html, @"\sclass=""active""", "");
+        html = Regex.Replace(html, @"\saria-current=""page""", "");
+        if (string.IsNullOrEmpty(navKey))
+            return html;
+
+        return Regex.Replace(
+            html,
+            $@"<a\b(?=[^>]*\bdata-nav=""{Regex.Escape(navKey)}"")([^>]*)>",
+            match => "<a" + match.Groups[1].Value + " class=\"active\" aria-current=\"page\">");
+    }
+
+    internal static string ApplyDocumentMeta(string html, string title, string description, string canonical)
+    {
+        html = ReplaceOne(
+            html,
+            new Regex(@"(<title>)(.*?)(</title>)", RegexOptions.Singleline),
+            match => match.Groups[1].Value + HtmlAttribute(title) + match.Groups[3].Value,
+            "title");
+        html = ReplaceMetaContent(html, "name", "description", description);
+        html = ReplaceOne(
+            html,
+            new Regex(@"(<link\s+rel=""canonical""\s+href="")([^""]*)("")", RegexOptions.IgnoreCase),
+            match => match.Groups[1].Value + canonical + match.Groups[3].Value,
+            "canonical");
+        html = ReplaceMetaContent(html, "property", "og:title", title);
+        html = ReplaceMetaContent(html, "property", "og:description", description);
+        html = ReplaceMetaContent(html, "property", "og:url", canonical);
+        html = ReplaceMetaContent(html, "name", "twitter:title", title);
+        html = ReplaceMetaContent(html, "name", "twitter:description", description);
+        return html;
+    }
+
+    internal static string HtmlAttribute(string value) =>
         value.Replace("&", "&amp;", StringComparison.Ordinal)
             .Replace("\"", "&quot;", StringComparison.Ordinal)
             .Replace("<", "&lt;", StringComparison.Ordinal)
             .Replace(">", "&gt;", StringComparison.Ordinal);
 
-    private static string ReplaceMetaContent(string html, string attribute, string name, string content)
+    internal static string ReplaceMetaContent(string html, string attribute, string name, string content)
     {
         var regex = new Regex(
             $@"(<meta\s+{attribute}\s*=\s*""{Regex.Escape(name)}""\s+content\s*=\s*"")([^""]*)("")",
@@ -421,7 +514,7 @@ public static class VitrineSeo
             $"meta {attribute}={name}");
     }
 
-    private static string ReplaceOne(string html, Regex regex, Func<Match, string> replacer, string label)
+    internal static string ReplaceOne(string html, Regex regex, Func<Match, string> replacer, string label)
     {
         var matches = regex.Matches(html);
         if (matches.Count != 1)
@@ -456,6 +549,24 @@ public static class VitrineSeo
             return "";
 
         return value.ValueKind == JsonValueKind.String ? value.GetString() ?? "" : value.ToString();
+    }
+
+    private static IReadOnlyList<LifestyleImage> ReadLifestyle(JsonElement node)
+    {
+        if (!node.TryGetProperty("lifestyleImages", out var value) || value.ValueKind != JsonValueKind.Array)
+            return Array.Empty<LifestyleImage>();
+
+        var images = new List<LifestyleImage>();
+        foreach (var item in value.EnumerateArray())
+        {
+            var url = ReadString(item, "url");
+            if (string.IsNullOrWhiteSpace(url))
+                continue;
+
+            images.Add(new LifestyleImage(url, ReadString(item, "alt")));
+        }
+
+        return images;
     }
 
     private static bool ReadBool(JsonElement node, string name)

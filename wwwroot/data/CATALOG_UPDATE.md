@@ -27,7 +27,7 @@ Liberar **Comprar na Amazon** somente quando o listing está buyable
 | Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | FBA Available 4 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
 | Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | FBA Available 8 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
-| Ou Organizador de Parede Multiuso Bege Linha Flow | `B0GKPQ99R8` | MD-OU-39269090 | FBA Available 0 | Em breve, `amazonUrl` vazia |
+| Ou Organizador de Parede para Sacolas Bege Linha Flow | `B0GKPQ99R8` | OSW100BGF | FBA Available 0 | Em breve, `amazonUrl` vazia. É o organizador de sacolas, não um trilho de ganchos |
 
 Não listar: escova de piso, dispenser 2,3L, cesto 16L, organizador 8L genérico,
 kit borrifador + panos.
@@ -59,11 +59,37 @@ mesmo com URL preenchida (útil para pré-cadastrar o ASIN sem abrir listing vaz
 
 ## Identificadores
 
-Cada SKU publica `asin` em maiúsculas. A fonte é a `amazonUrl`
-(`/dp/{ASIN}`) ou, nos itens Em breve com URL vazia, o sufixo de 10
-caracteres do `id`. `gtin` e `ean` só entram quando o repositório já
-documenta o código de barras daquele SKU. Nenhum item atual tem EAN/GTIN
-anotado — o campo fica de fora. Não inventar GTIN.
+Cada anúncio Amazon publica `asin` em maiúsculas. A fonte é a `amazonUrl`
+(`/dp/{ASIN}`) ou, nos itens Em breve que já têm ASIN e URL vazia, o sufixo
+de 10 caracteres do `id`.
+
+Exceção aprovada pelo dono: itens Em breve que ainda não têm anúncio na
+Amazon não recebem `asin` nem `amazonUrl`. O `id` é um slug terminado no
+SKU Martiplast (9 caracteres, para não ser lido como ASIN). A origem é a
+NF-e 107157 da Martiplast (13/10/2026), emitida para MATER DOMUS LTDA.
+O EAN dessa nota entra no campo `ean` só desses SKUs. Não inventar GTIN
+para os demais.
+
+| Nome no site | SKU | EAN | Preço de referência Ou |
+|---|---|---|---|
+| Ou Borrifador Multiuso 350ml Bege Linha Flow | BFM500BGF | 7899620682399 | R$ 24,99 |
+| Ou Borrifador Multiuso 750ml Bege Linha Flow | BFM700BGF | 7899620682405 | R$ 34,99 |
+| Ou Organizador de Parede para Sacolas Chumbo Linha Flow | OSW100CHF | 7899620684980 | R$ 69,99 |
+
+O modelo exige `price` > 0, então esses três mostram o preço de tabela da Ou
+em ou.com.br. Não é preço de venda na Amazon.
+
+## Correção do organizador bege (`B0GKPQ99R8`)
+
+A NF-e e a página da Ou identificam o SKU OSW100BGF (EAN 7899620684973)
+como organizador de parede para sacolas, bege. O texto antigo, de trilho
+com quatro ganchos, estava errado. O preço publicado (R$ 56,69) não muda.
+As fotos passaram a ser as da Ou para esse produto.
+
+O organizador branco `B0GKQ4VVPQ` não é o mesmo item. Na Ou ele corresponde
+ao Organizador de Parede e Armário (SKU OFW100BCF): parede ou interior de
+armário, adesivo Ultra Click, até dois dispensers Flow. A descrição atual
+permanece.
 
 ## Regras do serviço
 

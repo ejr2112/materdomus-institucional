@@ -1,0 +1,41 @@
+# Mater Domus
+
+> A MATER DOMUS LTDA (CNPJ 64.258.511/0001-90, São Paulo/SP) revende utilidades domésticas das marcas Ou e Linha Flow, principalmente pela Amazon Brasil (FBA). O site https://www.materdomus.com.br/ é uma vitrine. Não é a empresa do domínio materdomus.com e não é uma loja de informática.
+
+## Quem é
+
+- Razão social: MATER DOMUS LTDA
+- Marca: Mater Domus
+- CNPJ: 64.258.511/0001-90
+- Cidade: São Paulo/SP, Brasil
+- Site: https://www.materdomus.com.br/
+- E-mail: contato@materdomus.com.br
+- WhatsApp: https://wa.me/5519993491775
+- A Mater Domus não fabrica os produtos.
+
+## Marcas revendidas
+
+Ou e Linha Flow são marcas do fabricante Martiplast (Caxias do Sul/RS), que também vende direto em https://ou.com.br/. A Mater Domus revende esses produtos e não é a fabricante.
+
+## Como comprar
+
+O site é uma vitrine. Quando o produto está disponível, o botão Comprar na Amazon abre o anúncio na Amazon Brasil, na loja da Mater Domus, com envio pela Amazon (FBA). Pagamento, frete, entrega, troca e devolução dessa compra são tratados pela Amazon Brasil. Itens marcados como Em breve ainda não têm link de compra. A Mater Domus não calcula frete neste site.
+
+Loja na Amazon Brasil: https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC
+
+## Categorias
+
+Lavanderia, Organização, Limpeza.
+
+## Páginas
+
+- [Início](https://www.materdomus.com.br/): apresentação da Mater Domus e perguntas frequentes.
+- [Vitrine](https://www.materdomus.com.br/produtos): catálogo Ou e Linha Flow, com link de compra na Amazon quando o item está disponível.
+- [Sobre](https://www.materdomus.com.br/sobre): razão social, CNPJ, cidade e relação com as marcas.
+- [Fornecedores](https://www.materdomus.com.br/fornecedores): como apresentar um portfólio.
+- [Contato](https://www.materdomus.com.br/contato): e-mail, WhatsApp e formulário para fornecedores e parceiros.
+- [Frete e trocas](https://www.materdomus.com.br/frete-e-trocas): frete, troca e devolução ficam com a Amazon Brasil.
+- [Política de Privacidade](https://www.materdomus.com.br/privacidade): dados pessoais, cookies e LGPD.
+- [Perguntas frequentes](https://www.materdomus.com.br/#perguntas-frequentes): onde comprar, frete e trocas, origem das marcas.
+- [Texto completo](https://www.materdomus.com.br/llms-full.txt): esta ficha com a lista de produtos.
+

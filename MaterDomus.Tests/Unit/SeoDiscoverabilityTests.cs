@@ -59,7 +59,9 @@ public class SeoDiscoverabilityTests
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/contato" && u.Priority == "0.6");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/privacidade" && u.Priority == "0.4");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/frete-e-trocas" && u.Priority == "0.4");
-        Assert.All(urls, u => Assert.Equal("2026-09-24", u.Lastmod));
+        Assert.All(urls, u => Assert.Equal("2026-10-20", u.Lastmod));
+        Assert.DoesNotContain(urls, u => u.Loc != null && u.Loc.Contains("/404", StringComparison.Ordinal));
+        Assert.DoesNotContain(urls, u => u.Loc != null && u.Loc.Contains("llms", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -118,9 +120,20 @@ public class SeoDiscoverabilityTests
         Assert.Equal("https://www.materdomus.com.br/", org.GetProperty("url").GetString());
         Assert.Equal("https://www.materdomus.com.br/images/logo.png", org.GetProperty("logo").GetString());
         Assert.Equal("contato@materdomus.com.br", org.GetProperty("email").GetString());
-        Assert.Contains(
-            "https://www.materdomus.com.br/",
-            org.GetProperty("sameAs").EnumerateArray().Select(x => x.GetString()));
+        Assert.Equal("MATER DOMUS LTDA", org.GetProperty("legalName").GetString());
+        Assert.Equal("64.258.511/0001-90", org.GetProperty("taxID").GetString());
+        var address = org.GetProperty("address");
+        Assert.Equal("PostalAddress", address.GetProperty("@type").GetString());
+        Assert.Equal("São Paulo", address.GetProperty("addressLocality").GetString());
+        Assert.Equal("SP", address.GetProperty("addressRegion").GetString());
+        Assert.Equal("BR", address.GetProperty("addressCountry").GetString());
+        Assert.False(address.TryGetProperty("streetAddress", out _));
+        var sameAs = org.GetProperty("sameAs").EnumerateArray().Select(x => x.GetString()).ToList();
+        Assert.Equal(new[] { "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC" }, sameAs);
+        Assert.DoesNotContain("https://www.materdomus.com.br/", sameAs);
+        Assert.DoesNotContain("https://ou.com.br/", sameAs);
+        Assert.Contains("FAQPage", html);
+        Assert.Contains("Onde comprar o dispenser da Linha Flow?", html);
         Assert.Equal(
             "+55-19-99349-1775",
             org.GetProperty("contactPoint").GetProperty("telephone").GetString());
@@ -149,6 +162,11 @@ public class SeoDiscoverabilityTests
         Assert.Contains("id=\"boot-error\"", html);
         Assert.Contains("BOOT_TIMEOUT_MS = 80000", html);
         Assert.Contains("blazor.webassembly.js", html);
+        Assert.DoesNotContain("<script src=\"_framework/blazor.webassembly.js\"", html);
+        Assert.Contains("Praticidade, organização e confiança para o lar", html);
+        Assert.Contains("images/logo.webp", html);
+        Assert.Contains("width=\"137\"", html);
+        Assert.Contains("height=\"38\"", html);
     }
 
     [Fact]
@@ -318,9 +336,9 @@ public class SeoDiscoverabilityTests
         Assert.Contains("name=\"theme-color\" content=\"#1f1f1f\"", html);
 
         var swa = ReadWwwroot("staticwebapp.config.json");
-        Assert.Contains("/manifest.webmanifest", swa);
-        Assert.Contains("/sitemap.xml", swa);
-        Assert.Contains("/robots.txt", swa);
+        Assert.DoesNotContain("navigationFallback", swa);
+        Assert.Contains("\"statusCode\": 404", swa);
+        Assert.Contains("/404.html", swa);
     }
 
     private static Bunit.TestContext CreateJsContext()

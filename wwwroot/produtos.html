@@ -36,11 +36,20 @@
           "@type": "Organization",
           "@id": "https://www.materdomus.com.br/#organization",
           "name": "Mater Domus",
+          "legalName": "MATER DOMUS LTDA",
+          "taxID": "64.258.511/0001-90",
           "url": "https://www.materdomus.com.br/",
           "logo": "https://www.materdomus.com.br/images/logo.png",
+          "description": "MATER DOMUS LTDA, em São Paulo/SP, revende utilidades domésticas Ou e Linha Flow, principalmente pela Amazon Brasil. Não é a empresa do domínio materdomus.com e não é uma loja de informática.",
           "email": "contato@materdomus.com.br",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+          },
           "sameAs": [
-            "https://www.materdomus.com.br/"
+            "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC"
           ],
           "contactPoint": {
             "@type": "ContactPoint",
@@ -66,6 +75,7 @@
 
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/produtos.css" rel="stylesheet" />
+    <noscript><link href="css/produtos.css" rel="stylesheet" /></noscript>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/icon-192.png" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -82,7 +92,7 @@
   "description": "Conheça os produtos Mater Domus da Linha Flow e Ou, disponíveis na Amazon ou em breve. Utilidades domésticas e organização para o lar.",
   "url": "https://www.materdomus.com.br/produtos",
   "inLanguage": "pt-BR",
-  "numberOfItems": 10,
+  "numberOfItems": 13,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -95,12 +105,20 @@
         "description": "Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou desinfetante na lavanderia, com visualização do nível interno.",
         "category": "Lavanderia",
         "asin": "B0GKPPS5YH",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "39.90",
           "availability": "https://schema.org/InStock",
-          "url": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV"
+          "url": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
+          "seller": {
+            "@id": "https://www.materdomus.com.br/#organization"
+          }
         }
       }
     },
@@ -115,12 +133,20 @@
         "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
         "category": "Lavanderia",
         "asin": "B0GKPZMCYZ",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "49.49",
           "availability": "https://schema.org/InStock",
-          "url": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV"
+          "url": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
+          "seller": {
+            "@id": "https://www.materdomus.com.br/#organization"
+          }
         }
       }
     },
@@ -135,6 +161,11 @@
         "description": "Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta até dois dispensers Flow.",
         "category": "Organização",
         "asin": "B0GKQ4VVPQ",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -154,6 +185,11 @@
         "description": "Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho.",
         "category": "Limpeza",
         "asin": "B0CZTTRFQR",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -167,12 +203,17 @@
       "position": 5,
       "item": {
         "@type": "Product",
-        "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
+        "name": "Ou Organizador de Parede para Sacolas Bege Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
         "sku": "organizador-parede-multiuso-bege-b0gkpq99r8",
-        "description": "Organizador de parede bege da Linha Flow com quatro ganchos para utensílios de limpeza. Fixação adesiva, sem necessidade de furar a parede.",
+        "description": "Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
         "category": "Organização",
         "asin": "B0GKPQ99R8",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -192,6 +233,11 @@
         "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
         "category": "Limpeza",
         "asin": "B0CZTTVLWK",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -211,6 +257,11 @@
         "description": "Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar.",
         "category": "Limpeza",
         "asin": "B0F8PWY3M5",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -230,6 +281,11 @@
         "description": "Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso.",
         "category": "Limpeza",
         "asin": "B0FXBN7SCB",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -249,6 +305,11 @@
         "description": "Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária.",
         "category": "Limpeza",
         "asin": "B0G634V2NB",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
@@ -268,10 +329,87 @@
         "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
         "category": "Limpeza",
         "asin": "B0CZTTSHB7",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "29.74",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 350ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp",
+        "sku": "borrifador-350ml-bege-bfm500bgf",
+        "description": "Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de segurança on/off.",
+        "category": "Limpeza",
+        "gtin": "7899620682399",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "24.99",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 750ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
+        "sku": "borrifador-750ml-bege-bfm700bgf",
+        "description": "Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com formato anatômico.",
+        "category": "Limpeza",
+        "gtin": "7899620682405",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "34.99",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Organizador de Parede para Sacolas Chumbo Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
+        "sku": "organizador-parede-sacolas-chumbo-osw100chf",
+        "description": "Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
+        "category": "Organização",
+        "gtin": "7899620684980",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "69.99",
           "availability": "https://schema.org/OutOfStock"
         }
       }
@@ -280,7 +418,8 @@
 }
     </script>
 
-    <script src="js/seo.js"></script>
+    <script defer src="js/seo.js"></script>
+    <link rel="preload" as="image" href="images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp" fetchpriority="high" />
 </head>
 
 <body>
@@ -309,11 +448,538 @@
     </section>
 </noscript>
 
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.webp"
+                 alt="Mater Domus"
+                 width="137"
+                 height="38"
+                 decoding="async" />
+        </div>
+
+        <nav>
+            <a href="/" data-nav="home">Início</a>
+            <a href="/produtos" data-nav="produtos" class="active" aria-current="page">Vitrine</a>
+            <a href="/sobre" data-nav="sobre">Sobre</a>
+            <a href="/fornecedores" data-nav="fornecedores">Fornecedores</a>
+            <a href="/contato" data-nav="contato">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main id="page-main">
+<section class="produtos-page">
+    <header class="produtos-page__intro">
+        <h1>Vitrine</h1>
+        <p class="page-subtitle">Linha Flow e Ou — disponíveis na Amazon ou em breve.</p>
+    </header>
+    <div class="filter-bar">
+        <input class="filter-bar__search" type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos" />
+        <select class="filter-bar__select" aria-label="Filtrar por categoria">
+            <option value="">Todas as categorias</option>
+            <option value="Lavanderia">Lavanderia</option>
+            <option value="Limpeza">Limpeza</option>
+            <option value="Organização">Organização</option>
+        </select>
+        <button class="filter-bar__favorites-btn" type="button" aria-pressed="false">♥ Favoritos</button>
+    </div>
+    <div class="favorites-badge" id="favorites-badge" hidden>
+        <span class="favorites-badge__count">0</span>
+        <span class="favorites-badge__label">produtos favoritados</span>
+    </div>
+    <section class="products-section products-section--available" aria-labelledby="produtos-disponiveis-heading">
+        <h2 id="produtos-disponiveis-heading" class="products-section__title">Disponíveis agora</h2>
+        <div class="products-grid products-grid--fade-in">
+            <article role="article" class="product-card product-card--available" aria-label="Ou Dispenser Quadrado 1L Branco Linha Flow" data-id="dispenser-flow-quadrado-branco-001" data-name="Ou Dispenser Quadrado 1L Branco Linha Flow" data-description="Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou desinfetante na lavanderia, com visualização do nível interno." data-category="Lavanderia" data-price="R$ 39,90" data-copy="Conheça Ou Dispenser Quadrado 1L Branco Linha Flow, uma escolha especial em Lavanderia para transformar o seu dia a dia com mais praticidade e bem-estar. Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou desinfetante na lavanderia, com visualização do nível interno. Tudo isso por apenas R$ 39,90, um investimento que vale a pena. Garanta o seu agora e aproveite!" data-image="images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp" data-alt="Dispenser Flow 1L em bancada de lavanderia com revestimento verde-sálvia" data-amazon="https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV" data-coming-soon="false">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Dispenser Flow 1L em bancada de lavanderia com revestimento verde-sálvia" src="images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp" fetchpriority="high" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Dispenser Flow 1L em bancada de madeira com toalhas ao lado" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Dispenser Flow 1L em bancada cinza com revestimento azul" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Lavanderia</span>
+                    <h3 class="product-card__name">Ou Dispenser Quadrado 1L Branco Linha Flow</h3>
+                    <p class="product-card__price">R$ 39,90</p>
+                    <p class="product-card__description">Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou ...</p>
+                </div>
+                <div class="product-card__actions">
+                    <a class="product-card__amazon-btn" target="_blank" rel="noopener noreferrer" href="https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV">Comprar na Amazon</a>
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Dispenser Quadrado 1L Branco Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--available" aria-label="Ou Dispenser Quadrado 1,5L Branco Linha Flow" data-id="dispenser-quadrado-1-5l-branco-b0gkpzmcyz" data-name="Ou Dispenser Quadrado 1,5L Branco Linha Flow" data-description="Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante." data-category="Lavanderia" data-price="R$ 49,49" data-copy="Conheça Ou Dispenser Quadrado 1,5L Branco Linha Flow, uma escolha especial em Lavanderia para transformar o seu dia a dia com mais praticidade e bem-estar. Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante. Tudo isso por apenas R$ 49,49, um investimento que vale a pena. Garanta o seu agora e aproveite!" data-image="images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp" data-alt="Dispenser Flow 1,5L em bancada clara de lavanderia" data-amazon="https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV" data-coming-soon="false">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Dispenser Flow 1,5L em bancada clara de lavanderia" src="images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Dispenser Flow 1,5L em prateleira de madeira na lavanderia" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Dispenser Flow 1,5L em bancada escura acima da máquina de lavar" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Lavanderia</span>
+                    <h3 class="product-card__name">Ou Dispenser Quadrado 1,5L Branco Linha Flow</h3>
+                    <p class="product-card__price">R$ 49,49</p>
+                    <p class="product-card__description">Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; aco...</p>
+                </div>
+                <div class="product-card__actions">
+                    <a class="product-card__amazon-btn" target="_blank" rel="noopener noreferrer" href="https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV">Comprar na Amazon</a>
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Dispenser Quadrado 1,5L Branco Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="products-section products-section--soon" aria-labelledby="produtos-em-breve-heading">
+        <h2 id="produtos-em-breve-heading" class="products-section__title">Em breve</h2>
+        <div class="products-grid products-grid--fade-in">
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Organizador de Parede e Armário Branco Linha Flow" data-id="organizador-parede-armario-branco-b0gkq4vvpq" data-name="Ou Organizador de Parede e Armário Branco Linha Flow" data-description="Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta até dois dispensers Flow." data-category="Organização" data-price="R$ 58,49" data-copy="Conheça Ou Organizador de Parede e Armário Branco Linha Flow, uma escolha especial em Organização para transformar o seu dia a dia com mais praticidade e bem-estar. Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta até dois dispensers Flow. Tudo isso por apenas R$ 58,49, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp" data-alt="Organizador branco nivelado na parede verde da lavanderia, visto de frente" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Organizador branco nivelado na parede verde da lavanderia, visto de frente" src="images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Organizador branco fixado na face interna da porta do armário, visto de frente" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Organizador branco fixado na parede bege do banheiro, visto de frente" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Organização</span>
+                    <h3 class="product-card__name">Ou Organizador de Parede e Armário Branco Linha Flow</h3>
+                    <p class="product-card__price">R$ 58,49</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Organizador branco da Linha Flow para parede ou interior de armário. Fixação adesiva Ultra Click (sem furos), comporta a...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Organizador de Parede e Armário Branco Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Escova de limpeza multiuso Bege Linha Flow" data-id="escova-limpeza-multiuso-bege-b0czttrfqr" data-name="Ou Escova de limpeza multiuso Bege Linha Flow" data-description="Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho." data-category="Limpeza" data-price="R$ 20,69" data-copy="Conheça Ou Escova de limpeza multiuso Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo anatômico e gancho. Tudo isso por apenas R$ 20,69, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp" data-alt="Escova multiuso apoiada em bancada de cozinha, vista de cima" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Escova multiuso apoiada em bancada de cozinha, vista de cima" src="images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Escova multiuso com cabo apoiado sobre pano em bancada de madeira" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Escova multiuso pendurada pelo laço em gancho na parede da cozinha" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Escova de limpeza multiuso Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 20,69</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Escova de limpeza multiuso bege da Linha Flow (não é escova de piso). Cerdas para cantos, louças e superfícies, com cabo...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Escova de limpeza multiuso Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Organizador de Parede para Sacolas Bege Linha Flow" data-id="organizador-parede-multiuso-bege-b0gkpq99r8" data-name="Ou Organizador de Parede para Sacolas Bege Linha Flow" data-description="Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um." data-category="Organização" data-price="R$ 56,69" data-copy="Conheça Ou Organizador de Parede para Sacolas Bege Linha Flow, uma escolha especial em Organização para transformar o seu dia a dia com mais praticidade e bem-estar. Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um. Tudo isso por apenas R$ 56,69, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp" data-alt="Organizador de parede para sacolas bege da Linha Flow" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Organizador de parede para sacolas bege da Linha Flow" src="images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Organizador de sacolas da Linha Flow fixado na parede, com uma sacola na abertura inferior" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Detalhe da abertura do organizador de sacolas da Linha Flow" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Organização</span>
+                    <h3 class="product-card__name">Ou Organizador de Parede para Sacolas Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 56,69</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para gu...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Organizador de Parede para Sacolas Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Rodo Multiuso Bege Linha Flow" data-id="rodo-multiuso-bege-b0czttvlwk" data-name="Ou Rodo Multiuso Bege Linha Flow" data-description="Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento." data-category="Limpeza" data-price="R$ 17,09" data-copy="Conheça Ou Rodo Multiuso Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento. Tudo isso por apenas R$ 17,09, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp" data-alt="Rodo multiuso pendurado pelo laço no box do banheiro" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Rodo multiuso pendurado pelo laço no box do banheiro" src="images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Rodo multiuso apoiado no parapeito de pedra da janela" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Rodo multiuso apoiado na bancada do banheiro" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Rodo Multiuso Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 17,09</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e ...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Rodo Multiuso Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Rodo Bege Linha Flow" data-id="rodo-bege-b0f8pwy3m5" data-name="Ou Rodo Bege Linha Flow" data-description="Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar." data-category="Limpeza" data-price="R$ 51,99" data-copy="Conheça Ou Rodo Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com gancho para pendurar. Tudo isso por apenas R$ 51,99, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp" data-alt="Rodo de cabo longo apoiado na parede verde da lavanderia" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Rodo de cabo longo apoiado na parede verde da lavanderia" src="images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Rodo de cabo longo na área de serviço ao lado de cesto" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Rodo de cabo longo junto à porta de vidro da varanda" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Rodo Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 51,99</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Rodo da Linha Flow na cor bege, com lâmina de EVA macia e cabo longo. Remove água e sujeira do piso sem riscar, com ganc...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Rodo Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Pano para Chão de Microfibra Chumbo Linha Flow" data-id="pano-chao-microfibra-chumbo-b0fxbn7scb" data-name="Ou Pano para Chão de Microfibra Chumbo Linha Flow" data-description="Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso." data-category="Limpeza" data-price="R$ 19,79" data-copy="Conheça Ou Pano para Chão de Microfibra Chumbo Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limpeza prática do piso. Tudo isso por apenas R$ 19,79, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp" data-alt="Pano de chão chumbo com encaixe circular sobre bancada de madeira" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Pano de chão chumbo com encaixe circular sobre bancada de madeira" src="images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Pano de chão chumbo dobrado no piso ao lado de balde" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Pano de chão chumbo sobre bancada acima da máquina de lavar" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/pano-chao-microfibra-chumbo-b0fxbn7scb-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Pano para Chão de Microfibra Chumbo Linha Flow</h3>
+                    <p class="product-card__price">R$ 19,79</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Pano de chão em microfibra chumbo da Linha Flow, com encaixe para rodo ou vassoura. Alta absorção, sem fiapos, para limp...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Pano para Chão de Microfibra Chumbo Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow" data-id="kit-3-panos-microfibra-b0g634v2nb" data-name="Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow" data-description="Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária." data-category="Limpeza" data-price="R$ 18,69" data-copy="Conheça Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostática para a limpeza diária. Tudo isso por apenas R$ 18,69, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp" data-alt="Kit com três panos de microfibra na bancada da cozinha" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Kit com três panos de microfibra na bancada da cozinha" src="images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Kit com três panos de microfibra em prateleira de madeira" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Kit com três panos de microfibra na bancada do banheiro" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow</h3>
+                    <p class="product-card__price">R$ 18,69</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Kit com três panos de microfibra mesclados da Linha Flow (80% poliéster e 20% poliamida). Alta absorção e ação eletrostá...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Borrifador Multiuso 500ml Bege Linha Flow" data-id="borrifador-500ml-bege-b0czttshb7" data-name="Ou Borrifador Multiuso 500ml Bege Linha Flow" data-description="Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico." data-category="Limpeza" data-price="R$ 29,74" data-copy="Conheça Ou Borrifador Multiuso 500ml Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico. Tudo isso por apenas R$ 29,74, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp" data-alt="Borrifador Flow 500ml em bancada de cozinha junto à janela" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Borrifador Flow 500ml em bancada de cozinha junto à janela" src="images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Borrifador Flow 500ml em bancada de madeira na lavanderia" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Borrifador Flow 500ml em bancada de banheiro com revestimento azul" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Borrifador Multiuso 500ml Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 29,74</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Borrifador Multiuso 500ml Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Borrifador Multiuso 350ml Bege Linha Flow" data-id="borrifador-350ml-bege-bfm500bgf" data-name="Ou Borrifador Multiuso 350ml Bege Linha Flow" data-description="Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de segurança on/off." data-category="Limpeza" data-price="R$ 24,99" data-copy="Conheça Ou Borrifador Multiuso 350ml Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de segurança on/off. Tudo isso por apenas R$ 24,99, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp" data-alt="Borrifador Flow 350ml bege sobre fundo claro" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Borrifador Flow 350ml bege sobre fundo claro" src="images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Borrifador Flow 350ml bege na bancada da cozinha" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Borrifador Flow 350ml bege borrifando uma planta" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Borrifador Multiuso 350ml Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 24,99</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de seguranç...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Borrifador Multiuso 350ml Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Borrifador Multiuso 750ml Bege Linha Flow" data-id="borrifador-750ml-bege-bfm700bgf" data-name="Ou Borrifador Multiuso 750ml Bege Linha Flow" data-description="Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com formato anatômico." data-category="Limpeza" data-price="R$ 34,99" data-copy="Conheça Ou Borrifador Multiuso 750ml Bege Linha Flow, uma escolha especial em Limpeza para transformar o seu dia a dia com mais praticidade e bem-estar. Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com formato anatômico. Tudo isso por apenas R$ 34,99, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp" data-alt="Borrifador Flow 750ml bege sobre fundo claro" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Borrifador Flow 750ml bege sobre fundo claro" src="images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Borrifador Flow 750ml bege na bancada da cozinha" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Borrifador Flow 750ml bege em uso na bancada" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Limpeza</span>
+                    <h3 class="product-card__name">Ou Borrifador Multiuso 750ml Bege Linha Flow</h3>
+                    <p class="product-card__price">R$ 34,99</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Borrifador Multiuso 750ml Bege Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+            <article role="article" class="product-card product-card--coming-soon" aria-label="Ou Organizador de Parede para Sacolas Chumbo Linha Flow" data-id="organizador-parede-sacolas-chumbo-osw100chf" data-name="Ou Organizador de Parede para Sacolas Chumbo Linha Flow" data-description="Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um." data-category="Organização" data-price="R$ 69,99" data-copy="Conheça Ou Organizador de Parede para Sacolas Chumbo Linha Flow, uma escolha especial em Organização para transformar o seu dia a dia com mais praticidade e bem-estar. Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um. Tudo isso por apenas R$ 69,99, um investimento que vale a pena. Disponível em breve na Amazon." data-image="images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp" data-alt="Organizador de parede para sacolas chumbo da Linha Flow" data-amazon="" data-coming-soon="true">
+                <div class="product-card__image-wrapper">
+                    <div class="product-card__gallery" data-active-index="0">
+                        <img class="product-card__image product-card__slide product-card__slide--active" width="1200" height="1200" alt="Organizador de parede para sacolas chumbo da Linha Flow" src="images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp" loading="lazy" decoding="async" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide product-card__slide--hover-target" width="1200" height="1200" alt="Detalhe da abertura do organizador de sacolas da Linha Flow" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-2.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp'" />
+                        <img class="product-card__image product-card__slide" width="1200" height="1200" alt="Organizador de sacolas da Linha Flow fixado na parede, com uma sacola na abertura inferior" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-3.webp" loading="lazy" decoding="async" aria-hidden="true" onerror="this.onerror=function(){this.onerror=null;this.src='images/placeholder-product.png'};this.src='images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp'" />
+                        <div class="product-card__dots" role="group" aria-label="Fotos do produto">
+                            <button type="button" class="product-card__dot product-card__dot--active" aria-label="Ver foto 1 de 3" aria-pressed="true" aria-current="true"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 2 de 3" aria-pressed="false"></button>
+                            <button type="button" class="product-card__dot" aria-label="Ver foto 3 de 3" aria-pressed="false"></button>
+                        </div>
+                        <button type="button" class="product-card__arrow product-card__arrow--prev" aria-label="Foto anterior">‹</button>
+                        <button type="button" class="product-card__arrow product-card__arrow--next" aria-label="Próxima foto">›</button>
+                    </div>
+                    <span class="product-card__badge">Em breve</span>
+                </div>
+                <div class="product-card__body">
+                    <span class="product-card__category">Organização</span>
+                    <h3 class="product-card__name">Ou Organizador de Parede para Sacolas Chumbo Linha Flow</h3>
+                    <p class="product-card__price">R$ 69,99</p>
+                    <p class="product-card__coming-soon">Disponível em breve na Amazon</p>
+                    <p class="product-card__description">Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para ...</p>
+                </div>
+                <div class="product-card__actions">
+                    <button class="product-card__details-btn" type="button" aria-label="Ver detalhes Ou Organizador de Parede para Sacolas Chumbo Linha Flow">Ver detalhes</button>
+                    <button class="product-card__favorite-btn" type="button" aria-pressed="false" aria-label="Favoritar produto">♡</button>
+                </div>
+            </article>
+        </div>
+    </section>
+    <div class="produtos-state produtos-empty" id="empty-favorites" hidden>
+        <div class="produtos-state__icon">♡</div>
+        <p class="produtos-state__title">Nenhum produto favoritado.</p>
+        <p class="produtos-state__message">Clique no ícone de coração em um produto para adicioná-lo aos favoritos.</p>
+    </div>
+    <div class="produtos-state produtos-empty" id="empty-search" hidden>
+        <div class="produtos-state__icon">🔍</div>
+        <p class="produtos-state__title">Nenhum produto encontrado.</p>
+        <p class="produtos-state__message">Tente ajustar os filtros ou o termo de busca.</p>
+    </div>
+    <div class="produtos-detail-unavailable" id="detail-unavailable" role="alert" hidden>
+        Detalhes do produto indisponíveis.
+    </div>
+    <aside class="starlink-promo" aria-label="Indicação Starlink">
+        <div class="starlink-promo__copy">
+            <p class="starlink-promo__eyebrow">Parceiro Starlink</p>
+            <p class="starlink-promo__title">Ganhe um mês de Starlink grátis</p>
+            <p class="starlink-promo__text">
+                Cadastre-se pelo nosso link e aproveite internet rápida e confiável em casa e em qualquer lugar.
+            </p>
+        </div>
+        <a class="starlink-promo__cta"
+           href="https://starlink.com/?referral=RC-1711398-31153-58&amp;app_source=share"
+           target="_blank"
+           rel="noopener noreferrer">
+            Ativar desconto
+        </a>
+    </aside>
+</section>
+<div class="product-detail__backdrop" id="product-detail-backdrop" hidden>
+    <div class="product-detail" role="dialog" aria-modal="true" aria-label="" tabindex="-1">
+        <button type="button" class="product-detail__close-btn" aria-label="Fechar detalhes">&times;</button>
+        <div class="product-detail__body">
+            <div class="product-detail__image-wrapper">
+                <img id="detail-image" class="product-detail__image" alt="" width="1200" height="1200"
+                     src="images/placeholder-product.png"
+                     onerror="this.onerror=null;this.src='images/placeholder-product.png'" />
+            </div>
+            <div class="product-detail__meta">
+                <span class="product-detail__category" id="detail-category"></span>
+                <span class="product-detail__badge" id="detail-badge" hidden>Em breve</span>
+            </div>
+            <h2 class="product-detail__name" id="detail-name"></h2>
+            <p class="product-detail__price" id="detail-price"></p>
+            <p class="product-detail__coming-soon" id="detail-soon" hidden>Disponível em breve na Amazon</p>
+            <p class="product-detail__copy" id="detail-copy"></p>
+            <a id="detail-amazon" class="product-detail__amazon-btn" href="https://www.amazon.com.br/" target="_blank" rel="noopener noreferrer" hidden>Comprar na Amazon</a>
+        </div>
+    </div>
+</div>
+</main>
+
+<footer class="footer">
+    <p>© <span id="copyright-year">2026</span> Mater Domus</p>
+    <nav class="footer-links" aria-label="Informações legais">
+        <a href="/privacidade">Política de Privacidade</a>
+        <a href="/frete-e-trocas">Frete e trocas</a>
+        <button type="button"
+                class="footer-cookies-btn"
+                onclick="materDomusOpenCookiePreferences()">
+            Preferências de cookies
+        </button>
+    </nav>
+</footer>
+
+<nav class="bottom-nav" aria-label="Navegação principal">
+    <a href="/" data-nav="home">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Início</span>
+    </a>
+    <a href="/produtos" data-nav="produtos" class="active" aria-current="page">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Vitrine</span>
+    </a>
+    <a href="/sobre" data-nav="sobre">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span>Sobre</span>
+    </a>
+    <a href="/fornecedores" data-nav="fornecedores">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Fornecedores</span>
+    </a>
+    <a href="/contato" data-nav="contato">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span>Contato</span>
+    </a>
+</nav>
+
 <div id="app">
-    <div class="boot-screen" id="boot-screen">
+    <div class="boot-screen" id="boot-screen" hidden>
         <img class="boot-screen__logo"
-             src="images/logo.png"
-             alt="MaterDomus" />
+             src="images/logo.webp"
+             alt="MaterDomus"
+             width="202"
+             height="56"
+             decoding="async" />
         <div class="boot-screen__spinner" aria-hidden="true"></div>
         <p class="boot-screen__message">Um instante…</p>
 
@@ -368,6 +1034,7 @@
             var screen = document.getElementById('boot-screen');
             if (!screen) return;
             failureShown = true;
+            screen.hidden = false;
             if (window.__bootTimer) {
                 clearTimeout(window.__bootTimer);
                 window.__bootTimer = null;
@@ -378,34 +1045,41 @@
             if (spinner) spinner.style.display = 'none';
             if (msg) msg.style.display = 'none';
             if (err) err.hidden = false;
-            // Logo permanece visível.
         }
 
         window.__showBootFailure = showBootFailure;
-        window.__bootTimer = setTimeout(showBootFailure, BOOT_TIMEOUT_MS);
 
-        window.addEventListener('error', function (event) {
-            var target = event.target;
-            var src = (event.filename || (target && (target.src || target.href)) || '');
-            if (typeof src === 'string' &&
-                (src.indexOf('blazor.webassembly') !== -1 || src.indexOf('_framework/') !== -1)) {
-                showBootFailure();
-            }
-        }, true);
+        // O runtime Blazor (_framework/blazor.webassembly.js) fica fora do
+        // primeiro carregamento: o HTML estático já é a página. Só sobe se
+        // algo chamar materDomusLoadBlazor (não faz parte do fluxo normal).
+        window.materDomusLoadBlazor = function () {
+            if (window.__blazorLoader) return;
+            window.__blazorLoader = true;
+            var screen = document.getElementById('boot-screen');
+            if (screen) screen.hidden = false;
+            window.__bootTimer = setTimeout(showBootFailure, BOOT_TIMEOUT_MS);
+            var script = document.createElement('script');
+            script.src = '_framework/blazor.webassembly.js';
+            script.autostart = false;
+            script.setAttribute('autostart', 'false');
+            script.onload = function () {
+                if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
+                    showBootFailure();
+                    return;
+                }
+                Blazor.start().catch(function () { showBootFailure(); });
+            };
+            script.onerror = function () { showBootFailure(); };
+            document.body.appendChild(script);
+        };
+
+        var year = document.getElementById('copyright-year');
+        if (year) year.textContent = String(new Date().getFullYear());
     })();
 </script>
 
-<script src="js/analytics.js"></script>
-<script src="js/cookie-consent.js"></script>
-<script src="_framework/blazor.webassembly.js" autostart="false"></script>
-<script>
-    if (typeof Blazor === 'undefined' || typeof Blazor.start !== 'function') {
-        if (window.__showBootFailure) window.__showBootFailure();
-    } else {
-        Blazor.start().catch(function () {
-            if (window.__showBootFailure) window.__showBootFailure();
-        });
-    }
-</script>
+<script defer src="js/analytics.js"></script>
+<script defer src="js/cookie-consent.js"></script>
+    <script defer src="js/catalog.js"></script>
 </body>
 </html>
