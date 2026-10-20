@@ -10,8 +10,9 @@ using Xunit;
 namespace MaterDomus.Tests.Unit;
 
 /// <summary>
-/// Fotos ambientadas da vitrine: os 10 produtos, com arquivos reais
-/// e três cenas por item. A primeira foto também é usada em JSON-LD / og:image.
+/// Fotos da vitrine: os 10 anúncios com ASIN têm três cenas cada.
+/// Os três SKUs Martiplast sem ASIN abrem com a foto v4 aprovada;
+/// a foto de fundo claro fica por último. A primeira foto também entra no JSON-LD.
 /// </summary>
 public class LifestyleImagesCatalogTests
 {
@@ -161,6 +162,55 @@ public class LifestyleImagesCatalogTests
             }),
     };
 
+    private static readonly ComingSoonGallery[] ComingSoon =
+    {
+        new("borrifador-350ml-bege-bfm500bgf", "7899620682399",
+            "Ou Borrifador Multiuso 350ml Bege Linha Flow", 24.99m,
+            new[]
+            {
+                new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v4-1.webp",
+                    "Borrifador Flow 350ml bege borrifando sobre a bancada da cozinha",
+                    "a722b011f09582fe85b9cbcb8e8f6b378e3ee3af99ed444308de23bfa1389370", 109976),
+                new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-2.webp",
+                    "Borrifador Flow 350ml bege na bancada da cozinha",
+                    "9a0fb1e84df8be9b1691550b6ddb8c05f7c5373bfaa9b2703e55937cb1cf1ee7", 22048),
+                new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-3.webp",
+                    "Borrifador Flow 350ml bege borrifando uma planta",
+                    "e2f521baa4275fb30850ec9fa1abe71ffc448b8320aaf8c2b4d170b7e134bdae", 31718),
+                new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp",
+                    "Borrifador Flow 350ml bege sobre fundo claro",
+                    "75eee5b950636c5c1e64ba8e54624abad78cf371419ce17fef661e01ba48eb60", 4546)
+            }),
+        new("borrifador-750ml-bege-bfm700bgf", "7899620682405",
+            "Ou Borrifador Multiuso 750ml Bege Linha Flow", 34.99m,
+            new[]
+            {
+                new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v4-1.webp",
+                    "Borrifador Flow 750ml bege borrifando sobre a bancada da cozinha",
+                    "1e8162016985329dd6843f9e2c30ab25549328e33734b70405186e1e07ba9aac", 109224),
+                new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-2.webp",
+                    "Borrifador Flow 750ml bege na bancada da cozinha",
+                    "17ef89203176cea6212747072b5d053d02d98f1c37fcd1e8e83c20a537b4e89d", 21214),
+                new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-3.webp",
+                    "Borrifador Flow 750ml bege em uso na bancada",
+                    "641206cfc7fdbfec17897a612f171a406d02a2f70564a9aa0b9e78f3e03701bf", 49398),
+                new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
+                    "Borrifador Flow 750ml bege sobre fundo claro",
+                    "5dbcb8f0a0fa5ba75003442f2908cacf111145b020028fc94cae8b81347e617d", 4722)
+            }),
+        new("organizador-parede-sacolas-chumbo-osw100chf", "7899620684980",
+            "Ou Organizador de Parede para Sacolas Chumbo Linha Flow", 69.99m,
+            new[]
+            {
+                new LifestyleFile("images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v4-1.webp",
+                    "Organizador de sacolas chumbo da Linha Flow na parede da lavanderia, com uma sacola na abertura inferior",
+                    "57aa62de008d4b7e1cfb773c27ec6b245140fc9affb97f30c384067fd86307d2", 134308),
+                new LifestyleFile("images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
+                    "Organizador de parede para sacolas chumbo da Linha Flow",
+                    "cef197625b86a9785c7aebc31bb280893f3ac126f2741cc46c6cff36c940dbcf", 10668)
+            }),
+    };
+
     [Fact]
     public void ProductsJson_AllTenProductsHaveThreeLifestyleImages()
     {
@@ -216,7 +266,7 @@ public class LifestyleImagesCatalogTests
             WebJsonOptions);
         Assert.NotNull(products);
         Assert.Equal(13, products!.Count);
-        Assert.Equal(13, products.Count(product => product.LifestyleImages is { Count: 3 }));
+        Assert.Equal(Expected.Length, products.Count(product => product.LifestyleImages is { Count: 3 }));
         foreach (var expected in Expected)
         {
             var product = products.Single(item => item.Asin == expected.Asin);
@@ -225,21 +275,37 @@ public class LifestyleImagesCatalogTests
             Assert.Equal(3, product.LifestyleImages!.Count);
         }
 
-        foreach (var (id, ean) in new (string Id, string Ean)[]
+        foreach (var expected in ComingSoon)
         {
-            ("borrifador-350ml-bege-bfm500bgf", "7899620682399"),
-            ("borrifador-750ml-bege-bfm700bgf", "7899620682405"),
-            ("organizador-parede-sacolas-chumbo-osw100chf", "7899620684980")
-        })
-        {
-            var product = products.Single(item => item.Id == id);
+            var row = rows.Single(item => item.GetProperty("id").GetString() == expected.Id);
+            Assert.False(row.TryGetProperty("asin", out _));
+            Assert.Equal("", row.GetProperty("amazonUrl").GetString());
+            Assert.True(row.GetProperty("comingSoon").GetBoolean());
+            Assert.Equal(expected.Ean, row.GetProperty("ean").GetString());
+            Assert.Equal(expected.Name, row.GetProperty("name").GetString());
+            Assert.Equal(expected.Price, row.GetProperty("price").GetDecimal());
+            Assert.Equal(expected.Files[0].Url, row.GetProperty("imageUrl").GetString());
+            AssertGallery(row.GetProperty("lifestyleImages"), expected.Files);
+
+            var product = products.Single(item => item.Id == expected.Id);
             Assert.Null(product.Asin);
             Assert.Equal("", product.AmazonUrl);
             Assert.True(product.ComingSoon);
-            Assert.Equal(ean, product.Ean);
-            Assert.Equal(3, product.LifestyleImages!.Count);
-            Assert.All(product.LifestyleImages, image =>
-                Assert.True(File.Exists(RepoPath("wwwroot", image.Url.Replace('/', Path.DirectorySeparatorChar)))));
+            Assert.Equal(expected.Ean, product.Ean);
+            Assert.Equal(expected.Name, product.Name);
+            Assert.Equal(expected.Price, product.Price);
+            Assert.Equal(expected.Files[0].Url, product.ImageUrl);
+            Assert.Equal(expected.Files.Length, product.LifestyleImages!.Count);
+        }
+
+        foreach (var wrong in new[]
+        {
+            "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-2.webp",
+            "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-3.webp"
+        })
+        {
+            Assert.DoesNotContain(wrong, ReadRepo("wwwroot", "data", "products.json"), StringComparison.Ordinal);
+            Assert.False(File.Exists(RepoPath("wwwroot", wrong.Replace('/', Path.DirectorySeparatorChar))));
         }
     }
 
@@ -314,7 +380,37 @@ public class LifestyleImagesCatalogTests
                 Assert.DoesNotContain(secondary.Url, artifacts.MetaJson);
             }
         }
+
+        foreach (var expected in ComingSoon)
+        {
+            Assert.Contains(expected.Files[0].Url, artifacts.ItemListJson);
+            Assert.Contains(expected.Files[0].Url, artifacts.ProdutosHtml);
+            foreach (var secondary in expected.Files.Skip(1))
+            {
+                Assert.DoesNotContain(secondary.Url, artifacts.ItemListJson);
+                Assert.Contains(secondary.Url, artifacts.ProdutosHtml);
+            }
+        }
+
         Assert.EndsWith(Expected[0].ImageUrl, artifacts.OgImageAbsoluteUrl);
+    }
+
+    private static void AssertGallery(JsonElement images, LifestyleFile[] expected)
+    {
+        var slides = images.EnumerateArray().ToList();
+        Assert.Equal(expected.Length, slides.Count);
+        Assert.EndsWith("ambiente-v4-1.webp", expected[0].Url, StringComparison.Ordinal);
+        Assert.EndsWith("ambiente-v2-1.webp", expected[^1].Url, StringComparison.Ordinal);
+        for (var i = 0; i < expected.Length; i++)
+        {
+            Assert.Equal(expected[i].Url, slides[i].GetProperty("url").GetString());
+            Assert.Equal(expected[i].Alt, slides[i].GetProperty("alt").GetString());
+            var physical = RepoPath("wwwroot", expected[i].Url.Replace('/', Path.DirectorySeparatorChar));
+            Assert.True(File.Exists(physical), $"Arquivo ausente: {physical}");
+            var info = new FileInfo(physical);
+            Assert.Equal(expected[i].Size, info.Length);
+            Assert.Equal(expected[i].Sha256, Sha256(physical));
+        }
     }
 
     private static List<Product> LoadViaCatalogService(string productsJson)
@@ -353,6 +449,13 @@ public class LifestyleImagesCatalogTests
         decimal Price,
         bool ComingSoon,
         string ImageUrl,
+        LifestyleFile[] Files);
+
+    private sealed record ComingSoonGallery(
+        string Id,
+        string Ean,
+        string Name,
+        decimal Price,
         LifestyleFile[] Files);
 
     private sealed record LifestyleFile(string Url, string Alt, string Sha256, long Size);

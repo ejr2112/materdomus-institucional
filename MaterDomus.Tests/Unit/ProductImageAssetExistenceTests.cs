@@ -156,20 +156,23 @@ public class ProductImageAssetExistenceTests
     }
 
     // -------------------------------------------------------------------------
-    // Galeria atual — três imagens distintas com texto alternativo e arquivos reais
+    // Galeria — fotos distintas, com texto alternativo, e a primeira é a principal
     // -------------------------------------------------------------------------
 
     /// <summary>
-    /// Cada produto usa três cenas ambientadas; a primeira é também a foto principal.
+    /// Cada produto tem uma galeria de arquivos reais. A primeira foto é a principal.
+    /// Os três SKUs com foto v4 não ficam presos em exatamente três cenas.
     /// </summary>
     [Fact]
-    public void Catalog_HasThreeDistinctLifestyleAssetsPerProduct()
+    public void Catalog_LifestyleGalleryUsesExistingDistinctAssets()
     {
         foreach (var product in LoadCatalogProducts())
         {
             Assert.NotNull(product.LifestyleImages);
-            Assert.Equal(3, product.LifestyleImages.Count);
-            Assert.Equal(3, product.LifestyleImages.Select(image => image.Url).Distinct().Count());
+            Assert.InRange(product.LifestyleImages.Count, 2, 4);
+            Assert.Equal(
+                product.LifestyleImages.Count,
+                product.LifestyleImages.Select(image => image.Url).Distinct().Count());
             Assert.Equal(product.LifestyleImages[0].Url, product.ImageUrl);
             Assert.All(product.LifestyleImages, image =>
             {
