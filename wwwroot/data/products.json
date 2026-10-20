@@ -101,8 +101,8 @@
   },
   {
     "id": "organizador-parede-multiuso-bege-b0gkpq99r8",
-    "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
-    "description": "Organizador de parede bege da Linha Flow com quatro ganchos para utensílios de limpeza. Fixação adesiva, sem necessidade de furar a parede.",
+    "name": "Ou Organizador de Parede para Sacolas Bege Linha Flow",
+    "description": "Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
     "imageUrl": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
     "category": "Organização",
     "price": 56.69,
@@ -112,15 +112,15 @@
     "lifestyleImages": [
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
-        "alt": "Organizador bege com quatro ganchos na parede verde, visto de frente"
+        "alt": "Organizador de parede para sacolas bege da Linha Flow"
       },
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-2.webp",
-        "alt": "Organizador bege nivelado na parede da área de serviço, visto de frente"
+        "alt": "Organizador de sacolas da Linha Flow fixado na parede, com uma sacola na abertura inferior"
       },
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
-        "alt": "Organizador bege com pano pendurado no gancho direito, visto de frente"
+        "alt": "Detalhe da abertura do organizador de sacolas da Linha Flow"
       }
     ]
   },
@@ -246,6 +246,81 @@
       {
         "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
         "alt": "Borrifador Flow 500ml em bancada de banheiro com revestimento azul"
+      }
+    ]
+  },
+  {
+    "id": "borrifador-350ml-bege-bfm500bgf",
+    "name": "Ou Borrifador Multiuso 350ml Bege Linha Flow",
+    "description": "Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de segurança on/off.",
+    "imageUrl": "images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp",
+    "category": "Limpeza",
+    "price": 24.99,
+    "amazonUrl": "",
+    "comingSoon": true,
+    "ean": "7899620682399",
+    "lifestyleImages": [
+      {
+        "url": "images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp",
+        "alt": "Borrifador Flow 350ml bege sobre fundo claro"
+      },
+      {
+        "url": "images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-2.webp",
+        "alt": "Borrifador Flow 350ml bege na bancada da cozinha"
+      },
+      {
+        "url": "images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-3.webp",
+        "alt": "Borrifador Flow 350ml bege borrifando uma planta"
+      }
+    ]
+  },
+  {
+    "id": "borrifador-750ml-bege-bfm700bgf",
+    "name": "Ou Borrifador Multiuso 750ml Bege Linha Flow",
+    "description": "Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com formato anatômico.",
+    "imageUrl": "images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
+    "category": "Limpeza",
+    "price": 34.99,
+    "amazonUrl": "",
+    "comingSoon": true,
+    "ean": "7899620682405",
+    "lifestyleImages": [
+      {
+        "url": "images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
+        "alt": "Borrifador Flow 750ml bege sobre fundo claro"
+      },
+      {
+        "url": "images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-2.webp",
+        "alt": "Borrifador Flow 750ml bege na bancada da cozinha"
+      },
+      {
+        "url": "images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-3.webp",
+        "alt": "Borrifador Flow 750ml bege em uso na bancada"
+      }
+    ]
+  },
+  {
+    "id": "organizador-parede-sacolas-chumbo-osw100chf",
+    "name": "Ou Organizador de Parede para Sacolas Chumbo Linha Flow",
+    "description": "Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
+    "imageUrl": "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
+    "category": "Organização",
+    "price": 69.99,
+    "amazonUrl": "",
+    "comingSoon": true,
+    "ean": "7899620684980",
+    "lifestyleImages": [
+      {
+        "url": "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
+        "alt": "Organizador de parede para sacolas chumbo da Linha Flow"
+      },
+      {
+        "url": "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-2.webp",
+        "alt": "Detalhe da abertura do organizador de sacolas da Linha Flow"
+      },
+      {
+        "url": "images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-3.webp",
+        "alt": "Organizador de sacolas da Linha Flow fixado na parede, com uma sacola na abertura inferior"
       }
     ]
   }

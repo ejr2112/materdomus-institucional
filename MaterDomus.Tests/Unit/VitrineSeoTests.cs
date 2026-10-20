@@ -48,7 +48,10 @@ public class VitrineSeoTests
             Assert.Equal(product.Id, item.GetProperty("sku").GetString());
             Assert.Equal(AbsoluteImage(product.ImageUrl), item.GetProperty("image").GetString());
             Assert.StartsWith("https://www.materdomus.com.br/", item.GetProperty("image").GetString());
-            Assert.Equal(product.Asin, item.GetProperty("asin").GetString());
+            if (string.IsNullOrEmpty(product.Asin))
+                Assert.False(item.TryGetProperty("asin", out _));
+            else
+                Assert.Equal(product.Asin, item.GetProperty("asin").GetString());
             if (string.IsNullOrEmpty(product.Gtin))
             {
                 Assert.False(item.TryGetProperty("gtin", out _));
@@ -92,7 +95,10 @@ public class VitrineSeoTests
 
         Assert.DoesNotContain("materdomus.com.br/checkout", artifacts.ItemListJson, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("/.well-known/ucp", artifacts.ItemListJson, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("gtin", artifacts.ItemListJson, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("\"gtin\": \"7899620682399\"", artifacts.ItemListJson);
+        Assert.Contains("\"gtin\": \"7899620682405\"", artifacts.ItemListJson);
+        Assert.Contains("\"gtin\": \"7899620684980\"", artifacts.ItemListJson);
+        Assert.DoesNotContain("7908466047085", artifacts.ItemListJson, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -109,13 +115,15 @@ public class VitrineSeoTests
 
         using var raw = JsonDocument.Parse(ReadRepo("wwwroot", "data", "products.json"));
         var rows = raw.RootElement.EnumerateArray().ToList();
-        Assert.All(rows, row =>
+        Assert.All(rows.Where(row => row.TryGetProperty("asin", out _)), row =>
         {
             var asin = row.GetProperty("asin").GetString();
             Assert.Matches("^[A-Z0-9]{10}$", asin);
             Assert.False(row.TryGetProperty("gtin", out _));
             Assert.False(row.TryGetProperty("ean", out _));
         });
+        Assert.Equal(3, rows.Count(row => !row.TryGetProperty("asin", out _)));
+        Assert.Equal("7899620682399", rows.Single(row => row.GetProperty("id").GetString() == "borrifador-350ml-bege-bfm500bgf").GetProperty("ean").GetString());
         Assert.Equal(
             "B0GKPPS5YH",
             rows.Single(row => row.GetProperty("id").GetString() == "dispenser-flow-quadrado-branco-001").GetProperty("asin").GetString());

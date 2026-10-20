@@ -6,7 +6,7 @@
   "description": "Conheça os produtos Mater Domus da Linha Flow e Ou, disponíveis na Amazon ou em breve. Utilidades domésticas e organização para o lar.",
   "url": "https://www.materdomus.com.br/produtos",
   "inLanguage": "pt-BR",
-  "numberOfItems": 10,
+  "numberOfItems": 13,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -117,10 +117,10 @@
       "position": 5,
       "item": {
         "@type": "Product",
-        "name": "Ou Organizador de Parede Multiuso Bege Linha Flow",
+        "name": "Ou Organizador de Parede para Sacolas Bege Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
         "sku": "organizador-parede-multiuso-bege-b0gkpq99r8",
-        "description": "Organizador de parede bege da Linha Flow com quatro ganchos para utensílios de limpeza. Fixação adesiva, sem necessidade de furar a parede.",
+        "description": "Organizador de parede para sacolas, na cor bege, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
         "category": "Organização",
         "asin": "B0GKPQ99R8",
         "brand": {
@@ -252,6 +252,78 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "29.74",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 350ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-1.webp",
+        "sku": "borrifador-350ml-bege-bfm500bgf",
+        "description": "Borrifador 350 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Corpo em PET, bico em PP e trava de segurança on/off.",
+        "category": "Limpeza",
+        "gtin": "7899620682399",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "24.99",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 750ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
+        "sku": "borrifador-750ml-bege-bfm700bgf",
+        "description": "Borrifador 750 ml bege da Linha Flow, no mesmo desenho do modelo de 500 ml. Trava de segurança on/off e corpo em PET com formato anatômico.",
+        "category": "Limpeza",
+        "gtin": "7899620682405",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "34.99",
+          "availability": "https://schema.org/OutOfStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Organizador de Parede para Sacolas Chumbo Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
+        "sku": "organizador-parede-sacolas-chumbo-osw100chf",
+        "description": "Organizador de parede para sacolas, na cor chumbo, da Linha Flow. Fixação adesiva Ultra Click, sem furar a parede, para guardar sacolas e sacos de lixo e retirá-los um a um.",
+        "category": "Organização",
+        "gtin": "7899620684980",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "69.99",
           "availability": "https://schema.org/OutOfStock"
         }
       }

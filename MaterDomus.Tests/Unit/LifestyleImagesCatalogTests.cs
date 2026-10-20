@@ -80,14 +80,14 @@ public class LifestyleImagesCatalogTests
             new[]
             {
                 new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-1.webp",
-                    "Organizador bege com quatro ganchos na parede verde, visto de frente",
-                    "1cb95a496e3632fb972ce0225ca3da0f660aeed37135e782522d689e86a4acfc", 52886),
+                    "Organizador de parede para sacolas bege da Linha Flow",
+                    "b21c2f5c48babecebbe6133c8b4d429f305577bc074de684865c1a4f840126aa", 11248),
                 new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-2.webp",
-                    "Organizador bege nivelado na parede da área de serviço, visto de frente",
-                    "29cf95c64bb7ee604f9f7d482a276f27eed8551ae14816ae33aba5cbaf0f01d0", 183156),
+                    "Organizador de sacolas da Linha Flow fixado na parede, com uma sacola na abertura inferior",
+                    "9e6d8513e0f4ecb650898b6094bdc5fe81c2421954af8de5b10b1225a501e6e3", 16090),
                 new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
-                    "Organizador bege com pano pendurado no gancho direito, visto de frente",
-                    "c40195641ac44a57893abe6d32bcc8d85cd3c9ed3594472df946f534b5348a4e", 127958)
+                    "Detalhe da abertura do organizador de sacolas da Linha Flow",
+                    "d4cf09cce2e2d608b4450ea292a8b8b3812fd9a762581a8bad637e7773ef9515", 17586)
             }),
         new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, true,
             "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
@@ -166,13 +166,14 @@ public class LifestyleImagesCatalogTests
     {
         using var doc = JsonDocument.Parse(ReadRepo("wwwroot", "data", "products.json"));
         var rows = doc.RootElement.EnumerateArray().ToList();
-        Assert.Equal(10, rows.Count);
+        Assert.Equal(13, rows.Count);
 
         var withLifestyle = rows.Where(row => row.TryGetProperty("lifestyleImages", out _)).ToList();
-        Assert.Equal(10, withLifestyle.Count);
+        Assert.Equal(13, withLifestyle.Count);
+        var withAsin = rows.Where(row => row.TryGetProperty("asin", out _)).ToList();
         Assert.Equal(
             Expected.Select(item => item.Asin),
-            rows.Select(row => row.GetProperty("asin").GetString()));
+            withAsin.Select(row => row.GetProperty("asin").GetString()));
 
         var firstComingSoon = rows.FindIndex(row => row.GetProperty("comingSoon").GetBoolean());
         Assert.True(firstComingSoon > 0);
@@ -181,7 +182,8 @@ public class LifestyleImagesCatalogTests
 
         foreach (var expected in Expected)
         {
-            var row = rows.Single(item => item.GetProperty("asin").GetString() == expected.Asin);
+            var row = rows.Single(item =>
+                item.TryGetProperty("asin", out var asin) && asin.GetString() == expected.Asin);
             var names = row.EnumerateObject().Select(property => property.Name).ToList();
             Assert.Equal("lifestyleImages", names[^1]);
             Assert.Equal(expected.Id, row.GetProperty("id").GetString());
@@ -213,14 +215,31 @@ public class LifestyleImagesCatalogTests
             ReadRepo("wwwroot", "data", "products.json"),
             WebJsonOptions);
         Assert.NotNull(products);
-        Assert.Equal(10, products!.Count);
-        Assert.Equal(10, products.Count(product => product.LifestyleImages is { Count: 3 }));
+        Assert.Equal(13, products!.Count);
+        Assert.Equal(13, products.Count(product => product.LifestyleImages is { Count: 3 }));
         foreach (var expected in Expected)
         {
             var product = products.Single(item => item.Asin == expected.Asin);
             Assert.Equal(expected.ImageUrl, product.ImageUrl);
             Assert.Equal(expected.Id, product.Id);
             Assert.Equal(3, product.LifestyleImages!.Count);
+        }
+
+        foreach (var (id, ean) in new (string Id, string Ean)[]
+        {
+            ("borrifador-350ml-bege-bfm500bgf", "7899620682399"),
+            ("borrifador-750ml-bege-bfm700bgf", "7899620682405"),
+            ("organizador-parede-sacolas-chumbo-osw100chf", "7899620684980")
+        })
+        {
+            var product = products.Single(item => item.Id == id);
+            Assert.Null(product.Asin);
+            Assert.Equal("", product.AmazonUrl);
+            Assert.True(product.ComingSoon);
+            Assert.Equal(ean, product.Ean);
+            Assert.Equal(3, product.LifestyleImages!.Count);
+            Assert.All(product.LifestyleImages, image =>
+                Assert.True(File.Exists(RepoPath("wwwroot", image.Url.Replace('/', Path.DirectorySeparatorChar)))));
         }
     }
 

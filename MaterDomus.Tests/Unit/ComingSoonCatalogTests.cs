@@ -66,12 +66,15 @@ public class ComingSoonCatalogTests
         "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
         "Ou Organizador de Parede e Armário Branco Linha Flow",
         "Ou Escova de limpeza multiuso Bege Linha Flow",
-        "Ou Organizador de Parede Multiuso Bege Linha Flow",
+        "Ou Organizador de Parede para Sacolas Bege Linha Flow",
         "Ou Rodo Multiuso Bege Linha Flow",
         "Ou Rodo Bege Linha Flow",
         "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
         "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
-        "Ou Borrifador Multiuso 500ml Bege Linha Flow"
+        "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+        "Ou Borrifador Multiuso 350ml Bege Linha Flow",
+        "Ou Borrifador Multiuso 750ml Bege Linha Flow",
+        "Ou Organizador de Parede para Sacolas Chumbo Linha Flow"
     };
 
     private static readonly string[] ForbiddenCatalogNames =
@@ -127,7 +130,7 @@ public class ComingSoonCatalogTests
     {
         var products = LoadCatalog();
 
-        Assert.Equal(10, products.Count);
+        Assert.Equal(13, products.Count);
         Assert.Equal(SellerAmazonTitles, products.Select(p => p.Name).ToArray());
 
         foreach (var forbidden in ForbiddenCatalogNames)
@@ -157,7 +160,7 @@ public class ComingSoonCatalogTests
             Assert.Equal(listing.Price, product.Price);
         }
 
-        Assert.Equal(8, products.Count(p => p.ComingSoon));
+        Assert.Equal(11, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
@@ -206,12 +209,12 @@ public class ComingSoonCatalogTests
         using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
         var root = doc.RootElement;
 
-        Assert.Equal("2026-09-29", root.GetProperty("curatedAt").GetString());
+        Assert.Equal("2026-10-20", root.GetProperty("curatedAt").GetString());
         Assert.Equal(
             "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
             root.GetProperty("sourceUrl").GetString());
-        Assert.Equal(10, root.GetProperty("productCount").GetInt32());
-        Assert.Equal(10, LoadCatalog().Count);
+        Assert.Equal(13, root.GetProperty("productCount").GetInt32());
+        Assert.Equal(13, LoadCatalog().Count);
     }
 
     [Fact]
