@@ -84,11 +84,13 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-10-19 (~10:06 BRT).
-    /// Continuam Em breve. B0GKQ4VVPQ voltou a este grupo nessa leitura (Available 0).
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-10-20 (~09:57 BRT).
+    /// Continuam Em breve. B0GKPZMCYZ voltou a este grupo nessa leitura (Available 0,
+    /// anúncio Out of stock desde 20/10 08:47).
     /// </summary>
     private static readonly string[] UnavailableAsins =
     {
+        "B0GKPZMCYZ",
         "B0GKQ4VVPQ",
         "B0CZTTRFQR",
         "B0GKPQ99R8",
@@ -100,14 +102,13 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// Listings com FBA Available &gt; 0 em 2026-10-19 (~10:06 BRT). Preço é o já publicado
+    /// Listings com FBA Available &gt; 0 em 2026-10-20 (~09:57 BRT). Preço é o já publicado
     /// em products.json — a curadoria não inventa preço.
-    /// B0GKPPS5YH Available 4; B0GKPZMCYZ Available 2.
+    /// B0GKPPS5YH Available 4.
     /// </summary>
     private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
     {
-        ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
-        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m)
+        ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m)
     };
 
     private static string MerchantUrl(string asin) =>
@@ -144,7 +145,7 @@ public class ComingSoonCatalogTests
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
-        Assert.Equal(2, available.Count);
+        Assert.Single(available);
         Assert.Equal(
             BuyableListings.Select(b => b.Id).OrderBy(id => id, StringComparer.Ordinal),
             available.Select(p => p.Id).OrderBy(id => id, StringComparer.Ordinal));
@@ -157,7 +158,7 @@ public class ComingSoonCatalogTests
             Assert.Equal(listing.Price, product.Price);
         }
 
-        Assert.Equal(8, products.Count(p => p.ComingSoon));
+        Assert.Equal(9, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
