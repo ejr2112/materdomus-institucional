@@ -33,7 +33,21 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
+        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, false,
+            "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+                    "Borrifador Flow 500ml em bancada de cozinha junto à janela",
+                    "11c346befbf3dedc879a71185853f8a9a5f7253530ec1ddb03cb1a8a1f85ad44", 81876),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
+                    "Borrifador Flow 500ml em bancada de madeira na lavanderia",
+                    "b2f7776370b958d064c948e227548c79f65dc1de02749085e2d0498f982caca1", 90900),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
+                    "Borrifador Flow 500ml em bancada de banheiro com revestimento azul",
+                    "d209d2f0a56b807b88b57fde1329a43bebad866c2b01f6d75f8bac9e7efdb599", 82162)
+            }),
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, true,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {
@@ -145,20 +159,6 @@ public class LifestyleImagesCatalogTests
                     "Kit com três panos de microfibra na bancada do banheiro",
                     "4cb7e570f0e6667a656818a4cbeacf42774f0699a588c1da4de8adcf0fe6b6f2", 246824)
             }),
-        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, true,
-            "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-                    "Borrifador Flow 500ml em bancada de cozinha junto à janela",
-                    "11c346befbf3dedc879a71185853f8a9a5f7253530ec1ddb03cb1a8a1f85ad44", 81876),
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
-                    "Borrifador Flow 500ml em bancada de madeira na lavanderia",
-                    "b2f7776370b958d064c948e227548c79f65dc1de02749085e2d0498f982caca1", 90900),
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
-                    "Borrifador Flow 500ml em bancada de banheiro com revestimento azul",
-                    "d209d2f0a56b807b88b57fde1329a43bebad866c2b01f6d75f8bac9e7efdb599", 82162)
-            })
     };
 
     [Fact]

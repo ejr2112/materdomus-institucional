@@ -25,15 +25,40 @@
     ]
   },
   {
+    "id": "borrifador-500ml-bege-b0czttshb7",
+    "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+    "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
+    "imageUrl": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+    "category": "Limpeza",
+    "price": 29.74,
+    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTSHB7?m=A20TN3HCSY6KZV",
+    "asin": "B0CZTTSHB7",
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+        "alt": "Borrifador Flow 500ml em bancada de cozinha junto à janela"
+      },
+      {
+        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
+        "alt": "Borrifador Flow 500ml em bancada de madeira na lavanderia"
+      },
+      {
+        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
+        "alt": "Borrifador Flow 500ml em bancada de banheiro com revestimento azul"
+      }
+    ]
+  },
+  {
     "id": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
     "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
     "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
     "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
     "category": "Lavanderia",
     "price": 49.49,
-    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
+    "amazonUrl": "",
     "asin": "B0GKPZMCYZ",
-    "comingSoon": false,
+    "comingSoon": true,
     "lifestyleImages": [
       {
         "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
@@ -221,31 +246,6 @@
       {
         "url": "images/products/kit-3-panos-microfibra-b0g634v2nb-ambiente-v2-3.webp",
         "alt": "Kit com três panos de microfibra na bancada do banheiro"
-      }
-    ]
-  },
-  {
-    "id": "borrifador-500ml-bege-b0czttshb7",
-    "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
-    "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
-    "imageUrl": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-    "category": "Limpeza",
-    "price": 29.74,
-    "amazonUrl": "",
-    "asin": "B0CZTTSHB7",
-    "comingSoon": true,
-    "lifestyleImages": [
-      {
-        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-        "alt": "Borrifador Flow 500ml em bancada de cozinha junto à janela"
-      },
-      {
-        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
-        "alt": "Borrifador Flow 500ml em bancada de madeira na lavanderia"
-      },
-      {
-        "url": "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
-        "alt": "Borrifador Flow 500ml em bancada de banheiro com revestimento azul"
       }
     ]
   },
