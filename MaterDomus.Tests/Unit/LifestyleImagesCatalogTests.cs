@@ -34,21 +34,7 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, false,
-            "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-                    "Borrifador Flow 500ml em bancada de cozinha junto à janela",
-                    "11c346befbf3dedc879a71185853f8a9a5f7253530ec1ddb03cb1a8a1f85ad44", 81876),
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
-                    "Borrifador Flow 500ml em bancada de madeira na lavanderia",
-                    "b2f7776370b958d064c948e227548c79f65dc1de02749085e2d0498f982caca1", 90900),
-                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
-                    "Borrifador Flow 500ml em bancada de banheiro com revestimento azul",
-                    "d209d2f0a56b807b88b57fde1329a43bebad866c2b01f6d75f8bac9e7efdb599", 82162)
-            }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, true,
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {
@@ -61,6 +47,20 @@ public class LifestyleImagesCatalogTests
                 new LifestyleFile("images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-3.webp",
                     "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
                     "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
+            }),
+        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, true,
+            "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+                    "Borrifador Flow 500ml em bancada de cozinha junto à janela",
+                    "11c346befbf3dedc879a71185853f8a9a5f7253530ec1ddb03cb1a8a1f85ad44", 81876),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-2.webp",
+                    "Borrifador Flow 500ml em bancada de madeira na lavanderia",
+                    "b2f7776370b958d064c948e227548c79f65dc1de02749085e2d0498f982caca1", 90900),
+                new LifestyleFile("images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-3.webp",
+                    "Borrifador Flow 500ml em bancada de banheiro com revestimento azul",
+                    "d209d2f0a56b807b88b57fde1329a43bebad866c2b01f6d75f8bac9e7efdb599", 82162)
             }),
         new("B0GKQ4VVPQ", "organizador-parede-armario-branco-b0gkq4vvpq", 58.49m, true,
             "images/products/organizador-parede-armario-branco-b0gkq4vvpq-ambiente-v2-1.webp",
