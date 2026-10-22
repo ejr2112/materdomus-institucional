@@ -63,8 +63,8 @@ public class ComingSoonCatalogTests
     private static readonly string[] SellerAmazonTitles =
     {
         "Ou Dispenser Quadrado 1L Branco Linha Flow",
-        "Ou Borrifador Multiuso 500ml Bege Linha Flow",
         "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+        "Ou Borrifador Multiuso 500ml Bege Linha Flow",
         "Ou Organizador de Parede e Armário Branco Linha Flow",
         "Ou Escova de limpeza multiuso Bege Linha Flow",
         "Ou Organizador de Parede para Sacolas Bege Linha Flow",
@@ -87,12 +87,12 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-10-20 (~16:00 BRT).
-    /// Continuam Em breve. B0GKPZMCYZ voltou a este grupo nessa leitura (Available 0).
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-10-22 (~09:58 BRT).
+    /// Continuam Em breve. B0CZTTSHB7 voltou a este grupo nessa leitura (Available 0).
     /// </summary>
     private static readonly string[] UnavailableAsins =
     {
-        "B0GKPZMCYZ",
+        "B0CZTTSHB7",
         "B0GKQ4VVPQ",
         "B0CZTTRFQR",
         "B0GKPQ99R8",
@@ -103,14 +103,14 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// Listings com FBA Available &gt; 0 em 2026-10-20 (~16:00 BRT). Preço é o já publicado
+    /// Listings com FBA Available &gt; 0 em 2026-10-22 (~09:58 BRT). Preço é o já publicado
     /// em products.json — a curadoria não inventa preço.
-    /// B0GKPPS5YH Available 4; B0CZTTSHB7 Available 1.
+    /// B0GKPPS5YH Available 4; B0GKPZMCYZ Available 3.
     /// </summary>
     private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
     {
         ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
-        ("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m)
+        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m)
     };
 
     private static string MerchantUrl(string asin) =>
@@ -170,7 +170,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void Catalog_2026_10_20_LiberatesOnlyFbaAvailableListings()
+    public void Catalog_2026_10_22_LiberatesOnlyFbaAvailableListings()
     {
         var products = LoadCatalog();
 
@@ -201,7 +201,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_10_20()
+    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_10_22()
     {
         var metaPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "catalog-meta.json");
         Assert.True(File.Exists(metaPath), "catalog-meta.json é o registro publicado da curadoria.");
@@ -209,7 +209,7 @@ public class ComingSoonCatalogTests
         using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
         var root = doc.RootElement;
 
-        Assert.Equal("2026-10-20", root.GetProperty("curatedAt").GetString());
+        Assert.Equal("2026-10-22", root.GetProperty("curatedAt").GetString());
         Assert.Equal(
             "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
             root.GetProperty("sourceUrl").GetString());

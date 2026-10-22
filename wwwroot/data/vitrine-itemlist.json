@@ -41,34 +41,6 @@
       "position": 2,
       "item": {
         "@type": "Product",
-        "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
-        "image": "https://www.materdomus.com.br/images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
-        "sku": "borrifador-500ml-bege-b0czttshb7",
-        "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
-        "category": "Limpeza",
-        "asin": "B0CZTTSHB7",
-        "brand": {
-          "@type": "Brand",
-          "name": "Ou",
-          "url": "https://ou.com.br/"
-        },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "BRL",
-          "price": "29.74",
-          "availability": "https://schema.org/InStock",
-          "url": "https://www.amazon.com.br/dp/B0CZTTSHB7?m=A20TN3HCSY6KZV",
-          "seller": {
-            "@id": "https://www.materdomus.com.br/#organization"
-          }
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Product",
         "name": "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
         "sku": "dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
@@ -84,6 +56,34 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "49.49",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
+          "seller": {
+            "@id": "https://www.materdomus.com.br/#organization"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
+        "sku": "borrifador-500ml-bege-b0czttshb7",
+        "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
+        "category": "Limpeza",
+        "asin": "B0CZTTSHB7",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "29.74",
           "availability": "https://schema.org/OutOfStock"
         }
       }
