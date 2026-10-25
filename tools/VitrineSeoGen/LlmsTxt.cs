@@ -82,6 +82,9 @@ public static class LlmsTxt
             full.Append("- ").Append(product.Name);
             if (!string.IsNullOrWhiteSpace(product.Category))
                 full.Append(" (").Append(product.Category).Append(')');
+            var pagePath = VitrineSeo.TryProductPublicPath(product.Id);
+            if (pagePath is not null)
+                full.Append(". Página: https://www.materdomus.com.br").Append(pagePath);
             full.Append(". Preço de vitrine: ").Append(FormatPrice(product.Price)).Append(". ");
             if (product.ComingSoon || string.IsNullOrWhiteSpace(product.AmazonUrl))
                 full.AppendLine("Em breve, sem link de compra.");
@@ -110,6 +113,7 @@ public static class LlmsTxt
                 continue;
 
             rows.Add(new CatalogRow(
+                ReadString(node, "id").Trim(),
                 name.Trim(),
                 ReadString(node, "category").Trim(),
                 ReadPrice(node),
@@ -148,5 +152,5 @@ public static class LlmsTxt
         return 0m;
     }
 
-    private sealed record CatalogRow(string Name, string Category, decimal Price, string AmazonUrl, bool ComingSoon);
+    private sealed record CatalogRow(string Id, string Name, string Category, decimal Price, string AmazonUrl, bool ComingSoon);
 }
