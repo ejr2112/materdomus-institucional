@@ -23,6 +23,58 @@
     {
       "route": "/frete-e-trocas",
       "rewrite": "/frete-e-trocas.html"
+    },
+    {
+      "route": "/produtos/dispenser-flow-quadrado-branco-001",
+      "rewrite": "/produtos/dispenser-flow-quadrado-branco-001.html"
+    },
+    {
+      "route": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
+      "rewrite": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.html"
+    },
+    {
+      "route": "/produtos/borrifador-500ml-bege-b0czttshb7",
+      "rewrite": "/produtos/borrifador-500ml-bege-b0czttshb7.html"
+    },
+    {
+      "route": "/produtos/organizador-parede-armario-branco-b0gkq4vvpq",
+      "rewrite": "/produtos/organizador-parede-armario-branco-b0gkq4vvpq.html"
+    },
+    {
+      "route": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr",
+      "rewrite": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr.html"
+    },
+    {
+      "route": "/produtos/organizador-parede-multiuso-bege-b0gkpq99r8",
+      "rewrite": "/produtos/organizador-parede-multiuso-bege-b0gkpq99r8.html"
+    },
+    {
+      "route": "/produtos/rodo-multiuso-bege-b0czttvlwk",
+      "rewrite": "/produtos/rodo-multiuso-bege-b0czttvlwk.html"
+    },
+    {
+      "route": "/produtos/rodo-bege-b0f8pwy3m5",
+      "rewrite": "/produtos/rodo-bege-b0f8pwy3m5.html"
+    },
+    {
+      "route": "/produtos/pano-chao-microfibra-chumbo-b0fxbn7scb",
+      "rewrite": "/produtos/pano-chao-microfibra-chumbo-b0fxbn7scb.html"
+    },
+    {
+      "route": "/produtos/kit-3-panos-microfibra-b0g634v2nb",
+      "rewrite": "/produtos/kit-3-panos-microfibra-b0g634v2nb.html"
+    },
+    {
+      "route": "/produtos/borrifador-350ml-bege-bfm500bgf",
+      "rewrite": "/produtos/borrifador-350ml-bege-bfm500bgf.html"
+    },
+    {
+      "route": "/produtos/borrifador-750ml-bege-bfm700bgf",
+      "rewrite": "/produtos/borrifador-750ml-bege-bfm700bgf.html"
+    },
+    {
+      "route": "/produtos/organizador-parede-sacolas-chumbo-osw100chf",
+      "rewrite": "/produtos/organizador-parede-sacolas-chumbo-osw100chf.html"
     }
   ],
   "responseOverrides": {

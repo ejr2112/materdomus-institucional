@@ -59,7 +59,26 @@ public class SeoDiscoverabilityTests
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/contato" && u.Priority == "0.6");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/privacidade" && u.Priority == "0.4");
         Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/frete-e-trocas" && u.Priority == "0.4");
-        Assert.All(urls, u => Assert.Equal("2026-10-20", u.Lastmod));
+        Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/produtos/dispenser-flow-quadrado-branco-001" && u.Priority == "0.8");
+        Assert.Contains(urls, u => u.Loc == "https://www.materdomus.com.br/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz" && u.Priority == "0.8");
+
+        var institutional = new HashSet<string>(StringComparer.Ordinal)
+        {
+            "https://www.materdomus.com.br/",
+            "https://www.materdomus.com.br/produtos",
+            "https://www.materdomus.com.br/fornecedores",
+            "https://www.materdomus.com.br/sobre",
+            "https://www.materdomus.com.br/contato",
+            "https://www.materdomus.com.br/privacidade",
+            "https://www.materdomus.com.br/frete-e-trocas"
+        };
+        Assert.All(urls.Where(u => institutional.Contains(u.Loc!)), u => Assert.Equal("2026-10-20", u.Lastmod));
+        Assert.All(urls.Where(u => u.Loc != null && u.Loc.Contains("/produtos/", StringComparison.Ordinal)), u =>
+        {
+            Assert.Equal("2026-10-25", u.Lastmod);
+            Assert.Equal("0.8", u.Priority);
+            Assert.DoesNotContain(".html", u.Loc, StringComparison.Ordinal);
+        });
         Assert.DoesNotContain(urls, u => u.Loc != null && u.Loc.Contains("/404", StringComparison.Ordinal));
         Assert.DoesNotContain(urls, u => u.Loc != null && u.Loc.Contains("llms", StringComparison.Ordinal));
     }

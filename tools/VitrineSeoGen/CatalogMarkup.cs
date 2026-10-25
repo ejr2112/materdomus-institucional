@@ -196,7 +196,19 @@ public static partial class VitrineSeo
         sb.AppendLine("                </div>");
         sb.AppendLine("                <div class=\"product-card__body\">");
         sb.Append("                    <span class=\"product-card__category\">").Append(HtmlAttribute(product.Category)).AppendLine("</span>");
-        sb.Append("                    <h3 class=\"product-card__name\">").Append(HtmlAttribute(product.Name)).AppendLine("</h3>");
+        var productPath = TryProductPublicPath(product.Id);
+        sb.Append("                    <h3 class=\"product-card__name\">");
+        if (productPath is not null)
+        {
+            sb.Append("<a href=\"").Append(HtmlAttribute(productPath)).Append("\">")
+                .Append(HtmlAttribute(product.Name)).Append("</a>");
+        }
+        else
+        {
+            sb.Append(HtmlAttribute(product.Name));
+        }
+
+        sb.AppendLine("</h3>");
         sb.Append("                    <p class=\"product-card__price\">").Append(HtmlAttribute(price)).AppendLine("</p>");
         if (product.ComingSoon)
             sb.AppendLine("                    <p class=\"product-card__coming-soon\">Disponível em breve na Amazon</p>");
@@ -208,6 +220,13 @@ public static partial class VitrineSeo
             sb.Append("                    <a class=\"product-card__amazon-btn\" target=\"_blank\" rel=\"noopener noreferrer\" href=\"")
                 .Append(HtmlAttribute(product.AmazonUrl))
                 .AppendLine("\">Comprar na Amazon</a>");
+        }
+
+        if (productPath is not null)
+        {
+            sb.Append("                    <a class=\"product-card__page-link\" href=\"")
+                .Append(HtmlAttribute(productPath))
+                .AppendLine("\">Ver produto</a>");
         }
 
         sb.Append("                    <button class=\"product-card__details-btn\" type=\"button\" aria-label=\"Ver detalhes ")

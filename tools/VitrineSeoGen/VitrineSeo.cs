@@ -90,6 +90,7 @@ public static partial class VitrineSeo
             utf8);
         StaticPages.WriteAll(repoRoot, indexHtml, utf8);
         LlmsTxt.WriteAll(repoRoot, File.ReadAllText(productsPath), utf8);
+        WriteProductPages(repoRoot, File.ReadAllText(productsPath), indexHtml, utf8);
     }
 
     public static string BuildItemListJson(string productsJson) =>
@@ -143,6 +144,7 @@ public static partial class VitrineSeo
         bool ComingSoon,
         string? Asin,
         string? Gtin,
+        string? Sku,
         IReadOnlyList<LifestyleImage> Lifestyle);
 
     internal readonly record struct LifestyleImage(string Url, string Alt);
@@ -190,6 +192,7 @@ public static partial class VitrineSeo
                 ReadBool(node, "comingSoon"),
                 ResolveAsin(node, amazonUrl, id),
                 ResolveGtin(node),
+                ResolveSku(node),
                 ReadLifestyle(node)));
         }
 
@@ -241,6 +244,10 @@ public static partial class VitrineSeo
             ["image"] = AbsoluteImage(product.ImageUrl),
             ["sku"] = product.Id
         };
+
+        var productPath = TryProductPublicPath(product.Id);
+        if (productPath is not null)
+            node["url"] = Origin + productPath;
 
         if (!string.IsNullOrWhiteSpace(product.Description))
             node["description"] = product.Description;
@@ -321,6 +328,25 @@ public static partial class VitrineSeo
     {
         var gtin = NormalizeGtin(ReadString(node, "gtin"));
         return gtin ?? NormalizeGtin(ReadString(node, "ean"));
+    }
+
+    /// <summary>
+    /// SKU do Seller Central (ex.: MD-OU-0001). Opcional: sem o campo,
+    /// a página usa o id como identificador e não inventa um SKU.
+    /// </summary>
+    private static string? ResolveSku(JsonElement node)
+    {
+        var sku = ReadString(node, "sku").Trim();
+        if (sku.Length is 0 or > 64)
+            return null;
+
+        foreach (var c in sku)
+        {
+            if (c is not ((>= 'A' and <= 'Z') or (>= 'a' and <= 'z') or (>= '0' and <= '9') or '-' or '_'))
+                return null;
+        }
+
+        return sku;
     }
 
     private static string? NormalizeAsin(string value)

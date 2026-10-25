@@ -5,9 +5,10 @@
     "description": "Dispenser quadrado da Linha Flow com 1 litro, corpo transparente e tampa branca. Ideal para sabão líquido, amaciante ou desinfetante na lavanderia, com visualização do nível interno.",
     "imageUrl": "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
     "category": "Lavanderia",
-    "price": 39.9,
+    "price": 34.99,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
     "asin": "B0GKPPS5YH",
+    "sku": "MD-OU-0001",
     "comingSoon": false,
     "lifestyleImages": [
       {
@@ -30,9 +31,10 @@
     "description": "Dispenser quadrado da Linha Flow com 1,5 litros e tampa branca. Corpo transparente para gestão visual da lavanderia; acomoda amaciante, sabão líquido e desinfetante.",
     "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
     "category": "Lavanderia",
-    "price": 49.49,
+    "price": 36.00,
     "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
     "asin": "B0GKPZMCYZ",
+    "sku": "MD-OU-B0GKPZMCYZ",
     "comingSoon": false,
     "lifestyleImages": [
       {

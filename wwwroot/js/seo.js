@@ -142,6 +142,13 @@ window.materdomusSeo = (function () {
         var path = normalizePath(window.location.pathname);
         applyCanonical(canonicalForPath(path));
 
+        // Página de produto: OG, preço e JSON-LD já estão no HTML.
+        // Não repor as tags da home nem o ItemList da vitrine.
+        if (path.indexOf('/produtos/') === 0) {
+            initialApply = false;
+            return;
+        }
+
         if (path === '/produtos') {
             applyVitrine();
             initialApply = false;

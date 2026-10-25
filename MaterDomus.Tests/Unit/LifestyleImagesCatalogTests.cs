@@ -20,7 +20,7 @@ public class LifestyleImagesCatalogTests
 
     private static readonly LifestyleExpectation[] Expected =
     {
-        new("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m, false,
+        new("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 34.99m, false,
             "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
             new[]
             {
@@ -34,7 +34,7 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m, false,
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m, false,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {

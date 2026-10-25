@@ -103,14 +103,14 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// Listings com FBA Available &gt; 0 em 2026-10-22 (~09:58 BRT). Preço é o já publicado
-    /// em products.json — a curadoria não inventa preço.
+    /// Listings com FBA Available &gt; 0 em 2026-10-22 (~09:58 BRT). Preço é o publicado
+    /// em products.json para o catálogo da Meta (R$ 34,99 e R$ 36,00).
     /// B0GKPPS5YH Available 4; B0GKPZMCYZ Available 3.
     /// </summary>
     private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
     {
-        ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.90m),
-        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 49.49m)
+        ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 34.99m),
+        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m)
     };
 
     private static string MerchantUrl(string asin) =>
@@ -267,7 +267,7 @@ public class ComingSoonCatalogTests
     public void Catalog_InStockDispenserPriceUnchanged()
     {
         var dispenser = LoadCatalog().Single(p => p.Id == "dispenser-flow-quadrado-branco-001");
-        Assert.Equal(39.90m, dispenser.Price);
+        Assert.Equal(34.99m, dispenser.Price);
     }
 
     [Fact]

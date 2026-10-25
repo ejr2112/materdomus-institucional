@@ -102,8 +102,8 @@ permanece.
 
 Os preços dos itens em reposição são **preços de referência da Ou** (fabricante),
 não preços vivos da Amazon. Os dois listings buyable em 2026-10-22 (~09:58 BRT)
-mantêm o preço já publicado em `products.json` (não inventar preço na liberação):
-`B0GKPPS5YH` R$ 39,90 e `B0GKPZMCYZ` R$ 49,49.
+têm o preço publicado em `products.json` para o catálogo da Meta (2026-10-25):
+`B0GKPPS5YH` R$ 34,99 (SKU MD-OU-0001) e `B0GKPZMCYZ` R$ 36,00 (SKU MD-OU-B0GKPZMCYZ).
 O borrifador 500 ml (`B0CZTTSHB7`, R$ 29,74), a escova (`B0CZTTRFQR`, R$ 20,69),
 o organizador branco (`B0GKQ4VVPQ`, R$ 58,49) e o organizador bege
 (`B0GKPQ99R8`, R$ 56,69) estão Em breve com FBA Available 0; o preço publicado
