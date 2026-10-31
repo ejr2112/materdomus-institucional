@@ -169,10 +169,10 @@ public class LifestyleImagesCatalogTests
             new[]
             {
                 new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v4-1.webp",
-                    "Borrifador Flow 350ml bege borrifando sobre a bancada da cozinha",
+                    "Borrifador Flow 350ml bege parado em frente à máquina de lavar",
                     "a722b011f09582fe85b9cbcb8e8f6b378e3ee3af99ed444308de23bfa1389370", 109976),
                 new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-2.webp",
-                    "Borrifador Flow 350ml bege na bancada da cozinha",
+                    "Borrifador Flow 350ml bege sobre bancada de madeira",
                     "9a0fb1e84df8be9b1691550b6ddb8c05f7c5373bfaa9b2703e55937cb1cf1ee7", 22048),
                 new LifestyleFile("images/products/borrifador-350ml-bege-bfm500bgf-ambiente-v2-3.webp",
                     "Borrifador Flow 350ml bege borrifando uma planta",
@@ -186,13 +186,13 @@ public class LifestyleImagesCatalogTests
             new[]
             {
                 new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v4-1.webp",
-                    "Borrifador Flow 750ml bege borrifando sobre a bancada da cozinha",
+                    "Borrifador Flow 750ml bege parado em frente à máquina de lavar",
                     "1e8162016985329dd6843f9e2c30ab25549328e33734b70405186e1e07ba9aac", 109224),
                 new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-2.webp",
-                    "Borrifador Flow 750ml bege na bancada da cozinha",
+                    "Borrifador Flow 750ml bege sobre bancada de madeira",
                     "17ef89203176cea6212747072b5d053d02d98f1c37fcd1e8e83c20a537b4e89d", 21214),
                 new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-3.webp",
-                    "Borrifador Flow 750ml bege em uso na bancada",
+                    "Borrifador Flow 750ml bege em uso na limpeza da bancada",
                     "641206cfc7fdbfec17897a612f171a406d02a2f70564a9aa0b9e78f3e03701bf", 49398),
                 new LifestyleFile("images/products/borrifador-750ml-bege-bfm700bgf-ambiente-v2-1.webp",
                     "Borrifador Flow 750ml bege sobre fundo claro",
@@ -206,7 +206,7 @@ public class LifestyleImagesCatalogTests
                     "Organizador de sacolas chumbo da Linha Flow na parede da lavanderia, com uma sacola na abertura inferior",
                     "57aa62de008d4b7e1cfb773c27ec6b245140fc9affb97f30c384067fd86307d2", 134308),
                 new LifestyleFile("images/products/organizador-parede-sacolas-chumbo-osw100chf-ambiente-v2-1.webp",
-                    "Organizador de parede para sacolas chumbo da Linha Flow",
+                    "Organizador de parede para sacolas chumbo da Linha Flow sobre fundo claro",
                     "cef197625b86a9785c7aebc31bb280893f3ac126f2741cc46c6cff36c940dbcf", 10668)
             }),
     };
