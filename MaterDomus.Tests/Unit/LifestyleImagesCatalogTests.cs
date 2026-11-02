@@ -48,6 +48,20 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
                     "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
             }),
+        new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, false,
+            "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+            new[]
+            {
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+                    "Rodo multiuso pendurado pelo laço no box do banheiro",
+                    "ef9ba182aeff063870aa4b4634f32fcee502929131b7126c271031cb4a63dd2c", 149064),
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp",
+                    "Rodo multiuso apoiado no parapeito de pedra da janela",
+                    "482db7ecba269886860ffee052c573facbf71f9f23e1f123419c302f90942b55", 169766),
+                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp",
+                    "Rodo multiuso apoiado na bancada do banheiro",
+                    "dd1b9efabbe5c723a20e6f31c277d7bb733ee9f14a0cb9536b59deff7f0da945", 100012)
+            }),
         new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, true,
             "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
             new[]
@@ -103,20 +117,6 @@ public class LifestyleImagesCatalogTests
                 new LifestyleFile("images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
                     "Detalhe da abertura do organizador de sacolas da Linha Flow",
                     "d4cf09cce2e2d608b4450ea292a8b8b3812fd9a762581a8bad637e7773ef9515", 17586)
-            }),
-        new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, true,
-            "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
-            new[]
-            {
-                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
-                    "Rodo multiuso pendurado pelo laço no box do banheiro",
-                    "ef9ba182aeff063870aa4b4634f32fcee502929131b7126c271031cb4a63dd2c", 149064),
-                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp",
-                    "Rodo multiuso apoiado no parapeito de pedra da janela",
-                    "482db7ecba269886860ffee052c573facbf71f9f23e1f123419c302f90942b55", 169766),
-                new LifestyleFile("images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp",
-                    "Rodo multiuso apoiado na bancada do banheiro",
-                    "dd1b9efabbe5c723a20e6f31c277d7bb733ee9f14a0cb9536b59deff7f0da945", 100012)
             }),
         new("B0F8PWY3M5", "rodo-bege-b0f8pwy3m5", 51.99m, true,
             "images/products/rodo-bege-b0f8pwy3m5-ambiente-v2-1.webp",
