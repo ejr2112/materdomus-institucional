@@ -71,6 +71,35 @@
       "position": 3,
       "item": {
         "@type": "Product",
+        "name": "Ou Rodo Multiuso Bege Linha Flow",
+        "image": "https://www.materdomus.com.br/images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+        "sku": "rodo-multiuso-bege-b0czttvlwk",
+        "url": "https://www.materdomus.com.br/produtos/rodo-multiuso-bege-b0czttvlwk",
+        "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+        "category": "Limpeza",
+        "asin": "B0CZTTVLWK",
+        "brand": {
+          "@type": "Brand",
+          "name": "Ou",
+          "url": "https://ou.com.br/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "17.09",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
+          "seller": {
+            "@id": "https://www.materdomus.com.br/#organization"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
         "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
         "image": "https://www.materdomus.com.br/images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
         "sku": "borrifador-500ml-bege-b0czttshb7",
@@ -93,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "Product",
         "name": "Ou Organizador de Parede e Armário Branco Linha Flow",
@@ -118,7 +147,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": "Product",
         "name": "Ou Escova de limpeza multiuso Bege Linha Flow",
@@ -143,7 +172,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "item": {
         "@type": "Product",
         "name": "Ou Organizador de Parede para Sacolas Bege Linha Flow",
@@ -162,31 +191,6 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "56.69",
-          "availability": "https://schema.org/OutOfStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Product",
-        "name": "Ou Rodo Multiuso Bege Linha Flow",
-        "image": "https://www.materdomus.com.br/images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
-        "sku": "rodo-multiuso-bege-b0czttvlwk",
-        "url": "https://www.materdomus.com.br/produtos/rodo-multiuso-bege-b0czttvlwk",
-        "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
-        "category": "Limpeza",
-        "asin": "B0CZTTVLWK",
-        "brand": {
-          "@type": "Brand",
-          "name": "Ou",
-          "url": "https://ou.com.br/"
-        },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "BRL",
-          "price": "17.09",
           "availability": "https://schema.org/OutOfStock"
         }
       }

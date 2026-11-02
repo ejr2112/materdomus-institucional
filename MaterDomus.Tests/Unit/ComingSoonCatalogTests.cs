@@ -64,11 +64,11 @@ public class ComingSoonCatalogTests
     {
         "Ou Dispenser Quadrado 1L Branco Linha Flow",
         "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+        "Ou Rodo Multiuso Bege Linha Flow",
         "Ou Borrifador Multiuso 500ml Bege Linha Flow",
         "Ou Organizador de Parede e Armário Branco Linha Flow",
         "Ou Escova de limpeza multiuso Bege Linha Flow",
         "Ou Organizador de Parede para Sacolas Bege Linha Flow",
-        "Ou Rodo Multiuso Bege Linha Flow",
         "Ou Rodo Bege Linha Flow",
         "Ou Pano para Chão de Microfibra Chumbo Linha Flow",
         "Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow",
@@ -87,8 +87,8 @@ public class ComingSoonCatalogTests
     };
 
     /// <summary>
-    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-10-22 (~09:58 BRT).
-    /// Continuam Em breve. B0CZTTSHB7 voltou a este grupo nessa leitura (Available 0).
+    /// ASINs com FBA Available = 0 no Seller Central BR em 2026-11-02 (~16h BRT).
+    /// Continuam Em breve. B0CZTTVLWK saiu deste grupo nessa leitura (Available 1).
     /// </summary>
     private static readonly string[] UnavailableAsins =
     {
@@ -96,21 +96,22 @@ public class ComingSoonCatalogTests
         "B0GKQ4VVPQ",
         "B0CZTTRFQR",
         "B0GKPQ99R8",
-        "B0CZTTVLWK",
         "B0F8PWY3M5",
         "B0FXBN7SCB",
         "B0G634V2NB"
     };
 
     /// <summary>
-    /// Listings com FBA Available &gt; 0 em 2026-10-22 (~09:58 BRT). Preço é o publicado
-    /// em products.json para o catálogo da Meta (R$ 34,99 e R$ 36,00).
-    /// B0GKPPS5YH Available 4; B0GKPZMCYZ Available 3.
+    /// Listings com FBA Available &gt; 0 em 2026-11-02 (~16h BRT). Preço é o já
+    /// publicado em products.json — a curadoria não inventa preço.
+    /// B0CZTTVLWK Available 1 (R$ 17,09). B0GKPPS5YH (R$ 34,99) e B0GKPZMCYZ (R$ 36,00)
+    /// seguem compráveis.
     /// </summary>
     private static readonly (string Asin, string Id, decimal Price)[] BuyableListings =
     {
         ("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 34.99m),
-        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m)
+        ("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m),
+        ("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m)
     };
 
     private static string MerchantUrl(string asin) =>
@@ -147,7 +148,7 @@ public class ComingSoonCatalogTests
         var products = LoadCatalog();
         var available = products.Where(ProductHelpers.ShowAmazonCta).ToList();
 
-        Assert.Equal(2, available.Count);
+        Assert.Equal(3, available.Count);
         Assert.Equal(
             BuyableListings.Select(b => b.Id).OrderBy(id => id, StringComparer.Ordinal),
             available.Select(p => p.Id).OrderBy(id => id, StringComparer.Ordinal));
@@ -160,7 +161,7 @@ public class ComingSoonCatalogTests
             Assert.Equal(listing.Price, product.Price);
         }
 
-        Assert.Equal(11, products.Count(p => p.ComingSoon));
+        Assert.Equal(10, products.Count(p => p.ComingSoon));
         foreach (var comingSoon in products.Where(p => p.ComingSoon))
         {
             Assert.True(string.IsNullOrEmpty(comingSoon.AmazonUrl),
@@ -170,7 +171,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void Catalog_2026_10_22_LiberatesOnlyFbaAvailableListings()
+    public void Catalog_2026_11_02_LiberatesOnlyFbaAvailableListings()
     {
         var products = LoadCatalog();
 
@@ -201,7 +202,7 @@ public class ComingSoonCatalogTests
     }
 
     [Fact]
-    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_10_22()
+    public void CatalogMeta_RecordsSellerCentralCuradoria_2026_11_02()
     {
         var metaPath = Path.Combine(FindRepoRoot(), "wwwroot", "data", "catalog-meta.json");
         Assert.True(File.Exists(metaPath), "catalog-meta.json é o registro publicado da curadoria.");
@@ -209,7 +210,7 @@ public class ComingSoonCatalogTests
         using var doc = JsonDocument.Parse(File.ReadAllText(metaPath));
         var root = doc.RootElement;
 
-        Assert.Equal("2026-10-22", root.GetProperty("curatedAt").GetString());
+        Assert.Equal("2026-11-02", root.GetProperty("curatedAt").GetString());
         Assert.Equal(
             "https://www.amazon.com.br/s?me=A20TN3HCSY6KZV&marketplaceID=A2Q3Y263D00KWC",
             root.GetProperty("sourceUrl").GetString());

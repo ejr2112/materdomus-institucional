@@ -52,6 +52,31 @@
     ]
   },
   {
+    "id": "rodo-multiuso-bege-b0czttvlwk",
+    "name": "Ou Rodo Multiuso Bege Linha Flow",
+    "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
+    "imageUrl": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+    "category": "Limpeza",
+    "price": 17.09,
+    "amazonUrl": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
+    "asin": "B0CZTTVLWK",
+    "comingSoon": false,
+    "lifestyleImages": [
+      {
+        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
+        "alt": "Rodo multiuso pendurado pelo laço no box do banheiro"
+      },
+      {
+        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp",
+        "alt": "Rodo multiuso apoiado no parapeito de pedra da janela"
+      },
+      {
+        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp",
+        "alt": "Rodo multiuso apoiado na bancada do banheiro"
+      }
+    ]
+  },
+  {
     "id": "borrifador-500ml-bege-b0czttshb7",
     "name": "Ou Borrifador Multiuso 500ml Bege Linha Flow",
     "description": "Borrifador 500 ml bege da Linha Flow para álcool, limpa-vidros e essências. Trava de segurança on/off e corpo em PET com formato anatômico.",
@@ -148,31 +173,6 @@
       {
         "url": "images/products/organizador-parede-multiuso-bege-b0gkpq99r8-ambiente-v2-3.webp",
         "alt": "Detalhe da abertura do organizador de sacolas da Linha Flow"
-      }
-    ]
-  },
-  {
-    "id": "rodo-multiuso-bege-b0czttvlwk",
-    "name": "Ou Rodo Multiuso Bege Linha Flow",
-    "description": "Rodo multiuso bege da Linha Flow com lâmina de silicone para superfícies, vidros e janelas. Cabo anatômico siliconado e gancho para armazenamento.",
-    "imageUrl": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
-    "category": "Limpeza",
-    "price": 17.09,
-    "amazonUrl": "",
-    "asin": "B0CZTTVLWK",
-    "comingSoon": true,
-    "lifestyleImages": [
-      {
-        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
-        "alt": "Rodo multiuso pendurado pelo laço no box do banheiro"
-      },
-      {
-        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-2.webp",
-        "alt": "Rodo multiuso apoiado no parapeito de pedra da janela"
-      },
-      {
-        "url": "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-3.webp",
-        "alt": "Rodo multiuso apoiado na bancada do banheiro"
       }
     ]
   },

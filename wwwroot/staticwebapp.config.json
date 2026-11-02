@@ -33,6 +33,10 @@
       "rewrite": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.html"
     },
     {
+      "route": "/produtos/rodo-multiuso-bege-b0czttvlwk",
+      "rewrite": "/produtos/rodo-multiuso-bege-b0czttvlwk.html"
+    },
+    {
       "route": "/produtos/borrifador-500ml-bege-b0czttshb7",
       "rewrite": "/produtos/borrifador-500ml-bege-b0czttshb7.html"
     },
@@ -47,10 +51,6 @@
     {
       "route": "/produtos/organizador-parede-multiuso-bege-b0gkpq99r8",
       "rewrite": "/produtos/organizador-parede-multiuso-bege-b0gkpq99r8.html"
-    },
-    {
-      "route": "/produtos/rodo-multiuso-bege-b0czttvlwk",
-      "rewrite": "/produtos/rodo-multiuso-bege-b0czttvlwk.html"
     },
     {
       "route": "/produtos/rodo-bege-b0f8pwy3m5",
