@@ -5,7 +5,7 @@ Não há caminho provisório, draft ou unpublished: `/produtos` lê esse JSON.
 A vitrine lista **somente** os SKUs da loja Mater Domus no Seller Central
 (`A20TN3HCSY6KZV`). Não invente produto, ASIN, estoque ou combinação.
 
-Última curadoria Seller Central: **2026-11-02** (~16h BRT).
+Última curadoria Seller Central: **2026-11-03** (~10h BRT).
 Metadados: `wwwroot/data/catalog-meta.json`.
 No `products.json`, todos os itens com `comingSoon: false` vêm primeiro; Em breve
 fica depois. Dentro de cada grupo a ordem relativa anterior é mantida.
@@ -16,16 +16,16 @@ Liberar **Comprar na Amazon** somente quando o listing está buyable
 (FBA Available > 0). Listing **Active com Available = 0** continua **Em breve**
 — não é estoque. Não invente quantidade.
 
-| Amazon title | ASIN | SKU Seller | Seller 2026-11-02 | Site |
+| Amazon title | ASIN | SKU Seller | Seller 2026-11-03 | Site |
 |---|---|---|---|---|
-| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | FBA Available > 0 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
-| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | FBA Available > 0 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
-| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | FBA Available 1 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Dispenser Quadrado 1L Branco Linha Flow | `B0GKPPS5YH` | MD-OU-0001 | FBA Available 5 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Rodo Multiuso Bege Linha Flow | `B0CZTTVLWK` | MD-OU-B0CZTTVLWK | FBA Available 2 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | FBA Available 12 | `comingSoon=false`, `amazonUrl` com `?m=A20TN3HCSY6KZV` |
+| Ou Dispenser Quadrado 1,5L Branco Linha Flow | `B0GKPZMCYZ` | MD-OU-B0GKPZMCYZ | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Rodo Bege Linha Flow | `B0F8PWY3M5` | 6L-N5BY-LSRC | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Pano para Chão de Microfibra Chumbo Linha Flow | `B0FXBN7SCB` | 2L-J74H-R1IC | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Kit 3 Panos Microfibra Multiuso Mesclado Linha Flow | `B0G634V2NB` | MD-OU-PMW100MESC | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Borrifador Multiuso 500ml Bege Linha Flow | `B0CZTTSHB7` | MD-OU-BFM600BGF | FBA Available 0 | Em breve, `amazonUrl` vazia |
-| Ou Escova de limpeza multiuso Bege Linha Flow | `B0CZTTRFQR` | MD-OU-96039000 | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Organizador de Parede e Armário Branco Linha Flow | `B0GKQ4VVPQ` | BU-E3AW-GGZS | FBA Available 0 | Em breve, `amazonUrl` vazia |
 | Ou Organizador de Parede para Sacolas Bege Linha Flow | `B0GKPQ99R8` | OSW100BGF | FBA Available 0 | Em breve, `amazonUrl` vazia. É o organizador de sacolas, não um trilho de ganchos |
 
@@ -34,10 +34,11 @@ kit borrifador + panos.
 
 Merchant URL dos itens buyable (`Available > 0`):
 `https://www.amazon.com.br/dp/{ASIN}?m=A20TN3HCSY6KZV`
-(`B0GKPPS5YH`, `B0GKPZMCYZ`, `B0CZTTVLWK`). Os três SKUs sem ASIN continuam Em breve.
-Nesta leitura só `B0CZTTVLWK` mudou de estoque (Available 1). `B0GKPPS5YH` e
-`B0GKPZMCYZ` seguem compráveis; a quantidade exata deles não foi recontada
-(em 2026-10-22 eram 4 e 3). Os demais ASINs seguem Em breve.
+(`B0GKPPS5YH`, `B0CZTTVLWK`, `B0CZTTRFQR`). Os três SKUs sem ASIN continuam Em breve.
+Nesta leitura `B0CZTTRFQR` passou a Available 12 e `B0GKPZMCYZ` voltou a
+Available 0. `B0GKPPS5YH` está com Available 5 e `B0CZTTVLWK` com Available 2.
+Os demais ASINs seguem Em breve. A ordem dentro de cada grupo é a relativa
+anterior.
 
 ## Quando o estoque NorthLog / Amazon voltar
 
@@ -104,11 +105,11 @@ permanece.
 ## Preços de itens "Em breve"
 
 Os preços dos itens em reposição são **preços de referência da Ou** (fabricante),
-não preços vivos da Amazon. Os três listings buyable em 2026-11-02 (~16h BRT)
+não preços vivos da Amazon. Os três listings buyable em 2026-11-03 (~10h BRT)
 mantêm o preço já publicado em `products.json` (não inventar preço na liberação):
-`B0GKPPS5YH` R$ 34,99 (SKU MD-OU-0001), `B0GKPZMCYZ` R$ 36,00 (SKU MD-OU-B0GKPZMCYZ)
-e `B0CZTTVLWK` R$ 17,09 (SKU MD-OU-B0CZTTVLWK).
-O borrifador 500 ml (`B0CZTTSHB7`, R$ 29,74), a escova (`B0CZTTRFQR`, R$ 20,69),
+`B0GKPPS5YH` R$ 34,99 (SKU MD-OU-0001), `B0CZTTVLWK` R$ 17,09 (SKU MD-OU-B0CZTTVLWK)
+e `B0CZTTRFQR` R$ 20,69 (SKU MD-OU-96039000).
+O dispenser 1,5L (`B0GKPZMCYZ`, R$ 36,00), o borrifador 500 ml (`B0CZTTSHB7`, R$ 29,74),
 o organizador branco (`B0GKQ4VVPQ`, R$ 58,49) e o organizador bege
 (`B0GKPQ99R8`, R$ 56,69) estão Em breve com FBA Available 0; o preço publicado
 não muda.

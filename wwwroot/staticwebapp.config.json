@@ -29,12 +29,16 @@
       "rewrite": "/produtos/dispenser-flow-quadrado-branco-001.html"
     },
     {
-      "route": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
-      "rewrite": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.html"
-    },
-    {
       "route": "/produtos/rodo-multiuso-bege-b0czttvlwk",
       "rewrite": "/produtos/rodo-multiuso-bege-b0czttvlwk.html"
+    },
+    {
+      "route": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr",
+      "rewrite": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr.html"
+    },
+    {
+      "route": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz",
+      "rewrite": "/produtos/dispenser-quadrado-1-5l-branco-b0gkpzmcyz.html"
     },
     {
       "route": "/produtos/borrifador-500ml-bege-b0czttshb7",
@@ -43,10 +47,6 @@
     {
       "route": "/produtos/organizador-parede-armario-branco-b0gkq4vvpq",
       "rewrite": "/produtos/organizador-parede-armario-branco-b0gkq4vvpq.html"
-    },
-    {
-      "route": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr",
-      "rewrite": "/produtos/escova-limpeza-multiuso-bege-b0czttrfqr.html"
     },
     {
       "route": "/produtos/organizador-parede-multiuso-bege-b0gkpq99r8",
