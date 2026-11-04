@@ -82,10 +82,10 @@
     "imageUrl": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
     "category": "Lavanderia",
     "price": 36.00,
-    "amazonUrl": "",
+    "amazonUrl": "https://www.amazon.com.br/dp/B0GKPZMCYZ?m=A20TN3HCSY6KZV",
     "asin": "B0GKPZMCYZ",
     "sku": "MD-OU-B0GKPZMCYZ",
-    "comingSoon": true,
+    "comingSoon": false,
     "lifestyleImages": [
       {
         "url": "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
