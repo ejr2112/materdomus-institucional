@@ -62,7 +62,7 @@ public class LifestyleImagesCatalogTests
                     "Escova multiuso pendurada pelo laço em gancho na parede da cozinha",
                     "51d32983506b00e2cb9674f1d3a705ade603219ed8d14eda13d3e06f3f1c05cd", 83926)
             }),
-        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m, true,
+        new("B0GKPZMCYZ", "dispenser-quadrado-1-5l-branco-b0gkpzmcyz", 36.00m, false,
             "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
             new[]
             {

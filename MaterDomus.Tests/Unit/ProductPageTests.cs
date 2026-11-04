@@ -58,7 +58,7 @@ public class ProductPageTests
     }
 
     [Fact]
-    public void DispenserPages_ExposeCatalogPriceSkuAndCurrentAvailability()
+    public void DispenserPages_ExposeCatalogPriceSkuAmazonLinkAndInStock()
     {
         var pages = PagesById();
         var oneLiter = pages[Dispenser1L];
@@ -74,20 +74,16 @@ public class ProductPageTests
             image: "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
             canonical: oneLiter.CanonicalUrl);
 
-        // FBA Available 0 em 2026-11-03: o 1,5L volta a Em breve. Preço, SKU e ASIN ficam.
-        Assert.Contains("<h1>Ou Dispenser Quadrado 1,5L Branco Linha Flow</h1>", oneAndHalf.Html);
-        Assert.Contains("R$ 36,00", oneAndHalf.Html);
-        Assert.Contains("data-price=\"36.00\"", oneAndHalf.Html);
-        Assert.Contains("SKU: <strong>MD-OU-B0GKPZMCYZ</strong>", oneAndHalf.Html);
-        Assert.Contains("ASIN: <strong>B0GKPZMCYZ</strong>", oneAndHalf.Html);
-        Assert.Contains(
-            "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
-            oneAndHalf.Html);
-        Assert.Contains("property=\"product:availability\" content=\"out of stock\"", oneAndHalf.Html);
-        Assert.Contains("Disponibilidade: <strong>Em breve</strong>", oneAndHalf.Html);
-        Assert.Contains("https://schema.org/OutOfStock", oneAndHalf.Html);
-        Assert.DoesNotContain(">Comprar na Amazon</a>", oneAndHalf.Html);
-        Assert.DoesNotContain("https://www.amazon.com.br/dp/", oneAndHalf.Html);
+        // FBA Available 6 em 2026-11-04: o 1,5L volta a Em estoque. Preço permanece R$ 36,00.
+        AssertDispenser(
+            oneAndHalf.Html,
+            title: "Ou Dispenser Quadrado 1,5L Branco Linha Flow",
+            priceLabel: "R$ 36,00",
+            priceAmount: "36.00",
+            sku: "MD-OU-B0GKPZMCYZ",
+            asin: "B0GKPZMCYZ",
+            image: "images/products/dispenser-quadrado-1-5l-branco-b0gkpzmcyz-ambiente-v2-1.webp",
+            canonical: oneAndHalf.CanonicalUrl);
 
         var css = ReadRepo("wwwroot", "css", "produtos.css");
         var productCss = css[css.IndexOf(".product-page__photo", StringComparison.Ordinal)..];
