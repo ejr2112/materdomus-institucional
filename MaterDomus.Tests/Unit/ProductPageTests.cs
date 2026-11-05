@@ -67,8 +67,8 @@ public class ProductPageTests
         AssertDispenser(
             oneLiter.Html,
             title: "Ou Dispenser Quadrado 1L Branco Linha Flow",
-            priceLabel: "R$ 34,99",
-            priceAmount: "34.99",
+            priceLabel: "R$ 39,50",
+            priceAmount: "39.50",
             sku: "MD-OU-0001",
             asin: "B0GKPPS5YH",
             image: "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",

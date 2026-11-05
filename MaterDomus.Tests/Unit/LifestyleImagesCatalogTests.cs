@@ -20,7 +20,7 @@ public class LifestyleImagesCatalogTests
 
     private static readonly LifestyleExpectation[] Expected =
     {
-        new("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 34.99m, false,
+        new("B0GKPPS5YH", "dispenser-flow-quadrado-branco-001", 39.50m, false,
             "images/products/dispenser-flow-quadrado-branco-001-ambiente-v2-1.webp",
             new[]
             {
@@ -34,7 +34,7 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1L em bancada cinza com revestimento azul",
                     "dcf5119071c84e58d5739ce409609cfd6cd86139be3e01f639a6aeaef675c162", 113218)
             }),
-        new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 17.09m, false,
+        new("B0CZTTVLWK", "rodo-multiuso-bege-b0czttvlwk", 18.20m, false,
             "images/products/rodo-multiuso-bege-b0czttvlwk-ambiente-v2-1.webp",
             new[]
             {
@@ -48,7 +48,7 @@ public class LifestyleImagesCatalogTests
                     "Rodo multiuso apoiado na bancada do banheiro",
                     "dd1b9efabbe5c723a20e6f31c277d7bb733ee9f14a0cb9536b59deff7f0da945", 100012)
             }),
-        new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 20.69m, false,
+        new("B0CZTTRFQR", "escova-limpeza-multiuso-bege-b0czttrfqr", 19.90m, false,
             "images/products/escova-limpeza-multiuso-bege-b0czttrfqr-ambiente-v2-1.webp",
             new[]
             {
