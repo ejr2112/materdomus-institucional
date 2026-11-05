@@ -28,7 +28,7 @@
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
-          "price": "34.99",
+          "price": "39.50",
           "availability": "https://schema.org/InStock",
           "url": "https://www.amazon.com.br/dp/B0GKPPS5YH?m=A20TN3HCSY6KZV",
           "seller": {
@@ -57,7 +57,7 @@
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
-          "price": "17.09",
+          "price": "18.20",
           "availability": "https://schema.org/InStock",
           "url": "https://www.amazon.com.br/dp/B0CZTTVLWK?m=A20TN3HCSY6KZV",
           "seller": {
@@ -86,7 +86,7 @@
         "offers": {
           "@type": "Offer",
           "priceCurrency": "BRL",
-          "price": "20.69",
+          "price": "19.90",
           "availability": "https://schema.org/InStock",
           "url": "https://www.amazon.com.br/dp/B0CZTTRFQR?m=A20TN3HCSY6KZV",
           "seller": {
