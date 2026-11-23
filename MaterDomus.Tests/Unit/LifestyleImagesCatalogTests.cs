@@ -76,7 +76,7 @@ public class LifestyleImagesCatalogTests
                     "Dispenser Flow 1,5L em bancada escura acima da máquina de lavar",
                     "92e98def6dda81f667d591f9ed25df933097f89aaca05a07bcbdf2499005d1b2", 124880)
             }),
-        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, true,
+        new("B0CZTTSHB7", "borrifador-500ml-bege-b0czttshb7", 29.74m, false,
             "images/products/borrifador-500ml-bege-b0czttshb7-ambiente-v2-1.webp",
             new[]
             {

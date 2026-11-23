@@ -93,9 +93,31 @@ public class ProductPageTests
     }
 
     [Fact]
-    public void ComingSoonPage_HasNoAmazonButton()
+    public void Borrifador500_IsInStockAtPublishedPrice()
     {
         var page = PagesById()["borrifador-500ml-bege-b0czttshb7"];
+        var html = page.Html;
+        // FBA Available 2 em 2026-11-23. Preço publicado permanece R$ 29,74.
+        // O JSON não tem sku de Seller Central; a página usa o id e não inventa SKU.
+        Assert.Contains("<h1>Ou Borrifador Multiuso 500ml Bege Linha Flow</h1>", html);
+        Assert.Contains("R$ 29,74", html);
+        Assert.Contains("data-price=\"29.74\"", html);
+        Assert.Contains("property=\"product:price:amount\" content=\"29.74\"", html);
+        Assert.Contains("ASIN: <strong>B0CZTTSHB7</strong>", html);
+        Assert.DoesNotContain("SKU: <strong>", html);
+        Assert.Contains("property=\"product:availability\" content=\"in stock\"", html);
+        Assert.Contains("Disponibilidade: <strong>Em estoque</strong>", html);
+        Assert.Contains("https://schema.org/InStock", html);
+        Assert.Contains("href=\"https://www.amazon.com.br/dp/B0CZTTSHB7?m=A20TN3HCSY6KZV\"", html);
+        Assert.Contains(">Comprar na Amazon</a>", html);
+        Assert.Contains($"\"url\": \"{page.CanonicalUrl}\"", html);
+        Assert.DoesNotContain("https://schema.org/OutOfStock", html);
+    }
+
+    [Fact]
+    public void ComingSoonPage_HasNoAmazonButton()
+    {
+        var page = PagesById()["organizador-parede-armario-branco-b0gkq4vvpq"];
         Assert.Contains("Disponibilidade: <strong>Em breve</strong>", page.Html);
         Assert.Contains("content=\"out of stock\"", page.Html);
         Assert.Contains("https://schema.org/OutOfStock", page.Html);
