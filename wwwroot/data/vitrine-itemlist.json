@@ -145,7 +145,11 @@
           "@type": "Offer",
           "priceCurrency": "BRL",
           "price": "29.74",
-          "availability": "https://schema.org/OutOfStock"
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.amazon.com.br/dp/B0CZTTSHB7?m=A20TN3HCSY6KZV",
+          "seller": {
+            "@id": "https://www.materdomus.com.br/#organization"
+          }
         }
       }
     },
